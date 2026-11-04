@@ -1,0 +1,44 @@
+{
+  "numero": 343,
+  "titulo": "Quiero llegar a ser parte del cielo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Quiero llegar a ser parte del cielo",
+        "y estar preparado aquel día glorioso,",
+        "cantando con los salvados",
+        "y extenderle los brazos a mi Señor.",
+        "Yo quiero estar cuando aparezca en las nubes",
+        "y extenderle los brazos a mi Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "No habrá más muerte ni dolor",
+        "en el hogar celestial;",
+        "Cristo, con su amor,",
+        "el llanto borrará.",
+        "Cerca está el día del Señor.",
+        "¡Oh! ¡Qué gozo será estar allí!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Quiero llegar a ser parte del cielo",
+        "y estar preparado aquel día glorioso,",
+        "cantando con los salvados",
+        "y extenderle los brazos a mi Señor.",
+        "Yo quiero estar cuando aparezca en las nubes",
+        "y extenderle los brazos a mi Señor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

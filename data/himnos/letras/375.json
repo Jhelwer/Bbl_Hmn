@@ -1,0 +1,38 @@
+{
+  "numero": 375,
+  "titulo": "Sed puros y santos",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Sed puros y santos, mirad al Señor,",
+        "permaneced fieles, orad sin cesar;",
+        "y que la Palabra del buen Salvador",
+        "os lleve en la vida a servir y amar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Sed puros y santos, Dios nos juzgará;",
+        "orad en secreto: respuesta vendrá.",
+        "Su Espíritu Santo revela a Jesús,",
+        "y su semejanza en nos él pondrá."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Sed puros y santos, Cristo nos guiará;",
+        "seguid su camino, en él confiad;",
+        "en paz o en zozobra, la calma dará",
+        "quien nos ha salvado de nuestra maldad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

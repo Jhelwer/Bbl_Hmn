@@ -1,0 +1,51 @@
+{
+  "numero": 399,
+  "titulo": "En estos tiempos",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En estos tiempos necesitas",
+        "un Salvador, un ancla firme.",
+        "Debes tener seguridad",
+        "de que tu ancla en la Roca esté."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "La Roca es Cristo,",
+        "no hay otra igual;",
+        "la Roca es Cristo,",
+        "no hay otra igual.",
+        "[1 y 2:] Debes tener seguridad",
+        "de que tu ancla en la Roca esté.",
+        "[3:] Seguro estoy, seguro estoy,",
+        "sé que mi ancla en la Roca está."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En estos tiempos necesitas",
+        "la Santa Biblia, la Palabra.",
+        "Debes tener seguridad",
+        "de que tu ancla en la Roca esté."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "En estos tiempos sé que tengo",
+        "un Salvador, un ancla firme.",
+        "Seguro estoy, seguro estoy,",
+        "sé que mi ancla en la Roca está."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

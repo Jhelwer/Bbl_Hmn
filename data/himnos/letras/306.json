@@ -1,0 +1,57 @@
+{
+  "numero": 306,
+  "titulo": "Llegó Jesús",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Muy solitario, junto al sendero,",
+        "un pobre ciego mendigaba pan;",
+        "iba sin rumbo a tientas, en tinieblas.",
+        "Llegó Jesús, y al ciego vista dio."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Llegó Jesús, y huyó el enemigo;",
+        "llegó Jesús, el llanto a enjugar;",
+        "se irán las sombras y entrará su gloria",
+        "si a Jesús entrada quieres dar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Atormentado por el enemigo",
+        "entre las tumbas iba un hombre vil;",
+        "su cuerpo el templo era del demonio.",
+        "Llegó Jesús, y al diablo derrotó."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "\"Inmundo soy\", clamaba el leproso;",
+        "el sordomudo no podía hablar;",
+        "la fiebre alzó la víctima en sus garras.",
+        "Llegó Jesús, la raza a libertar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Así los hombres de hoy son incapaces",
+        "de dominar sus vicios, su temor;",
+        "el corazón lo tienen quebrantado.",
+        "Jesús les brinda el bálsamo de amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

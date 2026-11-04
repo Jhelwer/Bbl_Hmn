@@ -1,0 +1,35 @@
+{
+  "numero": 371,
+  "titulo": "Jesús te ama",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Gracias te doy por darme esperanza",
+        "que muy pronto volverás.",
+        "Gracias te doy por tu sacrificio",
+        "que me dio la salvación."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Jesús te ama, Jesús en la cruz lo demostró.",
+        "Jesús hoy te invita: Dame tu corazón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Gracias te doy por darte alabanza",
+        "y feliz poder cantar.",
+        "Gracias te doy por la vida eterna",
+        "que en breve he de gozar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

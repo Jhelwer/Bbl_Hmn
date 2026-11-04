@@ -1,0 +1,48 @@
+{
+  "numero": 387,
+  "titulo": "Aparte del mundo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Aparte del mundo, Señor, me retiro,",
+        "de lucha y tumultos ansioso de huir;",
+        "de escenas horribles do el mal victorioso",
+        "extiende sus redes y se hace servir."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "El sitio apartado, la sombra tranquila,",
+        "convienen al culto de ruego y loor;",
+        "tu mano divina los hizo, sin duda,",
+        "en bien del que humilde te sigue, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Allí, si tu aliento inspira a mi alma,",
+        "y llega la gracia mi pecho a tocar,",
+        "mis labios podrán, en tu altar encendidos,",
+        "cantar alabanza a tu gloria sin par."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Te debo tributos de amor y de gracias",
+        "por este abundante y glorioso festín,",
+        "y cantos que puedan oírse en los cielos",
+        "por años sin cuento, por siglos sin fin."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

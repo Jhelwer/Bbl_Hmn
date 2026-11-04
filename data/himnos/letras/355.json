@@ -1,0 +1,47 @@
+{
+  "numero": 355,
+  "titulo": "Yo voy feliz",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Aquel en cuyo corazón",
+        "reside el santo amor,",
+        "de gozo siempre la canción",
+        "eleva al Salvador."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Yo voy feliz con Cristo, el Rey,",
+        "mi Salvador, mi Protector.",
+        "Yo voy feliz con Cristo, el Rey;",
+        "mis cargas Jesús me quitó."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Jesús me ama, bien lo sé,",
+        "pues oye mi clamor;",
+        "y si lo sigo por la fe",
+        "será mi Redentor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "La vida aquí terminará,",
+        "el fin ha de llegar;",
+        "mas la promesa fiel será:",
+        "Jesús me salvará."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

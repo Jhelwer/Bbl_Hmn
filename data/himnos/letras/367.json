@@ -1,0 +1,18 @@
+{
+  "numero": 367,
+  "titulo": "Gracias, Dios",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Gracias, Dios, por la salvación;",
+        "gracias, Dios, por tu gran perdón.",
+        "Gracias, Dios, por darme a mí",
+        "la vida eterna, oh ¡gloria a ti!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

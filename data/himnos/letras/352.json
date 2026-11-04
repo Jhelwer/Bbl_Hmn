@@ -1,0 +1,48 @@
+{
+  "numero": 352,
+  "titulo": "Gozaos, Cristo es Rey",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Gozaos, Cristo es Rey, brindadle todo honor.",
+        "Gozaos y cantad por siempre su loor.",
+        "Alzad la voz, os digo que os gocéis",
+        "de todo corazón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Jesús, el Salvador, ya reina con amor.",
+        "Lavó las manchas ascendió con gran honor.",
+        "Alzad la voz, os digo que os gocéis",
+        "de todo corazón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Su reino es eternal y nunca fallará;",
+        "la llave de la muerte en su mano está.",
+        "Alzad la voz, os digo que os gocéis",
+        "de todo corazón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Gozaos y esperad, muy pronto el Juez vendrá;",
+        "a su hogar eterno él os llevará.",
+        "Alzad la voz, os digo que os gocéis",
+        "de todo corazón."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

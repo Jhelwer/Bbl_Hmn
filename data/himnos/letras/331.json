@@ -1,0 +1,38 @@
+{
+  "numero": 331,
+  "titulo": "La mañana gloriosa",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cuán gloriosa será la mañana",
+        "cuando venga Jesús el Salvador;",
+        "cuando todos, unidos como hermanos,",
+        "bienvenida daremos al Señor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "No habrá necesidad de la luz el resplandor;",
+        "ni el sol dará su luz, ni tampoco su calor.",
+        "Allí llanto no habrá, ni tristeza, ni dolor;",
+        "porque entonces Jesús, el Rey del cielo,",
+        "para siempre será el Consolador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Esperamos la mañana gloriosa",
+        "para dar la bienvenida al Dios de amor.",
+        "Donde todo será color de rosa,",
+        "en la santa presencia del Señor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

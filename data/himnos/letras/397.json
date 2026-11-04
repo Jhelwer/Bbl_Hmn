@@ -1,0 +1,48 @@
+{
+  "numero": 397,
+  "titulo": "Oh buen Señor, velada está",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Oh buen Señor, velada está",
+        "tu santa forma aquí,",
+        "pues el pecado, oh Jehová,",
+        "te esconde hoy de mí."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Aunque no te distingo hoy,",
+        "sé que conmigo estás;",
+        "y si en afán o lucha estoy,",
+        "tu auxilio me darás."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Como un sueño nocturnal,",
+        "dorada ensoñación,",
+        "es tu presencia sin igual",
+        "la más feliz visión."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Tu forma puedo percibir",
+        "en alas de la fe;",
+        "con tu influencia en mi vivir,",
+        "confiado andaré."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

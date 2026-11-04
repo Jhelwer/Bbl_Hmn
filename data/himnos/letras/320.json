@@ -1,0 +1,47 @@
+{
+  "numero": 320,
+  "titulo": "Jamás se dice \"adiós\" allá",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cuán grato es con amigos vernos",
+        "en tiempo tan veloz;",
+        "mas siempre llega el día triste",
+        "en que se dice \"adiós\"."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Jamás se dice \"adiós\" allá,",
+        "jamás se dice \"adiós\";",
+        "en el país de gozo y paz",
+        "jamás se dice \"adiós\"."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cuán dulce es el consuelo dado",
+        "por ellos al partir:",
+        "que cuando venga Cristo en gloria,",
+        "nos hemos de reunir."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Jamás habrá una despedida,",
+        "tan dolorosa aquí;",
+        "mas grata unión y paz eterna",
+        "se gozarán allí."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

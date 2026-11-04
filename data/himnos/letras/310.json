@@ -1,0 +1,46 @@
+{
+  "numero": 310,
+  "titulo": "Cristo, centro de mi vida",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cristo, centro de mi vida,",
+        "Salvador en aflicción;",
+        "nadie viene a ti en vano,",
+        "tu paciencia es sin fin."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Del abismo líbrame,",
+        "a tu lado quiero estar",
+        "y por la eternidad alabarte sin cesar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cristo, Redentor eterno,",
+        "limpia nuestro corazón;",
+        "que podamos perdonarnos,",
+        "las ofensas olvidar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Cristo, sobre todo reinas,",
+        "eternal es tu poder.",
+        "Infinita es tu gracia",
+        "para todo pecador."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

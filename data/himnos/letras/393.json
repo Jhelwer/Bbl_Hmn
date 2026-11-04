@@ -1,0 +1,46 @@
+{
+  "numero": 393,
+  "titulo": "Mi fe contempla a ti",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Mi fe contempla a ti,",
+        "Cordero celestial,",
+        "mi Salvador.",
+        "Oye mi petición,",
+        "quita mi transgresión,",
+        "sea tu posesión",
+        "desde hoy, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Al débil corazón",
+        "tu gracia pueda dar",
+        "fe y valor.",
+        "Moriste tú por mí,",
+        "sea mi amor a ti",
+        "puro y ferviente así,",
+        "cual vivo ardor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Por senda oscura voy,",
+        "no veo en derredor;",
+        "mas me guiarás. Enjuga mi llorar,",
+        "mi noche haz brillar",
+        "y así no pueda errar",
+        "de ti jamás."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

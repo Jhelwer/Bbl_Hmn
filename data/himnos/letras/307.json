@@ -1,0 +1,44 @@
+{
+  "numero": 307,
+  "titulo": "Roca de la eternidad",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Roca de la eternidad,",
+        "fuiste abierta para mí;",
+        "sé mi escondedero fiel;",
+        "solo encuentro paz en ti,",
+        "rico, limpio manantial",
+        "en el cual lavado fui."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Aunque fuese siempre fiel,",
+        "aunque llore sin cesar,",
+        "del pecado no podré",
+        "justificación lograr;",
+        "solo en ti teniendo fe,",
+        "salvación podré gozar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Mientras tenga que vivir",
+        "en el mundo de maldad;",
+        "cuando vaya a responder",
+        "en tu augusto tribunal,",
+        "sé mi escondedero fiel,",
+        "Roca de la eternidad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
