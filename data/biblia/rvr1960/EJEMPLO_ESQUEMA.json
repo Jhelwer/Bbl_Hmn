@@ -1,0 +1,17 @@
+{
+  "version": "rvr1960",
+  "libro": "juan",
+  "capitulo": 3,
+  "versiculos": [
+    {
+      "numero": 1,
+      "texto": "TEXTO AUTORIZADO DEL VERSÍCULO 1"
+    },
+    {
+      "numero": 2,
+      "texto": "TEXTO AUTORIZADO DEL VERSÍCULO 2"
+    }
+  ],
+  "fuente": "Proveedor autorizado",
+  "derechos": "Requiere licencia"
+}
