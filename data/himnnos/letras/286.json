@@ -1,0 +1,48 @@
+{
+  "numero": 286,
+  "titulo": "Hay una fuente sin igual",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hay una fuente sin igual, la sangre de Emanuel,",
+        "en donde lava cada cual las manchas que hay en él,",
+        "las manchas que hay en él, las manchas que hay en él;",
+        "en donde lava cada cual las manchas que hay en él."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "El malhechor se convirtió muriendo en una cruz,",
+        "al ver la sangre que vertió sin culpa el buen Jesús,",
+        "sin culpa el buen Jesús, sin culpa el buen Jesús;",
+        "al ver la sangre que vertió sin culpa el buen Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Y yo también, cuan malo soy, lavarme allí podré;",
+        "y en tanto que en el mundo estoy su gloria cantaré,",
+        "su gloria cantaré, su gloria cantaré;",
+        "y en tanto que en el mundo estoy su gloria cantaré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Y cuando del sepulcro ya resucitado esté,",
+        "canción más noble y dulce allá en gloria entonaré,",
+        "en gloria entonaré, en gloria entonaré;",
+        "canción más nombre y dulce allá en gloria entonaré."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,48 @@
+{
+  "numero": 267,
+  "titulo": "A la cruz de Cristo voy",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A la cruz de Cristo voy.",
+        "Débil, pobre y ciego soy.",
+        "Mis riquezas nada son.",
+        "Necesito salvación."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cristo, a ti mi todo doy.",
+        "Tiempo, amigos, cuanto soy,",
+        "cuerpo y mente, tuyos son,",
+        "en eterna posesión."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Tu promesa es mi salud.",
+        "En tu sangre hallé virtud.",
+        "Pecador me siento hoy,",
+        "pero en Cristo salvo soy."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Yo confío en ti, Señor,",
+        "mi bendito Salvador,",
+        "y me postro ante tu cruz.",
+        "¡Salva, oh sálvame, Jesús!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

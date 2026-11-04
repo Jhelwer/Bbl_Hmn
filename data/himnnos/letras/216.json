@@ -1,0 +1,47 @@
+{
+  "numero": 216,
+  "titulo": "Dios al pródigo llama",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Dios al pródigo llama que venga sin tardar.",
+        "Oye pues su voz que hoy te llama a ti.",
+        "Aunque lejos vagabas del paternal hogar,",
+        "amoroso llámate aún."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Llámate hoy a ti,",
+        "cansado pródigo, ven;",
+        "llámate hoy a ti,",
+        "cansado pródigo, ven."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Tierno, amante, paciente, tu Padre implora aún.",
+        "Oye pues su voz que hoy te llama a ti.",
+        "Vuelve mientras abogue por ti el Espíritu;",
+        "amoroso llámate aún."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Ven, recibe el abrazo del Padre celestial.",
+        "Oye pues su voz que hoy te llama a ti.",
+        "Entra alegre al banquete que brinda, sin igual;",
+        "amoroso llámate aún."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

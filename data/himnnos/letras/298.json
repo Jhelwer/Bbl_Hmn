@@ -1,0 +1,47 @@
+{
+  "numero": 298,
+  "titulo": "Al Calvario, solo, Jesús ascendió",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Al Calvario, solo, Jesús ascendió",
+        "llevando pesada cruz,",
+        "y al morir en ella al mortal dejó",
+        "un fanal de gloriosa luz,"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "La cruz solo me guiará,",
+        "la cruz solo me guiará;",
+        "a mi hogar de paz y eterno amor,",
+        "la cruz solo me guiará,"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En la cruz tan solo el alma hallará",
+        "la fuente de inspiración;",
+        "nada grande y digno en el mundo habrá",
+        "que en la cruz no halle aprobación,"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Yo por ella voy a mi hogar celestial,",
+        "el rumbo marcando está;",
+        "en mi oscura vida será el fanal",
+        "y a su luz mi alma siempre irá."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

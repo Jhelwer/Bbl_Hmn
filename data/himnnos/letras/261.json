@@ -1,0 +1,58 @@
+{
+  "numero": 261,
+  "titulo": "Salvador, a ti me rindo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Salvador, a ti me rindo,",
+        "obedezco sólo a ti.",
+        "Mi Guiador, mi Fortaleza,",
+        "todo encuentro, oh Cristo, en ti."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Yo me rindo a ti,",
+        "yo me rindo a ti;",
+        "mis flaquezas,",
+        "mis pecados,",
+        "todo rindo a ti."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Te confiesa su delito",
+        "mi contrito corazón.",
+        "Oye, Cristo, mi plegaria;",
+        "quiero en ti tener perdón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "A tus pies, Señor, entrego",
+        "bienes, goces y placer.",
+        "Que tu Espíritu me llene,",
+        "y de ti sienta poder."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "¡Oh, qué gozo encuentro en Cristo!",
+        "¡Cuánta paz a mi alma da!",
+        "A su causa me consagro,",
+        "y su amor mi amor será."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

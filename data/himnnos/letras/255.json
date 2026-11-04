@@ -1,0 +1,48 @@
+{
+  "numero": 255,
+  "titulo": "Oh Cristo, te adoro",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Oh Cristo, te adoro, te acepto por fe;",
+        "por ti los caminos del mal ya dejé;",
+        "de gracia salvaste mi alma, Señor;",
+        "por esto de hinojos te rindo mi amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Me viste perdido y en condenación,",
+        "y desde el Calvario me diste perdón;",
+        "llevaste por mí las espinas, Señor;",
+        "por esto de hinojos te rindo mi amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "En todo momento, Jesús, te amaré;",
+        "y mientras yo viva de ti cantaré.",
+        "En valle de muerte serás mi Pastor;",
+        "por esto de hinojos te rindo mi amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Después, en mansiones de luz celestial,",
+        "de gozo inefable, de gloria eternal,",
+        "darasme corona brillante, Señor;",
+        "por esto de hinojos te rindo mi amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

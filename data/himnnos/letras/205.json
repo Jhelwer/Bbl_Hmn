@@ -1,0 +1,57 @@
+{
+  "numero": 205,
+  "titulo": "Dadme la Biblia",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Dadme la Biblia, reluciente estrella,",
+        "norte del nauta en tormentoso mar;",
+        "nunca el nublado esconderá su brillo,",
+        "pues las tinieblas puede disipar."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Dadme la Biblia, santa y clara nueva,",
+        "luz del camino angosto y celestial;",
+        "regla y promesa, ley y amor unidos",
+        "hasta que rompa el alba eternal."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Dadme la Biblia, en mi desaliento,",
+        "cuando el pecado cáuseme temor;",
+        "dadme los fieles dichos del Maestro;",
+        "siempre me encuentre junto al Salvador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Dadme la Biblia, antorcha a mis pisadas",
+        "en la insegura senda terrenal;",
+        "única luz constante en las tinieblas;",
+        "prenda de paz y amparo celestial."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Dadme la Biblia, luz de vida eterna;",
+        "junto al sepulcro su esplendor alzad;",
+        "sobre el Jordán destáquense las puertas",
+        "fúlgidas de la célica ciudad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

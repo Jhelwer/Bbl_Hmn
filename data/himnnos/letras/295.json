@@ -1,0 +1,47 @@
+{
+  "numero": 295,
+  "titulo": "Las manos, Padre",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Las manos, Padre, extiendo a ti;",
+        "mi fiel ayuda sé.",
+        "Si tú no cuidas ya de mí,",
+        "¿a quién y adónde iré?"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Yo creo que en el Gólgota",
+        "Jesús por mí murió,",
+        "y con su sangre, del pecar",
+        "a mi alma libertó."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En tu Hijo amado creo yo,",
+        "conozco tu poder.",
+        "¡Oh!, suple mi necesidad,",
+        "renueva tú mi ser."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Los ojos alzo a ti, Señor,",
+        "Autor tú de la fe.",
+        "¡Oh!, dame el tan precioso don,",
+        "pues sin él yo moriré."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

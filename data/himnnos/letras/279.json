@@ -1,0 +1,37 @@
+{
+  "numero": 279,
+  "titulo": "Transfórmame a tu imagen",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hoy pido en oración",
+        "que perdones mi tibieza;",
+        "pues quiero, de corazón,",
+        "consagrarme a ti, Señor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Renuévame, Señor;",
+        "inspírame valor;",
+        "transfórmame a tu imagen;",
+        "renuévame, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "A otros quiero llevar",
+        "tu mensaje de esperanza;",
+        "viviendo para servir,",
+        "compartiendo tu amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,51 @@
+{
+  "numero": 274,
+  "titulo": "¿Qué te daré, Maestro?",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¿Qué te daré, Maestro?",
+        "Moriste tú por mí.",
+        "¿Menos daré de lo que me das",
+        "o todo te entregaré?"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Mi Salvador Jesús,",
+        "te diste tú por mí.",
+        "Tu hogar dejaste allá",
+        "para morir aquí.",
+        "¿Qué te daré, Maestro?",
+        "te diste tú por mí.",
+        "No la mitad, mas todo mi ser,",
+        "entregaré a ti."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¿Qué te daré, Maestro?",
+        "Me redimiste tú.",
+        "Poco es mi don, mas lo entregaré,",
+        "Señor, bajo tu control."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¿Qué te daré, Maestro?",
+        "Mi gran benefactor.",
+        "Todo mi tiempo y bienes daré,",
+        "a ti pertenecerán."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

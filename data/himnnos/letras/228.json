@@ -1,0 +1,20 @@
+{
+  "numero": 228,
+  "titulo": "Me buscaréis y me hallaréis",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Me buscaréis y me hallaréis,",
+        "porque me buscaréis",
+        "de todo vuestro corazón.",
+        "Me buscaréis y me hallaréis,",
+        "porque me buscaréis",
+        "de todo corazón."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

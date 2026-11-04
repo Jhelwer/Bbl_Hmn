@@ -1,0 +1,47 @@
+{
+  "numero": 299,
+  "titulo": "Hay vida en mirar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hay vida en mirar a la santa cruz,",
+        "Dice Jesús: \"Miradme a mí\".",
+        "Nada el mundo y sus glorias son;",
+        "tesoros brillantes se ven allí."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Oh, mirad, pues hallaréis",
+        "vida eterna allá en la cruz!",
+        "Salvación recibiréis",
+        "en el Redentor, Jesús,"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Y cuando miré a mi Salvador,",
+        "dulces sonrisas él me dio;",
+        "hoy del maligno soy vencedor,",
+        "mirando a la cruz do Jesús murió."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Mirando a Jesús, siempre confiaré",
+        "en sus promesas y poder;",
+        "nunca vencido del mal seré;",
+        "el Cielo me ayuda a obedecer."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

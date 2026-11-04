@@ -1,0 +1,57 @@
+{
+  "numero": 247,
+  "titulo": "Yo te seguiré",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Yo te seguiré, ¡Oh Cristo!,",
+        "dondequiera que estés;",
+        "donde tú me guíes, sigo;",
+        "sí, Señor, te seguiré."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Yo te seguiré, ¡oh Cristo!",
+        "Tú moriste para mí.",
+        "Aunque todos te negaren,",
+        "yo, Señor, te seguiré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Aunque duro el camino,",
+        "sin señales y sin luz,",
+        "seguiré siempre confiado",
+        "en las huellas de Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Afligido, agotado,",
+        "débil, lleno de dolor,",
+        "regocíjome, pues ando",
+        "en las huellas del Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Si me guías al gran río",
+        "del Jordán, no temeré;",
+        "has pasado tú su frío,",
+        "y gozoso seguiré."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

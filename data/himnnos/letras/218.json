@@ -1,0 +1,47 @@
+{
+  "numero": 218,
+  "titulo": "A Jesucristo ven sin tardar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A Jesucristo ven sin tardar,",
+        "que entre nosotros hoy él está;",
+        "y te convida con dulce afán,",
+        "tierno diciendo: \"Ven\"."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Oh, cuán grata nuestra reunión,",
+        "cuando allá, Señor, en tu mansión,",
+        "contigo estemos en comunión",
+        "gozando eterno bien!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Piensa que él solo puede colmar",
+        "tu triste pecho de gozo y paz;",
+        "y porque anhela tu bienestar,",
+        "vuelve a decirte: \"Ven\"."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Su voz escucha sin vacilar,",
+        "y grato acepta lo que hoy te da.",
+        "Tal vez mañana no habrá lugar.",
+        "No te detengas; ven."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
