@@ -1,0 +1,49 @@
+{
+  "numero": 292,
+  "titulo": "Por fe en Cristo, el Redentor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Por fe en Cristo, el Redentor,",
+        "se salva hoy el pecador;",
+        "aunque sin merecer perdón,",
+        "recibe plena salvación."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Oh, gracia excelsa del amor,",
+        "que Dios perdone al pecador!",
+        "Si quiere presto confesar",
+        "sus culpas, y en Jesús confiar,",
+        "encontrará la salvación,",
+        "pues él obró la redención."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "La vida antigua ya pasó",
+        "y todo en nuevo se tornó,",
+        "y aunque nada tenga aquí,",
+        "herencia eterna tiene allí."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Aquí cual peregrino es;",
+        "mansión allá tendrá después,",
+        "arriba en gloria con Jesús,",
+        "quien redimiole en la cruz."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

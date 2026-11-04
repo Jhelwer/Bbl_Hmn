@@ -1,0 +1,37 @@
+{
+  "numero": 203,
+  "titulo": "Santo Espíritu llena mi vida",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Santo Espíritu llena mi vida,",
+        "pues por Cristo yo quiero brillar.",
+        "Santo Espíritu llena mi vida,",
+        "úsame las almas a salvar."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Alabanzas, alabanzas,",
+        "alabanzas doy a Cristo el Rey.",
+        "Alabanzas, alabanzas,",
+        "alabanzas doy al Rey."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Quiero dar tu mensaje a otros",
+        "hasta que Cristo vuelva otra vez.",
+        "Quiero dar tu mensaje a otros,",
+        "úsame las almas a salvar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

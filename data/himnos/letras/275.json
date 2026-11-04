@@ -1,0 +1,22 @@
+{
+  "numero": 275,
+  "titulo": "Humilde oración",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En humilde oración",
+        "quiero dedicar, Señor,",
+        "mi indigno corazón",
+        "por completo a ti.",
+        "Hazme puro, santo y fiel,",
+        "quiero obedecer tu Ley.",
+        "Dame amor, bondad y fe,",
+        "dame tu poder."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

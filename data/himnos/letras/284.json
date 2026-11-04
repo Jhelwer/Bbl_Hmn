@@ -1,0 +1,55 @@
+{
+  "numero": 284,
+  "titulo": "Me dice el Salvador",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Me dice el Salvador:",
+        "\"Es poco tu poder;",
+        "hijo débil, halla en mí",
+        "todo cuanto has menester\"."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Todo debo a él, pues ya lo pagó;",
+        "de las manchas del pecar cual nieve me lavó."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "He hallado, mi Señor,",
+        "que solo tu poder",
+        "a mi duro corazón",
+        "es capaz de enternecer."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Nada bueno hay en mí:",
+        "tu gracia buscaré,",
+        "y en la sangre de Jesús",
+        "mis pecados lavaré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Cuando ante el trono, allá,",
+        "completo en él esté,",
+        "a los pies de mi Jesús",
+        "mi tributo ofreceré."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

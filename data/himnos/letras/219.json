@@ -1,0 +1,57 @@
+{
+  "numero": 219,
+  "titulo": "Tan triste y tan lejos de Dios",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Tan triste y tan lejos de Dios me sentí",
+        "y sin el perdón de Jesús.",
+        "Mas cuando su voz amorosa oí",
+        "que dijo: \"Oh, ven a la luz\"."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Yo todo dejé para andar en la luz,",
+        "no moro en tinieblas ya más;",
+        "encuentro la paz en seguir a Jesús",
+        "y vivo en la luz de su faz."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¡Qué amigo tan dulce es el tierno Jesús!",
+        "¡Tan lleno de paz y de amor!",
+        "De todo este mundo es la fúlgida luz",
+        "el nombre del buen Salvador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "De mi alma el anhelo por siempre será",
+        "más cerca vivir de la cruz,",
+        "do santo poder y pureza me da",
+        "la sangre de Cristo Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "¡Oh! ven a Jesús, infeliz pecador;",
+        "no vagues a ciegas ya más.",
+        "Sí, ven a Jesús, tu benigno Señor,",
+        "que en él salvación hallarás."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

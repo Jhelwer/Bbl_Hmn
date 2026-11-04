@@ -1,0 +1,47 @@
+{
+  "numero": 259,
+  "titulo": "Mi espíritu, alma y cuerpo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Mi espíritu, alma y cuerpo,",
+        "mi ser, mi vida entera,",
+        "cual viva, santa ofrenda",
+        "te entrego a ti, mi Dios."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Mi todo a Dios consagro",
+        "en Cristo, el vivo altar.",
+        "¡Descienda el fuego santo,",
+        "su sello celestial!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Soy tuyo, Jesucristo,",
+        "comprado con tu sangre;",
+        "haz que contigo ande",
+        "en plena comunión."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Espíritu divino,",
+        "del Padre la promesa,",
+        "sedienta, mi alma anhela",
+        "de ti la santa unción."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

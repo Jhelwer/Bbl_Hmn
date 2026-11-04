@@ -1,0 +1,48 @@
+{
+  "numero": 212,
+  "titulo": "A tu puerta Cristo está",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A tu puerta Cristo está.",
+        "Ábrele.",
+        "Si le abres entrará.",
+        "Ábrele. Tu pecado quitará,",
+        "luz y paz derramará,",
+        "su perdón te otorgará.",
+        "Ábrele."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Ábrele, oh pecador.",
+        "Ábrele.",
+        "Al amante Salvador",
+        "ábrele.",
+        "Hoy te ofrece salvación,",
+        "del pecado el perdón;",
+        "saciará tu corazón.",
+        "Ábrele."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "No le hagas esperar.",
+        "Ábrele.",
+        "No le obligues a marchar.",
+        "Ábrele. ¡Qué dolor después tendrás,",
+        "cuando en vano clamarás",
+        "y perdido te hallarás!",
+        "Ábrele."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,52 @@
+{
+  "numero": 209,
+  "titulo": "La Biblia nos habla de Cristo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "La Biblia nos habla de Cristo",
+        "y de su muerte en la cruz.",
+        "Su santa Palabra ha dicho",
+        "que él pronto vuelve en luz."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¿Te hallas listo a encontrar al Señor?",
+        "¿Lo haces todo con fe, con amor?",
+        "¿Has peleado por fe la batalla del bien?",
+        "¿Pueden otros a Cristo en ti ver?",
+        "¿Eres fiel por doquiera que vas?",
+        "¿Puedes tú contemplarlo en su faz",
+        "y triunfante decir:",
+        "\"Este es mi Dios\"?",
+        "¿Puedes tú encontrar al Señor?"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "No anheles el bien de esta vida,",
+        "pues ella se pasará.",
+        "Entrégate a él sin medida,",
+        "que hoy llamando está."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "No dejes que pase más tiempo",
+        "sin entregarte a Jesús.",
+        "Alístate, pues el Maestro",
+        "muy pronto vuelve en luz."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

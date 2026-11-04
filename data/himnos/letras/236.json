@@ -1,0 +1,37 @@
+{
+  "numero": 236,
+  "titulo": "A Jesús entrega todo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Has corrido tras un arco iris,",
+        "y ahora muy cansado estás.",
+        "Toma todos esos sueños rotos,",
+        "y a los pies de Cristo ponlos ya."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "A Jesús, a Jesús, a Jesús entrega todo:",
+        "sueños rotos y heridas del corazón.",
+        "A Jesús, a Jesús, a Jesús entrega todo;",
+        "y la tristeza en gozo cambiará."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Él no prometió sol todos los días;",
+        "sé que a veces viene la tormenta.",
+        "Pero nos ofrece un corazón nuevo,",
+        "que cante aún en medio del dolor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

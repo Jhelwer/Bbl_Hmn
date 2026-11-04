@@ -1,0 +1,47 @@
+{
+  "numero": 289,
+  "titulo": "¿Qué me puede dar perdón?",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¿Qué me puede dar perdón?",
+        "Solo de Jesús la sangre.",
+        "¿Y un nuevo corazón?",
+        "Solo de Jesús la sangre."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Precioso es el raudal",
+        "que limpia todo mal.",
+        "No hay otro manantial",
+        "sino de Jesús la sangre."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Fue rescate eficaz",
+        "solo de Jesús la sangre.",
+        "Trajo santidad y paz",
+        "solo de Jesús la sangre."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Cantaré junto a sus pies,",
+        "solo de Jesús la sangre.",
+        "El Cordero digno es.",
+        "Solo de Jesús la sangre."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

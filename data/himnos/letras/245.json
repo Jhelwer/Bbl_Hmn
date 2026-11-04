@@ -1,0 +1,48 @@
+{
+  "numero": 245,
+  "titulo": "Cúmplase, oh Cristo, tu voluntad",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cúmplase, oh Cristo, tu voluntad.",
+        "Solo tú puedes mi alma salvar.",
+        "Cual alfarero, para tu honor",
+        "vasija útil hazme, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cúmplase, oh Cristo, tu voluntad.",
+        "Quita de mi alma toda maldad.",
+        "Cual blanca nieve hazla fulgir,",
+        "y fiel y humilde hazme vivir."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Cúmplase, oh Cristo, tu voluntad.",
+        "Toda dolencia puedes sanar;",
+        "cuitas, pesares, con tu poder",
+        "quieres hacerlos desvanecer."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Cúmplase, oh Cristo, tu voluntad.",
+        "Mora en mi alma, dame tu paz,",
+        "para que el mundo vea tu amor,",
+        "tu obra perfecta, buen Salvador."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,57 @@
+{
+  "numero": 264,
+  "titulo": "Un día más por Cristo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Un día más por Cristo, y menos por vivir;",
+        "mas hoy el cielo, que tanto anhelo,",
+        "más cerca está que ayer.",
+        "Colmada mi alma está de luz y amor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Un día más por Cristo,",
+        "un día más por Cristo,",
+        "un día más por Cristo,",
+        "y menos por vivir."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Un día más por Cristo, por mi glorioso Rey;",
+        "pues mis deberes ya son placeres:",
+        "su amor proclamaré.",
+        "Jesús murió; mi vida así compró."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Un día más por Cristo; cuán grato es para mí",
+        "contar la historia, mostrar la gloria",
+        "del que me salva aquí.",
+        "Mi corazón rebosa en bendición."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "¡Oh, cuán bendita obra de Cristo mi Señor!",
+        "Tras prueba dura, un alma pura",
+        "me da su santo amor.",
+        "Y esto sé: con Cristo reinaré."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

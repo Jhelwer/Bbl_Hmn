@@ -1,0 +1,47 @@
+{
+  "numero": 231,
+  "titulo": "Todo en el altar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¿Anhelaste la paz y crecer en la fe?",
+        "¿bendiciones de Cristo obtener?",
+        "Todo esto tendrás cuando rindas tu ser",
+        "por completo a Jesús en su altar."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¿Entregaste tu vida entera a Dios?",
+        "¿Le diste tu fiel corazón?",
+        "Él te bendecirá y te hará descansar,",
+        "y su paz te dará una canción."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Si caminas con Dios en la luz de verdad,",
+        "tendrás paz y poder al andar.",
+        "Vivirás, pues, feliz; gozarás libertad;",
+        "si tu vida está en el altar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¿Quién podrá de su amor la grandeza contar?",
+        "¡Cuán feliz con tu Dios estarás!",
+        "Pues te llama el Pastor con su voz celestial,",
+        "pon tu vida entera en su altar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

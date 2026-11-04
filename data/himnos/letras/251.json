@@ -1,0 +1,48 @@
+{
+  "numero": 251,
+  "titulo": "No yo, sino él",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "No yo, sino él, reciba amor y honra;",
+        "no yo, sino él, en mí ha de reinar;",
+        "no yo, sino él, en todo cuanto haga;",
+        "no yo, sino él, en todo mi pensar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "No yo, sino él, a confortar mis penas;",
+        "no yo, sino él, mis llantos a enjugar;",
+        "no yo, sino él, a aligerar mis cargas,",
+        "no yo, sino él, mi duda a disipar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Jesús, no más diré palabra ociosa;",
+        "Jesús, no más, quisiera yo pecar;",
+        "Jesús, no más, me venza el orgullo;",
+        "Jesús, no más, inspire el \"yo\" mi hablar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "No yo, sino él, lo que me falta suple;",
+        "no yo, sino él, da fuerza y sanidad;",
+        "Jesús a ti, mi espíritu, alma y cuerpo,",
+        "lo rindo hoy por la eternidad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

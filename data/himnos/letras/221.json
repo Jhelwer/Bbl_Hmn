@@ -1,0 +1,56 @@
+{
+  "numero": 221,
+  "titulo": "Puertas abiertas encontrarán",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Puertas abiertas encontrarán, unos sí, otros no;",
+        "de alguien las glorias sin fin serán.",
+        "¿Y tú? ¿y yo? ¿Y tú? ¿y yo?",
+        "Calles de oro, mar de cristal, pleno reposo, perfecto amor.",
+        "Unos tendrán celestial hogar:",
+        "¿Y tú? ¿y yo? ¿Y tú? ¿y yo?"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Fieles discípulos de Jesús, unos sí, otros no,",
+        "logran corona en vez de cruz.",
+        "¿Y tú? ¿y yo? ¿Y tú? ¿y yo?",
+        "Mora el Rey en gloriosa luz, con él no puede haber dolor,",
+        "de alguien es esta beatitud:",
+        "¿Y tú? ¿y yo? ¿Y tú? ¿y yo?"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Puertas cerradas encontrarán, unos sí, otros no;",
+        "\"No te conozco\", escucharán.",
+        "¿Y tú? ¿y yo? ¿Y tú? ¿y yo?",
+        "Ciegos y sordos, no creen hoy, tarde sabrán de su grande error,",
+        "el que desdeñan será su Juez:",
+        "¿Y tú? ¿y yo? ¿Y tú? ¿y yo?"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Son herederos del porvenir, unos sí, otros no;",
+        "los que procuran por Dios vivir.",
+        "¿Y tú? ¿y yo? ¿Y tú? ¿y yo?",
+        "Cuando concluya la dura lid, en compañía del Salvador",
+        "alguien será sin cesar feliz:",
+        "¿Y tú? ¿y yo? ¿Y tú? ¿y yo?"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

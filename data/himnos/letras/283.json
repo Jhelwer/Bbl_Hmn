@@ -1,0 +1,18 @@
+{
+  "numero": 283,
+  "titulo": "Ven, Señor Jesús",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Ven, Señor Jesús, dirige mi pensar;",
+        "ven, Señor Jesús, protege mi mirar;",
+        "ven, Señor Jesús, modela mi hablar;",
+        "oh, ven, Señor Jesús, mi corazón te entrego."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

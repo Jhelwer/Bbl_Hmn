@@ -1,0 +1,50 @@
+{
+  "numero": 206,
+  "titulo": "Padre, tu Palabra es mi delicia",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Padre, tu Palabra es",
+        "mi delicia y mi solaz,",
+        "guía siempre aquí mis pies",
+        "y a mi pecho trae la paz.",
+        "Es tu santa Ley, Señor,",
+        "faro eterno, celestial,",
+        "que en perenne resplandor",
+        "norte y guía es al mortal."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cuando obedecí tu voz",
+        "en tu gracia fuerza hallé,",
+        "y con firme pie, y veloz,",
+        "por tus sendas caminé.",
+        "Tu verdad es mi sostén",
+        "contra duda y tentación,",
+        "y destila calma y bien",
+        "cuando asalta la aflicción."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Son tus dichos para mí",
+        "prendas fieles de salud.",
+        "Dame, pues, que te oiga a ti",
+        "con filial solicitud.",
+        "Es mi ciencia, mi saber,",
+        "tu divina voluntad;",
+        "y por siempre lo ha de ser",
+        "en la grande eternidad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

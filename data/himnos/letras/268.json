@@ -1,0 +1,47 @@
+{
+  "numero": 268,
+  "titulo": "Puedo oír tu voz llamando",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Puedo oír tu voz llamando,",
+        "suavemente susurrando,",
+        "que a mi alma está hablando:",
+        "\"Trae tu cruz y ven en pos de mí\"."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Seguiré do tú me guíes,",
+        "seguiré do tú me guíes,",
+        "seguiré do tú me guíes;",
+        "dondequiera, fiel, te seguiré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Sufriré por ti, Maestro.",
+        "Si el camino es siniestro",
+        "tú serás refugio nuestro;",
+        "moriré contigo, mi Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Me darás la gracia y gloria",
+        "de obtener la gran victoria,",
+        "y contar la dulce historia:",
+        "que por mí Jesús su vida dio."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
