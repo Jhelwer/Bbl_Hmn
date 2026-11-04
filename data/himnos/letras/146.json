@@ -1,0 +1,38 @@
+{
+  "numero": 146,
+  "titulo": "Ni en la tierra",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Ni en la tierra ni en el cielo",
+        "nombre hay como el de Jesús;",
+        "sobre todo siempre reina,",
+        "él es solo eterna luz."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Es Jesús mi gran sustento,",
+        "Pan divino y celestial;",
+        "de mis dichas y mi gozo,",
+        "es el rico manantial."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Infinita es su ternura.",
+        "¿Quién la puede agotar?",
+        "Con los ángeles, hoy quiero",
+        "su grandeza pregonar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

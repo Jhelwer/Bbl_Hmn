@@ -1,0 +1,44 @@
+{
+  "numero": 154,
+  "titulo": "Dad gloria al Cordero Rey",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Dad gloria al Cordero Rey, suprema potestad;",
+        "de su divino amor la Ley postrados aceptad,",
+        "de su divino amor la Ley postrados aceptad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Vosotros, hijos de Israel, residuo de su grey,",
+        "loores dad a Emanuel y proclamadle Rey,",
+        "loores dad a Emanuel y proclamadle Rey."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Naciones todas, escuchad y obedeced su Ley",
+        "de gracia, amor y santidad, y proclamadle Rey,",
+        "de gracia, amor y santidad, y proclamadle Rey."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Dios quiera que con los que están del trono en derredor,",
+        "con cantos por la eternidad a Cristo demos honor,",
+        "con cantos por la eternidad a Cristo demos honor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

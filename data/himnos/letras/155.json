@@ -1,0 +1,38 @@
+{
+  "numero": 155,
+  "titulo": "En Sion Jesús hoy reina",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En Sion Jesús hoy reina, alégrate, mortal,",
+        "y ve con devoción y fe al trono celestial.",
+        "En Sion Jesús hoy reina en gloria y majestad,",
+        "venid, oh poderosos, y su gloria proclamad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En Sion Jesús hoy reina cual infinito ser,",
+        "los mares y abismos él gobierna con poder.",
+        "¡Oh, todo el universo alabe al Salvador!",
+        "Proclámenle los pueblos cual amante Redentor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "En Sion Jesús hoy reina, del orbe es regidor.",
+        "¡Venid con regocijo y adoradle con fervor!",
+        "y ante su grandeza venid con santa unción.",
+        "Venid y coronadle Rey con toda devoción."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

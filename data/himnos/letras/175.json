@@ -1,0 +1,44 @@
+{
+  "numero": 175,
+  "titulo": "Ved a Cristo, que se acerca",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Ved a Cristo, que se acerca",
+        "con gloriosa majestad.",
+        "Los que aguardan su regreso",
+        "dicen: \"Este es nuestro Dios,",
+        "lo hemos esperado siempre,",
+        "él es quien nos salvará\"."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Los que duermen en el polvo",
+        "se levantan por doquier.",
+        "Los poderes del maligno",
+        "no los pueden retener.",
+        "Pecadores descuidados,",
+        "¿qué destino encontrarán?"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Y entonces los salvados",
+        "entrarán en la mansión.",
+        "Jesucristo los recibe",
+        "y les da coronación:",
+        "\"Bien, buen siervo; fiel serviste;",
+        "entra al gozo del Señor\"."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

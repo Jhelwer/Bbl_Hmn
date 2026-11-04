@@ -1,0 +1,38 @@
+{
+  "numero": 180,
+  "titulo": "Sí, lo veremos",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Sí, lo veremos cuando venga en gloria.",
+        "Sí, lo veremos al Rey y Señor.",
+        "Ángeles y hombres le darán la gloria;",
+        "alzando voces, hosannas cantarán."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Sí, lo veremos la mañana hermosa.",
+        "Sí, lo veremos en todo esplendor.",
+        "Huestes triunfantes de los redimidos",
+        "entonaremos hosannas a Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Sí, lo veremos en aquel gran día.",
+        "Sí, lo veremos en su majestad. Todos unidos le",
+        "tributaremos nuestra alabanza:",
+        "¡Hosanna al Señor! ¡Hosanna al Señor!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

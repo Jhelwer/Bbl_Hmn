@@ -1,0 +1,18 @@
+{
+  "numero": 135,
+  "titulo": "Cristo, nombre sublime",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cristo, nombre sublime,",
+        "Salvador nuestro, glorioso Dios;",
+        "es Emanuel, Dios con nosotros,",
+        "Palabra viva, gran Redentor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,57 @@
+{
+  "numero": 128,
+  "titulo": "¡Tu nombre es dulce, buen Jesús!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Tu nombre es dulce, buen Jesús!",
+        "¡Oh cuánta paz, consuelo y luz",
+        "dimana de tu santa cruz!,",
+        "mi luz, mi esperanza."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Dulce nombre: Emanuel!",
+        "¡Dulce nombre, siempre fiel!",
+        "¡Dulce nombre: gloria a él",
+        "los santos todos canten!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Jesús; en cuyo corazón",
+        "descargo entera mi aflicción,",
+        "pues calma toda turbación,",
+        "Jesús, tu amado nombre."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Tu nombre pláceme escuchar;",
+        "lo siento a mi alma alentar.",
+        "Cual canto calma mi llorar,",
+        "Jesús, tu santo nombre."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Jamás contó profano autor",
+        "cuán dulce el nombre es del Señor;",
+        "ascienda siempre mi loor",
+        "a su glorioso nombre."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,57 @@
+{
+  "numero": 149,
+  "titulo": "Junto a la cruz do Jesús murió",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Junto a la cruz do Jesús murió,",
+        "do por su gracia clamaba yo,",
+        "mis manchas su sangre allí quitó:",
+        "¡a su nombre gloria!"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡A su nombre gloria!",
+        "¡A su nombre gloria!",
+        "Cristo Jesús es mi Salvador:",
+        "¡a su nombre gloria!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cuando por fe en la cruz lo vi,",
+        "de mis pecados salvado fui,",
+        "hoy él me guarda y mora en mí;",
+        "¡a su nombre gloria!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¡Fuente preciosa de salvación!",
+        "Gozo en ti halla mi corazón;",
+        "en ti, Jesús salva y da perdón:",
+        "¡a su nombre gloria!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "¡Ven a esta fuente, oh pecador!",
+        "Ponte a los pies de tu Salvador;",
+        "te colmará de su santo amor:",
+        "¡a su nombre gloria!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

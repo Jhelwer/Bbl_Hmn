@@ -1,0 +1,57 @@
+{
+  "numero": 172,
+  "titulo": "Promesa dulce",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Promesa dulce: \"Yo vendré,",
+        "y a los que sufren salvaré\".",
+        "Responde mi alma: \"Presto ven;",
+        "ansioso esperaré\"."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Ven, Señor, mi Redentor!",
+        "¡Ven, Señor, mi Redentor!",
+        "Responde mi alma: \"¡Presto ven,",
+        "Señor, mi Redentor!\""
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Los santos vuelven a vivir,",
+        "al cielo todos subirán;",
+        "y en tierra atado años mil",
+        "ha de quedar Satán."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Desciende entonces la ciudad,",
+        "los malos levantados son",
+        "a oír el fallo de su Juez:",
+        "\"Eterna perdición\"."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "El nuevo Edén florecerá",
+        "en hermosura celestial;",
+        "jamás la muerte turbará",
+        "la playa inmortal."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

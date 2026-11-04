@@ -1,0 +1,22 @@
+{
+  "numero": 130,
+  "titulo": "Cristo, Cristo, Cristo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cristo, Cristo, Cristo;",
+        "otro nombre no hay igual.",
+        "Santo, tierno, puro;",
+        "tú llevaste la cruz por mí.",
+        "Cristo, Cristo, Cristo,",
+        "cielo y tierra te alabarán.",
+        "Rey de reyes, sublime Señor,",
+        "no hay otro igual a ti."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

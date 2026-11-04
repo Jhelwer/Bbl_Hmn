@@ -1,0 +1,47 @@
+{
+  "numero": 160,
+  "titulo": "Viene otra vez nuestro Salvador",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Viene otra vez nuestro Salvador, ¡oh, si ya fuera hoy!,",
+        "para reinar con poder y amor, ¡oh, si ya fuera hoy!",
+        "Su fiel iglesia ataviada está con vestiduras de esplendor,",
+        "y en busca del Esposo va. ¡Oh, si ya fuera hoy!"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Gloria!, ¡gloria! Gozo sin fin traerá.",
+        "¡Gloria!, ¡gloria! al coronarle Rey.",
+        "¡Gloria!, ¡gloria! La senda preparad.",
+        "¡Gloria!, ¡gloria! Cristo viene otra vez."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Acabará el poder de Satán, ¡oh, si ya fuera hoy!",
+        "Negras tristezas no se verán, ¡oh, si ya fuera hoy!",
+        "Todos los justos con Cristo irán, a las mansiones de su Señor.",
+        "¿Cuándo estas glorias llegarán? ¡Oh, si ya fuera hoy!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Fieles a él nos debiera hallar si regresara hoy;",
+        "todos velando con gozo y paz si regresara hoy.",
+        "Multiplicadas señales hay; en el oriente se ve el albor,",
+        "ya más cercano el tiempo está. ¡Oh, si ya fuera hoy!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

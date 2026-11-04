@@ -1,0 +1,19 @@
+{
+  "numero": 152,
+  "titulo": "A ti, Jesús",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A ti, Jesús, alzaré mi voz,",
+        "para adorarte, mi Salvador.",
+        "Acepta hoy, mi Rey y Señor,",
+        "el humilde don de mi amor",
+        "en oración."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,48 @@
+{
+  "numero": 105,
+  "titulo": "Cristo ha resucitado",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cristo ha resucitado, ¡aleluya!,",
+        "ya la muerte ha vencido, ¡aleluya!",
+        "Con poder y con virtud, ¡aleluya!,",
+        "cautivó la esclavitud. ¡Aleluya!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Hasta el polvo se humilló, ¡aleluya!,",
+        "vencedor se levantó, ¡aleluya!",
+        "Hoy cantamos en verdad, ¡aleluya!,",
+        "su gloriosa majestad. ¡Aleluya!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "A la muerte se entregó, ¡aleluya!,",
+        "el que así nos redimió, ¡aleluya!",
+        "Hoy en gloria celestial, ¡aleluya!,",
+        "reina en vida triunfal. ¡Aleluya!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Cristo, nuestro Salvador, ¡aleluya!,",
+        "de la muerte vencedor, ¡aleluya!,",
+        "todos te hemos de cantar, ¡aleluya!,",
+        "alabanzas sin cesar. ¡Aleluya!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

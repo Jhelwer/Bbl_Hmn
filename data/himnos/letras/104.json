@@ -1,0 +1,43 @@
+{
+  "numero": 104,
+  "titulo": "La tumba le encerró",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "La tumba le encerró. ¡Cristo bendito!",
+        "El alba allí esperó Cristo el Señor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Cristo la tumba venció;",
+        "y con gran poder resucitó;",
+        "ha vencido a la muerte y el dolor;",
+        "vive para siempre nuestro Salvador.",
+        "¡Gloria a Dios! ¡Gloria a Dios!",
+        "El Señor resucitó."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "De guardas escapó. ¡Cristo bendito!",
+        "El sello destruyó Cristo el Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "La muerte dominó. ¡Cristo bendito!",
+        "y su poder venció Cristo el Señor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,57 @@
+{
+  "numero": 150,
+  "titulo": "A Cristo doy mi canto",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A Cristo doy mi canto:",
+        "él salva el alma mía,",
+        "me libra del quebranto",
+        "y con amor me guía."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Ensalce pues mi canto",
+        "su sacrosanta historia.",
+        "Es hoy mi anhelo santo",
+        "mirar Jesús, tu gloria."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Jamás dolor ni agravios",
+        "enlutarán mi mente;",
+        "refréscanse mis labios",
+        "con aguas de su fuente."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Su amor me ha bendecido",
+        "y alegra el alma mía;",
+        "su nombre es en mi oído",
+        "dulcísima armonía."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Me gozo en alabarle;",
+        "y cuando deje el suelo,",
+        "por siempre he de exaltarle",
+        "con ángeles del cielo."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

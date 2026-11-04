@@ -1,0 +1,57 @@
+{
+  "numero": 159,
+  "titulo": "Yo espero la mañana",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Yo espero la mañana",
+        "del gran día sin igual,",
+        "del cual dicha eterna emana",
+        "y deleite perennal."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Esperando, esperando",
+        "otra vida sin dolor",
+        "y la grata bienvenida",
+        "de Jesús, mi amante Salvador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Yo espero la victoria,",
+        "de la muerte al fin triunfar,",
+        "recibir la eterna gloria",
+        "y mis sienes coronar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Yo espero ir al cielo,",
+        "donde reina eterno amor;",
+        "peregrino soy y anhelo",
+        "las moradas del Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Pronto espero unir mi canto",
+        "al triunfante y celestial,",
+        "y cambiar mi amargo llanto",
+        "por el himno angelical."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

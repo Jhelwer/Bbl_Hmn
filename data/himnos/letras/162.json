@@ -1,0 +1,57 @@
+{
+  "numero": 162,
+  "titulo": "En presencia estar de Cristo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En presencia estar de Cristo,",
+        "ver su rostro, ¿qué será,",
+        "cuando al fin, en pleno gozo,",
+        "mi alma le contemplará?"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Cara a cara espero verle",
+        "cuando venga en gloria y luz;",
+        "cara a cara allá en el cielo",
+        "he de ver a mi Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Solo tras oscuro velo",
+        "hoy lo puedo aquí mirar,",
+        "pero pronto viene el día",
+        "que su gloria ha de mostrar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¡Cuánto gozo habrá con Cristo",
+        "cuando no haya más dolor,",
+        "cuando cesen los peligros",
+        "al abrigo de su amor!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Cara a cara, ¡cuán glorioso",
+        "ha de ser así vivir,",
+        "ver el rostro de quien quiso",
+        "nuestras almas redimir!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
