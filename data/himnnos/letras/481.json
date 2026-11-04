@@ -1,0 +1,45 @@
+{
+  "numero": 481,
+  "titulo": "Voy al cielo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Voy al cielo, soy peregrino,",
+        "a vivir eternamente con Jesús;",
+        "pues él abrió ya amplio camino,",
+        "al expirar sobre amarga cruz."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Voy al cielo, soy peregrino,",
+        "a vivir eternamente con Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Duelo, muerte, amarga pena,",
+        "nunca, nunca más se encontrarán allá;",
+        "preciosa vida, de gozo llena,",
+        "el alma mía disfrutará."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¡Tierra santa, hermosa y pura!",
+        "entraré en ti, salvado por Jesús;",
+        "y gozaré siempre la ventura,",
+        "iluminado con santa luz."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,37 @@
+{
+  "numero": 496,
+  "titulo": "Sus manos somos",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Sus manos somos,",
+        "que ayudan en el mundo.",
+        "Somos sus pies,",
+        "que van donde él los guía."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Somos su amor,",
+        "lumbre en las tinieblas.",
+        "Somos su luz",
+        "en la oscuridad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Sus ojos somos,",
+        "que ven a los sufrientes.",
+        "Somos su voz,",
+        "que anuncia su regreso."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,56 @@
+{
+  "numero": 402,
+  "titulo": "¡Oh!, salvo en la Roca",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Oh!, salvo en la Roca más alta que yo,",
+        "la Roca de vida que Cristo abrió,",
+        "brindando a su pueblo las aguas de paz.",
+        "oh, Roca divina, serás mi solaz."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Salvo en ti, salvo en ti,",
+        "¡oh, Roca bendita,",
+        "me escondo en ti!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Si vienen conflictos, tumultos, dolor:",
+        "a Cristo, mi Roca, yo voy sin temor;",
+        "recibo consuelo, consejos y luz;",
+        "la Roca divina es mi amante Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Y cuando mi vida se acerque a su fin",
+        "y oiga por fe el divino clarín,",
+        "tus límpidas aguas trayendo virtud,",
+        "oh, Roca divina, serán mi salud."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "El lóbrego valle no temo cruzar,",
+        "pues tú me guiarás y me harás descansar;",
+        "seguro en tu guarda, con paz dormiré:",
+        "Jesús, el Eterno, es mi Roca, mi Rey."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

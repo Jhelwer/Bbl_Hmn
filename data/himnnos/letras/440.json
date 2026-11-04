@@ -1,0 +1,48 @@
+{
+  "numero": 440,
+  "titulo": "Quiero, Jesús, contigo andar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Quiero, Jesús, contigo andar,",
+        "y en tu servicio trabajar;",
+        "dime el secreto de saber",
+        "llevar mis cargas con placer."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Haz que mi lengua sepa hablar",
+        "solo el lenguaje del amor,",
+        "y al extraviado pueda guiar",
+        "hasta el redil de mi Pastor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Tenme a tu lado, enséñame",
+        "a ser paciente, noble y fiel;",
+        "que en tus pisadas pueda andar,",
+        "y al abatido consolar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Dame del cielo aquella fe",
+        "que en la tormenta ve la luz.",
+        "Colme mi alma tu bondad,",
+        "y viva siempre con tu paz."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,47 @@
+{
+  "numero": 407,
+  "titulo": "Muy cerca de mi Redentor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hay un lugar do quiero estar",
+        "muy cerca de mi Redentor;",
+        "allí podré yo descansar",
+        "al fiel amparo de su amor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Muy cerca de mi Redentor",
+        "seguro asilo encontraré;",
+        "me guardará del tentador,",
+        "y ya de nada temeré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Quitarme el mundo no podrá",
+        "la paz que halló mi corazón;",
+        "Jesús amante me dará",
+        "la más segura protección."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Ni dudas ni temor tendré",
+        "estando cerca de Jesús;",
+        "rodeado siempre me veré",
+        "con los fulgores de su luz."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

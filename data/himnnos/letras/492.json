@@ -1,0 +1,47 @@
+{
+  "numero": 492,
+  "titulo": "¡Trabajad! ¡Trabajad!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Trabajad! ¡Trabajad! Somos siervos de Dios;",
+        "seguiremos la senda que Cristo trazó.",
+        "Recibiendo el poder que su Espíritu da,",
+        "el deber que nos toca cumplido será."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Trabajad! ¡Trabajad!",
+        "¡Esperad y velad!",
+        "¡Siempre orad y confiad!,",
+        "que Cristo pronto volverá."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¡Trabajad! ¡Trabajad! Hay que dar de comer",
+        "al que pan de la vida quisiere tener.",
+        "Hay enfermos que irán a los pies del Señor",
+        "al saber que por gracia los sana su amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¡Trabajad! ¡Trabajad! Fortaleza pedid;",
+        "el reinado del mal con valor combatid;",
+        "conducid sus cautivos al Libertador",
+        "y decid que por gracia redime su amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,56 @@
+{
+  "numero": 416,
+  "titulo": "¡Oh!, tenga yo la ardiente fe",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Oh!, tenga yo la ardiente fe",
+        "que ante enemigos mil",
+        "no temblará ni aun cuando esté,",
+        "ni aun cuando esté",
+        "en la miseria vil,",
+        "en la miseria vil."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Tal fe, que no se quejará",
+        "ni bajo corrección,",
+        "en hora amarga afirmará,",
+        "afirmará",
+        "en Dios el corazón,",
+        "en Dios el corazón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Refulge más si hay tempestad",
+        "rugiendo en derredor,",
+        "y cruzará la oscuridad,",
+        "la oscuridad",
+        "sin dudas ni temor,",
+        "sin dudas ni temor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Oh, dame a mí, Señor, tal fe,",
+        "y, venga bien o mal,",
+        "estando aquí gustar podré,",
+        "gustar podré",
+        "la dicha celestial,",
+        "la dicha celestial."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,19 @@
+{
+  "numero": 437,
+  "titulo": "Tu presencia, Padre amado, da consuelo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Tu presencia, Padre amado,",
+        "da consuelo, trae paz.",
+        "Tu presencia, oh Señor,",
+        "da seguridad al alma.",
+        "Tu presencia danos hoy."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

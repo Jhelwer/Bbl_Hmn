@@ -1,0 +1,37 @@
+{
+  "numero": 430,
+  "titulo": "Solo no estoy",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Solo no estoy, pues Cristo me acompaña",
+        "por todas partes donde quiera voy.",
+        "Mi corazón se alegra con su gracia:",
+        "a cuantos quieran él les da su amor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Solo no estoy, Jesús está a mi lado;",
+        "en él hallé amigo sin igual.",
+        "De tal amigo apoyo y guía tengo;",
+        "solo no estoy, Jesús conmigo está."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Solo no estoy, incluso en la tormenta,",
+        "cuando me acosan vientos de aflicción.",
+        "Seguro estoy pues sé que va conmigo",
+        "y en sus brazos él me llevará."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

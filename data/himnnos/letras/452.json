@@ -1,0 +1,44 @@
+{
+  "numero": 452,
+  "titulo": "Contigo quiero andar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Contigo quiero andar, oh Dios,",
+        "tal como Enoc, en pos de ti.",
+        "Mi temblorosa mano ten;",
+        "tu voz ya calme el vaivén.",
+        "La senda oscura al transitar,",
+        "Jesús, contigo quiero andar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "No puedo solo andar, Señor:",
+        "tormentas rugen en redor,",
+        "rodéanme engaños mil,",
+        "me acosa el enemigo vil.",
+        "¡Oh, calma el borrascoso mar!",
+        "Jesús, contigo quiero andar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Mi mano ten, pues; de hoy en mas,",
+        "del mundo el mal dejando atrás,",
+        "valiente seguiré tu luz,",
+        "con la bandera de la cruz.",
+        "Espero en Sion poder entrar,",
+        "do yo contigo quiero andar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
