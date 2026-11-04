@@ -103,3 +103,125 @@ body.dark .reading-continue{background:#205d86;color:#fff}
 /* v0.7.3: resultados de busqueda en letras e indicacion de estrofa encontrada */
 .hymn-search-result .details small{line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
 .hymn-search-target{outline:2px solid var(--gold);outline-offset:3px;border-radius:12px;background:var(--soft);scroll-margin-top:26px}
+
+/* ===========================================================
+   v0.7.4 - HIMNARIO COMPACTO EN CELULARES
+   Solo se activa cuando el lector de himnos esta abierto.
+   No cambia el lector biblico ni el tamano de letra elegido.
+   =========================================================== */
+@media (max-width: 600px) {
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-head {
+    gap: 8px;
+    padding: 10px 12px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-head .icon-button {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-head > div {
+    min-width: 0;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-head small {
+    font-size: 10px;
+    line-height: 1.25;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-head h2 {
+    font-size: 16px;
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  /* Conservar A-/A+, pero reducir la altura de su franja. */
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-tools {
+    padding: 5px 12px;
+    gap: 10px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-tools button {
+    min-width: 42px;
+    min-height: 38px;
+    padding: 4px 7px;
+  }
+  /* Navegacion compacta con controles tactiles comodos. */
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-toolbar {
+    gap: 6px;
+    padding: 6px 10px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-toolbar button,
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-toolbar select {
+    min-height: 42px;
+    padding: 7px 8px;
+    font-size: 12px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-toolbar label {
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+    gap: 4px;
+    font-size: 11px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-toolbar select {
+    width: 100%;
+    max-width: 140px;
+    min-width: 0;
+  }
+  /* Las letras comienzan mas arriba y ganan espacio util. */
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-body {
+    padding: 10px 17px 22px;
+    line-height: 1.55;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-reader {
+    padding: 0 0 12px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-reader-heading {
+    padding: 7px 3px 11px;
+    margin-bottom: 13px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-reader-heading h3 {
+    font-size: 1.25em;
+    line-height: 1.3;
+    margin: 4px 0 6px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-stanza {
+    padding: 5px 4px 7px;
+    margin-bottom: 14px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-stanza-label {
+    margin-bottom: 7px;
+    letter-spacing: .8px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-stanza p {
+    margin-bottom: 3px;
+    line-height: 1.5;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-chorus {
+    padding: 10px 8px;
+  }
+  /* La barra inferior conserva las tres acciones. */
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-actions {
+    padding: 4px 10px calc(4px + env(safe-area-inset-bottom));
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-actions-grid {
+    gap: 3px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-action {
+    min-height: 48px;
+    gap: 1px;
+    font-size: 11px;
+  }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-action span {
+    font-size: 20px;
+  }
+  /* El consejo sobre deslizamiento no ocupa altura fija. */
+  #reader:has(#hymn-toolbar:not([hidden])) .swipe-hint {
+    display: none !important;
+  }
+}
+@media (max-width: 390px) {
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-head { gap: 5px; padding: 9px 8px; }
+  #reader:has(#hymn-toolbar:not([hidden])) .reader-head .icon-button { width: 39px; height: 42px; }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-toolbar { gap: 3px; padding: 6px; }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-toolbar button { padding: 6px; }
+  #reader:has(#hymn-toolbar:not([hidden])) .hymn-toolbar select { max-width: 110px; }
+}

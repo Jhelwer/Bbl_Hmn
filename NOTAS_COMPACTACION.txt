@@ -1,0 +1,7 @@
+v0.7.4 - Interfaz compacta del Himnario
+
+Cambios solamente de CSS en dispositivos de hasta 600 px de ancho.
+Se conserva lector biblico, JSON, acciones de himnos y preferencias.
+Se reduce espacio de encabezado, herramientas, navegacion, estrofas y barra inferior.
+Se oculta la pista de deslizamiento permanente.
+El cache busting usa v=0.7.4 para JS y CSS.
