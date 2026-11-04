@@ -1,0 +1,48 @@
+{
+  "numero": 76,
+  "titulo": "Eterno Dios, mi Creador",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Eterno Dios, mi Creador,",
+        "mi amparo en aflicción,",
+        "tú has sido mi Consolador",
+        "en toda ocasión."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Mil años a tu vista son",
+        "cual brisas del ayer;",
+        "cual hierba es mi condición,",
+        "perece atardecer."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Mi vida bajo tu ala está,",
+        "seguro habitaré;",
+        "tu Espíritu me ayudará",
+        "y en calma andaré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Eterno Dios, mi Redentor,",
+        "confío solo en ti;",
+        "sé tú mi Guía, oh Señor,",
+        "en mi camino aquí."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

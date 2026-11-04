@@ -1,0 +1,36 @@
+{
+  "numero": 62,
+  "titulo": "Santo, Santo, Santo, Santo es el Señor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Santo, Santo, Santo,",
+        "Santo es el Señor.",
+        "Santo, Santo, Santo,",
+        "Santo es nuestro Dios.",
+        "Todopoderoso",
+        "siempre reinará.",
+        "Su dominio eterno",
+        "nunca pasará."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Santo, Santo, Santo,",
+        "Santo es el Señor.",
+        "Santo, Santo, Santo,",
+        "Santo es nuestro Dios.",
+        "Digno es de gloria,",
+        "honra y poder.",
+        "Su grandiosa obra",
+        "brilla por doquier."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

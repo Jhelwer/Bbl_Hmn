@@ -1,0 +1,48 @@
+{
+  "numero": 47,
+  "titulo": "Por la mañana",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Por la mañana, ¡oh Señor!,",
+        "elevo a ti mi voz;",
+        "a tu buen nombre doy loor",
+        "con gratitud, mi Dios."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "El sol brillante ya salió,",
+        "camino en su luz;",
+        "del Salvador es símbolo,",
+        "del magno Rey, Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Los cielos cuentan al que cree",
+        "la gloria del Señor;",
+        "la llama avivan de la fe",
+        "y alientan el amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "En la mañana eterna, pues,",
+        "contigo cuando esté,",
+        "yo del Cordero y de Moisés",
+        "el himno entonaré."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

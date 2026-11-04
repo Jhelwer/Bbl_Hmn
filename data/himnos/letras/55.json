@@ -1,0 +1,47 @@
+{
+  "numero": 55,
+  "titulo": "Grande, Señor, es tu misericordia",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Grande, Señor, es tu misericordia;",
+        "nunca termina, ni cambia jamás.",
+        "Tu compasión y bondad no se agotan;",
+        "tal como has sido, por siempre serás."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Tú eres fiel, Señor, eternamente fiel;",
+        "cada mañana renuevas tu amor.",
+        "Nada me falta, pues todo provees,",
+        "¡grande, Señor, es tu fidelidad!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "El firmamento, el sol y la luna,",
+        "las estaciones con su esplendor;",
+        "todos demuestran tu misericordia,",
+        "y testifican de tu gran amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Tú me perdonas, me das paz y gozo;",
+        "con tu presencia me guías aquí.",
+        "Fuerza, esperanza y más bendiciones",
+        "siempre derramas, Señor, sobre mí."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

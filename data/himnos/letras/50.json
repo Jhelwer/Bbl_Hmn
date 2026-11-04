@@ -1,0 +1,50 @@
+{
+  "numero": 50,
+  "titulo": "Baja el sol",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Baja el sol tras las montañas, y la tarde ya llegó;",
+        "calma y quieta cae la noche; otro día terminó;",
+        "ya se fue con sus problemas, viene otro anochecer;",
+        "más cercano está el día cuando a Cristo he de ver."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Más cerca estoy,",
+        "más cerca estoy",
+        "de mi hogar,",
+        "mi hogar celestial;",
+        "más cerca del Edén",
+        "adonde pronto iré,",
+        "donde el gozo es eternal."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Muy cansado el peregrino ve el fin del día llegar,",
+        "porque del trabajo arduo otra vez va a descansar.",
+        "Tal la vida en este mundo, que me toca afrontar,",
+        "y las sombras de la noche sé que pronto he de probar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Otro día en el viaje a mi hogar, el celestial;",
+        "ya más cerca está el río claro como el cristal;",
+        "ya el cielo se aclara, puedo ver su áurea luz;",
+        "cada día más me acerco a la patria de Jesús."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

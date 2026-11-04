@@ -1,0 +1,49 @@
+{
+  "numero": 93,
+  "titulo": "Hubo Uno que quiso",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hubo Uno que quiso por mí padecer",
+        "y morir, por mi alma salvar;",
+        "el camino tan cruento a la cruz recorrer,",
+        "para así mis pecados lavar."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡En la cruz, en la cruz",
+        "mis pecados clavó!",
+        "¡Cuánto quiso por mí padecer!",
+        "Con angustia a la cruz",
+        "fue el benigno Jesús,",
+        "y en su cuerpo mis culpas llevó."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "El es todo ternura y amor para mí,",
+        "mi alma impura su sangre lavó;",
+        "ya no hay condenación, libre soy, yo lo sé;",
+        "mi pecado en la cruz él clavó."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Me atendré al Maestro, jamás dejaré",
+        "el sendero que él mismo trazó,",
+        "y mis labios y mi alma alzarán su canción,",
+        "pues él todas mis culpas quitó."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

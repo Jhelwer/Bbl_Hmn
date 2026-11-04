@@ -1,0 +1,18 @@
+{
+  "numero": 25,
+  "titulo": "Siento la presencia del Señor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Siento la presencia del Señor que está aquí,",
+        "su poder y su gracia, su amor.",
+        "Puedo ver en cada rostro su belleza irradiar.",
+        "Siento la presencia del Señor que está aquí."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

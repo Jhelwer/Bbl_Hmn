@@ -1,0 +1,19 @@
+{
+  "numero": 36,
+  "titulo": "¡Oh, Dios, que oyes cada oración!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Oh, Dios, que oyes cada oración,",
+        "escucha nuestra humilde petición!",
+        "Tú, que eres vida, gozo y solaz;",
+        "danos tu gracia y tu dulce paz.",
+        "Amén."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,47 @@
+{
+  "numero": 84,
+  "titulo": "Ve, dilo en las montañas",
+  "estrofas": [
+    {
+      "tipo": "coro",
+      "versos": [
+        "Ve, dilo en las montañas,",
+        "en todas partes, por doquier.",
+        "Ve, dilo en las montañas:",
+        "que Cristo, el Rey, nació."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Pastores muy piadosos,",
+        "con gran admiración,",
+        "oyeron, jubilosos,",
+        "del don de Salvación."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En esa noche oscura",
+        "los alumbró gran luz;",
+        "y luego, con premura,",
+        "buscaron a Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Doquiera que estemos",
+        "debemos proclamar",
+        "que, en Cristo, hoy podemos",
+        "la redención gozar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

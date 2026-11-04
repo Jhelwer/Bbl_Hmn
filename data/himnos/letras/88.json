@@ -1,0 +1,38 @@
+{
+  "numero": 88,
+  "titulo": "Oh, aldehuela de Belén",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Oh, aldehuela de Belén, afortunada tú,",
+        "pues en tus campos brilla hoy la sempiterna luz.",
+        "El Hijo tan deseado con santa expectación,",
+        "el anunciado Salvador, en ti, Belén, nació."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Calladamente Dios nos da su incomparable don;",
+        "así también impartirá sus bendiciones hoy.",
+        "Ningún oído, acaso, perciba su venir;",
+        "mas el de humilde corazón lo habrá de recibir."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Oh, santo Niño de Belén, desciende con tu paz;",
+        "en nuestras almas nace hoy, limpiando todo mal.",
+        "Los ángeles del cielo te anuncian al nacer:",
+        "¡Ven con nosotros a morar, oh Cristo, Emanuel!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

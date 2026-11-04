@@ -1,0 +1,55 @@
+{
+  "numero": 58,
+  "titulo": "Grande es el amor divino",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Grande es el amor divino,",
+        "es más amplio que el mar.",
+        "¡Qué bondad en su justicia!",
+        "Vino el mundo a libertar."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Él nos llama con amor;",
+        "¡oh, sigamos al Señor!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En la sangre del Maestro",
+        "hay poder de salvación,",
+        "sanidad hay para el alma,",
+        "y del mal hay protección."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Mas, oh cuánto limitamos",
+        "por la débil comprensión",
+        "su poder, su magna gracia,",
+        "despreciando su gran don."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Respondamos prestamente",
+        "al llamado de Jesús;",
+        "redimionos ampliamente",
+        "por su muerte en la cruz."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

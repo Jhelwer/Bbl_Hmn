@@ -1,0 +1,38 @@
+{
+  "numero": 24,
+  "titulo": "Imploramos tu presencia",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Imploramos tu presencia,",
+        "Santo Espíritu de Dios;",
+        "nos avive tu influencia,",
+        "fe y amor auméntanos."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Da a las mentes luz divina",
+        "y tu gracia al corazón.",
+        "Nuestro pecho a Dios inclina",
+        "en sincera devoción."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Que del Dios bendito tenga",
+        "nuestro culto aceptación,",
+        "y que sobre todos venga",
+        "en raudales bendición."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

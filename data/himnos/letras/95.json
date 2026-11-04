@@ -1,0 +1,57 @@
+{
+  "numero": 95,
+  "titulo": "Un día",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Un día que el cielo sus glorias cantaba,",
+        "un día que el mal imperaba más cruel,",
+        "Jesús descendió y al nacer de una virgen",
+        "nos dio con su vida un ejemplo tan fiel."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Vivo, me amaba; muerto, salvome;",
+        "y en el sepulcro mi mal enterró;",
+        "resucitado, él es mi justicia;",
+        "un día él viene, pues lo prometió."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Un día lleváronle al monte Calvario,",
+        "un día enclaváronle sobre una cruz;",
+        "sufriendo dolores y pena de muerte,",
+        "expiando el pecado, salvome Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Un día la tumba ocultarle no pudo,",
+        "un día el ángel la piedra quitó;",
+        "habiendo Jesús ya a la muerte vencido,",
+        "a estar con su Padre en su trono, ascendió."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Un día vendrá y con voz de arcángel",
+        "un día en su gloria el Señor brillará.",
+        "¡Oh día admirable en que unido su pueblo",
+        "loores a Cristo por siempre dará!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

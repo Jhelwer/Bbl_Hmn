@@ -1,0 +1,38 @@
+{
+  "numero": 46,
+  "titulo": "Hoy amanece",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hoy amanece como al principio",
+        "del primigenio, glorioso, Edén.",
+        "Aves canoras alzan sus trinos",
+        "al que es la Fuente de todo bien."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Tiembla el rocío sobre la fronda,",
+        "como antaño en la creación.",
+        "Canto alabanzas al que otorga",
+        "con su Palabra la bendición."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Esta mañana es mi delicia,",
+        "es luz de gloria de mi Hacedor;",
+        "a quien alabo porque me brinda",
+        "un nuevo día y su tierno amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,48 @@
+{
+  "numero": 7,
+  "titulo": "Oh Dios, mi soberano Rey",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Oh Dios, mi soberano Rey;",
+        "a ti daré loor;",
+        "tu nombre yo exaltaré,",
+        "santísimo Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Tus obras evidencia son",
+        "de tu infinito amor,",
+        "y cantan con alegre voz",
+        "las glorias del Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Aquel que busca salvación,",
+        "en Cristo la hallará;",
+        "y su ferviente petición",
+        "él pronto atenderá."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Eternamente durará",
+        "el reino del Señor.",
+        "Allí sus siervos gozarán",
+        "la plenitud de amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

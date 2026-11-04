@@ -1,0 +1,38 @@
+{
+  "numero": 5,
+  "titulo": "A ti, glorioso Dios",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A ti, glorioso Dios, cantamos alabanzas;",
+        "rendímoste honor por todas tus grandezas.",
+        "Nos das tu bendición en nuestra senda aquí;",
+        "nos guiarás, Señor, a tu mansión allí."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Ven siempre, oh gran Dios, muy cerca de nosotros;",
+        "con celo y con fervor queremos ir a otros.",
+        "Tu brazo protector del mal nos guardará;",
+        "en lucha y aflicción consuelo nos será."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Oh Padre, eterno Dios, cantámoste loores,",
+        "y al Hijo Redentor, Señor de los señores,",
+        "y al Santo Espíritu, el gran Consolador:",
+        "al grande, trino Dios cantamos con fervor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

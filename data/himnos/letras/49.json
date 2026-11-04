@@ -1,0 +1,48 @@
+{
+  "numero": 49,
+  "titulo": "Cristo, ya la noche cierra",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cristo, ya la noche cierra;",
+        "al turbado da solaz;",
+        "nuestro error te confesamos;",
+        "da reposo, calma y paz."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cuando el enemigo asalte",
+        "y ande en torno destrucción,",
+        "que tus ángeles, oh Padre,",
+        "den amparo y protección."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Aunque lóbrega la noche,",
+        "siempre vernos tú podrás;",
+        "vigilante, sin cansarte,",
+        "a tu pueblo guardarás."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Si la muerte nos alcanza",
+        "en el lecho nuestro aquí,",
+        "que Jesús en su gran día",
+        "nos despierte en gloria allí."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

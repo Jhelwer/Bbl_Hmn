@@ -1,0 +1,46 @@
+{
+  "numero": 23,
+  "titulo": "¡Silencio! ¡Silencio!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Silencio! ¡Silencio!",
+        "en este lugar;",
+        "¡silencio! silencio",
+        "habéis de guardar."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Quedad en silencio",
+        "en este lugar;",
+        "silencio, silencio",
+        "guardad al orar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¡Silencio! ¡Silencio!",
+        "Es tiempo de orar,",
+        "la gracia divina podréis disfrutar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¡Silencio! ¡Silencio!",
+        "su amor recordad.",
+        "A Dios, pues, postrados,",
+        "honor tributad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
