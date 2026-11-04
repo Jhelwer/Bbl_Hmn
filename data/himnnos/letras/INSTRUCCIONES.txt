@@ -1,3 +1,0 @@
-Coloca aqui archivos 1.json, 2.json, ... 613.json con letras autorizadas.
-Consulta data/himnos/EJEMPLO_ESQUEMA.json.
-No copies el archivo de ejemplo directamente: sus lineas son marcadores de posicion.
