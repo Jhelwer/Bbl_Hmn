@@ -1,0 +1,38 @@
+{
+  "numero": 592,
+  "titulo": "Si Dios está, ¡feliz hogar!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Si Dios está, ¡feliz hogar!",
+        "Su gran amor nos da.",
+        "Un solo anhelo allí habrá:",
+        "la dicha celestial."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Si Cristo está, ¡feliz hogar!",
+        "Los niños cantarán",
+        "y los adultos hablarán",
+        "del Nombre sin igual."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Pido, Señor, tu bendición",
+        "sobre mi humilde hogar,",
+        "para que reine tu amor",
+        "hasta la eternidad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

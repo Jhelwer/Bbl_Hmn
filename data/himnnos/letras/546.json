@@ -1,0 +1,45 @@
+{
+  "numero": 546,
+  "titulo": "Santo sábado, bendito",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Santo sábado, bendito,",
+        "joya de la creación,",
+        "que trasciende todo cambio,",
+        "es eterna bendición."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Santo sábado de Dios,",
+        "para el hombre lo creó."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "El pecado y la tristeza",
+        "pronto no existirán.",
+        "Pero el sábado es eterno,",
+        "y por siempre durará."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "El reposo verdadero",
+        "hoy buscamos, Dios, en ti.",
+        "Que la paz del día santo,",
+        "sea un remanso aquí."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,38 @@
+{
+  "numero": 519,
+  "titulo": "Despierta, hermano, sin demorar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Despierta, hermano, sin demorar",
+        "y toma las armas del bien;",
+        "con fuerza y vigor lucharás por tu fe;",
+        "y un cielo de gloria obtendrás."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "La voz divina llama por ti:",
+        "\"Fiel hijo, al Reino entrarás\".",
+        "Con los redimidos, a Dios cantarás;",
+        "dejando el mal vivirás."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Fija tu vista siempre en Jesús,",
+        "dejando el lastre del mal.",
+        "Con prisa avanza, siguiendo su luz;",
+        "corona de vida tendrás."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,47 @@
+{
+  "numero": 557,
+  "titulo": "¿Qué estás haciendo por Cristo?",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¿Qué estás haciendo por Cristo",
+        "mientras vida él te da?",
+        "¿Sembrando estás su Palabra",
+        "o te hallas durmiendo quizá?"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¿Qué estás haciendo hoy para Cristo?",
+        "¿Qué estás haciendo? ¿Hoy esperarás?",
+        "¿Qué estás haciendo hoy para Cristo?",
+        "Te dio su gracia; tú ¿qué le darás?"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¿Qué estás haciendo por Cristo,",
+        "tu gran Rey y Señor?",
+        "¿Cuidas el alma afligida",
+        "con gracia, ternura y amor?"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¿Qué estás haciendo por Cristo?",
+        "Pronto anochecerá.",
+        "Ven sin tardar y trabaja,",
+        "pues Cristo muy pronto vendrá."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

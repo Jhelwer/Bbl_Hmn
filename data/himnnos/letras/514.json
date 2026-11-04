@@ -1,0 +1,56 @@
+{
+  "numero": 514,
+  "titulo": "¡Despertad, despertad, oh cristianos!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Despertad, despertad, oh cristianos!",
+        "Vuestro sueño funesto dejad;",
+        "que el cruel enemigo os acecha, y cautivos os quiere llevar.",
+        "¡Despertad!, las tinieblas pasaron;",
+        "de la noche no sois hijos ya,",
+        "mas lo sois de la luz y del día, y tenéis el deber de luchar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Despertad, preparad vuestras armas,",
+        "vuestros lomos ceñid de verdad,",
+        "y calzad vuestros pies, aprestados con el grato evangelio de paz.",
+        "Basta ya de profundas tinieblas,",
+        "basta ya de pereza mortal;",
+        "¡revestid, revestid vuestro pecho con la cota de fe y caridad!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "La gloriosa armadura de Cristo",
+        "acudid con valor a tomar,",
+        "confiando en que el dardo enemigo impotente se ha de quebrar.",
+        "¡Oh cristianos, antorchas del mundo!,",
+        "de esperanza el yelmo tomad,",
+        "levantad de la fe el escudo, y sin miedo corred a luchar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "No temáis, pues de Dios revestidos,",
+        "¿qué enemigo venceros podrá,",
+        "si tomáis por espada la Biblia,",
+        "la Palabra del Dios de verdad? En la cruz hallaréis la bandera,",
+        "en Jesús hallaréis Capitán;",
+        "en el cielo obtendréis la corona: ¡A luchar! ¡A luchar! ¡A luchar!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

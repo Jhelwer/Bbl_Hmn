@@ -1,0 +1,38 @@
+{
+  "numero": 588,
+  "titulo": "Ven, alma que lloras",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Ven, alma que lloras, ven al Salvador;",
+        "en tus tristes horas dile tu dolor.",
+        "Sí, dile tu duelo; ven tal como estás;",
+        "habla sin recelo, y no llores más."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Penas y tristezas, dilas al Señor;",
+        "crueles desventuras, lágrimas y error;",
+        "en su tierno seno tú descansarás;",
+        "ven, Cristo es bueno, y no llores más."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Guía al extraviado, muéstrale tu luz.",
+        "Lleva al angustiado al manso Jesús.",
+        "La bendita nueva de celeste paz",
+        "al triste, pues, lleva, y no llores más."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

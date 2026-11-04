@@ -1,0 +1,36 @@
+{
+  "numero": 597,
+  "titulo": "Oración por un niño",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Presentamos este niño;",
+        "es tan frágil cual la flor;",
+        "necesita de cariño,",
+        "necesita de amor.",
+        "Sus ojitos son muy puros;",
+        "su sonrisa es cual la luz,",
+        "y refleja la belleza",
+        "que emana de Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Guía sus pequeños pasos,",
+        "y enséñale a andar.",
+        "En seguro y buen camino",
+        "pueda siempre continuar.",
+        "Que tu ángel lo proteja",
+        "de este mundo y su maldad;",
+        "Padre amante, ya es tuyo.",
+        "En tus brazos guárdalo."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

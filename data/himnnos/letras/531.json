@@ -1,0 +1,28 @@
+{
+  "numero": 531,
+  "titulo": "La familia de Dios",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Qué feliz! ¡Qué feliz! La familia de Dios.",
+        "Todos somos hermanos en el Señor.",
+        "Grandes y chicos, no importa el color,",
+        "somos una familia, familia de Dios."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¡Soy feliz porque estoy en la iglesia de Dios!",
+        "Me limpió con su sangre mi Salvador.",
+        "Cristo nos guía al hogar celestial;",
+        "somos una familia, familia de Dios."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

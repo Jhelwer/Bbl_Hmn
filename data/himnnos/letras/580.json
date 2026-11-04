@@ -1,0 +1,38 @@
+{
+  "numero": 580,
+  "titulo": "Las aguas del bautismo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En las aguas de la muerte sumergido fue Jesús;",
+        "mas su amor no fue apagado por las penas de la cruz.",
+        "Levantose de la tumba, sus cadenas quebrantó,",
+        "y triunfante y victorioso a los cielos ascendió."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En las aguas del bautismo hoy confieso yo mi fe:",
+        "Jesucristo me ha salvado y en su amor me gozaré.",
+        "En las aguas, humillado, a Jesús siguiendo voy;",
+        "desde ahora para el mundo y el pecado muerto estoy."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Ya que estoy crucificado, ¿cómo más podré pecar?;",
+        "por su gracia transformado, vida nueva he de llevar.",
+        "A las aguas del bautismo me llevó la contrición;",
+        "desde ahora me consagro al que obró mi redención."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

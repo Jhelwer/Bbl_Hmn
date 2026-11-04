@@ -1,0 +1,21 @@
+{
+  "numero": 533,
+  "titulo": "Cuán bueno y agradable",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Cuán bueno y agradable,",
+        "ver a hermanos juntos!",
+        "¡Cuán bueno y agradable,",
+        "ver a hermanos juntos!",
+        "Siempre unidos,",
+        "todos en armonía,",
+        "los hermanos en fraternal unión."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

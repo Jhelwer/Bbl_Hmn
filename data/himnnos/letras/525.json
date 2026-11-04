@@ -1,0 +1,38 @@
+{
+  "numero": 525,
+  "titulo": "Con gratitud, llegamos",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Con gratitud, llegamos",
+        "a tu altar, Señor;",
+        "gozosos te adoramos,",
+        "cantamos con fervor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Queremos devolverte",
+        "el diezmo sin tardar;",
+        "por eso hoy, fielmente,",
+        "lo vamos a entregar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Con gozo, nuestra ofrenda",
+        "te damos, oh Señor;",
+        "acéptala cual prenda",
+        "de todo nuestro amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

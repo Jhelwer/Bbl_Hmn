@@ -1,0 +1,48 @@
+{
+  "numero": 505,
+  "titulo": "Hijo del reino",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hijo del reino, ¿por qué estás durmiendo,",
+        "cuando a la vista se halla tu hogar?",
+        "Presto levántate, ciñe tus armas;",
+        "en el conflicto tendrás que luchar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Hijo del reino, ¿por qué tardas tanto,",
+        "cuando delante el premio se ve?",
+        "Álzate, vístete, Cristo se acerca;",
+        "sal a su encuentro, recibe a tu Rey."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "No sigas más tras placeres mundanos:",
+        "ves que su encanto pasando se va;",
+        "rompe los lazos con que estás atado;",
+        "a Cristo acude, que te amparará."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Fija tu vista constante en el Cielo;",
+        "pasa la noche de tribulación;",
+        "sobre las cúspides ya rompe el alba;",
+        "¡hijo del reino, prorrumpe en canción!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

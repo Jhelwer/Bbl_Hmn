@@ -1,0 +1,47 @@
+{
+  "numero": 552,
+  "titulo": "¡Oh!, cuánto necesita",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Oh!, cuánto necesita obreros el Señor,",
+        "que vayan presurosos al campo de labor.",
+        "Alegre yo le digo, con todo mi valor:",
+        "Conmigo cuenta tú, Señor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Voy, Señor; voy, Señor,",
+        "a trabajar alegre y con fervor.",
+        "Sí, voy, Señor, voy, Señor;",
+        "conmigo cuenta tú, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Ahora, en la batalla, ven, cíñeme, Señor;",
+        "tu célica armadura dé aliento, fe y valor.",
+        "Para vencer las huestes del fiero tentador,",
+        "conmigo cuenta tú, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "La carga que soporta la pobre humanidad,",
+        "con todos mis esfuerzos yo debo aliviar;",
+        "para salvar las almas, doquier me toque estar,",
+        "conmigo cuenta tú, Señor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

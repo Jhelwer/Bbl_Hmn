@@ -1,0 +1,38 @@
+{
+  "numero": 544,
+  "titulo": "Hoy el sábado glorioso",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hoy el sábado glorioso",
+        "nos invita a descansar.",
+        "¡Qué tranquilo es el reposo,",
+        "tras el arduo trabajar!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Dios, que el día nos señala",
+        "con mil pruebas de su amor,",
+        "\"santo sábado\" lo llama:",
+        "es el día del Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Para el hombre fue apartado",
+        "en la misma creación;",
+        "fue por Cristo sancionado",
+        "con su ejemplo y bendición."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

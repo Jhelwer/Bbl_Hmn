@@ -1,0 +1,57 @@
+{
+  "numero": 579,
+  "titulo": "La fuente veo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "La fuente veo carmesí,",
+        "el ancho manantial,",
+        "que de Jesús, mi Salvador,",
+        "emana perennal."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "La fuente veo carmesí;",
+        "con su poder me limpia a mí.",
+        "¡Oh, gloria a Dios!, me limpia a mí,",
+        "me limpia, ¡oh sí!, me limpia a mí."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Soy nueva criatura en él;",
+        "me hizo renacer,",
+        "y el hombre viejo nunca más",
+        "podrá prevalecer."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Gozoso espero ir con Jesús",
+        "a mi celeste hogar;",
+        "allí, cual fuente, de la cruz",
+        "su amor ha de manar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Anhelo en la luz a andar",
+        "sin el mundano error;",
+        "deseo un limpio corazón",
+        "que agrade al Salvador."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

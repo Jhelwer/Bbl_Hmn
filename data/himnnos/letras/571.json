@@ -1,0 +1,50 @@
+{
+  "numero": 571,
+  "titulo": "La historia de Cristo contemos",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "La historia de Cristo contemos,",
+        "que dará al mundo la luz;",
+        "la paz y el perdón anunciemos,",
+        "comprados en cruenta cruz,",
+        "comprados en cruenta cruz."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Rescatonos de las tinieblas,",
+        "disipó nuestra oscuridad;",
+        "él nos salvó, nuestra paz compró,",
+        "nos dio luz y libertad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "La historia de Cristo daremos",
+        "al mortal que ignora su amor;",
+        "nos dio Dios al Hijo, diremos,",
+        "hallamos en él favor,",
+        "hallamos en él favor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "A Jesús todos confesaremos,",
+        "con sincero y fiel corazón;",
+        "sus méritos invocaremos,",
+        "y Dios nos dará el perdón,",
+        "y Dios nos dará el perdón."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

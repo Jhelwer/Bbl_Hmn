@@ -1,0 +1,43 @@
+{
+  "numero": 586,
+  "titulo": "En memoria de mí",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En memoria de mí, esto haced:",
+        "hoy comed este pan, con unción.",
+        "En memoria de mí, todos bebed",
+        "la copa de comunión."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En memoria de mí, bien haced;",
+        "al enfermo sanad con amor.",
+        "En memoria de mí, doquiera vais",
+        "llevad consolación, paz y perdón.",
+        "Nuevo pacto hago hoy,",
+        "mi sangre y cuerpo os doy;",
+        "ofrenda preciosa de salvación",
+        "y perdón eternal."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "En memoria de mí, que os améis",
+        "como yo, con amor fraternal.",
+        "En memoria de mí, amad a Dios",
+        "de corazón, amad a Dios, a Dios.",
+        "En memoria de mí."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

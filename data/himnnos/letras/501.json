@@ -1,0 +1,22 @@
+{
+  "numero": 501,
+  "titulo": "Mi vida al servicio de Dios",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Mi vida al servicio de Dios",
+        "es el lema que vibra en mi ser.",
+        "Al lado de Cristo persisto en vivir,",
+        "y así muy feliz siempre estoy.",
+        "Andando, sonriendo, sirviendo,",
+        "cantando al cielo yo voy;",
+        "pues quiero sentir",
+        "el placer de vivir por Jesús."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
