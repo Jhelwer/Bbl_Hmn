@@ -1,0 +1,57 @@
+{
+  "numero": 328,
+  "titulo": "¿Nos veremos junto al río?",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¿Nos veremos junto al río",
+        "cuyas aguas cristalinas",
+        "fluyen puras, argentinas,",
+        "desde el trono de nuestro Dios?"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Oh! sí, nos congregaremos",
+        "en la ribera hermosa del río",
+        "cuyas aguas vivas dimanan",
+        "del trono de nuestro Dios."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En las márgenes del río",
+        "do los serafines van,",
+        "donde hay bellos querubines,",
+        "da la dicha eterna Dios."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Antes de llegar al río,",
+        "nuestras cargas al dejar,",
+        "libres todos quedaremos",
+        "por la gracia del Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Pronto al río llegaremos,",
+        "nuestra peregrinación",
+        "terminando en los acentos",
+        "de la célica canción."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

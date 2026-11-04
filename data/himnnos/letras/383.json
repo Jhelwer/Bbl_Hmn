@@ -1,0 +1,38 @@
+{
+  "numero": 383,
+  "titulo": "Habla a tu Dios de mañana",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Habla a tu Dios de mañana,",
+        "háblale al mediodía;",
+        "habla a tu Dios en la noche,",
+        "y dale tu corazón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Oye a tu Dios de mañana,",
+        "óyele al mediodía;",
+        "oye a tu Dios en la noche,",
+        "y dale tu corazón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Venga el Señor de mañana,",
+        "venga en el mediodía;",
+        "venga el Señor en la noche,",
+        "prepara tu corazón."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

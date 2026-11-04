@@ -1,0 +1,57 @@
+{
+  "numero": 318,
+  "titulo": "En la mansión de mi Señor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En la mansión de mi Señor",
+        "no habrá ya más tribulación,",
+        "no habrá pesar, ningún dolor,",
+        "que me quebrante el corazón."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Allá no habrá tribulación,",
+        "ningún pesar, ningún dolor;",
+        "y entonaré feliz canción",
+        "de alabanza al Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Resulta triste estar aquí",
+        "muy lejos de mi Redentor,",
+        "mas morarán con él allí",
+        "los redimidos por su amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Perfecto amor encontraré",
+        "en la mansión do Cristo está;",
+        "perfecta calma allí tendré,",
+        "y mi alma al fin descansará."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "En su presencia gozaré",
+        "su inmenso amor, su gran bondad;",
+        "feliz con Cristo reinaré",
+        "por toda la eternidad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

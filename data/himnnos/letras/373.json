@@ -1,0 +1,57 @@
+{
+  "numero": 373,
+  "titulo": "Mi Redentor es Cristo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Mi Redentor es Cristo,",
+        "mi gozo y mi canción;",
+        "me salva, y me consuela",
+        "en horas de aflicción."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Oh, Salvador bendito,",
+        "mi canto elevo a ti;",
+        "cual tú no tengo amigo",
+        "que me ame tanto aquí!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En todos mis afanes",
+        "alivio y luz me das;",
+        "aunque ande en negras sombras",
+        "no dudaré jamás."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Jesús, en ti confío,",
+        "amigo y guía fiel;",
+        "te quiero más que al mundo",
+        "y cuanto se halla en él."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Serás de mi alma el gozo",
+        "aquí donde hay maldad;",
+        "también serás mi dicha",
+        "allá en la eternidad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

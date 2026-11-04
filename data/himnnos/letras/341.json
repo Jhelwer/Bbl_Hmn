@@ -1,0 +1,37 @@
+{
+  "numero": 341,
+  "titulo": "Más cerca del hogar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "La Biblia asegura que Jesús",
+        "muy pronto en las nubes volverá.",
+        "¡Prepárate, mi hermano, porque hoy",
+        "más cerca estamos del hogar!"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Más cerca del hogar,",
+        "más cerca del hogar,",
+        "más cerca estamos hoy que ayer,",
+        "más cerca del hogar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "La obra ya debemos terminar,",
+        "pues muchos necesitan conocer.",
+        "Las buenas nuevas hay que proclamar:",
+        "¡Más cerca estamos del hogar!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

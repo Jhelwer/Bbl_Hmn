@@ -1,0 +1,38 @@
+{
+  "numero": 351,
+  "titulo": "Yo tengo gozo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Yo tengo gozo, gozo, en mi corazón;",
+        "en mi corazón, en mi corazón;",
+        "yo tenso gozo, gozo en mi corazón.",
+        "¡Gloria sea a nuestro Dios!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Yo tengo gozo, paz y alegría en mi corazón;",
+        "en mi corazón, en mi corazón;",
+        "yo tenso gozo, paz y alegría en mi corazón.",
+        "¡Gloria sea a nuestro Dios!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Yo tengo a Cristo, a Cristo en mi corazón;",
+        "en mi corazón; en mi corazón;",
+        "yo tengo a Cristo, a Cristo en mi corazón.",
+        "¡Gloria sea a nuestro Dios!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

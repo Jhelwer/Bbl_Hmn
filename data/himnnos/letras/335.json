@@ -1,0 +1,47 @@
+{
+  "numero": 335,
+  "titulo": "Mi hogar celestial",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Hay en el cielo un dulce hogar,",
+        "donde prefiero yo morar;",
+        "Jesús, mi Señor, me prepara allí",
+        "un hogar, un bellísimo hogar."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Bello hogar, dulce hogar,",
+        "donde anhelo estar.",
+        "Miro al fulgor de la patria de luz:",
+        "mi dulce hogar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Con mis amados me veré;",
+        "a Cristo allí coronaré;",
+        "loor le daré por la eternidad",
+        "en mi hogar, mi bellísimo hogar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "La vida es breve, pronto iré",
+        "a estar con mi glorioso Rey;",
+        "con clara visión puedo contemplar",
+        "mi hogar, mi bellísimo hogar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

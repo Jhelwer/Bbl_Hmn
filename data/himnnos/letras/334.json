@@ -1,0 +1,47 @@
+{
+  "numero": 334,
+  "titulo": "Cuánto anhelo llegar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cuánto anhelo llegar al celeste hogar,",
+        "a la margen del río de vida;",
+        "sorpresas sin fin me aguardan allá;",
+        "mas ¡oh, qué será ver a Cristo!"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Oh, qué será ver a Cristo!",
+        "¡Qué será ver al Señor!",
+        "Pronto nos llevará al eterno hogar,",
+        "mas ¡oh, qué será ver a Cristo!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Unos han de morir para no más vivir,",
+        "mas los justos a vida retornan.",
+        "¡Qué gozo será volverlos a ver!,",
+        "mas ¡oh, qué será ver a Cristo!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Cuando vaya a vivir en aquella ciudad,",
+        "cuando vea el rostro divino,",
+        "no habrá más dolor, ni muerte jamás.",
+        "¡Oh, sí, qué será ver a Cristo!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

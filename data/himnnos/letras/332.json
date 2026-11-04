@@ -1,0 +1,47 @@
+{
+  "numero": 332,
+  "titulo": "En la tierra adonde iré",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En la tierra adonde iré",
+        "muerte y llanto no habrá;",
+        "gozo eterno allí tendré,",
+        "y no hay noche allá."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Dios las penas quitará,",
+        "no habrá muerte ni dolor;",
+        "tiempo no se contará,",
+        "y no hay noche allá."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Puertas bellas se abrirán",
+        "en la Santa Ciudad;",
+        "calles áureas se verán,",
+        "y no hay noche allá."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Para siempre viviré",
+        "en mi amado hogar;",
+        "agua viva beberé,",
+        "y no hay noche allá."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

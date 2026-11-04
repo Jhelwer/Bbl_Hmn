@@ -1,0 +1,45 @@
+{
+  "numero": 305,
+  "titulo": "Maravillosa su gracia es",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Maravillosa su gracia es,",
+        "gracia que excede nuestro pecar.",
+        "En el Calvario se derramó:",
+        "allí su sangre Jesús vertió."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Gracia, gracia, gracia que limpia y da perdón.",
+        "Gracia, gracia, gracia más grande que mi pecar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Grande es mi culpa, es como el mar",
+        "que me amenaza con perdición.",
+        "Pero mayor gracia Cristo da,",
+        "arrepentido voy a la cruz."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Gracia infinita y eternal,",
+        "siempre gratuita para el que cree.",
+        "Tú, que anhelas ver a tu Dios,",
+        "su gracia ahora ¿recibirás?"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

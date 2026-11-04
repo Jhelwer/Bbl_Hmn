@@ -1,0 +1,47 @@
+{
+  "numero": 379,
+  "titulo": "Habla, Señor, a mi alma",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Habla, Señor, a mi alma; hable tu dulce voz;",
+        "susurre en tierna notas: \"Tú no estás solo, no\".",
+        "Mi corazón prepara, presto a escuchar tu Ley;",
+        "canciones mi alma llenen de gratitud y fe."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Háblame en dulces notas, háblame con amor:",
+        "\"Ya la victoria es tuya, no tengas más temor\".",
+        "Háblame cada día, hable tu tierna voz;",
+        "susurre en mis oídos: \"Tú no estás solo, no\"."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Habla a tus hijos siempre, dales tu santidad;",
+        "llénalos de tu gozo; enséñales a orar.",
+        "A ti consagren todo, vivan tan solo en ti,",
+        "traigan tu reino pronto, vean tu rostro aquí."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Habla cual en lo antiguo diste tu santa Ley.",
+        "Tus testimonios siempre quiero guardar por fe.",
+        "Quiero magnificarte, quiero a tu gloria dar",
+        "el grato testimonio de obedecer y amar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

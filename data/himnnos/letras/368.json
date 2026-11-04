@@ -1,0 +1,42 @@
+{
+  "numero": 368,
+  "titulo": "Padre amado",
+  "estrofas": [
+    {
+      "tipo": "coro",
+      "versos": [
+        "Padre amado,",
+        "te agradezco por tus planes,",
+        "grandes sueños tienes para mí.",
+        "Tú me guías por las sendas de esta vida,",
+        "a tu lado nada faltará."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Yo te amo más que a todo;",
+        "si estoy débil, tú eres fuerte",
+        "y a mi lado estás.",
+        "Te agradezco, Padre amado,",
+        "porque unes nuestras vidas",
+        "a tu corazón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Yo te amo más que a todo;",
+        "si estoy débil, tu gran fuerza",
+        "nunca fallará.",
+        "Por tu gracia, te imploro",
+        "que transformes hoy mi vida",
+        "con tu bendición."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
