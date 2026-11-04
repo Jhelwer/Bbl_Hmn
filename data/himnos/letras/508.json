@@ -1,0 +1,47 @@
+{
+  "numero": 508,
+  "titulo": "Contendamos siempre por nuestra fe",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Contendamos siempre por nuestra fe,",
+        "aunque ruja el mundo en derredor;",
+        "nunca el tentador nos podrá vencer,",
+        "pues nos librará el Señor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Si vencemos aquí, reinaremos allí,",
+        "en la gloria celestial;",
+        "si llevamos la cruz por amor de Jesús,",
+        "la corona él nos dará."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "No seamos tibios de corazón,",
+        "ni dejemos nunca el primer amor;",
+        "mantengamos firme la profesión",
+        "de la fe del Salvador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Procuremos todos la santidad,",
+        "sin la cual ninguno verá al Señor;",
+        "gozo, paz y eterna felicidad",
+        "Cristo da al vencedor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,47 @@
+{
+  "numero": 502,
+  "titulo": "Brilla en el sitio donde estés",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Nunca esperes el momento de una gran acción,",
+        "ni que pueda lejos ir tu luz;",
+        "tus pequeños actos pueden ser de bendición,",
+        "brilla en el sitio donde estés."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Brilla en el sitio donde estés,",
+        "brilla en el sitio donde estés.",
+        "Puedes con tu luz algún perdido rescatar,",
+        "brilla en el sitio donde estés."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Puedes en tu cielo alguna nube disipar,",
+        "haz a un lado tu egoísmo cruel.",
+        "Aunque solo un corazón pudieres consolar,",
+        "brilla en el sitio donde estés."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Puede tu talento alguna cosa descubrir",
+        "do tu luz podrá resplandecer.",
+        "De tu mano el Pan de vida puede aquí venir,",
+        "brilla en el sitio donde estés."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

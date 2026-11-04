@@ -1,0 +1,48 @@
+{
+  "numero": 532,
+  "titulo": "Sagrado es el amor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Sagrado es el amor",
+        "que nos ha unido aquí,",
+        "a los que oímos del Señor",
+        "la voz que llama a sí."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "A nuestro buen Jesús",
+        "rogamos con fervor:",
+        "que alúmbrenos la misma luz,",
+        "nos una el mismo amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Nos vamos a separar,",
+        "mas nuestra firme unión",
+        "jamás podrase quebrantar",
+        "por la separación."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Nos hemos de encontrar",
+        "en celestial reunión;",
+        "que nadie haya de faltar",
+        "en la eterna Sion."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

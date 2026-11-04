@@ -1,0 +1,38 @@
+{
+  "numero": 581,
+  "titulo": "El Pan de vida soy",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "\"El Pan de vida soy\", dice el Señor;",
+        "\"ven, alma hambrienta, ahora al Salvador;",
+        "hambre jamás tendrá quien viene a mí,",
+        "sed nunca sentirá quien cree en mí\"."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Vertiste tú por mí, buen Salvador,",
+        "tu sangre, en prueba de tu santo amor.",
+        "Cristo, hazme recordar tu gran dolor;",
+        "aprecie yo tu amor y salvación."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Hazme vivir, Señor, cerca de ti;",
+        "la deuda de tu amor la siento en mí;",
+        "te entrego a ti mi ser, mi corazón.",
+        "¡Loor a ti, Señor, y bendición!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

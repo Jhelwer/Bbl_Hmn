@@ -1,0 +1,50 @@
+{
+  "numero": 573,
+  "titulo": "Te envío a ti",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Te envío a ti, a un mundo que perece,",
+        "para servir a Dios con devoción.",
+        "Te envío a ti, te sostendrá mi gracia,",
+        "y en mi nombre tú podrás vencer."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Te envío a ti, aun mundo desolado",
+        "que olvidó el precio de la cruz;",
+        "ve a decirles cuánto Dios los ama,",
+        "que por salvarlos a su Hijo dio."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Tal vez mañana sea ya muy tarde,",
+        "y la cosecha puédase perder.",
+        "Hoy es el día, anda y no te tardes,",
+        "contigo iré la mies a recoger."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Te envío a ti, aunque el sendero pase",
+        "por valles negros de tribulación.",
+        "Se acerca el día en que podré decirte:",
+        "buen siervo fiel, recibe el galardón.",
+        "Como el Padre me envió a mí,",
+        "yo te envío a ti."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

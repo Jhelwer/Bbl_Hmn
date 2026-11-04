@@ -1,0 +1,38 @@
+{
+  "numero": 536,
+  "titulo": "En sombras de la tarde",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "En sombras de la tarde el día ya declina,",
+        "y el sábado se anuncia con gloria vespertina.",
+        "Cual brisa refrescante en cálido camino,",
+        "cual palma en el desierto, alivia al peregrino."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Durante la jornada que ahora ha terminado",
+        "trabajo honesto y arduo las horas han llenado.",
+        "Ahora a tu reposo mi alma agradecida",
+        "se entrega, y te suplica la colmes de tu vida."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "En este santo día anhelo tu presencia,",
+        "pues quiero sin medida gozar de tu influencia.",
+        "Mi alma fatigada en ti hallará reposo,",
+        "y el sábado bendito darame santo gozo."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

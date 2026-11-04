@@ -1,0 +1,38 @@
+{
+  "numero": 594,
+  "titulo": "Señor, gracias por mi hogar",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Horas alegres hay",
+        "en la niñez feliz,",
+        "mientras mamá vigila fiel.",
+        "Señor gracias, por mi hogar"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Horas inquietas hay",
+        "cuando hay que decidir:",
+        "sabios consejos recibir,",
+        "Señor, gracias por mi hogar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Horas serenas hay",
+        "para reflexionar,",
+        "y agradecidos hoy decir:",
+        "Señor, gracias por mi hogar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

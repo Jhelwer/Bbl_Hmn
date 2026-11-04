@@ -1,0 +1,57 @@
+{
+  "numero": 511,
+  "titulo": "Marcharé en la divina luz",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Marcharé en la divina luz,",
+        "marcharé, siempre marcharé;",
+        "en las huellas del buen Jesús,",
+        "siempre marcharé."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Vestido blanco yo tendré,",
+        "corona eterna ceñiré;",
+        "feliz allí podré gozar,",
+        "en el Edén sin par."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Marcharé con mi Guía fiel,",
+        "marcharé, siempre marcharé;",
+        "triunfaré por la fe en él,",
+        "siempre marcharé."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Marcharé almas a buscar,",
+        "marcharé, siempre marcharé;",
+        "los perdidos a rescatar,",
+        "siempre marcharé."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Por Jesús, más que vencedor",
+        "marcharé, siempre marcharé;",
+        "al hogar de mi Salvador,",
+        "siempre marcharé."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

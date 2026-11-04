@@ -1,0 +1,47 @@
+{
+  "numero": 513,
+  "titulo": "Honra al hombre de valor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Honra al hombre de valor,",
+        "pronto a obedecer",
+        "el mandato del Señor,",
+        "tal cual lo fue Daniel."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "A Daniel imita;",
+        "dalo a conocer;",
+        "muéstrate resuelto y firme,",
+        "aunque solo estés."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Muchos yacen sin valor,",
+        "que pudieran ser",
+        "nobles héroes del Señor,",
+        "tal cual lo fue Daniel."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Lucha en nombre del Señor",
+        "sin desfallecer.",
+        "Sé en la lucha vencedor,",
+        "tal cual lo fue Daniel."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

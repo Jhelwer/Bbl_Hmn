@@ -1,0 +1,55 @@
+{
+  "numero": 565,
+  "titulo": "¡Ve, ve oh Sion!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Ve, ve oh Sion!, tu gran destino cumple;",
+        "que Dios es luz al mundo proclamad;",
+        "que el Hacedor de las naciones quiere",
+        "que nadie muera en densa oscuridad."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Alegres nuevas al mundo dad,",
+        "nuevas de redención, de amor y libertad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Ve cuántos miles yacen todavía",
+        "en las oscuras cárceles del mal;",
+        "no saben que de Cristo la agonía",
+        "fue para darles vida celestial."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Es tu deber que salves de la muerte",
+        "las almas por las cuales él murió.",
+        "Sé fiel, si no culpable quieres verte",
+        "de que se pierda lo que Dios compró."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Tus hijos manda con el gran mensaje;",
+        "con tu caudal impulso a ellos da.",
+        "En oración sustenta, fiel, sus almas,",
+        "que cuanto gastes Cristo pagará."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
