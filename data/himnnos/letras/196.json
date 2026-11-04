@@ -1,0 +1,38 @@
+{
+  "numero": 196,
+  "titulo": "Santo Espíritu de Dios",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Santo Espíritu de Dios",
+        "brilla en mi corazón;",
+        "vuelve en día la oscuridad",
+        "de mi noche de aflicción."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Poderoso Espíritu,",
+        "limpia este corazón,",
+        "porque sobre mi alma el mal",
+        "ejerció cruel opresión."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Oh, divino Espíritu,",
+        "mora en mi corazón.",
+        "Quita todo ídolo,",
+        "reina en plena posesión."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

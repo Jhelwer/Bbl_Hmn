@@ -1,0 +1,47 @@
+{
+  "numero": 136,
+  "titulo": "¡Oh, cuánto amo a Cristo!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Su nombre hermoso yo anhelo oír",
+        "y siempre quiero alabar.",
+        "Es dulce son en mi corazón,",
+        "me llena de gozo y paz."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Oh, cuánto amo a Cristo!",
+        "¡Oh, cuánto amo a Cristo!",
+        "¡Oh, cuánto amo a Cristo!",
+        "¡Primero Jesús me amó!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Me habla de su inmenso amor",
+        "y de su muerte en la cruz.",
+        "Su sangre Cristo vertió por mí,",
+        "por darme la salvación."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Su nombre me habla de gran bondad.",
+        "Él siente mi aflicción.",
+        "Comprende penas, dolor, temor,",
+        "cual nadie jamás podrá."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

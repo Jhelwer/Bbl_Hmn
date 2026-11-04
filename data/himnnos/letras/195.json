@@ -1,0 +1,48 @@
+{
+  "numero": 195,
+  "titulo": "Abre mis ojos a la luz",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Abre mis ojos a la luz; tu rostro quiero ver, Jesús.",
+        "Pon en mi corazón tu bondad, y dame paz y santidad.",
+        "Humildemente acudo a ti, porque tu tierna voz oí.",
+        "Mi guía sé, Espíritu Consolador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Abre mi oído a tu verdad; yo quiero oír con claridad",
+        "bellas palabras de dulce amor, ¡oh, mi bendito Salvador!",
+        "Consagro a ti mi frágil ser; tu voluntad yo quiero hacer.",
+        "Llena mi ser, Espíritu Consolador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Abre mis labios para hablar y a todo el mundo proclamar",
+        "que tú viniste a rescatar al más indigno pecador.",
+        "La mies es mucha, ¡oh, Señor!; obreros faltan de valor.",
+        "Heme aquí, Espíritu Consolador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Abre mi mente para ver más de tu amor y gran poder.",
+        "Haz que en la lucha pueda triunfar y en tus caminos fiel andar.",
+        "De mi alma escudo siempre sé y aumenta mi valor y fe.",
+        "Mi mano ten, Espíritu Consolador."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

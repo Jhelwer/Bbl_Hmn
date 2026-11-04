@@ -1,0 +1,48 @@
+{
+  "numero": 131,
+  "titulo": "Bendito es el nombre de Jesús",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Bendito es el nombre de Jesús,",
+        "a cuantos le confiesan con amor.",
+        "Jesús es Rey por la eternidad,",
+        "¡Aleluya! ¡Aleluya!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Tú eres Señor, Castillo y Roca fiel;",
+        "el Capitán que lucha contra el mal;",
+        "bendita Luz en la oscuridad,",
+        "¡Aleluya! ¡Aleluya!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Que con valor peleen por Jesús",
+        "los santos que aman a su Salvador.",
+        "Dios les dará, por gracia, galardón,",
+        "¡Aleluya! ¡Aleluya!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "De mar a mar y en la Santa Ciudad,",
+        "el canto pronto habrá de resonar",
+        "al Creador, bendito Redentor:",
+        "¡Aleluya! ¡Aleluya!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

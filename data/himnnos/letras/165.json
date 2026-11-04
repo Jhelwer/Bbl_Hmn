@@ -1,0 +1,59 @@
+{
+  "numero": 165,
+  "titulo": "¡Vendrá el Señor!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Vendrá el Señor!",
+        "Nadie sabe la hora;",
+        "del día anhelado",
+        "se ve la aurora.",
+        "¡Oh, siervos de Dios!,",
+        "anunciad sin demora",
+        "que muy pronto vendrá."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Él vendrá!",
+        "¡Esperad y velad,",
+        "pues él vendrá!",
+        "¡Aleluya! ¡Aleluya!;",
+        "En las nubes vendrá",
+        "con sus huestes gloriosas;",
+        "sí, muy pronto vendrá."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "En cielo y tierra",
+        "se anuncia el portento",
+        "de Cristo en su",
+        "glorioso advenimiento.",
+        "¡Oh, pueblo de Dios!,",
+        "es solemne el momento,",
+        "pues muy pronto vendrá."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Velad y orad",
+        "con la vista alzada;",
+        "salid y luchad",
+        "con la santa espada;",
+        "id a trabajar",
+        "con la fe reanimada,",
+        "pues muy pronto vendrá."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,37 @@
+{
+  "numero": 184,
+  "titulo": "Nunca te rindas",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Días hay, lo sé, en que triste te sientes",
+        "y sin esperanza estás.",
+        "Pero existe un Dios que promete ayudarte,",
+        "y fuerzas tu alma tendrá."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Nunca te rindas, Cristo ya viene,",
+        "y su rostro pronto verás.",
+        "Nunca te rindas, Cristo ya viene;",
+        "nos llevará a su hogar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Este mundo cruel no será para siempre,",
+        "el mal pronto terminará;",
+        "y mi fe en Jesús cada día es más fuerte,",
+        "pues sé que Jesús volverá."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

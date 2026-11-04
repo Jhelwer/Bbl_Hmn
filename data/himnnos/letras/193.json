@@ -1,0 +1,57 @@
+{
+  "numero": 193,
+  "titulo": "Dios nos ha dado promesa",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Dios nos ha dado promesa:",
+        "\"Lluvias de gracia enviaré,",
+        "dones que os den fortaleza,",
+        "gran bendición os daré\"."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Lluvias de gracia,",
+        "lluvias pedimos, Señor;",
+        "mándanos lluvias copiosas,",
+        "lluvias del Consolador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cristo nos dio la promesa",
+        "del Santo Consolador;",
+        "paz y perdón y pureza,",
+        "para su gloria y honor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Dios nuestro, a todo creyente",
+        "muestra tu amor y poder;",
+        "tú eres de gracia la fuente,",
+        "llenas de paz nuestro ser."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Obra en tus siervos piadosos",
+        "celo, virtud y valor;",
+        "del tentador victoriosos",
+        "salgan contigo, Señor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

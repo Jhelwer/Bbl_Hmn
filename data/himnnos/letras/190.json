@@ -1,0 +1,57 @@
+{
+  "numero": 190,
+  "titulo": "Santo Espíritu de Cristo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Santo Espíritu de Cristo,",
+        "mora en este corazón,",
+        "lléname de tu presencia,",
+        "cólmame de bendición."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Cólmame! ¡Cólmame!",
+        "¡Ven ahora y cólmame!",
+        "¡Cólmame de tu presencia!",
+        "¡Ven, oh ven y cólmame!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Santo Espíritu, lo puedes,",
+        "aunque cómo, no lo sé;",
+        "mas si tú mis ruegos oyes,",
+        "sé que puro yo seré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Débil soy, flaqueza todo,",
+        "mas me postro a tus pies,",
+        "para que tu amor eterno,",
+        "fuerte, puro y fiel me des."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Lávame, bendice y salva",
+        "cuerpo, alma, espíritu;",
+        "ya me salvas, me consuelas,",
+        "de bondad me colmas tú."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

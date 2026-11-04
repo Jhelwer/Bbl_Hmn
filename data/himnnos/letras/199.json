@@ -1,0 +1,45 @@
+{
+  "numero": 199,
+  "titulo": "Movidos por tu Espíritu",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Movidos por tu Espíritu, Señor,",
+        "podemos alcanzar consagración,",
+        "lanzarnos a los campos con fervor",
+        "sirviéndote con gozo y devoción."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Muévenos, Señor; muévenos, Señor.",
+        "Muévanos tu Espíritu, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "El mundo necesita tu poder,",
+        "vencer al enemigo, conquistar",
+        "el Reino de justicia y conocer",
+        "al que tiene virtud para salvar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Tu iglesia está despierta y en pie,",
+        "ungida con tu Espíritu de amor.",
+        "Unidos marcharemos por la fe",
+        "en Cristo nuestro amante Redentor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

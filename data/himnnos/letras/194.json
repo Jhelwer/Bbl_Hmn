@@ -1,0 +1,47 @@
+{
+  "numero": 194,
+  "titulo": "Vive en mí",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Vive, Santo Espíritu,",
+        "en este pobre ser;",
+        "y que tu fuego celestial",
+        "transforme mi existir."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Vive en mí, vive en mí,",
+        "Santo y fiel Consolador.",
+        "Limpia del mal mi corazón;",
+        "llénalo siempre de tu amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Habla, Santo Espíritu,",
+        "háblame con poder;",
+        "y al escuchar tu dulce voz,",
+        "consagre a ti mi ser."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Santo, Santo Espíritu,",
+        "lléname de fervor,",
+        "para servirte con amor,",
+        "y sea yo vencedor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

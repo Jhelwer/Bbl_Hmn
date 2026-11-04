@@ -1,0 +1,38 @@
+{
+  "numero": 156,
+  "titulo": "A Cristo coronad",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A Cristo coronad divino Salvador.",
+        "Sentado en alta majestad es digno de loor.",
+        "Al Rey de gloria y paz loores tributad,",
+        "y bendecid al Inmortal por toda eternidad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "A Cristo coronad Señor de nuestro amor,",
+        "al Triunfante celebrad, glorioso Vencedor.",
+        "Potente Rey de paz el triunfo consumó,",
+        "y por su muerte en la cruz su grande amor mostró."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "A Cristo coronad Señor de vida y luz;",
+        "con alabanzas proclamad los triunfos de la cruz.",
+        "A él, pues, adorad, Señor de salvación;",
+        "loor eterno tributad de todo corazón."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

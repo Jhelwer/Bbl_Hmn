@@ -1,0 +1,47 @@
+{
+  "numero": 147,
+  "titulo": "A Dios sea gloria",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A Dios sea gloria, es el Creador,",
+        "y amó tanto al mundo que a su Hijo dio,",
+        "quien puso su vida muriendo en la cruz",
+        "y abrió los portales de gloria y luz."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Exaltad a Jesús! Es el Rey y Señor.",
+        "¡Alabad a Jesús! Es el buen Salvador.",
+        "Load sobre todos su nombre inmortal.",
+        "Él salva a sus hijos del yugo del mal."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cantad a su gloria, pues Hijo es de Dios.",
+        "Su amor inefable a todos nos dio.",
+        "Contad hoy la historia de la redención;",
+        "que todos los pueblos entonen canción."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Ya sea en el canto o en dulce oración,",
+        "load al sublime y fiel Redentor.",
+        "Que joven y anciano proclamen su amor;",
+        "que sordos y mudos le rindan loor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

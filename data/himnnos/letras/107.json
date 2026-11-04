@@ -1,0 +1,57 @@
+{
+  "numero": 107,
+  "titulo": "Canto el gran amor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Canto el gran amor de Aquel",
+        "que primero a mí me amó,",
+        "pues dejó la gloria allá",
+        "y en el Gólgota murió."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Tal amor ensalzaré,",
+        "alabando al que murió",
+        "inmolado para que",
+        "vida eterna tenga yo."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Antes que llorara yo,",
+        "ya por mí lloraba él;",
+        "y antes que supiera orar,",
+        "él por mí gustó la hiel."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Este mundo nunca vio",
+        "tan profundo y santo amor,",
+        "que del mal me rescató",
+        "aliviando mi dolor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Nada bueno se halla en mí.",
+        "¿Cómo puedes tanto amar?",
+        "Yo, Señor, me rindo a ti;",
+        "hazme, pues, mi amor mostrar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

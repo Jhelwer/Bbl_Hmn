@@ -1,0 +1,48 @@
+{
+  "numero": 198,
+  "titulo": "Desciende, Espíritu de amor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Desciende, Espíritu de amor,",
+        "Paloma celestial,",
+        "promesa fiel del Salvador,",
+        "de gracia manantial."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Aviva nuestra escasa fe,",
+        "concédenos salud;",
+        "benigno, guía nuestro pie",
+        "por sendas de virtud."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Consuela nuestro corazón",
+        "y habita siempre en él;",
+        "concédele el precioso don",
+        "de serte siempre fiel."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "A nuestro Padre, celestial;",
+        "al Hijo, autor del bien,",
+        "y al Santo Espíritu eternal,",
+        "sea la gloria. Amén."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

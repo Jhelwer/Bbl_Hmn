@@ -1,0 +1,57 @@
+{
+  "numero": 153,
+  "titulo": "Ved a Cristo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Ved a Cristo, Rey de gloria;",
+        "es del mundo el vencedor.",
+        "De la guerra vuelve invicto;",
+        "todos démosle loor."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Coronadle, santos todos!",
+        "¡Coronadle Rey de reyes!",
+        "¡Coronadle, santos todos!",
+        "¡Coronad al Salvador!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¡Exaltadlo, exaltadlo!",
+        "Ricos triunfos da Jesús.",
+        "Entronadle en los cielos,",
+        "en la refulgente luz."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Si los malos se burlaron",
+        "coronando al Salvador,",
+        "hoy los ángeles y santos",
+        "lo proclaman su Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Escuchad las alabanzas",
+        "que se elevan hacia él.",
+        "Victorioso reina Cristo:",
+        "adorad a Emanuel."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
