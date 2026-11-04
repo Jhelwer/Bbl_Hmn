@@ -1,0 +1,45 @@
+# Guía de edición — Biblia e Himnario v0.7.5
+
+Esta versión reorganiza **solo el formato y los comentarios** de `index.html`, `styles.css` y `script.js`. Los datos JSON, los nombres de los identificadores, las funciones y el orden de ejecución se conservan.
+
+## ¿Dónde hago cada cambio?
+
+| Quiero modificar... | Archivo | Busca (Ctrl + F) |
+|---|---|---|
+| Texto del nombre, versión o encabezado | `index.html` | `ENCABEZADO PRINCIPAL` o `class="topbar"` |
+| Buscador | `index.html` / `script.js` | `BUSCADOR DE BIBLIA E HIMNOS` / `searchBible` / `searchHymns` |
+| Pestañas Biblia, Himnario, Favoritos | `index.html` | `PESTAÑAS PRINCIPALES` |
+| Navegación inferior | `index.html` / `styles.css` | `bottom-nav` |
+| Botones del lector | `index.html` | `CABECERA DEL LECTOR` |
+| Botones Anterior/Siguiente de himnos | `index.html` | `NAVEGACIÓN ENTRE HIMNOS` |
+| Botones Copiar, Compartir y Guardar | `index.html` | `ACCIONES DEL HIMNARIO` |
+| Botones Copiar, Resaltar, Guardar y Compartir versículos | `index.html` | `ACCIONES DE LOS VERSÍCULOS` |
+| Tamaño y márgenes del himnario móvil | `styles.css` | `v0.7.4 - HIMNARIO COMPACTO` |
+| Colores de la aplicación | `styles.css` | `:root` y `body.dark` |
+| Estrofas y coros en el lector | `styles.css` / `script.js` | `.hymn-stanza`, `.hymn-chorus`, `hymnParts` |
+| Texto rojo de las palabras de Jesús | `script.js` / `styles.css` | `formatVerse` / `.words-jesus` |
+| Historial de lectura | `script.js` | `recordReading` |
+| Datos de los himnos | `data/himnos/letras/N.json` | Número del himno |
+| Datos de la Biblia | `data/biblia/rvr1960/` | Identificador del libro |
+
+## Convenciones para próximas versiones
+
+1. Mantener indentación de **2 espacios** y no comprimir todo el archivo en una sola línea.
+2. Añadir comentarios de sección `/* ... */` en JS/CSS y `<!-- ... -->` en HTML.
+3. Conservar `id`, `class`, atributos `data-*` y nombres de funciones al modificar estilos.
+4. No reordenar reglas CSS sin comprobar su precedencia: la última regla puede prevalecer.
+5. Actualizar la etiqueta de versión y las referencias `styles.css?v=` y `script.js?v=` en `index.html` en cada entrega.
+6. No alterar los archivos JSON de contenido sin una necesidad específica.
+7. Conservar siempre el árbol del proyecto y generar un ZIP completo para cada versión.
+
+## Pruebas mínimas antes de publicar cambios
+
+- Abrir la Biblia y buscar `Juan 3:16`.
+- Seleccionar un versículo y comprobar las cuatro acciones.
+- Activar el modo oscuro y el texto rojo.
+- Abrir himnos 1, 50, 303 y 613 y navegar entre ellos.
+- Buscar una frase de una estrofa en el Himnario.
+- Verificar favoritos e historial después de recargar.
+- Comprobar el diseño móvil compacto en Safari y Android.
+
+**Nota:** el archivo de manifiesto existente no sustituye por sí solo la implementación de uso completamente sin conexión.
