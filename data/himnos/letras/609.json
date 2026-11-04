@@ -1,0 +1,57 @@
+{
+  "numero": 609,
+  "titulo": "¡Oh jóvenes, venid!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Oh jóvenes, venid! Su brillante pabellón",
+        "Cristo ha desplegado ante la nación.",
+        "A todos en sus filas os quiere recibir,",
+        "y consigo a la pelea os hará salir."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Vamos con Jesús, alistados sin temor!",
+        "¡Vamos a la lid, inflamados de valor!",
+        "Jóvenes, luchemos todos contra el mal,",
+        "que en Jesús tenemos nuestro General."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¡Oh jóvenes, venid! El Caudillo Salvador",
+        "quiere recibiros en su derredor;",
+        "con él a la batalla salid sin vacilar.",
+        "¡Vamos presto, compañeros, vamos a luchar!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Las armas invencibles del Jefe guiador",
+        "son el evangelio y su gran amor.",
+        "Con ellos revestidos y llenos de poder,",
+        "¡compañeros, acudamos, vamos a vencer!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Quien venga a la pelea su voz escuchará;",
+        "Cristo la victoria le concederá;",
+        "salgamos, compañeros, luchemos bien por él;",
+        "con Jesús conquistaremos inmortal laurel."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
