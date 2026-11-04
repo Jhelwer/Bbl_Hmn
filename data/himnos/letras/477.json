@@ -1,0 +1,53 @@
+{
+  "numero": 477,
+  "titulo": "Los que aman al Señor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Los que aman al Señor",
+        "eleven su canción,",
+        "que en dulces notas de loor,",
+        "que en dulces notas de loor,",
+        "ascienda a su mansión,",
+        "ascienda a su mansión."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "A Sion caminamos,",
+        "nuestra ciudad tan gloriosa;",
+        "marchando todos cantamos",
+        "de Dios y la bella mansión."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Unida está, oh Dios,",
+        "tu fiel y amada grey;",
+        "y cantan todos a una voz,",
+        "y cantan todos a una voz,",
+        "los hijos del gran Rey,",
+        "los hijos del gran Rey."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Cantemos con fervor,",
+        "dejemos el pesar,",
+        "marchemos libres de temor,",
+        "marchemos libres de temor,",
+        "al más feliz hogar,",
+        "al más feliz hogar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

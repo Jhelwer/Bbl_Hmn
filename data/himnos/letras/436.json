@@ -1,0 +1,37 @@
+{
+  "numero": 436,
+  "titulo": "Él vive hoy",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Dios nos envió a Jesucristo",
+        "para sufrir en mi lugar.",
+        "Vivió y murió por rescatarme;",
+        "vacía está su tumba, sé que él vive hoy."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Él vive hoy, no hay mañana incierto.",
+        "Él vive hoy, ya no hay temor.",
+        "Mi vida tiene más sentido ahora,",
+        "pues mi futuro en sus manos hoy está."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cuán dulce es un tierno niño,",
+        "cuánta ternura y gozo da.",
+        "Pero es mejor saber que él puede",
+        "triunfar mañana porque Cristo vive hoy."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

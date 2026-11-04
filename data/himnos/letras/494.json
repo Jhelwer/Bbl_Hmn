@@ -1,0 +1,57 @@
+{
+  "numero": 494,
+  "titulo": "Cerca un alma agobiada está",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cerca un alma agobiada está,",
+        "ve y ayúdala hoy;",
+        "hazle algún acto de pura amistad,",
+        "ve y ayúdala hoy."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Ve y ayúdale hoy.",
+        "No tardes, mas di: \"Ya voy\".",
+        "Al débil sé escudo y viste al desnudo.",
+        "¡Oh, ve y ayúdale hoy!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¿Ves a un vecino sin fuerza y valor?",
+        "Ve y ayúdale hoy;",
+        "habla a su oído palabras de amor,",
+        "ve y ayúdale hoy."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¿Otro confronta una cruel tentación?",
+        "Ve y ayúdale hoy;",
+        "clama al Señor en ferviente oración,",
+        "ve y ayúdale hoy."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Hay quien ya busca el camino del bien.",
+        "Ve y ayúdale hoy.",
+        "Di con la Esposa y Espíritu: \"Ven\".",
+        "Ve y ayúdale hoy."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

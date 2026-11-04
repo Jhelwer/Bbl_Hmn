@@ -1,0 +1,57 @@
+{
+  "numero": 467,
+  "titulo": "¡Siempre el Salvador conmigo!",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "¡Siempre el Salvador conmigo!",
+        "Nada soy sin su poder.",
+        "Su presencia necesito:",
+        "voy, sin él, a perecer."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Me guiará mi Salvador;",
+        "hoy en él yo confiaré.",
+        "Con amor donde él me lleve",
+        "sus pisadas seguiré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¡Siempre el Salvador conmigo!",
+        "Puédeme la fe faltar.",
+        "Sus palabras me consuelan;",
+        "cual él nadie puede hablar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¡Siempre el Salvador conmigo!",
+        "Ilumíneme su faz",
+        "en la calma, en la tormenta,",
+        "en la lucha y en la paz."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "¡Siempre el Salvador conmigo!",
+        "Sus consejos me guiarán",
+        "hasta que esté en la orilla",
+        "anhelada del Jordán."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

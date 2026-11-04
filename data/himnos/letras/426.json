@@ -1,0 +1,45 @@
+{
+  "numero": 426,
+  "titulo": "Tengo paz",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Si paz como un río inunda mi ser,",
+        "o pruebas azotan mi fe;",
+        "no importa mi suerte, seguro estaré,",
+        "pues mi alma está en paz con mi Dios."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Tengo paz con mi Dios;",
+        "tengo paz, tengo paz con mi Dios."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Mi mal ha ocultado su rostro de mí;",
+        "mas Cristo clavolo en la cruz;",
+        "perdón alcancé, su amor me salvó.",
+        "¡Gloria a Dios, hoy mi alma está en paz!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Señor, apresura el día final;",
+        "las nubes partirse veré.",
+        "Vendrá el Señor, la trompeta oiré.",
+        "¡Gloria a Dios, hoy mi alma está en paz!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,50 @@
+{
+  "numero": 489,
+  "titulo": "Solo anhelo, Cristo amado",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Solo anhelo, Cristo amado,",
+        "en tus leyes caminar;",
+        "siempre hacer lo que es tu agrado,",
+        "tus acciones imitar.",
+        "Mas soy débil y cargado",
+        "con mi mucha iniquidad,",
+        "pues, oh Dios, yo he faltado",
+        "a tu santa voluntad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Ten piedad, oh Cristo amado,",
+        "de este pobre pecador.",
+        "Límpiame de mi pecado,",
+        "oh, bendito Salvador.",
+        "No permitas que me venza",
+        "otra vez el tentador.",
+        "¡Oh mi Dios!, con gran vergüenza",
+        "te lo pido por tu amor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Al que pide, es tu promesa",
+        "darle lo que ha menester.",
+        "Yo anhelo tu pureza,",
+        "tu limpieza, tuyo ser.",
+        "Y en tu reino, cuando vengas,",
+        "ten memoria aún de mí,",
+        "que por hijo tú me tengas",
+        "y me lleves junto a ti."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

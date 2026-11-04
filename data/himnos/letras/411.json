@@ -1,0 +1,47 @@
+{
+  "numero": 411,
+  "titulo": "Bajo sus alas",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Bajo sus alas ¡seguro descanso!",
+        "Aunque anochece y amaga el turbión,",
+        "en él confío, su brazo me guarda;",
+        "hijo soy de su eternal redención."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Salvo en Jesús, salvo en Jesús,",
+        "¿quién de él podrá apartarme?",
+        "Bajo sus alas siempre estaré",
+        "salvo y seguro por siempre."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Bajo sus alas ¡eterno refugio!",
+        "Tanto lo anhela este fiel corazón.",
+        "Si para mí no hay remedio en la tierra,",
+        "Cristo me sana y me da bendición."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Bajo sus alas ¡placer indecible!",
+        "Me escondo aquí mientras pase mi afán.",
+        "Fiel protección de mi fiero enemigo,",
+        "paz y salud me proporcionarán."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

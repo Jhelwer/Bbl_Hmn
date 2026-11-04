@@ -1,0 +1,47 @@
+{
+  "numero": 432,
+  "titulo": "Como el ciervo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Como el ciervo clama por las aguas,",
+        "mi alma anhela a Dios.",
+        "Solo tú satisfaces mi ansiedad",
+        "llenándome de paz."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Solo tú eres mi sostén,",
+        "¿a quién iré sino solo a ti?",
+        "Yo te rindo mi vida entera",
+        "para siempre a ti, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cristo, tú eres mi amigo y mi hermano,",
+        "aunque eres Rey también.",
+        "Yo te amo por sobre todo",
+        "y te alabo, mi Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Más que al oro te anhelo a ti,",
+        "pues solo tú me podrás saciar.",
+        "Solo tú eres mi alegría,",
+        "la razón de mi existir."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

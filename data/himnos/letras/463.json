@@ -1,0 +1,27 @@
+{
+  "numero": 463,
+  "titulo": "Mi oración",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Que mi vida, cada día,",
+        "cada paso que dé",
+        "sea un cuadro de amor,",
+        "cual Cristo fue.",
+        "Y que crezca en Jesús,",
+        "que conozca",
+        "más y más de su amor",
+        "y aumente mi fe.",
+        "Hasta el día feliz",
+        "cuando junto a él",
+        "pueda siempre vivir",
+        "en su gloria:",
+        "es mi oración."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

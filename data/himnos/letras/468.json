@@ -1,0 +1,49 @@
+{
+  "numero": 468,
+  "titulo": "Paso a paso Dios me guía",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Paso a paso Dios me guía;",
+        "¿qué más puedo ya pedir?",
+        "Nunca dudo de su gracia,",
+        "pues conmigo puede ir."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Paz divina y consuelo",
+        "al confiar en él tendré,",
+        "pues si algo sucediere,",
+        "Cristo lo sabrá muy bien;",
+        "pues si algo sucediere,",
+        "Cristo lo sabrá muy bien."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Paso a paso Dios me guía;",
+        "gozo siempre al alma da;",
+        "fuerza da al que es tentado;",
+        "lo alimenta del maná."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Paso a paso Dios me guía.",
+        "De mi afán fatigador,",
+        "el descanso ha prometido",
+        "en su reino mi Señor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

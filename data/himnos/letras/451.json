@@ -1,0 +1,52 @@
+{
+  "numero": 451,
+  "titulo": "Cerca, más cerca",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Cerca, más cerca, Cristo, de ti,",
+        "fiel Salvador y mi eterno solaz;",
+        "guárdame junto a tu corazón;",
+        "siempre me abrigue ese Puerto de paz,",
+        "siempre me abrigue ese Puerto de paz."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cerca, más cerca; nada traeré,",
+        "nada de mérito, al pie de tu cruz;",
+        "solo mi herido y vil corazón,",
+        "porque en tu sangre lo limpies, Jesús,",
+        "porque en tu sangre lo limpies, Jesús."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Cerca, más cerca: tuyo seré;",
+        "dejo con gozo el pecado falaz,",
+        "todo su orgullo, pompa y placer;",
+        "Cristo inmolado es mi eterno solaz,",
+        "Cristo inmolado es mi eterno solaz."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Cerca, más cerca hasta el fin,",
+        "hasta que ancle en el Puerto de amor,",
+        "do por los siglos viva feliz,",
+        "cerca, más cerca, de mi Salvador,",
+        "cerca, más cerca, de mi Salvador."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

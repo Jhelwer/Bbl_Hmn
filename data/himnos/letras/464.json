@@ -1,0 +1,37 @@
+{
+  "numero": 464,
+  "titulo": "Ven, inspíranos",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Ven, inspíranos; ven, enséñanos;",
+        "Señor, por medio de tu Espíritu.",
+        "Ven, anímanos; ven, transfórmanos;",
+        "Señor, con tu poder y gloria."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Señor, queremos dar loor",
+        "en gratitud a ti.",
+        "Acepta nuestro corazón;",
+        "Ven y transfórmalo hoy."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Ven, ayúdanos; ven, consuélanos;",
+        "Señor, concédenos tu dulce paz.",
+        "Danos tu poder para obedecer",
+        "y amarte por tu sacrificio."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

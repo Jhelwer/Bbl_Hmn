@@ -1,0 +1,50 @@
+{
+  "numero": 425,
+  "titulo": "Día en día",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Día en día Cristo está conmigo,",
+        "me consuela en medio del dolor.",
+        "Pues confiando en su poder eterno,",
+        "no me afano, ni me da temor.",
+        "Sobrepuja todo entendimiento",
+        "la perfecta paz del Salvador.",
+        "En su amor tan grande e infinito",
+        "siempre me dará lo que es mejor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Día en día Cristo me acompaña",
+        "y me brinda dulce comunión.",
+        "Todos mis cuidados él los lleva;",
+        "a él entrego mi alma y corazón.",
+        "No hay medida del amor supremo",
+        "de mi bondadoso y fiel Pastor.",
+        "Él me suple lo que necesito",
+        "pues el Pan de vida es mi Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Oh, Señor, ayúdame este día",
+        "a vivir de tal manera aquí",
+        "que tu nombre esté glorificado",
+        "pues anhelo honrarte sólo a ti.",
+        "Con la diestra de tu gran justicia",
+        "me sustentas en la turbación.",
+        "Tus promesas son sostén y guía,",
+        "siempre en ellas hay consolación."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

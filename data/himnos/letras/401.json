@@ -1,0 +1,47 @@
+{
+  "numero": 401,
+  "titulo": "Eterna Roca es mi Jesús",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Eterna Roca es mi Jesús,",
+        "refugio en la tempestad;",
+        "confianza he puesto yo en él,",
+        "refugio en la tempestad."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Roca eterna, nuestra protección,",
+        "nuestra fuerza, nuestro Salvador,",
+        "nuestro auxilio en la tribulación,",
+        "consolación en el dolor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Es sombra en día de calor,",
+        "refugio en la tempestad;",
+        "defensa eterna es mi Señor",
+        "refugio en la tempestad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¡Oh!, Roca eterna, mi Jesús,",
+        "refugio en la tempestad,",
+        "sé tú mi guía, fuerza y luz,",
+        "refugio en la tempestad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
