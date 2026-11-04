@@ -1,0 +1,50 @@
+{
+  "numero": 51,
+  "titulo": "Nuestro sol se pone ya",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Nuestro sol se pone ya,",
+        "todo en calma quedará;",
+        "la plegaria levantad",
+        "que bendiga la bondad",
+        "de nuestro Dios."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Santo, santo, santo, Señor Jehová!",
+        "Cielo y tierra de tu amor",
+        "llenos hoy están, Señor,",
+        "¡loor a ti!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "¡Oh Señor!, tu protección",
+        "dale ahora al corazón;",
+        "dale aquella dulce paz",
+        "que a los tuyos siempre das",
+        "con plenitud."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "¡Oh Señor!, que al descansar",
+        "pueda en ti seguro estar,",
+        "y mañana, mi deber",
+        "pueda alegre y fiel hacer",
+        "en tu loor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

@@ -1,0 +1,18 @@
+{
+  "numero": 56,
+  "titulo": "De tal manera amó",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "De tal manera amó al mundo nuestro Dios",
+        "que ha dado a su Hijo, Cristo el Señor;",
+        "que todos los que en él confían en verdad,",
+        "tienen vida eternal."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

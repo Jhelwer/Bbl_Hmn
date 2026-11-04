@@ -1,0 +1,67 @@
+{
+  "numero": 90,
+  "titulo": "Somos del oriente",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Somos del oriente los tres,",
+        "y venimos a adorar",
+        "al bebé recién nacido,",
+        "que es Rey divinal."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "¡Oh!, bella estrella angelical,",
+        "tu fulgor nos guiará",
+        "al lugar donde hallaremos",
+        "al Enviado celestial."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Oro traigo para ofrendar",
+        "al nacido para reinar",
+        "y a sus plantas mi corona",
+        "quiero depositar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Llevo incienso para el Señor,",
+        "que también es el Mediador",
+        "entre el Padre y los mortales,",
+        "único intercesor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Mirra ofrezco para el dolor",
+        "del sufriente Salvador,",
+        "que en cruenta cruz su sangre",
+        "dio por el pecador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 5,
+      "versos": [
+        "Ved la gloria de Emanuel,",
+        "sacerdote, Rey, Redentor.",
+        "Aleluya, tierra y cielo,",
+        "canten su gran amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

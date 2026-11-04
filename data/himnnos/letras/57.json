@@ -1,0 +1,49 @@
+{
+  "numero": 57,
+  "titulo": "Mi Dios me ama",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Mi Dios me ama, él me ha salvado;",
+        "mi Dios me ama, él me ama a mí."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Y lo repito:",
+        "Mi Dios me ama,",
+        "mi Dios me ama,",
+        "él me ama a mí."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Cautivo estuve en el pecado;",
+        "cautivo estuve, sin Salvador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Envió a Cristo para librarme;",
+        "envió a Cristo y me libró."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Me ha invitado por su Palabra;",
+        "me ha invitado con tierno amor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

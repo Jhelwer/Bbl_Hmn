@@ -1,0 +1,38 @@
+{
+  "numero": 82,
+  "titulo": "Ya repican las campanas",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Ya repican las campanas alabando al Señor.",
+        "Nuestros cantos elevemos cual las aves al Señor.",
+        "Es la estación festiva de la reunión familiar.",
+        "Nuestras voces jubilosas den la gloria al cantar."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "No existe otro sitio más querido que el hogar.",
+        "Nuestras preocupaciones allí suelen disipar.",
+        "Jesucristo, nuestro hermano, nos reúne con amor.",
+        "Fue al hijo de María que alabaron con fervor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Es la época dichosa y de gran felicidad.",
+        "Haya paz entre los hombres y la buena voluntad.",
+        "Compartamos bendiciones, nuestro pan y nuestro amor.",
+        "Brille Cristo en nuestras vidas, alabemos al Señor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

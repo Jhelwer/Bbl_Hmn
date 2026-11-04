@@ -1,0 +1,24 @@
+{
+  "numero": 77,
+  "titulo": "Sea exaltado",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Sea exaltado el Señor, exaltado",
+        "en cielo y tierra.",
+        "Sea exaltado, por siempre exaltado;",
+        "su nombre alabaré.",
+        "Dios sin igual,",
+        "para siempre él reinará.",
+        "Su creación",
+        "se alegra en adorarlo.",
+        "Sea exaltado el Señor",
+        "con mi vida también."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

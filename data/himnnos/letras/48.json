@@ -1,0 +1,48 @@
+{
+  "numero": 48,
+  "titulo": "Oh Dios, si he ofendido un corazón",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Oh Dios, si he ofendido un corazón,",
+        "si he sido causa de su perdición,",
+        "si he andado hoy sin discreción",
+        "te imploro perdón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Si he proferido voces de maldad,",
+        "faltando en demostrar la caridad,",
+        "oh santo Dios, buscándote en verdad",
+        "te imploro perdón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Si he sido perezoso en trabajar,",
+        "dejando mi deber sin realizar",
+        "en vez de hacer tu celestial mandar,",
+        "te imploro perdón."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Tú, del contrito, fiel perdonador,",
+        "que atiendes al clamor del pecador,",
+        "perdóname y guárdame en tu amor,",
+        "por Cristo. Amén."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

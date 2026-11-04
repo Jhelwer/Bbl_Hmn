@@ -1,0 +1,57 @@
+{
+  "numero": 71,
+  "titulo": "Cada cosa hermosa",
+  "estrofas": [
+    {
+      "tipo": "coro",
+      "versos": [
+        "Cada cosa hermosa aquí",
+        "y todo su esplendor,",
+        "es la obra sin igual",
+        "del grande Creador."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A cada flor que se abre,",
+        "al ave musical.",
+        "vistió de tonos bellos,",
+        "el Padre celestial."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Montañas majestuosas,",
+        "el río al correr,",
+        "la paz del sol poniente,",
+        "el bello amanecer."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "El viento del invierno,",
+        "la brisa estival,",
+        "los frutos en el huerto,",
+        "el fresco manantial."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Nos concedió la vista",
+        "y labios para hablar",
+        "del Creador eterno",
+        "que tanto pudo amar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

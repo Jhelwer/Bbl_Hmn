@@ -1,0 +1,47 @@
+{
+  "numero": 17,
+  "titulo": "Oh Padre, eterno Dios",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Oh Padre, eterno Dios,",
+        "alzamos nuestra voz",
+        "en gratitud",
+        "por lo que tú nos das",
+        "con sin igual amor,",
+        "y hallamos dulce paz",
+        "en ti, Señor."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Bendito Salvador,",
+        "te damos con amor",
+        "el corazón;",
+        "acepta, oh Señor,",
+        "lo que en tu altar",
+        "venimos a ofrendar",
+        "cual vivo don."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Espíritu de Dios,",
+        "escucha nuestra voz,",
+        "y en tu bondad",
+        "derrama en nuestro ser",
+        "divina claridad,",
+        "copiosa bendición",
+        "y santidad."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

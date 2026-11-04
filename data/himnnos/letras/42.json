@@ -1,0 +1,19 @@
+{
+  "numero": 42,
+  "titulo": "Queda, Señor",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Queda, Señor, en este corazón;",
+        "dame tu paz y lléname de amor;",
+        "que tu influencia permanezca en mí;",
+        "viva por siempre con tu bendición.",
+        "Amén."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

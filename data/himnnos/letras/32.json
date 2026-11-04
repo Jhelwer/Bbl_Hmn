@@ -1,0 +1,18 @@
+{
+  "numero": 32,
+  "titulo": "Nos reunimos en tu santuario",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Nos reunimos en tu santuario,",
+        "donde santos ángeles te rinden su loor.",
+        "Vamos a adorar tu gran nombre;",
+        "en la santidad de tu presencia te alabo, Señor."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

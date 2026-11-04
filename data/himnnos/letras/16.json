@@ -1,0 +1,47 @@
+{
+  "numero": 16,
+  "titulo": "A nuestro Padre Dios",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "A nuestro Padre Dios",
+        "alcemos nuestra voz.",
+        "¡Gloria a él!",
+        "Tal fue su amor que dio",
+        "al Hijo que murió,",
+        "en quien confío yo.",
+        "¡Gloria a él!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "A nuestro Salvador",
+        "demos con fe loor.",
+        "¡Gloria a él!",
+        "Su sangre derramó;",
+        "con ella me lavó;",
+        "y el cielo me abrió.",
+        "¡Gloria a él!"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Espíritu de Dios,",
+        "elevo a ti mi voz.",
+        "¡Gloria a ti!",
+        "Con celestial fulgor",
+        "me muestras el amor",
+        "de Cristo, mi Señor.",
+        "¡Gloria a ti!"
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
