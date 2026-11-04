@@ -1,0 +1,105 @@
+:root{--blue:#073d69;--blue2:#0b6594;--gold:#d4a74f;--bg:#f5f7fa;--surface:#fff;--ink:#15283b;--muted:#627487;--line:#dce5ed;--soft:#eaf3f8;--shadow:0 10px 28px #0a365116}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}body.dark{--bg:#0b1523;--surface:#152337;--ink:#f1f5fb;--muted:#afc0ce;--line:#33445a;--soft:#1c344b;--shadow:none}button,input{font:inherit}button{cursor:pointer}.app-shell{max-width:760px;min-height:100dvh;margin:auto;background:var(--bg)}.topbar{display:flex;align-items:center;gap:12px;padding:20px 20px 12px}.topbar strong,.topbar small{display:block}.topbar strong{font-size:18px}.topbar small{font-size:11px;color:var(--muted)}.brand-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;color:var(--gold);background:var(--blue);font-size:25px}.topbar .icon-button{margin-left:auto}.icon-button{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:12px;width:40px;height:40px}main{padding:2px 20px 105px}.welcome{padding:22px 4px 14px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--blue2);margin:0 0 7px}.welcome h1{font-size:clamp(23px,5vw,31px);line-height:1.15;margin:0 0 9px;letter-spacing:-.7px}.welcome>p:last-child{font-size:14px;color:var(--muted);margin:0}.search{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 13px;margin:16px 0 22px;box-shadow:var(--shadow)}.search span{font-size:28px;color:var(--blue2)}.search input{height:50px;min-width:0;flex:1;border:0;background:none;color:var(--ink);outline:0;font-size:14px}.search kbd{color:var(--muted);font-size:17px}.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--soft);padding:5px;border-radius:14px}.tabs button{background:transparent;border:0;padding:10px 3px;border-radius:10px;color:var(--muted);font-weight:700;font-size:13px}.tabs .active{background:var(--surface);color:var(--blue2);box-shadow:0 1px 6px #00000010}.content-header{display:flex;justify-content:space-between;align-items:center;margin:24px 0 13px}.content-header h2{margin:0;font-size:18px}.counter{font-size:12px;color:var(--muted)}.content{display:grid;gap:10px}.item{display:flex;align-items:center;gap:13px;width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);text-align:left}.item .symbol{display:grid;place-items:center;background:var(--soft);color:var(--blue2);width:42px;height:42px;border-radius:11px;flex-shrink:0;font-weight:800}.item .details{flex:1;min-width:0}.item .details strong{display:block;font-size:14px}.item .details small{display:block;font-size:12px;color:var(--muted)}.chevron{color:var(--muted)}.empty{text-align:center;color:var(--muted);padding:40px 16px}.bottom-nav{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(100%,760px);background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);padding:8px 12px calc(8px + env(safe-area-inset-bottom));z-index:2}.bottom-nav button{border:0;background:none;color:var(--muted);display:grid;place-items:center;gap:0;font-size:11px}.bottom-nav span{font-size:23px}.bottom-nav .active{color:var(--blue2);font-weight:800}#reader{position:fixed;inset:0;width:min(100%,760px);max-width:none;max-height:none;height:100dvh;margin:auto;border:0;padding:0;background:var(--bg);color:var(--ink)}#reader[open]{display:flex;flex-direction:column}.reader-head{display:flex;align-items:center;gap:12px;padding:20px;border-bottom:1px solid var(--line);background:var(--surface)}.reader-head>div{flex:1}.reader-head small{display:block;color:var(--muted);font-size:11px}.reader-head h2{margin:0;font-size:18px}.reader-tools{display:flex;align-items:center;justify-content:flex-end;gap:15px;padding:9px 22px;border-bottom:1px solid var(--line)}.reader-tools button{background:var(--soft);border:0;border-radius:8px;color:var(--ink);padding:4px 10px}.reader-tools span{font-size:12px;color:var(--muted)}.reader-body{overflow:auto;flex:1;padding:22px 25px 80px;line-height:1.85}.reader-body p{margin:0 0 16px}.reader-body sup{font-size:11px;color:var(--blue2);font-weight:800;margin-right:5px}.chapter{border:1px solid var(--line);padding:13px 15px;background:var(--surface);border-radius:12px;margin-bottom:12px}.chapter h3{margin:0 0 8px;font-size:16px}.chapter button{border:0;background:var(--soft);border-radius:8px;padding:7px 11px;color:var(--ink)}@media(min-width:620px){.content{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(prefers-reduced-motion:no-preference){.item,.tabs button{transition:transform .16s,box-shadow .16s}.item:active{transform:scale(.99)}}
+/* Navegación de capítulos y estados de contenido - v0.2 */
+.version-tag{font-size:10px;font-weight:700;color:var(--muted)}.chapter-toolbar{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 15px;background:var(--surface);border-bottom:1px solid var(--line)}.chapter-toolbar[hidden]{display:none}.chapter-toolbar button,.chapter-toolbar select{border:1px solid var(--line);border-radius:9px;background:var(--soft);color:var(--ink);padding:9px 8px;font-size:13px}.chapter-toolbar button:disabled{opacity:.4}.chapter-toolbar label{font-size:12px;color:var(--muted)}.chapter-toolbar select{margin-left:4px}.notice{padding:22px 20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);line-height:1.7}.notice p{margin:10px 0 0}.stanza{border-bottom:1px solid var(--line);padding:14px 0}.stanza small{display:block;color:var(--blue2);font-weight:700;margin-bottom:8px}.stanza p{margin:0 0 3px}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:2px}@media(max-width:375px){.chapter-toolbar{gap:3px;padding:8px}.chapter-toolbar button{font-size:11px;padding:8px 5px}}
+
+/* Resaltado opcional de palabras marcadas en la fuente biblica */
+.words-jesus{color:#ac2633;font-weight:500}
+body.dark .words-jesus{color:#ff858b}
+#reader.hide-red-letters .words-jesus{color:inherit;font-weight:inherit}
+.red-letters-setting{display:flex;align-items:center;gap:10px;padding:9px 22px;background:var(--surface);border-bottom:1px solid var(--line);font-size:13px;color:var(--ink);font-weight:600}
+.red-letters-setting input{width:18px;height:18px;accent-color:#a82d38;cursor:pointer}
+
+/* v0.3.3 - Selector de tema visible en el lector */
+.reader-head .theme-control{flex-shrink:0}
+body.dark{--blue2:#70c4f5;--blue:#17669a}
+body.dark .reader-head,body.dark .reader-tools{background:var(--surface)}
+body.dark .icon-button:focus-visible,.icon-button:focus-visible{outline:3px solid var(--blue2);outline-offset:2px}
+
+/* v0.4 · busqueda biblica */
+.search-status{margin:0 0 12px;padding:10px 13px;border-radius:10px;background:var(--soft);color:var(--ink);font-size:12px}.search-status[hidden]{display:none}.search-result .details small{line-height:1.5;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}.verse-target{border-left:3px solid var(--gold);padding:8px 12px;margin-left:-15px!important;background:var(--soft);border-radius:0 8px 8px 0}.search-hint{font-size:12px;color:var(--muted)}
+
+/* v0.5: seleccion de versiculos y paleta accesible en movil */
+.reader-body{padding-bottom:120px}.verse-help{font-size:.72em;color:var(--muted);margin:0 0 16px!important}.reader-body .verse[data-verse-number]{position:relative;cursor:pointer;border-radius:8px;padding:7px 10px;margin:0 -10px 6px;transition:background .12s,box-shadow .12s}.reader-body .verse[data-verse-number]:focus-visible{outline:3px solid var(--blue2);outline-offset:1px}.reader-body .verse.is-selected{outline:2px solid var(--blue2);outline-offset:0;box-shadow:0 0 0 3px var(--bg) inset}.reader-body .verse.highlight-yellow{background:#f7d877;color:#283441}.reader-body .verse.highlight-green{background:#a5e4b5;color:#283441}.reader-body .verse.highlight-blue{background:#a9d9fb;color:#283441}.reader-body .verse.highlight-pink{background:#f6baca;color:#283441}.reader-body .verse[class*="highlight-"] sup{color:#164d75}.reader-body .verse[class*="highlight-"] .words-jesus{color:#951e2b}.reader-body .verse.verse-target{border-left:3px solid var(--gold);padding-left:12px;margin-left:-12px!important}.verse-saved{color:#b13d5b;font-size:.72em;vertical-align:super;margin-left:7px}.verse-actions{padding:12px 16px calc(10px + env(safe-area-inset-bottom));background:var(--surface);border-top:1px solid var(--line);box-shadow:0 -6px 24px #00000012;flex-shrink:0}.verse-actions[hidden]{display:none}.verse-actions-top,.verse-action-buttons,.verse-colors{display:flex;align-items:center;gap:9px}.verse-actions-top{justify-content:space-between;font-size:13px;margin-bottom:9px}.verse-actions-top button,.highlight-remove{border:0;background:transparent;color:var(--muted);font-size:12px}.verse-action-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:10px}.verse-action-buttons button{min-height:40px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:var(--ink);font-size:12px;font-weight:700}.verse-colors{flex-wrap:wrap;font-size:12px;color:var(--muted)}.color-chip{background:var(--chip);height:30px;width:30px;border-radius:50%;border:2px solid #00000022;box-shadow:0 0 0 2px var(--surface)}.color-chip:focus-visible{outline:3px solid var(--blue2);outline-offset:3px}.highlight-remove{padding:4px}.verse-action-status{margin:6px 0 0;font-size:11px;color:var(--muted);min-height:1em}body.dark .reader-body .verse[class*="highlight-"]{color:#23323a}body.dark .reader-body .verse[class*="highlight-"] .words-jesus{color:#951e2b}@media(max-width:390px){.verse-actions{padding-left:10px;padding-right:10px}.verse-action-buttons button{font-size:11px}}
+
+/* v0.5.1 - Botones de acción de cuatro columnas como la vista de referencia */
+.verse-actions{padding:14px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.verse-actions-top{margin-bottom:8px}
+.verse-action-buttons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px;margin:0 0 8px}
+.verse-action-buttons .verse-action-tile{min-width:0;min-height:76px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:8px 2px;background:transparent;border:0;border-radius:12px;color:var(--ink);font-size:13px;font-weight:500}
+.verse-action-buttons .verse-action-tile:active,.verse-action-buttons .verse-action-tile.is-active{background:var(--soft)}
+.verse-action-buttons .verse-action-tile .action-icon{display:block;color:var(--blue2);width:28px;height:28px;flex-shrink:0}
+.verse-action-buttons .verse-action-tile.is-saved .action-icon{color:#bb4262}
+.verse-action-buttons .verse-action-tile .action-label{font-size:12px;white-space:normal;line-height:1.18;text-align:center}
+.verse-colors{margin-top:8px;padding:12px;background:var(--soft);border-radius:12px;display:flex;align-items:center;gap:11px;flex-wrap:wrap;justify-content:center}
+.verse-colors[hidden]{display:none!important}
+.color-title{font-size:12px;color:var(--muted);font-weight:600;width:100%;text-align:center}
+.color-options{display:flex;gap:13px;align-items:center;justify-content:center}
+.color-chip{height:34px;width:34px;flex-shrink:0;border-radius:50%;border:2px solid #00000026}
+.highlight-remove{font-size:12px;color:var(--ink);padding:6px 8px}
+.verse-action-status:empty{display:none}
+.verse-action-status{margin:7px 0 0;text-align:center;font-size:12px}
+body.dark .verse-action-buttons .verse-action-tile .action-icon{color:#63b6e6}
+body.dark .verse-action-buttons .verse-action-tile.is-saved .action-icon{color:#f19bb2}
+@media(max-width:390px){.verse-actions{padding-left:8px;padding-right:8px}.verse-action-buttons .verse-action-tile{min-height:68px}.verse-action-buttons .verse-action-tile .action-label{font-size:11px}}
+
+
+/* v0.6 - historial y último capítulo leído */
+.reading-progress{margin:8px 0 14px;padding:16px;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:var(--shadow)}
+.reading-progress[hidden]{display:none}
+.reading-summary{display:grid;gap:4px}
+.reading-eyebrow{font-size:10px;font-weight:800;letter-spacing:1.4px;color:var(--muted)}
+.reading-summary strong{font-size:19px}
+.reading-continue{width:100%;text-align:center;border:0;border-radius:11px;background:var(--blue2);color:#fff;padding:10px 12px;margin-top:7px;font-weight:700}
+body.dark .reading-continue{background:#205d86;color:#fff}
+#reading-history{margin-top:13px;border-top:1px solid var(--line);padding-top:11px}
+#reading-history summary{font-size:13px;font-weight:700;color:var(--muted);cursor:pointer}
+#reading-history summary::marker{color:var(--blue2)}
+.history-items{display:grid;gap:6px;margin-top:11px;max-height:215px;overflow:auto}
+.history-entry{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--soft);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:8px 12px;text-align:left;font-size:13px}
+.history-clear{border:0;background:none;color:var(--muted);font-size:12px;padding:10px 3px 0;text-decoration:underline}
+/* Modo lectura: minimiza controles pero mantiene una salida fija y accesible. */
+.focus-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;background:var(--surface);border-bottom:1px solid var(--line);font-size:13px;font-weight:700}
+.focus-bar[hidden]{display:none}
+.focus-bar button{border:1px solid var(--line);border-radius:9px;background:var(--soft);color:var(--ink);padding:7px 10px;font-size:12px}
+#reader.focus-mode .reader-head,#reader.focus-mode .reader-tools,#reader.focus-mode .red-letters-setting,#reader.focus-mode .chapter-toolbar,#reader.focus-mode .verse-actions{display:none!important}
+#reader.focus-mode .reader-body{padding-top:26px;padding-bottom:80px;line-height:2}
+#reader.focus-mode .verse-help{display:none}
+#reader.focus-mode .verse[data-verse-number]{cursor:default}
+.swipe-hint{display:none}
+@media(pointer:coarse){.swipe-hint{display:block;color:var(--muted);font-size:11px;text-align:center;background:var(--surface);padding:6px 12px 8px;border-top:1px solid var(--line)}#reader.focus-mode .swipe-hint{display:block}}
+@media(max-width:375px){.reader-head{padding:12px 10px;gap:7px}.reader-head .icon-button{width:35px;height:35px}.reader-head h2{font-size:16px}}
+
+/* v0.7 - Lector completo del himnario */
+.hymn-toolbar{display:flex;align-items:center;justify-content:space-between;gap:9px;padding:11px 14px;background:var(--surface);border-bottom:1px solid var(--line)}
+.hymn-toolbar[hidden],.hymn-actions[hidden],.red-letters-setting[hidden]{display:none!important}
+.hymn-toolbar button,.hymn-toolbar select{border:1px solid var(--line);border-radius:10px;background:var(--soft);color:var(--ink);padding:10px 9px;font-size:13px}
+.hymn-toolbar button:disabled,.hymn-action:disabled{opacity:.45;cursor:not-allowed}
+.hymn-toolbar label{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:12px;min-width:0}
+.hymn-toolbar select{max-width:135px;text-overflow:ellipsis}
+.hymn-reader{max-width:660px;margin:0 auto;padding:8px 2px 25px}
+.hymn-reader-heading{text-align:center;margin-bottom:23px;padding:12px 4px;border-bottom:1px solid var(--line)}
+.hymn-number{display:inline-block;font-weight:800;letter-spacing:2px;font-size:.65em;color:var(--blue2)}
+.hymn-reader-heading h3{font-size:1.3em;line-height:1.35;margin:8px 0 12px;color:var(--ink)}
+.hymn-stanza{max-width:580px;margin:0 auto 26px;border:0;border-radius:13px;padding:10px 16px 14px;text-align:center}
+.hymn-stanza-label{font-size:.65em;letter-spacing:1.1px;font-weight:800;color:var(--blue2);display:block;margin-bottom:13px}
+.hymn-stanza p{margin:0 0 6px;line-height:1.75;overflow-wrap:anywhere}
+.hymn-chorus{background:var(--soft);border:1px solid var(--line)}
+.hymn-chorus .hymn-stanza-label{color:var(--blue2)}
+.hymn-empty{text-align:left;font-size:.85em}
+.hymn-empty code{overflow-wrap:anywhere;color:var(--blue2)}
+.hymn-actions{padding:11px 15px calc(12px + env(safe-area-inset-bottom));background:var(--surface);border-top:1px solid var(--line);flex-shrink:0}
+.hymn-actions-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.hymn-action{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:0;background:transparent;color:var(--ink);border-radius:11px;min-height:65px;font-size:12px;font-weight:650}
+.hymn-action span{font-size:25px;line-height:1.15;color:var(--blue2)}
+.hymn-action:active{background:var(--soft)}
+#hymn-status{text-align:center;color:var(--muted);font-size:12px;margin:0}
+#hymn-status:not(:empty){margin-top:6px}
+#reader.focus-mode .hymn-toolbar,#reader.focus-mode .hymn-actions{display:none!important}
+@media(max-width:385px){.hymn-toolbar{padding:9px 7px;gap:3px}.hymn-toolbar button{padding:9px 5px;font-size:11px}.hymn-toolbar select{max-width:112px;padding:8px 4px}.hymn-stanza{padding-left:6px;padding-right:6px}}
+
+/* Icono oficial SVG de Biblia e Himnario */
+.topbar .brand-icon{display:block;width:43px;height:43px;flex:0 0 43px;border-radius:11px;object-fit:contain;background:transparent}
+
+/* v0.7.3: resultados de busqueda en letras e indicacion de estrofa encontrada */
+.hymn-search-result .details small{line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+.hymn-search-target{outline:2px solid var(--gold);outline-offset:3px;border-radius:12px;background:var(--soft);scroll-margin-top:26px}

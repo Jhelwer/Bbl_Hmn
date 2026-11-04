@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Biblia e Himnario</title>
+  <desc id="desc">Icono minimalista con un libro abierto blanco sobre un cuadrado azul oscuro de esquinas redondeadas.</desc>
+  <rect width="512" height="512" rx="124" fill="#073D69"/>
+  <g fill="none" stroke="#FFFFFF" stroke-width="19" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M256 189 C224 168 174 157 145 172 L145 319 C181 306 223 315 256 336"/>
+    <path d="M256 189 C288 168 338 157 367 172 L367 319 C331 306 289 315 256 336"/>
+    <path d="M256 189 V336"/>
+  </g>
+</svg>

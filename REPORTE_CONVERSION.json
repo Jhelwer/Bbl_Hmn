@@ -1,0 +1,25 @@
+{
+  "archivos_txt_analizados": 613,
+  "himnos_convertidos": 613,
+  "himnos_catalogo": 613,
+  "himnos_sin_txt": [],
+  "coros_identificados": 322,
+  "lineas_de_letra": 9702,
+  "diferencias_de_titulo": [
+    {
+      "numero": 431,
+      "titulo_txt": "A él mis problema le doy",
+      "titulo_catalogo": "A él mis problemas le doy"
+    }
+  ],
+  "ajustes_de_numeracion": [
+    {
+      "numero": 273,
+      "observaciones": [
+        "Numeración original de estrofas: [1, 2, 3, 3]; se muestra en orden como [1, 2, 3, 4]."
+      ]
+    }
+  ],
+  "problemas": [],
+  "nota_derechos": "La conversión no implica autorización para distribución pública de las letras."
+}
