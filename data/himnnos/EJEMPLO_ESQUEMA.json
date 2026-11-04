@@ -1,0 +1,30 @@
+{
+  "numero": 303,
+  "titulo": "Sublime gracia",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "REEMPLAZAR CON LÍNEA AUTORIZADA 1",
+        "REEMPLAZAR CON LÍNEA AUTORIZADA 2"
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "REEMPLAZAR CON EL CORO AUTORIZADO"
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "REEMPLAZAR CON LÍNEA AUTORIZADA 1",
+        "REEMPLAZAR CON LÍNEA AUTORIZADA 2"
+      ]
+    }
+  ],
+  "fuente": "Edición autorizada",
+  "derechos": "Registrar permiso de uso"
+}

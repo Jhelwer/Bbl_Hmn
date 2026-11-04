@@ -1,0 +1,662 @@
+[
+  {
+    "id": "genesis",
+    "nombre": "Génesis",
+    "orden": 1,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 50,
+    "abreviatura": "Gn",
+    "categoria": "Pentateuco",
+    "versiculos": 1532
+  },
+  {
+    "id": "exodo",
+    "nombre": "Éxodo",
+    "orden": 2,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 40,
+    "abreviatura": "Ex",
+    "categoria": "Pentateuco",
+    "versiculos": 1213
+  },
+  {
+    "id": "levitico",
+    "nombre": "Levítico",
+    "orden": 3,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 27,
+    "abreviatura": "Lv",
+    "categoria": "Pentateuco",
+    "versiculos": 859
+  },
+  {
+    "id": "numeros",
+    "nombre": "Números",
+    "orden": 4,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 36,
+    "abreviatura": "Nm",
+    "categoria": "Pentateuco",
+    "versiculos": 1288
+  },
+  {
+    "id": "deuteronomio",
+    "nombre": "Deuteronomio",
+    "orden": 5,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 34,
+    "abreviatura": "Dt",
+    "categoria": "Pentateuco",
+    "versiculos": 959
+  },
+  {
+    "id": "josue",
+    "nombre": "Josué",
+    "orden": 6,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 24,
+    "abreviatura": "Jos",
+    "categoria": "Históricos",
+    "versiculos": 658
+  },
+  {
+    "id": "jueces",
+    "nombre": "Jueces",
+    "orden": 7,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 21,
+    "abreviatura": "Jue",
+    "categoria": "Históricos",
+    "versiculos": 618
+  },
+  {
+    "id": "rut",
+    "nombre": "Rut",
+    "orden": 8,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 4,
+    "abreviatura": "Rt",
+    "categoria": "Históricos",
+    "versiculos": 85
+  },
+  {
+    "id": "1_samuel",
+    "nombre": "1 Samuel",
+    "orden": 9,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 31,
+    "abreviatura": "1 S",
+    "categoria": "Históricos",
+    "versiculos": 810
+  },
+  {
+    "id": "2_samuel",
+    "nombre": "2 Samuel",
+    "orden": 10,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 24,
+    "abreviatura": "2 S",
+    "categoria": "Históricos",
+    "versiculos": 695
+  },
+  {
+    "id": "1_reyes",
+    "nombre": "1 Reyes",
+    "orden": 11,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 22,
+    "abreviatura": "1 R",
+    "categoria": "Históricos",
+    "versiculos": 816
+  },
+  {
+    "id": "2_reyes",
+    "nombre": "2 Reyes",
+    "orden": 12,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 25,
+    "abreviatura": "2 R",
+    "categoria": "Históricos",
+    "versiculos": 719
+  },
+  {
+    "id": "1_cronicas",
+    "nombre": "1 Crónicas",
+    "orden": 13,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 29,
+    "abreviatura": "1 Cr",
+    "categoria": "Históricos",
+    "versiculos": 942
+  },
+  {
+    "id": "2_cronicas",
+    "nombre": "2 Crónicas",
+    "orden": 14,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 36,
+    "abreviatura": "2 Cr",
+    "categoria": "Históricos",
+    "versiculos": 822
+  },
+  {
+    "id": "esdras",
+    "nombre": "Esdras",
+    "orden": 15,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 10,
+    "abreviatura": "Esd",
+    "categoria": "Históricos",
+    "versiculos": 280
+  },
+  {
+    "id": "nehemias",
+    "nombre": "Nehemías",
+    "orden": 16,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 13,
+    "abreviatura": "Neh",
+    "categoria": "Históricos",
+    "versiculos": 406
+  },
+  {
+    "id": "ester",
+    "nombre": "Ester",
+    "orden": 17,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 10,
+    "abreviatura": "Est",
+    "categoria": "Hagiógrafos",
+    "versiculos": 167
+  },
+  {
+    "id": "job",
+    "nombre": "Job",
+    "orden": 18,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 42,
+    "abreviatura": "Job",
+    "categoria": "Hagiógrafos",
+    "versiculos": 1070
+  },
+  {
+    "id": "salmos",
+    "nombre": "Salmos",
+    "orden": 19,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 150,
+    "abreviatura": "Sal",
+    "categoria": "Poéticos y Sapienciales",
+    "versiculos": 2462
+  },
+  {
+    "id": "proverbios",
+    "nombre": "Proverbios",
+    "orden": 20,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 31,
+    "abreviatura": "Pr",
+    "categoria": "Poéticos y Sapienciales",
+    "versiculos": 915
+  },
+  {
+    "id": "eclesiastes",
+    "nombre": "Eclesiastés",
+    "orden": 21,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 12,
+    "abreviatura": "Ec",
+    "categoria": "Poéticos y Sapienciales",
+    "versiculos": 222
+  },
+  {
+    "id": "cantares",
+    "nombre": "Cantares",
+    "orden": 22,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 8,
+    "abreviatura": "Cnt",
+    "categoria": "Poéticos y Sapienciales",
+    "versiculos": 117
+  },
+  {
+    "id": "isaias",
+    "nombre": "Isaías",
+    "orden": 23,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 66,
+    "abreviatura": "Is",
+    "categoria": "Profetas Mayores",
+    "versiculos": 1292
+  },
+  {
+    "id": "jeremias",
+    "nombre": "Jeremías",
+    "orden": 24,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 52,
+    "abreviatura": "Jer",
+    "categoria": "Profetas Mayores",
+    "versiculos": 1364
+  },
+  {
+    "id": "lamentaciones",
+    "nombre": "Lamentaciones",
+    "orden": 25,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 5,
+    "abreviatura": "Lm",
+    "categoria": "Profetas Mayores",
+    "versiculos": 154
+  },
+  {
+    "id": "ezequiel",
+    "nombre": "Ezequiel",
+    "orden": 26,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 48,
+    "abreviatura": "Ez",
+    "categoria": "Profetas Mayores",
+    "versiculos": 1273
+  },
+  {
+    "id": "daniel",
+    "nombre": "Daniel",
+    "orden": 27,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 12,
+    "abreviatura": "Dn",
+    "categoria": "Profetas Mayores",
+    "versiculos": 357
+  },
+  {
+    "id": "oseas",
+    "nombre": "Oseas",
+    "orden": 28,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 14,
+    "abreviatura": "Os",
+    "categoria": "Profetas Menores",
+    "versiculos": 197
+  },
+  {
+    "id": "joel",
+    "nombre": "Joel",
+    "orden": 29,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 3,
+    "abreviatura": "Jl",
+    "categoria": "Profetas Menores",
+    "versiculos": 73
+  },
+  {
+    "id": "amos",
+    "nombre": "Amós",
+    "orden": 30,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 9,
+    "abreviatura": "Am",
+    "categoria": "Profetas Menores",
+    "versiculos": 146
+  },
+  {
+    "id": "abdias",
+    "nombre": "Abdías",
+    "orden": 31,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 1,
+    "abreviatura": "Abd",
+    "categoria": "Profetas Menores",
+    "versiculos": 21
+  },
+  {
+    "id": "jonas",
+    "nombre": "Jonás",
+    "orden": 32,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 4,
+    "abreviatura": "Jon",
+    "categoria": "Profetas Menores",
+    "versiculos": 48
+  },
+  {
+    "id": "miqueas",
+    "nombre": "Miqueas",
+    "orden": 33,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 7,
+    "abreviatura": "Miq",
+    "categoria": "Profetas Menores",
+    "versiculos": 105
+  },
+  {
+    "id": "nahum",
+    "nombre": "Nahúm",
+    "orden": 34,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 3,
+    "abreviatura": "Nah",
+    "categoria": "Profetas Menores",
+    "versiculos": 47
+  },
+  {
+    "id": "habacuc",
+    "nombre": "Habacuc",
+    "orden": 35,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 3,
+    "abreviatura": "Hab",
+    "categoria": "Profetas Menores",
+    "versiculos": 56
+  },
+  {
+    "id": "sofonias",
+    "nombre": "Sofonías",
+    "orden": 36,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 3,
+    "abreviatura": "Sof",
+    "categoria": "Profetas Menores",
+    "versiculos": 53
+  },
+  {
+    "id": "hageo",
+    "nombre": "Hageo",
+    "orden": 37,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 2,
+    "abreviatura": "Hg",
+    "categoria": "Profetas Menores",
+    "versiculos": 38
+  },
+  {
+    "id": "zacarias",
+    "nombre": "Zacarías",
+    "orden": 38,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 14,
+    "abreviatura": "Zac",
+    "categoria": "Profetas Menores",
+    "versiculos": 211
+  },
+  {
+    "id": "malaquias",
+    "nombre": "Malaquías",
+    "orden": 39,
+    "testamento": "Antiguo Testamento",
+    "totalCapitulos": 4,
+    "abreviatura": "Mal",
+    "categoria": "Profetas Menores",
+    "versiculos": 55
+  },
+  {
+    "id": "mateo",
+    "nombre": "Mateo",
+    "orden": 40,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 28,
+    "abreviatura": "Mt",
+    "categoria": "Evangelios",
+    "versiculos": 1071
+  },
+  {
+    "id": "marcos",
+    "nombre": "Marcos",
+    "orden": 41,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 16,
+    "abreviatura": "Mc",
+    "categoria": "Evangelios",
+    "versiculos": 678
+  },
+  {
+    "id": "lucas",
+    "nombre": "Lucas",
+    "orden": 42,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 24,
+    "abreviatura": "Lc",
+    "categoria": "Evangelios",
+    "versiculos": 1151
+  },
+  {
+    "id": "juan",
+    "nombre": "Juan",
+    "orden": 43,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 21,
+    "abreviatura": "Jn",
+    "categoria": "Evangelios",
+    "versiculos": 879
+  },
+  {
+    "id": "hechos",
+    "nombre": "Hechos",
+    "orden": 44,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 28,
+    "abreviatura": "Hch",
+    "categoria": "Hechos",
+    "versiculos": 1007
+  },
+  {
+    "id": "romanos",
+    "nombre": "Romanos",
+    "orden": 45,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 16,
+    "abreviatura": "Ro",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 433
+  },
+  {
+    "id": "1_corintios",
+    "nombre": "1 Corintios",
+    "orden": 46,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 16,
+    "abreviatura": "1 Co",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 437
+  },
+  {
+    "id": "2_corintios",
+    "nombre": "2 Corintios",
+    "orden": 47,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 13,
+    "abreviatura": "2 Co",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 257
+  },
+  {
+    "id": "galatas",
+    "nombre": "Gálatas",
+    "orden": 48,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 6,
+    "abreviatura": "Gl",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 149
+  },
+  {
+    "id": "efesios",
+    "nombre": "Efesios",
+    "orden": 49,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 6,
+    "abreviatura": "Ef",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 155
+  },
+  {
+    "id": "filipenses",
+    "nombre": "Filipenses",
+    "orden": 50,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 4,
+    "abreviatura": "Flp",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 104
+  },
+  {
+    "id": "colosenses",
+    "nombre": "Colosenses",
+    "orden": 51,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 4,
+    "abreviatura": "Col",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 95
+  },
+  {
+    "id": "1_tesalonicenses",
+    "nombre": "1 Tesalonicenses",
+    "orden": 52,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 5,
+    "abreviatura": "1 Ts",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 89
+  },
+  {
+    "id": "2_tesalonicenses",
+    "nombre": "2 Tesalonicenses",
+    "orden": 53,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 3,
+    "abreviatura": "2 Ts",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 47
+  },
+  {
+    "id": "1_timoteo",
+    "nombre": "1 Timoteo",
+    "orden": 54,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 6,
+    "abreviatura": "1 Ti",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 113
+  },
+  {
+    "id": "2_timoteo",
+    "nombre": "2 Timoteo",
+    "orden": 55,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 4,
+    "abreviatura": "2 Ti",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 83
+  },
+  {
+    "id": "tito",
+    "nombre": "Tito",
+    "orden": 56,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 3,
+    "abreviatura": "Tit",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 46
+  },
+  {
+    "id": "filemon",
+    "nombre": "Filemón",
+    "orden": 57,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 1,
+    "abreviatura": "Flm",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 25
+  },
+  {
+    "id": "hebreos",
+    "nombre": "Hebreos",
+    "orden": 58,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 13,
+    "abreviatura": "Heb",
+    "categoria": "Epístolas Paulinas",
+    "versiculos": 303
+  },
+  {
+    "id": "santiago",
+    "nombre": "Santiago",
+    "orden": 59,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 5,
+    "abreviatura": "Stg",
+    "categoria": "Epístolas Universales",
+    "versiculos": 108
+  },
+  {
+    "id": "1_pedro",
+    "nombre": "1 Pedro",
+    "orden": 60,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 5,
+    "abreviatura": "1 P",
+    "categoria": "Epístolas Universales",
+    "versiculos": 105
+  },
+  {
+    "id": "2_pedro",
+    "nombre": "2 Pedro",
+    "orden": 61,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 3,
+    "abreviatura": "2 P",
+    "categoria": "Epístolas Universales",
+    "versiculos": 61
+  },
+  {
+    "id": "1_juan",
+    "nombre": "1 Juan",
+    "orden": 62,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 5,
+    "abreviatura": "1 Jn",
+    "categoria": "Epístolas Universales",
+    "versiculos": 105
+  },
+  {
+    "id": "2_juan",
+    "nombre": "2 Juan",
+    "orden": 63,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 1,
+    "abreviatura": "2 Jn",
+    "categoria": "Epístolas Universales",
+    "versiculos": 13
+  },
+  {
+    "id": "3_juan",
+    "nombre": "3 Juan",
+    "orden": 64,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 1,
+    "abreviatura": "3 Jn",
+    "categoria": "Epístolas Universales",
+    "versiculos": 15
+  },
+  {
+    "id": "judas",
+    "nombre": "Judas",
+    "orden": 65,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 1,
+    "abreviatura": "Jud",
+    "categoria": "Epístolas Universales",
+    "versiculos": 25
+  },
+  {
+    "id": "apocalipsis",
+    "nombre": "Apocalipsis",
+    "orden": 66,
+    "testamento": "Nuevo Testamento",
+    "totalCapitulos": 22,
+    "abreviatura": "Ap",
+    "categoria": "Revelaciones",
+    "versiculos": 404
+  }
+]

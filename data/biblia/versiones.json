@@ -1,0 +1,10 @@
+[
+  {
+    "id": "rvr1960",
+    "nombre": "Reina-Valera 1960",
+    "idioma": "es",
+    "licencia": "Requiere autorización para distribución íntegra",
+    "disponible": false,
+    "rutaCapitulos": "data/biblia/rvr1960/{libro}/{capitulo}.json"
+  }
+]
