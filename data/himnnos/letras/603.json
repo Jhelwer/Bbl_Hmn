@@ -1,0 +1,47 @@
+{
+  "numero": 603,
+  "titulo": "Yo temprano busco a Cristo",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Yo temprano busco a Cristo,",
+        "cada día aprendo de él;",
+        "por la senda angosta sigo",
+        "sus pisadas, firme y fiel."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Cristo me ama; Cristo me ama;",
+        "Cristo me ama, esto sé:",
+        "él murió para salvarme;",
+        "yo, ferviente, le amaré."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Dondequiera que él me mande,",
+        "yo con gozo presto voy;",
+        "sé su voluntad divina",
+        "aunque niño tierno soy."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "A la puerta Cristo aguarda:",
+        "él me quiere libertar;",
+        "yo, confiando en su promesa,",
+        "hoy invítole a entrar."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}

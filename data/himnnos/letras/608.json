@@ -1,0 +1,57 @@
+{
+  "numero": 608,
+  "titulo": "Corazones siempre alegres",
+  "estrofas": [
+    {
+      "tipo": "estrofa",
+      "numero": 1,
+      "versos": [
+        "Corazones siempre alegres,",
+        "rebosando gratitud,",
+        "somos los que a Dios amamos,",
+        "redimida juventud."
+      ]
+    },
+    {
+      "tipo": "coro",
+      "versos": [
+        "Siempre alegres vamos todos,",
+        "llenos de felicidad;",
+        "hermosísimo es el camino,",
+        "hacia la eternidad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 2,
+      "versos": [
+        "Dios nos guía de la mano;",
+        "nos ampara su poder;",
+        "es su brazo poderoso",
+        "y nos quiere defender."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 3,
+      "versos": [
+        "Si en la lucha desmayamos",
+        "o nos sitia la maldad,",
+        "con su gracia nos anima,",
+        "nos levanta su bondad."
+      ]
+    },
+    {
+      "tipo": "estrofa",
+      "numero": 4,
+      "versos": [
+        "Con sus fuerzas llevaremos",
+        "muy gozosos nuestra cruz;",
+        "victoriosos cantaremos",
+        "en la gloria de su luz."
+      ]
+    }
+  ],
+  "fuente": "TXT proporcionado por el usuario",
+  "derechos": "Verificar permisos antes de distribución pública"
+}
