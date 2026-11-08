@@ -1946,3 +1946,133 @@ body.dark .reading-continue {
   .favorites-category-tabs { gap: 5px; }
   .favorites-category { font-size: 13px; gap: 5px; }
 }
+
+/* ============================================================
+   09. SELECTOR DE CAPÍTULOS Y VERSÍCULOS — v0.7.9
+   Modal de apertura del libro. Solo estilos del #bible-picker.
+   Pensado para Android de 360px CSS y Safari en iPhone.
+   ============================================================ */
+#bible-picker {
+  width: min(94vw, 530px);
+  max-width: 530px;
+  max-height: min(88dvh, 760px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, .25);
+  overflow: hidden;
+}
+#bible-picker[open] {
+  display: flex;
+  flex-direction: column;
+}
+#bible-picker::backdrop {
+  background: rgba(4, 19, 35, .64);
+}
+#bible-picker .picker-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 18px 14px;
+  border-bottom: 1px solid var(--line);
+}
+#bible-picker .picker-heading { min-width: 0; }
+#bible-picker .picker-heading small {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  color: var(--muted);
+}
+#bible-picker .picker-heading h2 {
+  margin: 4px 0 0;
+  font-size: clamp(19px, 5vw, 24px);
+  line-height: 1.25;
+}
+#bible-picker .picker-close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--soft);
+  color: var(--ink);
+  font-size: 19px;
+  cursor: pointer;
+}
+#bible-picker .picker-content {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 15px 16px 12px;
+  min-height: 0;
+}
+#bible-picker .picker-section + .picker-section { margin-top: 22px; }
+#bible-picker .picker-section h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 750;
+}
+#bible-picker .picker-note {
+  margin: -5px 0 12px;
+  color: var(--muted);
+  font-size: 13px;
+}
+#bible-picker .picker-number-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+#bible-picker .picker-number-grid button {
+  min-width: 0;
+  min-height: 44px;
+  padding: 7px 2px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--soft);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 650;
+  cursor: pointer;
+}
+#bible-picker .picker-number-grid button.active,
+#bible-picker .picker-number-grid button:focus-visible {
+  background: #0b6594;
+  color: #fff;
+  border-color: #0b6594;
+  outline-offset: 2px;
+}
+#bible-picker .picker-number-grid button:active { transform: scale(.97); }
+#bible-picker .picker-status,
+#bible-picker .picker-loading {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+#bible-picker .picker-status { margin: 15px 0 0; }
+#bible-picker .picker-bottom {
+  padding: 11px 16px calc(11px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+#bible-picker .picker-primary {
+  width: 100%;
+  min-height: 47px;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 11px;
+  background: #0b6594;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+#bible-picker .picker-primary:disabled { opacity: .42; cursor: not-allowed; }
+@media (max-width: 389px) {
+  #bible-picker .picker-number-grid { gap: 6px; }
+  #bible-picker .picker-content { padding-inline: 13px; }
+  #bible-picker .picker-number-grid button { font-size: 14px; }
+}

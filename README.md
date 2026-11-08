@@ -60,3 +60,10 @@ Para probar con GitHub Pages, subir **todo el contenido de esta carpeta**. Abrir
 - En `index.html` busca `FAVORITOS / CATEGORÍAS HIMNOS Y VERSÍCULOS`.
 - En `script.js` busca `02.B. FAVORITOS / CATEGORÍAS` para editar los filtros, contadores o textos.
 - En `styles.css` busca `v0.7.8 / FAVORITOS ORGANIZADOS EN DOS CATEGORÍAS`.
+
+
+## Novedad v0.7.9 — Selector bíblico
+Al tocar un libro en la lista de Biblia, se muestra un modal para elegir capítulo y versículo.
+Cada capítulo muestra su número real de versículos, consultado en el JSON ya publicado.
+También se puede pulsar «Leer capítulo completo». Las referencias directas del buscador y favoritos individuales siguen abriéndose directamente.
+La carpeta `data/` no se modificó.

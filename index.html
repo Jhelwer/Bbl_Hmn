@@ -10,7 +10,7 @@
     <link rel="icon" type="image/svg+xml" href="icons/icono-biblia-himnario.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="styles.css?v=0.7.8">
+    <link rel="stylesheet" href="styles.css?v=0.7.9">
   </head>
   <body>
     <div class="app-shell">
@@ -19,7 +19,7 @@
       <header class="topbar">
         <img class="brand-icon" src="icons/icono-biblia-himnario.svg" alt="" width="43" height="43" decoding="async">
         <div>
-          <strong>Biblia e Himnario <span class="version-tag">v0.7.8</span></strong>
+          <strong>Biblia e Himnario <span class="version-tag">v0.7.9</span></strong>
           <small>Lectura, alabanza y estudio</small>
         </div>
         <button id="theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
@@ -235,6 +235,41 @@
         <p id="verse-action-status" class="verse-action-status" role="status" aria-live="polite"></p>
       </section>
     </dialog>
-    <script src="script.js?v=0.7.8" defer></script>
+
+    <!-- ============================================================
+         SELECTOR BÍBLICO v0.7.9 — LIBRO > CAPÍTULO > VERSÍCULO
+         Se abre al tocar un libro del catálogo (no interrumpe búsquedas directas).
+         ============================================================ -->
+    <dialog id="bible-picker" class="bible-picker" aria-labelledby="picker-title">
+      <div class="picker-head">
+        <div class="picker-heading">
+          <small>SELECCIONAR PASAJE</small>
+          <h2 id="picker-title">Libro de la Biblia</h2>
+        </div>
+        <button id="picker-close" class="picker-close" type="button" aria-label="Cerrar selector">✕</button>
+      </div>
+
+      <div class="picker-content">
+        <!-- Paso 1: capítulos disponibles -->
+        <section class="picker-section" aria-labelledby="picker-chapter-heading">
+          <h3 id="picker-chapter-heading">1. Elige un capítulo</h3>
+          <div id="picker-chapters" class="picker-number-grid picker-chapters" role="group" aria-label="Capítulos del libro"></div>
+        </section>
+
+        <!-- Paso 2: número real de versículos del capítulo elegido -->
+        <section id="picker-verses-section" class="picker-section" aria-labelledby="picker-verse-heading" hidden>
+          <h3 id="picker-verse-heading">2. Elige un versículo</h3>
+          <p class="picker-note">O lee el capítulo completo usando el botón inferior.</p>
+          <div id="picker-verses" class="picker-number-grid picker-verses" role="group" aria-label="Versículos del capítulo"></div>
+        </section>
+        <p id="picker-status" class="picker-status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="picker-bottom">
+        <button id="picker-read-chapter" class="picker-primary" type="button" disabled>Leer capítulo completo</button>
+      </div>
+    </dialog>
+
+    <script src="script.js?v=0.7.9" defer></script>
   </body>
 </html>

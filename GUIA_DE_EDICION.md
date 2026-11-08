@@ -59,3 +59,10 @@ Esta versión reorganiza **solo el formato y los comentarios** de `index.html`, 
 - En `index.html` busca `FAVORITOS / CATEGORÍAS HIMNOS Y VERSÍCULOS`.
 - En `script.js` busca `02.B. FAVORITOS / CATEGORÍAS` para editar los filtros, contadores o textos.
 - En `styles.css` busca `v0.7.8 / FAVORITOS ORGANIZADOS EN DOS CATEGORÍAS`.
+
+
+## Selector de capítulos/versículos (v0.7.9)
+- HTML: buscar `SELECTOR BÍBLICO v0.7.9` en `index.html`.
+- JS: buscar `02.C. SELECTOR BÍBLICO` en `script.js`.
+- CSS: buscar `09. SELECTOR DE CAPÍTULOS` en `styles.css`.
+- No renombrar IDs `bible-picker`, `picker-chapters`, `picker-verses` sin adaptar JS.

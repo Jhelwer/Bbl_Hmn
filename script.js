@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.8. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.9. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -407,8 +407,120 @@ $('search').addEventListener('input', e => { state.query = e.target.value; if (s
     state.searchTimer = setTimeout(() => state.tab === 'biblia' ? searchBible() : searchHymns(), 240);
 else
     render(); });
-$('content').addEventListener('click', e => { const b = e.target.closest('[data-type]'); if (b)
-    openReader(b.dataset.type, b.dataset.id, Number(b.dataset.chapter || 1), b.dataset.verse ? Number(b.dataset.verse) : null, b.dataset.verseEnd ? Number(b.dataset.verseEnd) : null, b.dataset.stanza !== undefined ? Number(b.dataset.stanza) : null); });
+/* ==========================================================
+ * 02.C. SELECTOR BÍBLICO (v0.7.9)
+ * Flujo: tocar libro -> seleccionar capítulo -> elegir versículo.
+ * El total de versículos se obtiene de los JSON originales.
+ * No se modifica el formato de los archivos data/.
+ * ========================================================== */
+let pickerBookId = null;
+let pickerChapter = null;
+let pickerRequestId = 0;
+
+function closeBiblePicker() {
+    pickerRequestId++;
+    if ($('bible-picker').open) $('bible-picker').close();
+}
+
+function openBiblePicker(bookId) {
+    const book = state.books.find(item => item.id === bookId);
+    if (!book) return;
+    pickerRequestId++;
+    pickerBookId = book.id;
+    pickerChapter = null;
+    $('picker-title').textContent = book.nombre;
+    $('picker-status').textContent = 'Selecciona el capítulo que deseas leer.';
+    $('picker-verses-section').hidden = true;
+    $('picker-verses').replaceChildren();
+    $('picker-read-chapter').disabled = true;
+    $('picker-chapters').innerHTML = Array.from(
+        { length: book.totalCapitulos },
+        (_, index) => `<button type="button" data-picker-chapter="${index + 1}" aria-pressed="false">${index + 1}</button>`
+    ).join('');
+    if (!$('bible-picker').open) $('bible-picker').showModal();
+}
+
+async function chooseBibleChapter(number) {
+    if (!pickerBookId) return;
+    const bookId = pickerBookId;
+    const requestId = ++pickerRequestId;
+    pickerChapter = number;
+    $('picker-chapters').querySelectorAll('[data-picker-chapter]').forEach(button => {
+        const active = Number(button.dataset.pickerChapter) === number;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-pressed', String(active));
+    });
+    $('picker-verses-section').hidden = false;
+    $('picker-verses').innerHTML = '<span class="picker-loading">Cargando versículos…</span>';
+    $('picker-read-chapter').disabled = false;
+    $('picker-status').textContent = `Capítulo ${number} seleccionado.`;
+
+    try {
+        // Solo se consulta el archivo JSON del libro elegido; se aprovecha la caché.
+        const chapters = await getBookJson(bookId);
+        if (requestId !== pickerRequestId || !$('bible-picker').open) return;
+        const verses = chapters[number - 1];
+        if (!Array.isArray(verses)) throw new Error('No se encontraron versículos.');
+        $('picker-verses').innerHTML = verses.map((_, i) =>
+            `<button type="button" data-picker-verse="${i + 1}" aria-label="Ir al versículo ${i + 1}">${i + 1}</button>`
+        ).join('');
+        $('picker-status').textContent = `${verses.length} versículos en el capítulo ${number}.`;
+    } catch (error) {
+        if (requestId !== pickerRequestId) return;
+        console.error('Error al cargar los versículos del selector:', error);
+        $('picker-verses').innerHTML = '';
+        $('picker-status').textContent = 'No fue posible cargar los versículos. Comprueba la carpeta data.';
+    }
+}
+
+$('picker-chapters').addEventListener('click', event => {
+    const button = event.target.closest('[data-picker-chapter]');
+    if (button) chooseBibleChapter(Number(button.dataset.pickerChapter));
+});
+
+$('picker-verses').addEventListener('click', event => {
+    const button = event.target.closest('[data-picker-verse]');
+    if (!button || !pickerBookId || !pickerChapter) return;
+    const bookId = pickerBookId, chapter = pickerChapter;
+    const verse = Number(button.dataset.pickerVerse);
+    closeBiblePicker();
+    openReader('biblia', bookId, chapter, verse);
+});
+
+$('picker-read-chapter').addEventListener('click', () => {
+    if (!pickerBookId || !pickerChapter) return;
+    const bookId = pickerBookId, chapter = pickerChapter;
+    closeBiblePicker();
+    openReader('biblia', bookId, chapter);
+});
+
+$('picker-close').addEventListener('click', closeBiblePicker);
+$('bible-picker').addEventListener('close', () => { pickerRequestId++; });
+$('bible-picker').addEventListener('click', event => {
+    if (event.target === $('bible-picker')) closeBiblePicker();
+});
+
+$('content').addEventListener('click', e => {
+    const button = e.target.closest('[data-type]');
+    if (!button) return;
+
+    // Un libro sin capítulo explícito abre el selector, no Génesis/Libro 1.
+    // Los resultados de búsqueda y favoritos con capítulo/versículo explícitos
+    // siguen llegando directamente al lector, sin pasos adicionales.
+    if (button.dataset.type === 'biblia' && !button.hasAttribute('data-chapter')) {
+        openBiblePicker(button.dataset.id);
+        return;
+    }
+
+    openReader(
+        button.dataset.type,
+        button.dataset.id,
+        Number(button.dataset.chapter || 1),
+        button.dataset.verse ? Number(button.dataset.verse) : null,
+        button.dataset.verseEnd ? Number(button.dataset.verseEnd) : null,
+        button.dataset.stanza !== undefined ? Number(button.dataset.stanza) : null
+    );
+});
 $('back').addEventListener('click', () => { clearVerseSelection(); $('reader').close(); });
 $('chapterSelect').addEventListener('change', e => { clearVerseSelection(); state.chapter = Number(e.target.value); if (state.selection) {
     state.selection.verseStart = null;
