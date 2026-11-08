@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.9. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.18. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -11,20 +11,226 @@ const store = (k, fallback) => { try {
 catch {
     return fallback;
 } };
-const state = { tab: 'biblia', query: '', books: [], hymns: [], version: 'rvr1960', selection: null, chapter: 1, font: store('bh-font', 18), favs: new Set(store('bh-favs', [])), loading: false, searchTask: 0, searchTimer: null, redLetters: store('bh-red-letters', true), selectedVerses: new Set(), highlights: store('bh-verse-highlights', {}), history: store('bh-reading-history', []), focus: false, hymnData: null, hymnSearchIndex: null, hymnListOpen: false, favoriteCategory: 'himnos' };
+const state = { tab: 'biblia', query: '', books: [], hymns: [], version: store('bh-bible-version', 'rvr1960') === 'tla' ? 'tla' : 'rvr1960', selection: null, chapter: 1, font: store('bh-font', 18), favs: new Set(store('bh-favs', [])), loading: false, searchTask: 0, searchTimer: null, redLetters: store('bh-red-letters', true), selectedVerses: new Set(), highlights: store('bh-verse-highlights', {}), history: store('bh-reading-history', []), focus: false, hymnData: null, hymnSearchIndex: null, hymnListOpen: false, favoriteCategory: 'himnos' };
 const normalized = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 const safe = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const favoriteKey = (type, id) => `${type}:${id}`;
 const bibleCache = new Map();
+
+
+const BOOK_DISPLAY_ABBR = {
+    genesis: 'Gén',
+    exodo: 'Éxo',
+    levitico: 'Lev',
+    numeros: 'Núm',
+    deuteronomio: 'Deut',
+    josue: 'Jos',
+    jueces: 'Jue',
+    rut: 'Rut',
+    '1_samuel': '1Sam',
+    '2_samuel': '2Sam',
+    '1_reyes': '1Rey',
+    '2_reyes': '2Rey',
+    '1_cronicas': '1Crón',
+    '2_cronicas': '2Crón',
+    esdras: 'Esd',
+    nehemias: 'Neh',
+    ester: 'Est',
+    job: 'Job',
+    salmos: 'Sal',
+    proverbios: 'Prov',
+    eclesiastes: 'Ecl',
+    cantares: 'Cant',
+    isaias: 'Isa',
+    jeremias: 'Jer',
+    lamentaciones: 'Lam',
+    ezequiel: 'Eze',
+    daniel: 'Dan',
+    oseas: 'Ose',
+    joel: 'Joel',
+    amos: 'Amós',
+    abdias: 'Abd',
+    jonas: 'Jon',
+    miqueas: 'Miq',
+    nahum: 'Nah',
+    habacuc: 'Hab',
+    sofonias: 'Sof',
+    hageo: 'Hag',
+    zacarias: 'Zac',
+    malaquias: 'Mal',
+    mateo: 'Mat',
+    marcos: 'Mar',
+    lucas: 'Luc',
+    juan: 'Juan',
+    hechos: 'Hech',
+    romanos: 'Rom',
+    '1_corintios': '1Cor',
+    '2_corintios': '2Cor',
+    galatas: 'Gál',
+    efesios: 'Efe',
+    filipenses: 'Fil',
+    colosenses: 'Col',
+    '1_tesalonicenses': '1Ts',
+    '2_tesalonicenses': '2Ts',
+    '1_timoteo': '1Tim',
+    '2_timoteo': '2Tim',
+    tito: 'Tit',
+    filemon: 'Film',
+    hebreos: 'Heb',
+    santiago: 'Sant',
+    '1_pedro': '1Ped',
+    '2_pedro': '2Ped',
+    '1_juan': '1Jn',
+    '2_juan': '2Jn',
+    '3_juan': '3Jn',
+    judas: 'Jud',
+    apocalipsis: 'Apoc'
+};
+
+function displayBookAbbr(book) {
+    return BOOK_DISPLAY_ABBR[book.id] || book.abreviatura || book.nombre.slice(0, 4);
+}
+
+/* ==========================================================
+ * 14. PALETA DE LIBROS - COLORES DE LA CAPTURA DE REFERENCIA
+ * El color depende del orden canonico, no de la posicion visual.
+ * Se usa la misma paleta en la portada y en el selector modal.
+ * ========================================================== */
+function bibleGridTone(book) {
+    const n = Number(book.orden);
+    if (n <= 5 || (n >= 40 && n <= 43)) return 'tone-gold';
+    if ((n >= 6 && n <= 17) || n === 44) return 'tone-blue';
+    if ((n >= 18 && n <= 22) || n === 25 || (n >= 45 && n <= 57)) return 'tone-sand';
+    if ((n >= 23 && n <= 24) || (n >= 26 && n <= 27) || (n >= 58 && n <= 65)) return 'tone-green';
+    return 'tone-rose';
+}
+
+function setContentMode(mode = 'list') {
+    $('content').classList.toggle('bible-grid-view', mode === 'bible-grid');
+}
+
+
+function renderBibleGrid(filtered) {
+    const total = filtered.length;
+    $('section-title').textContent = 'Libros de la Biblia';
+    $('count').textContent = `${total} ${total === 1 ? 'resultado' : 'resultados'}`;
+    setContentMode('bible-grid');
+    if (!total) {
+        $('content').innerHTML = '<div class="empty">No se encontraron libros bíblicos.</div>';
+        return;
+    }
+    $('content').innerHTML = `<div class="bible-books-grid">${filtered.map(book => `
+        <button
+            class="book-grid-item ${bibleGridTone(book)}"
+            data-type="biblia"
+            data-id="${safe(book.id)}"
+            title="${safe(book.nombre)}"
+            aria-label="${safe(book.nombre)}"
+        >
+            <span class="book-grid-abbr">${safe(displayBookAbbr(book))}</span>
+        </button>`).join('')}</div>`;
+}
+
 /*
  * ==========================================================
  * 02. BIBLIA Y NAVEGACIÓN PRINCIPAL
  * ==========================================================
  */
-async function getBookJson(bookId) { if (bibleCache.has(bookId))
-    return bibleCache.get(bookId); const data = await json(`data/biblia/${state.version}/${bookId}.json`); if (!Array.isArray(data))
-    throw new Error('Formato bíblico no válido'); bibleCache.set(bookId, data); if (bibleCache.size > 3)
-    bibleCache.delete(bibleCache.keys().next().value); return data; }
+/* ==========================================================
+ * 02.C. VERSIONES BÍBLICAS: RVR1960 / TLA (v0.7.12)
+ * Se conserva la carga por libro y las referencias anteriores.
+ * ========================================================== */
+const BIBLE_VERSIONS = {
+    rvr1960: 'Reina-Valera 1960',
+    tla: 'Traducción en Lenguaje Actual'
+};
+
+function buildTlaChapters(payload) {
+    if (!payload || !Array.isArray(payload.chapters))
+        throw new Error('El archivo TLA no contiene capítulos');
+    return payload.chapters.map(chapter => {
+        const verses = [];
+        const blocks = [];
+        for (const block of chapter.blocks || []) {
+            if (block.type === 'verse') {
+                const numbers = (block.numbers || []).map(Number).filter(n => n > 0);
+                if (!numbers.length) continue;
+                for (const n of numbers) verses[n - 1] = (verses[n - 1] ? verses[n - 1] + '\n' : '') + String(block.text || '');
+                blocks.push({ type: 'verse', numbers, text: String(block.text || '') });
+            } else {
+                blocks.push({ type: block.type, text: String(block.text || '') });
+            }
+        }
+        // La forma Array se mantiene para búsqueda, referencias y selector de versículos.
+        verses.blocks = blocks;
+        return verses;
+    });
+}
+
+async function getBookJson(bookId) {
+    const version = state.version;
+    const cacheKey = `${version}:${bookId}`;
+    if (bibleCache.has(cacheKey)) return bibleCache.get(cacheKey);
+    const data = await json(`data/biblia/${version}/${bookId}.json`);
+    const chapters = version === 'tla' ? buildTlaChapters(data) : data;
+    if (!Array.isArray(chapters)) throw new Error('Formato bíblico no válido');
+    bibleCache.set(cacheKey, chapters);
+    if (bibleCache.size > 8) bibleCache.delete(bibleCache.keys().next().value);
+    return chapters;
+}
+
+function updateBibleVersionUI() {
+    $('reader-version').value = state.version;
+    $('reader-version-wrap').hidden = state.selection?.type !== 'biblia';
+    updateMinimalBibleNav();
+    if (state.selection?.type === 'biblia') {
+        const book = state.books.find(b => b.id === state.selection.id);
+        $('reader-type').textContent = `${BIBLE_VERSIONS[state.version]} · ${book?.testamento || ''}`;
+    }
+    // Las marcas _...__ para palabras de Jesús pertenecen a los JSON RVR1960.
+    $('redLetters').closest('.red-letters-setting').hidden = state.selection?.type !== 'biblia' || state.version !== 'rvr1960';
+}
+
+$('reader-version').addEventListener('change', async e => {
+    const nextVersion = e.target.value;
+    if (!Object.hasOwn(BIBLE_VERSIONS, nextVersion) || nextVersion === state.version) return;
+    state.version = nextVersion;
+    localStorage.setItem('bh-bible-version', JSON.stringify(nextVersion));
+    state.searchTask++;
+    clearTimeout(state.searchTimer);
+    clearVerseSelection();
+    updateBibleVersionUI();
+    if (state.selection?.type === 'biblia') await loadChapter();
+    if (state.tab === 'biblia') showDailyVerse();
+});
+
+function tlaVerseMarkup(verses, book, chapter, selected) {
+    const blocks = verses.blocks || [];
+    const referenced = new Set();
+    return blocks.map(block => {
+        if (block.type !== 'verse') {
+            const cls = ['section1', 'heading1'].includes(block.type)
+                ? 'tla-heading' : 'tla-subheading';
+            return `<h4 class="${cls}">${safe(block.text)}</h4>`;
+        }
+        const nums = block.numbers;
+        const first = nums[0];
+        const range = nums.length > 1 ? `${first}–${nums[nums.length - 1]}` : String(first);
+        const selectedRange = nums.some(n => selected.verseStart !== null && n >= selected.verseStart && n <= (selected.verseEnd || selected.verseStart));
+        const color = nums.map(n => state.highlights[verseId(selected.id, chapter, n)]).find(Boolean);
+        const saved = nums.some(n => state.favs.has('verse:' + verseId(selected.id, chapter, n)));
+        // La fuente contiene algunos números repetidos en bloques contiguos.
+        // El ancla HTML se declara solo una vez y el texto se mantiene completo.
+        const anchors = nums.filter(n => !referenced.has(n))
+            .map(n => { referenced.add(n); return `<span class="tla-verse-anchor" id="verse-${n}"></span>`; }).join('');
+        return `<p class="verse tla-verse${selectedRange ? ' verse-target' : ''}${color ? ' highlight-' + safe(color) : ''}" data-verse-number="${first}" data-verse-numbers="${nums.join(',')}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar versículo${nums.length > 1 ? 's' : ''} ${range}">${anchors}<sup>${range}</sup>${safe(block.text).replace(/\n/g, '<br>')}${saved ? '<span class="verse-saved" aria-label="Favorito">♥</span>' : ''}</p>`;
+    }).join('');
+}
+
+function verseGroupNumbers(element) {
+    return (element.dataset.verseNumbers || element.dataset.verseNumber).split(',').map(Number);
+}
+
 function formatVerse(value) {
     // Los JSON marcan algunas palabras de Jesus con _inicio y __cierre.
     // Primero escapamos HTML y luego interpretamos las marcas, sin alterar el JSON.
@@ -52,6 +258,9 @@ async function init() { try {
     state.hymns = h;
     render();
     renderReadingHistory();
+    // v0.7.17: mostrar portada con versículo del día, sin abrir automáticamente el lector.
+    // La última lectura continúa disponible mediante «Continuar leyendo».
+    await showDailyVerse();
 }
 catch (e) {
     console.error(e);
@@ -67,7 +276,7 @@ function items() { const b = state.books.map(i => ({ ...i, type: 'biblia' })), h
 function updateHomeView() {
     const tab = state.tab;
     const labels = {
-        biblia: ['MI ESPACIO DE DEVOCIÓN', '¿Qué deseas leer hoy?', 'Encuentra la Palabra y tus himnos en un solo lugar.'],
+        biblia: ['TU LECTURA BÍBLICA', 'La Palabra para hoy', 'Un momento para leer, reflexionar y continuar tu estudio.'],
         himnos: ['HIMNARIO ADVENTISTA', 'Encuentra tu himno', 'Busca por número, título o palabras de su letra.'],
         favoritos: ['TUS GUARDADOS', 'Mis favoritos', 'Encuentra tus himnos y versículos favoritos por separado.']
     };
@@ -83,6 +292,12 @@ function updateHomeView() {
     // El historial bíblico no se muestra en el Himnario ni en Favoritos.
     $('reading-progress').hidden = tab !== 'biblia' || state.history.length === 0;
 
+    // La portada de Biblia usa el versículo del día, sin la cuadrícula de 66 libros.
+    // El buscador es un acceso al selector por Libro → Capítulo → Versículo.
+    $('daily-verse').hidden = tab !== 'biblia';
+    $('search').readOnly = tab === 'biblia';
+    $('search').setAttribute('aria-label', tab === 'biblia' ? 'Abrir selector de pasajes bíblicos' : 'Buscar');
+
     // Sin texto de búsqueda, solo se lista el catálogo si el usuario lo pide.
     const searchActive = Boolean(state.query.trim());
     $('hymn-discovery').hidden = tab !== 'himnos' || searchActive;
@@ -90,8 +305,8 @@ function updateHomeView() {
     $('hymn-list-label').textContent = state.hymnListOpen ? 'Ocultar himnos' : 'Listar himnos';
     $('hymn-discovery-tip').hidden = state.hymnListOpen;
     const hideListing = tab === 'himnos' && !searchActive && !state.hymnListOpen;
-    document.querySelector('.content-header').hidden = hideListing;
-    $('content').hidden = hideListing;
+    document.querySelector('.content-header').hidden = tab === 'biblia' || hideListing;
+    $('content').hidden = tab === 'biblia' || hideListing;
 }
 
 $('hymn-list-toggle').addEventListener('click', () => {
@@ -131,6 +346,7 @@ document.querySelectorAll('[data-favorite-category]').forEach(btn => {
 });
 
 function renderFavorites() {
+    setContentMode('list');
     updateFavoriteCategories();
     const query = normalized(state.query);
     const showHymns = state.favoriteCategory === 'himnos';
@@ -176,6 +392,7 @@ function renderFavorites() {
 
 function render() {
     updateHomeView();
+    setContentMode('list');
     if (!state.query.trim()) showSearchStatus('');
     if (state.tab === 'favoritos') return renderFavorites();
     // No generar los 613 botones hasta que se pulse «Listar himnos».
@@ -185,19 +402,26 @@ function render() {
         $('content').innerHTML = '';
         return;
     }
-    if (state.tab === 'biblia' && state.query.trim()) return searchBible();
+    if (state.tab === 'biblia') {
+        $('content').innerHTML = '';
+        return;
+    }
     if (state.tab === 'himnos' && state.query.trim()) return searchHymns();
     const filtered = items().filter(x => normalized([x.nombre, x.titulo, x.numero, x.testamento, x.id].join(' ')).includes(normalized(state.query)));
-    $('section-title').textContent = state.tab === 'biblia' ? 'Libros de la Biblia' : 'Himnario Adventista';
+    if (state.tab === 'biblia') {
+        renderBibleGrid(filtered);
+        return;
+    }
+    $('section-title').textContent = 'Himnario Adventista';
     $('count').textContent = `${filtered.length} ${filtered.length === 1 ? 'resultado' : 'resultados'}`;
-    $('content').innerHTML = filtered.length ? filtered.map(x => `<button class="item" data-type="${x.type}" data-id="${safe(x.id)}"><span class="symbol">${x.type === 'biblia' ? String(x.orden).padStart(2,'0') : x.numero}</span><span class="details"><strong>${safe(x.nombre || x.titulo)}</strong><small>${x.type === 'biblia' ? `${safe(x.testamento)} · ${x.totalCapitulos} capítulos` : `Himno ${x.numero} · ${x.letraDisponible ? 'Letra disponible' : 'Letra por incorporar'}`}</small></span><span class="chevron">›</span></button>`).join('') : '<div class="empty">No se encontraron resultados. Prueba otro término.</div>';
+    $('content').innerHTML = filtered.length ? filtered.map(x => `<button class="item" data-type="${x.type}" data-id="${safe(x.id)}"><span class="symbol">${x.numero}</span><span class="details"><strong>${safe(x.titulo)}</strong><small>Himno ${x.numero} · ${x.letraDisponible ? 'Letra disponible' : 'Letra por incorporar'}</small></span><span class="chevron">›</span></button>`).join('') : '<div class="empty">No se encontraron resultados. Prueba otro término.</div>';
 }
-function setTab(t) { state.hymnListOpen = false; state.searchTask++; clearTimeout(state.searchTimer); $('search-status').hidden = true; state.tab = t; state.query = ''; $('search').value = ''; $('search').placeholder = t === 'himnos' ? 'Buscar número, título o palabras de un himno' : t === 'biblia' ? 'Ej. Juan 3:16, Salmos 23, amor de Dios' : 'Buscar en mis guardados'; document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === t; b.classList.toggle('active', on); if (b.getAttribute('role') === 'tab')
+function setTab(t) { state.hymnListOpen = false; state.searchTask++; clearTimeout(state.searchTimer); $('search-status').hidden = true; state.tab = t; state.query = ''; $('search').value = ''; $('search').placeholder = t === 'himnos' ? 'Buscar número, título o palabras de un himno' : t === 'biblia' ? 'Buscar libro, capítulo o versículo' : 'Buscar en mis guardados'; document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === t; b.classList.toggle('active', on); if (b.getAttribute('role') === 'tab')
     b.setAttribute('aria-selected', String(on)); }); render(); }
 function setBookmark() { if (!state.selection)
     return; const k = favoriteKey(state.selection.type, state.selection.id); $('bookmark').textContent = state.favs.has(k) ? '♥' : '♡'; $('bookmark').setAttribute('aria-label', state.favs.has(k) ? 'Quitar de favoritos' : 'Agregar a favoritos'); }
-async function openReader(type, id, chapter = 1, verseStart = null, verseEnd = null, stanzaIndex = null) { const item = (type === 'biblia' ? state.books : state.hymns).find(i => i.id === id); if (!item)
-    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? 'REINA-VALERA 1960 · ' + item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; setBookmark(); updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; $('redLetters').closest('.red-letters-setting').hidden = type !== 'biblia'; $('swipe-hint').hidden = false; if (!$('reader').open)
+async function openReader(type, id, chapter = 1, verseStart = null, verseEnd = null, stanzaIndex = null) { readerMotionDirection = 0; const item = (type === 'biblia' ? state.books : state.hymns).find(i => i.id === id); if (!item)
+    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? BIBLE_VERSIONS[state.version] + ' · ' + item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; setBookmark(); updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
     $('reader').showModal(); setFocusMode(false); if (type === 'biblia') {
     $('chapterSelect').innerHTML = Array.from({ length: item.totalCapitulos }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
     await loadChapter();
@@ -207,25 +431,31 @@ else {
     await loadHymn(item);
 } }
 async function loadChapter() {
+    readerContentReady = false;
     const selected = state.selection;
     if (!selected || selected.type !== 'biblia')
         return;
-    const chapter = state.chapter, book = state.books.find(b => b.id === selected.id);
+    const chapter = state.chapter, requestedVersion = state.version, book = state.books.find(b => b.id === selected.id);
     $('chapterSelect').value = String(chapter);
     $('prevChapter').disabled = chapter === 1;
     $('nextChapter').disabled = chapter === book.totalCapitulos;
+    updateMinimalBibleNav();
     $('reader-body').innerHTML = '<div class="empty">Cargando capítulo…</div>';
     try {
         const chapters = await getBookJson(selected.id);
-        if (state.selection !== selected || state.chapter !== chapter)
+        if (state.selection !== selected || state.chapter !== chapter || state.version !== requestedVersion)
             return;
         const verses = chapters[chapter - 1];
         if (!Array.isArray(verses))
             throw new Error('Capítulo no encontrado');
-        $('reader-body').innerHTML = `<h3>${safe(book.nombre)} ${chapter}</h3><p class="verse-help">Toca uno o varios versículos para seleccionarlos.</p>` + verses.map((v, i) => { const no = i + 1, key = verseId(selected.id, chapter, no), color = state.highlights[key]; const target = selected.verseStart !== null && no >= selected.verseStart && no <= (selected.verseEnd || selected.verseStart); return `<p class="verse${target ? ' verse-target' : ''}${color ? ' highlight-' + safe(color) : ''}" id="verse-${no}" data-verse-number="${no}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar versículo ${no}"><sup>${no}</sup>${formatVerse(v)}${state.favs.has('verse:' + key) ? '<span class="verse-saved" aria-label="Favorito">♥</span>' : ''}</p>`; }).join('');
+        $('reader-body').innerHTML = `<h3>${safe(book.nombre)} ${chapter}</h3><p class="verse-help">Toca uno o varios versículos para seleccionarlos.</p>` + (state.version === 'tla' ? tlaVerseMarkup(verses, book, chapter, selected) : verses.map((v, i) => { const no = i + 1, key = verseId(selected.id, chapter, no), color = state.highlights[key]; const target = selected.verseStart !== null && no >= selected.verseStart && no <= (selected.verseEnd || selected.verseStart); return `<p class="verse${target ? ' verse-target' : ''}${color ? ' highlight-' + safe(color) : ''}" id="verse-${no}" data-verse-number="${no}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar versículo ${no}"><sup>${no}</sup>${formatVerse(v)}${state.favs.has('verse:' + key) ? '<span class="verse-saved" aria-label="Favorito">♥</span>' : ''}</p>`; }).join(''));
+        animateReaderContent();
+        readerContentReady = true;
+        restoreOrSaveReadingPosition('biblia', selected.id, chapter);
         recordReading(selected.id, chapter);
         updateFocusTitle();
-        if (selected.verseStart) {
+        updateMinimalBibleNav();
+        if (selected.verseStart && !pendingReadingRestore) {
             const target = $('verse-' + selected.verseStart);
             if (target)
                 requestAnimationFrame(() => target.scrollIntoView({ block: 'center' }));
@@ -275,6 +505,7 @@ function hymnPlain(data) {
     return hymnParts(data).map(p => `${p.coro ? 'Coro' : 'Estrofa ' + p.numero}\n${p.lines.join('\n')}`).join('\n\n');
 }
 async function loadHymn(item) {
+    readerContentReady = false;
     const token = ++hymnRequest;
     state.hymnData = null;
     $('reader-type').textContent = 'HIMNARIO ADVENTISTA · N.º ' + item.numero;
@@ -297,9 +528,12 @@ async function loadHymn(item) {
             throw new Error('El archivo no contiene estrofas con texto');
         state.hymnData = data;
         $('reader-body').innerHTML = `<div class="hymn-reader"><div class="hymn-reader-heading"><span class="hymn-number">HIMNO ${item.numero}</span><h3>${safe(item.titulo)}</h3></div>${parts.map((p, i) => `<section data-hymn-stanza="${i}" class="hymn-stanza${p.coro ? ' hymn-chorus' : ''}${state.selection.stanzaIndex === i ? ' hymn-search-target' : ''}"><span class="hymn-stanza-label">${p.coro ? 'CORO' : 'ESTROFA ' + safe(p.numero)}</span>${p.lines.map(line => `<p>${safe(line)}</p>`).join('')}</section>`).join('')}</div>`;
+        animateReaderContent();
         $('hymn-copy').disabled = false;
         $('hymn-share').disabled = false;
-        if (Number.isInteger(state.selection.stanzaIndex)) {
+        readerContentReady = true;
+        restoreOrSaveReadingPosition('himnos', item.id);
+        if (Number.isInteger(state.selection.stanzaIndex) && !pendingReadingRestore) {
             const focusIndex = state.selection.stanzaIndex;
             requestAnimationFrame(() => { const el = $('reader-body').querySelector('[data-hymn-stanza="' + focusIndex + '"]'); if (el)
                 el.scrollIntoView({ block: 'center' }); });
@@ -321,6 +555,7 @@ function shiftHymn(direction) {
     if (!item)
         return;
     hymnRequest++;
+    readerMotionDirection = direction;
     state.selection = { type: 'himnos', id: item.id, verseStart: null, verseEnd: null };
     $('reader-body').scrollTop = 0;
     setBookmark();
@@ -333,6 +568,7 @@ $('hymnSelect').addEventListener('change', e => {
     if (!item)
         return;
     hymnRequest++;
+    readerMotionDirection = Math.sign(Number(item.numero) - Number(state.selection?.id || item.numero));
     state.selection = { type: 'himnos', id: item.id, verseStart: null, verseEnd: null };
     setBookmark();
     loadHymn(item);
@@ -401,43 +637,243 @@ function shiftChapter(d) { clearVerseSelection(); const book = state.books.find(
     return; state.chapter = n; if (state.selection) {
     state.selection.verseStart = null;
     state.selection.verseEnd = null;
-} loadChapter(); $('reader-body').scrollTop = 0; }
+} readerMotionDirection = d; loadChapter(); $('reader-body').scrollTop = 0; }
 document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
 $('search').addEventListener('input', e => { state.query = e.target.value; if (state.tab === 'himnos' && state.query.trim()) $('content').innerHTML = ''; updateHomeView(); clearTimeout(state.searchTimer); state.searchTask++; if (state.query.trim() && (state.tab === 'biblia' || state.tab === 'himnos'))
     state.searchTimer = setTimeout(() => state.tab === 'biblia' ? searchBible() : searchHymns(), 240);
 else
     render(); });
+// v0.7.17: en Biblia, tocar el cuadro de búsqueda abre directamente el selector.
+// En Himnario y Favoritos, el campo mantiene la búsqueda tradicional.
+function openPickerFromMainSearch() {
+    if (state.tab !== 'biblia' || $('bible-picker').open) return;
+    $('search').blur();
+    openBiblePicker();
+}
+$('search').addEventListener('click', openPickerFromMainSearch);
+$('search').addEventListener('focus', openPickerFromMainSearch);
+
 /* ==========================================================
- * 02.C. SELECTOR BÍBLICO (v0.7.9)
- * Flujo: tocar libro -> seleccionar capítulo -> elegir versículo.
- * El total de versículos se obtiene de los JSON originales.
- * No se modifica el formato de los archivos data/.
+ * 12. NAVEGACIÓN BÍBLICA MINIMALISTA — v0.7.13
+ * Libro -> Capítulo -> Versículo; pestañas de contenido, historia y favoritos.
+ * Los JSON y las claves localStorage anteriores no cambian.
  * ========================================================== */
 let pickerBookId = null;
 let pickerChapter = null;
 let pickerRequestId = 0;
+let pickerStage = 'books';
+let pickerTab = 'versiculo';
+
+// El lector utiliza la misma referencia del selector de navegación.
+function updateMinimalBibleNav() {
+    const selection = state.selection;
+    const bible = selection?.type === 'biblia';
+    $('bible-minimal-nav').hidden = !bible;
+    if (!bible) return;
+    const book = state.books.find(item => item.id === selection.id);
+    if (!book) return;
+    const ref = `${book.nombre} ${state.chapter}${selection.verseStart ? ':' + selection.verseStart : ''}`;
+    $('bible-reference-label').textContent = ref;
+    $('bible-prev').disabled = state.chapter <= 1;
+    $('bible-next').disabled = state.chapter >= book.totalCapitulos;
+}
+
+/* ==========================================================
+ * 15. BUSQUEDA AVANZADA DENTRO DEL SELECTOR BIBLICO
+ * Acepta referencias, libros y palabras o frases del texto.
+ * La busqueda de texto recorre los 66 libros de la traduccion
+ * activa progresivamente, con cancelacion al cambiar de consulta.
+ * ========================================================== */
+let pickerSearchToken = 0;
+let pickerSearchDebounce = null;
+
+function cancelPickerTextSearch() {
+    pickerSearchToken++;
+    clearTimeout(pickerSearchDebounce);
+}
+
+function showPickerTextResults(visible) {
+    $('picker-verse-tab').hidden = visible || pickerTab !== 'versiculo';
+    $('picker-text-results').hidden = !visible;
+    $('picker-bottom').hidden = visible || pickerTab !== 'versiculo' || pickerStage === 'books';
+    if (visible) $('picker-scroll-area').scrollTop = 0;
+}
+
+function cleanSearchableVerse(value) {
+    return String(value ?? '').replace(/_+/g, '').replace(/\/n/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function pickerResultMarkup(book, chapter, verse, raw) {
+    const text = cleanSearchableVerse(raw);
+    return `<button class="picker-search-result" type="button" data-picker-result-book="${safe(book.id)}" data-picker-result-chapter="${chapter}" data-picker-result-verse="${verse}">
+      <strong>${safe(book.nombre)} ${chapter}:${verse}</strong>
+      <span>${safe(text.slice(0, 230))}${text.length > 230 ? '…' : ''}</span>
+      <span class="picker-result-chevron" aria-hidden="true">›</span>
+    </button>`;
+}
+
+async function searchPickerWords(input) {
+    const query = normalized(input).replace(/\s+/g, ' ');
+    const token = ++pickerSearchToken;
+    showPickerTextResults(true);
+    $('picker-text-results-list').innerHTML = '';
+    if (query.length < 3) {
+        $('picker-text-results-status').textContent = 'Escribe al menos 3 caracteres para buscar una palabra o frase.';
+        return;
+    }
+
+    const books = [...state.books];
+    const version = state.version;
+    const maxResults = 100;
+    let index = 0, scanned = 0, found = 0, displayed = 0, failures = 0;
+    const status = $('picker-text-results-status');
+    status.textContent = `Buscando «${input}» en ${books.length} libros (${BIBLE_VERSIONS[version]})…`;
+
+    async function worker() {
+        while (token === pickerSearchToken && pickerTab === 'versiculo' && index < books.length) {
+            const book = books[index++];
+            try {
+                const chapters = await getBookJson(book.id);
+                if (token !== pickerSearchToken || !$('bible-picker').open || version !== state.version) return;
+                const matches = [];
+                chapters.forEach((verses, c) => {
+                    verses.forEach((v, vi) => {
+                        if (!v) return;
+                        const text = cleanSearchableVerse(v);
+                        if (normalized(text).includes(query)) {
+                            found++;
+                            if (displayed + matches.length < maxResults) matches.push(pickerResultMarkup(book, c + 1, vi + 1, v));
+                        }
+                    });
+                });
+                if (matches.length) {
+                    displayed += matches.length;
+                    $('picker-text-results-list').insertAdjacentHTML('beforeend', matches.join(''));
+                }
+            } catch(error) {
+                failures++;
+                console.warn('No se pudo buscar en ' + book.nombre, error);
+            }
+            scanned++;
+            if (token === pickerSearchToken) {
+                status.textContent = `Buscando… ${scanned}/${books.length} libros · ${found} coincidencia${found===1?'':'s'}${found>maxResults?' (mostrando las primeras 100)':''}`;
+            }
+        }
+    }
+    await Promise.all(Array.from({length: 4}, () => worker()));
+    if (token !== pickerSearchToken || !$('bible-picker').open) return;
+    status.textContent = found
+      ? `${found} coincidencia${found===1?'':'s'} en ${scanned} libros${found>maxResults?' · Se muestran las primeras 100':''}.`
+      : failures===books.length ? 'No se pudieron cargar los libros. Comprueba los archivos JSON.'
+      : `No se encontraron coincidencias para «${input}».`;
+}
+
+function onPickerSearchInput() {
+    cancelPickerTextSearch();
+    const term = $('picker-search-input').value.trim();
+    if (pickerTab !== 'versiculo') pickerSetTab('versiculo');
+    if (!term) {
+        showPickerTextResults(false);
+        $('picker-status').textContent='';
+        return;
+    }
+    const reference = parseReference(term);
+    const book = state.books.find(b => bookAliases(b).includes(normalized(term)));
+    if (reference || book) {
+        showPickerTextResults(false);
+        $('picker-status').textContent = reference ? 'Referencia reconocida: pulsa Ir para abrirla.' : 'Libro reconocido: pulsa Ir para ver sus capítulos.';
+        return;
+    }
+    if (term.length < 3) {
+        showPickerTextResults(true);
+        $('picker-text-results-list').innerHTML='';
+        $('picker-text-results-status').textContent='Escribe al menos 3 caracteres para buscar en los versículos.';
+        return;
+    }
+    pickerSearchDebounce = setTimeout(() => searchPickerWords(term), 350);
+}
+
+$('picker-search-input').addEventListener('input', onPickerSearchInput);
+$('picker-text-results-list').addEventListener('click', event => {
+    const button = event.target.closest('[data-picker-result-book]');
+    if (!button) return;
+    pickerOpenPassage(button.dataset.pickerResultBook, Number(button.dataset.pickerResultChapter), Number(button.dataset.pickerResultVerse));
+});
+
+function pickerSetTab(tab) {
+    cancelPickerTextSearch();
+    showPickerTextResults(false);
+    if (!['versiculo', 'contenido', 'reciente', 'favoritos'].includes(tab)) return;
+    pickerTab = tab;
+    document.querySelectorAll('[data-picker-tab]').forEach(button => {
+        const active = button.dataset.pickerTab === tab;
+        button.classList.toggle('active', active);
+        button.setAttribute('aria-selected', String(active));
+    });
+    const panels = { versiculo: 'picker-verse-tab', contenido: 'picker-content-tab', reciente: 'picker-recent-tab', favoritos: 'picker-favorites-tab' };
+    Object.entries(panels).forEach(([key, id]) => { $(id).hidden = key !== tab; });
+    $('picker-bottom').hidden = tab !== 'versiculo' || pickerStage === 'books';
+    $('picker-status').textContent = '';
+    if (tab === 'contenido') renderPickerContent();
+    if (tab === 'reciente') renderPickerRecent();
+    if (tab === 'favoritos') renderPickerFavorites();
+    $('picker-scroll-area').scrollTop = 0;
+}
+
+function renderPickerBooks() {
+    const button = book => `<button type="button" data-picker-book="${safe(book.id)}" class="${bibleGridTone(book)}" title="${safe(book.nombre)}" aria-label="${safe(book.nombre)}">${safe(displayBookAbbr(book))}</button>`;
+    $('picker-books-old').innerHTML = state.books.filter(b => b.testamento.startsWith('Antiguo')).map(button).join('');
+    $('picker-books-new').innerHTML = state.books.filter(b => b.testamento.startsWith('Nuevo')).map(button).join('');
+}
+
+function pickerSetStage(stage) {
+    showPickerTextResults(false);
+    pickerStage = stage;
+    const book = state.books.find(b => b.id === pickerBookId);
+    $('picker-books-section').hidden = stage !== 'books';
+    $('picker-chapters-section').hidden = stage !== 'chapters';
+    $('picker-verses-section').hidden = stage !== 'verses';
+    $('picker-step-back').hidden = stage === 'books';
+    $('picker-title').textContent = stage === 'books' ? 'Selecciona un libro' : stage === 'chapters' ? book?.nombre || 'Capítulos' : `${book?.nombre || ''} ${pickerChapter}`;
+    $('picker-step-description').textContent = stage === 'books' ? 'Selecciona un libro de la Biblia.' : stage === 'chapters' ? 'Selecciona un capítulo.' : 'Selecciona el versículo o lee todo el capítulo.';
+    $('picker-bottom').hidden = pickerTab !== 'versiculo' || stage === 'books';
+    $('picker-read-chapter').disabled = !pickerBookId || !pickerChapter;
+    $('picker-scroll-area').scrollTop = 0;
+}
 
 function closeBiblePicker() {
+    cancelPickerTextSearch();
     pickerRequestId++;
     if ($('bible-picker').open) $('bible-picker').close();
 }
 
-function openBiblePicker(bookId) {
+// Sin argumento muestra los 66 libros; con argumento abre capítulos directamente.
+function openBiblePicker(bookId = null, { focusSearch = false } = {}) {
+    cancelPickerTextSearch();
+    pickerRequestId++;
+    pickerBookId = null;
+    pickerChapter = null;
+    renderPickerBooks();
+    $('picker-search-input').value = '';
+    pickerSetTab('versiculo');
+    pickerSetStage('books');
+    if (!$('bible-picker').open) $('bible-picker').showModal();
+    if (bookId) choosePickerBook(bookId);
+    if (focusSearch) $('picker-search-input').focus({preventScroll:true});
+}
+
+function choosePickerBook(bookId) {
+    cancelPickerTextSearch();
+    $('picker-search-input').value = '';
     const book = state.books.find(item => item.id === bookId);
     if (!book) return;
     pickerRequestId++;
     pickerBookId = book.id;
     pickerChapter = null;
-    $('picker-title').textContent = book.nombre;
-    $('picker-status').textContent = 'Selecciona el capítulo que deseas leer.';
-    $('picker-verses-section').hidden = true;
-    $('picker-verses').replaceChildren();
-    $('picker-read-chapter').disabled = true;
-    $('picker-chapters').innerHTML = Array.from(
-        { length: book.totalCapitulos },
-        (_, index) => `<button type="button" data-picker-chapter="${index + 1}" aria-pressed="false">${index + 1}</button>`
-    ).join('');
-    if (!$('bible-picker').open) $('bible-picker').showModal();
+    $('picker-chapters').innerHTML = Array.from({length: book.totalCapitulos}, (_, i) =>
+        `<button type="button" data-picker-chapter="${i + 1}">${i + 1}</button>`).join('');
+    pickerSetTab('versiculo');
+    pickerSetStage('chapters');
 }
 
 async function chooseBibleChapter(number) {
@@ -445,61 +881,111 @@ async function chooseBibleChapter(number) {
     const bookId = pickerBookId;
     const requestId = ++pickerRequestId;
     pickerChapter = number;
-    $('picker-chapters').querySelectorAll('[data-picker-chapter]').forEach(button => {
-        const active = Number(button.dataset.pickerChapter) === number;
-        button.classList.toggle('active', active);
-        button.setAttribute('aria-pressed', String(active));
-    });
-    $('picker-verses-section').hidden = false;
     $('picker-verses').innerHTML = '<span class="picker-loading">Cargando versículos…</span>';
-    $('picker-read-chapter').disabled = false;
-    $('picker-status').textContent = `Capítulo ${number} seleccionado.`;
-
+    pickerSetStage('verses');
     try {
-        // Solo se consulta el archivo JSON del libro elegido; se aprovecha la caché.
         const chapters = await getBookJson(bookId);
         if (requestId !== pickerRequestId || !$('bible-picker').open) return;
         const verses = chapters[number - 1];
         if (!Array.isArray(verses)) throw new Error('No se encontraron versículos.');
         $('picker-verses').innerHTML = verses.map((_, i) =>
-            `<button type="button" data-picker-verse="${i + 1}" aria-label="Ir al versículo ${i + 1}">${i + 1}</button>`
-        ).join('');
-        $('picker-status').textContent = `${verses.length} versículos en el capítulo ${number}.`;
+            `<button type="button" data-picker-verse="${i + 1}" aria-label="Ir al versículo ${i + 1}">${i + 1}</button>`).join('');
+        $('picker-status').textContent = `${verses.length} versículos.`;
     } catch (error) {
         if (requestId !== pickerRequestId) return;
-        console.error('Error al cargar los versículos del selector:', error);
+        console.error('Error al cargar los versículos:', error);
         $('picker-verses').innerHTML = '';
-        $('picker-status').textContent = 'No fue posible cargar los versículos. Comprueba la carpeta data.';
+        $('picker-status').textContent = 'No se pudo cargar este capítulo. Comprueba la carpeta data.';
     }
 }
 
+function pickerOpenPassage(bookId, chapter, verse = null) {
+    closeBiblePicker();
+    // Preservar el lector actual si ya estaba abierto y evitar abrir uno encima.
+    openReader('biblia', bookId, chapter, verse);
+}
+
+function renderPickerContent() {
+    $('picker-content-items').innerHTML = ['Antiguo Testamento', 'Nuevo Testamento'].map(testament => {
+        const books = state.books.filter(b => b.testamento === testament);
+        return `<h3>${safe(testament)}</h3>` + books.map(b =>
+            `<button type="button" data-picker-book="${safe(b.id)}"><span>${safe(b.nombre)}</span><small>${b.totalCapitulos} cap. ›</small></button>`).join('');
+    }).join('');
+}
+
+function renderPickerRecent() {
+    const items = state.history.filter(h => state.books.some(b => b.id === h.bookId) && Number.isInteger(h.chapter)).slice(0,20);
+    $('picker-recent-items').innerHTML = items.length ? items.map(h => {
+        const book = state.books.find(b => b.id === h.bookId);
+        return `<button type="button" data-picker-open-book="${safe(h.bookId)}" data-picker-open-chapter="${h.chapter}"><span>${safe(book.nombre)} ${h.chapter}</span><small>Leer ›</small></button>`;
+    }).join('') : '<p class="picker-empty">Aún no tienes lecturas recientes.</p>';
+}
+
+function renderPickerFavorites() {
+    const items = [...state.favs].map(key => {
+        const parts = key.split(':');
+        if (parts[0] === 'verse') {
+            const book = state.books.find(b => b.id === parts[1]);
+            if (!book) return '';
+            return `<button type="button" data-picker-open-book="${safe(book.id)}" data-picker-open-chapter="${Number(parts[2])}" data-picker-open-verse="${Number(parts[3])}"><span>${safe(book.nombre)} ${Number(parts[2])}:${Number(parts[3])}</span><small>Versículo ›</small></button>`;
+        }
+        if (parts[0] === 'biblia') {
+            const book = state.books.find(b => b.id === parts[1]);
+            if (book) return `<button type="button" data-picker-book="${safe(book.id)}"><span>${safe(book.nombre)}</span><small>Libro ›</small></button>`;
+        }
+        return '';
+    }).filter(Boolean);
+    $('picker-favorite-items').innerHTML = items.length ? items.join('') : '<p class="picker-empty">Todavía no tienes versículos favoritos.</p>';
+}
+
+// Atajos y controles del selector de referencias.
+$('picker-books-section').addEventListener('click', event => {
+    const button = event.target.closest('[data-picker-book]');
+    if (button) choosePickerBook(button.dataset.pickerBook);
+});
 $('picker-chapters').addEventListener('click', event => {
     const button = event.target.closest('[data-picker-chapter]');
     if (button) chooseBibleChapter(Number(button.dataset.pickerChapter));
 });
-
 $('picker-verses').addEventListener('click', event => {
     const button = event.target.closest('[data-picker-verse]');
-    if (!button || !pickerBookId || !pickerChapter) return;
-    const bookId = pickerBookId, chapter = pickerChapter;
-    const verse = Number(button.dataset.pickerVerse);
-    closeBiblePicker();
-    openReader('biblia', bookId, chapter, verse);
+    if (button && pickerBookId && pickerChapter) pickerOpenPassage(pickerBookId, pickerChapter, Number(button.dataset.pickerVerse));
 });
-
+$('picker-step-back').addEventListener('click', () => pickerSetStage(pickerStage === 'verses' ? 'chapters' : 'books'));
 $('picker-read-chapter').addEventListener('click', () => {
-    if (!pickerBookId || !pickerChapter) return;
-    const bookId = pickerBookId, chapter = pickerChapter;
-    closeBiblePicker();
-    openReader('biblia', bookId, chapter);
+    if (pickerBookId && pickerChapter) pickerOpenPassage(pickerBookId, pickerChapter);
 });
-
 $('picker-close').addEventListener('click', closeBiblePicker);
 $('bible-picker').addEventListener('close', () => { pickerRequestId++; });
 $('bible-picker').addEventListener('click', event => {
     if (event.target === $('bible-picker')) closeBiblePicker();
 });
-
+document.querySelectorAll('[data-picker-tab]').forEach(button => button.addEventListener('click', () => pickerSetTab(button.dataset.pickerTab)));
+['picker-content-items','picker-recent-items','picker-favorite-items'].forEach(id => $(id).addEventListener('click', event => {
+    const btn = event.target.closest('button');
+    if (!btn) return;
+    if (btn.dataset.pickerBook) choosePickerBook(btn.dataset.pickerBook);
+    else if (btn.dataset.pickerOpenBook) pickerOpenPassage(btn.dataset.pickerOpenBook, Number(btn.dataset.pickerOpenChapter), btn.dataset.pickerOpenVerse ? Number(btn.dataset.pickerOpenVerse) : null);
+}));
+function pickerSearchReference() {
+    const term = $('picker-search-input').value.trim();
+    if (!term) return;
+    const ref = parseReference(term);
+    if (ref && ref.chapter >= 1 && ref.chapter <= ref.book.totalCapitulos) {
+        pickerOpenPassage(ref.book.id, ref.chapter, ref.verse);
+        return;
+    }
+    const book = state.books.find(b => bookAliases(b).some(a => a === normalized(term)));
+    if (book) { choosePickerBook(book.id); return; }
+    cancelPickerTextSearch();
+    searchPickerWords(term);
+}
+$('picker-search-go').addEventListener('click', pickerSearchReference);
+$('picker-search-input').addEventListener('keydown', event => { if (event.key === 'Enter') pickerSearchReference(); });
+$('bible-reference').addEventListener('click', () => openBiblePicker());
+$('bible-pick-search').addEventListener('click', () => openBiblePicker(null, { focusSearch: true }));
+$('bible-prev').addEventListener('click', () => shiftChapter(-1));
+$('bible-next').addEventListener('click', () => shiftChapter(1));
 $('content').addEventListener('click', e => {
     const button = e.target.closest('[data-type]');
     if (!button) return;
@@ -522,14 +1008,14 @@ $('content').addEventListener('click', e => {
     );
 });
 $('back').addEventListener('click', () => { clearVerseSelection(); $('reader').close(); });
-$('chapterSelect').addEventListener('change', e => { clearVerseSelection(); state.chapter = Number(e.target.value); if (state.selection) {
+$('chapterSelect').addEventListener('change', e => { const previousChapter = state.chapter; clearVerseSelection(); state.chapter = Number(e.target.value); if (state.selection) {
     state.selection.verseStart = null;
     state.selection.verseEnd = null;
-} loadChapter(); $('reader-body').scrollTop = 0; });
+} readerMotionDirection = Math.sign(state.chapter - previousChapter); loadChapter(); $('reader-body').scrollTop = 0; });
 $('prevChapter').addEventListener('click', () => shiftChapter(-1));
 $('nextChapter').addEventListener('click', () => shiftChapter(1));
 $('bookmark').addEventListener('click', () => { if (!state.selection)
-    return; const k = favoriteKey(state.selection.type, state.selection.id); state.favs.has(k) ? state.favs.delete(k) : state.favs.add(k); localStorage.setItem('bh-favs', JSON.stringify([...state.favs])); setBookmark(); if (state.selection.type === 'himnos')
+    return; const k = favoriteKey(state.selection.type, state.selection.id); state.favs.has(k) ? state.favs.delete(k) : state.favs.add(k); localStorage.setItem('bh-favs', JSON.stringify([...state.favs])); setBookmark(); if (state.favs.has(k)) pulseSavedIcon($('bookmark')); if (state.selection.type === 'himnos')
     updateHymnButtons(); render(); });
 function size(n) { state.font = Math.min(32, Math.max(14, state.font + n)); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; localStorage.setItem('bh-font', JSON.stringify(state.font)); }
 $('smaller').addEventListener('click', () => size(-2));
@@ -610,6 +1096,7 @@ function bibleResult(book, chapter, verse, raw, term, end = null) {
     return `<button class="item search-result" data-type="biblia" data-id="${safe(book.id)}" data-chapter="${chapter}" ${verse ? `data-verse="${verse}"` : ''} ${end ? `data-verse-end="${end}"` : ''}><span class="symbol">${verse || chapter}</span><span class="details"><strong>${safe(title)}</strong><small>${safe(snippet.slice(0, 240))}</small></span><span class="chevron">›</span></button>`;
 }
 async function searchBible() {
+    setContentMode('list');
     updateHomeView();
     const query = state.query.trim(), token = ++state.searchTask;
     $('section-title').textContent = 'Buscar en la Biblia';
@@ -624,6 +1111,7 @@ async function searchBible() {
     if (exactBook) {
         showSearchStatus('Libro encontrado · toca para abrir');
         $('content').innerHTML = `<button class="item" data-type="biblia" data-id="${safe(exactBook.id)}"><span class="symbol">${exactBook.orden}</span><span class="details"><strong>${safe(exactBook.nombre)}</strong><small>${exactBook.totalCapitulos} capítulos</small></span><span class="chevron">›</span></button>`;
+        animateSearchResults();
         $('count').textContent = '1 libro';
         return;
     }
@@ -646,7 +1134,8 @@ async function searchBible() {
                 $('content').innerHTML = '<div class="empty">El versículo no existe en ese capítulo.</div>';
                 return;
             }
-            $('content').innerHTML = bibleResult(book, chapter, verse, verse ? verses[verse - 1] : `Abrir el capítulo ${chapter} (${verses.length} versículos)`, null, end);
+            $('content').innerHTML = bibleResult(book, chapter, verse, verse ? verses[verse - 1] : `Abrir el capítulo ${chapter} (${verses.filter(Boolean).length} versículos)`, null, end);
+            animateSearchResults();
             $('count').textContent = '1 resultado';
         }
         catch (e) {
@@ -676,8 +1165,8 @@ async function searchBible() {
                     return;
                 const additions = [];
                 chapters.forEach((verses, ci) => verses.forEach((v, vi) => {
-                    const searchable = normalized(String(v).replace(/_+/g, '').replace(/\/n/g, ' '));
-                    if (words.every(w => searchable.includes(w))) {
+                    const searchable = normalized(String(v || '').replace(/_+/g, '').replace(/\/n/g, ' '));
+                    if (searchable && words.every(w => searchable.includes(w))) {
                         matches++;
                         if (displayed + additions.length < MAX_RESULTS)
                             additions.push(bibleResult(book, ci + 1, vi + 1, v, words[0]));
@@ -736,6 +1225,7 @@ function hymnSearchHit(hymn, segment, queryWords, matchTitle) {
     return `<button class="item hymn-search-result" data-type="himnos" data-id="${safe(hymn.id)}"${stanzaAttr}><span class="symbol">${hymn.numero}</span><span class="details"><strong>${safe(hymn.titulo)}</strong><small>${safe(detail)}</small></span><span class="chevron">›</span></button>`;
 }
 async function searchHymns() {
+    setContentMode('list');
     updateHomeView();
     const query = state.query.trim(), token = ++state.searchTask;
     $('section-title').textContent = 'Buscar en el Himnario';
@@ -778,6 +1268,7 @@ async function searchHymns() {
         $('count').textContent = `${matches.length} ${matches.length === 1 ? 'himno' : 'himnos'}`;
         showSearchStatus(`${matches.length} ${matches.length === 1 ? 'himno encontrado' : 'himnos encontrados'} · coincidencias en títulos, números y letras${matches.length > MAX_RESULTS ? ' · se muestran los primeros ' + MAX_RESULTS : ''}`);
         $('content').innerHTML = matches.length ? matches.slice(0, MAX_RESULTS).map(m => hymnSearchHit(m.hymn, m.segment, words, m.matchTitle)).join('') : '<div class="empty">No se encontraron himnos con ese texto. Prueba otra palabra o frase.</div>';
+        animateSearchResults();
     }
     catch (err) {
         if (token !== state.searchTask)
@@ -807,7 +1298,7 @@ function clearVerseSelection() { hideVerseColors(); state.selectedVerses.clear()
     $('verse-action-status').textContent = '';
 } document.querySelectorAll('#reader-body .verse.is-selected').forEach(el => { el.classList.remove('is-selected'); el.setAttribute('aria-pressed', 'false'); }); }
 function refreshVerseSelection() {
-    document.querySelectorAll('#reader-body .verse[data-verse-number]').forEach(el => { const selected = state.selectedVerses.has(Number(el.dataset.verseNumber)); el.classList.toggle('is-selected', selected); el.setAttribute('aria-pressed', String(selected)); });
+    document.querySelectorAll('#reader-body .verse[data-verse-number]').forEach(el => { const selected = verseGroupNumbers(el).some(n => state.selectedVerses.has(n)); el.classList.toggle('is-selected', selected); el.setAttribute('aria-pressed', String(selected)); });
     const count = state.selectedVerses.size;
     $('verse-actions').hidden = !count;
     $('verse-selected-count').textContent = `${count} ${count === 1 ? 'versículo seleccionado' : 'versículos seleccionados'}`;
@@ -827,19 +1318,27 @@ function hideVerseColors() { const palette = $('verse-colors'), toggle = $('vers
 $('verse-highlight-toggle').addEventListener('click', () => { const palette = $('verse-colors'); const open = palette.hidden; palette.hidden = !open; const toggle = $('verse-highlight-toggle'); toggle.setAttribute('aria-expanded', String(open)); toggle.classList.toggle('is-active', open); if (open)
     palette.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); });
 function selectedVerseNumbers() { return [...state.selectedVerses].sort((a, b) => a - b); }
-function toggleVerse(n) { if (!state.selection || state.selection.type !== 'biblia')
-    return; if (state.selectedVerses.has(n))
-    state.selectedVerses.delete(n);
-else
-    state.selectedVerses.add(n); refreshVerseSelection(); }
+function toggleVerse(n) {
+    if (!state.selection || state.selection.type !== 'biblia') return;
+    const element = [...document.querySelectorAll('#reader-body .verse[data-verse-number]')]
+        .find(el => verseGroupNumbers(el).includes(n));
+    const nums = element ? verseGroupNumbers(element) : [n];
+    const allSelected = nums.every(value => state.selectedVerses.has(value));
+    nums.forEach(value => allSelected ? state.selectedVerses.delete(value) : state.selectedVerses.add(value));
+    refreshVerseSelection();
+}
 function versePlainText(htmlString) { const temp = document.createElement('div'); temp.innerHTML = htmlString; return temp.textContent.replace(/\s+/g, ' ').trim(); }
 async function selectedVerseText() {
     if (!state.selection || state.selection.type !== 'biblia' || !state.selectedVerses.size)
         return '';
     const book = state.books.find(b => b.id === state.selection.id), chapters = await getBookJson(book.id), verses = chapters[state.chapter - 1];
     const ns = selectedVerseNumbers();
-    const content = ns.map(n => `${n}. ${String(verses[n - 1] || '').replace(/_+/g, '').replace(/\/n/g, '\n').trim()}`).join('\n');
-    const citation = `${book.nombre} ${state.chapter}:${ns.join(', ')} (Reina-Valera 1960)`;
+    const grouped = state.version === 'tla' && verses.blocks;
+    const content = grouped
+        ? verses.blocks.filter(b => b.type === 'verse' && b.numbers.some(n => ns.includes(n)))
+            .map(b => `${b.numbers.join('–')}. ${b.text.trim()}`).join('\n')
+        : ns.map(n => `${n}. ${String(verses[n - 1] || '').replace(/_+/g, '').replace(/\/n/g, '\n').trim()}`).join('\n');
+    const citation = `${book.nombre} ${state.chapter}:${ns.join(', ')} (${BIBLE_VERSIONS[state.version]})`;
     return `${content}\n\n${citation}`;
 }
 function statusVerse(msg) { $('verse-action-status').textContent = msg; }
@@ -890,18 +1389,19 @@ $('verse-fav').addEventListener('click', () => {
     catch (e) {
         console.warn(e);
     }
-    document.querySelectorAll('#reader-body .verse[data-verse-number]').forEach(el => { const key = 'verse:' + verseId(state.selection.id, state.chapter, Number(el.dataset.verseNumber)); let heart = el.querySelector('.verse-saved'); if (state.favs.has(key) && !heart)
+    document.querySelectorAll('#reader-body .verse[data-verse-number]').forEach(el => { const key = verseGroupNumbers(el).some(n => state.favs.has('verse:' + verseId(state.selection.id, state.chapter, n))); let heart = el.querySelector('.verse-saved'); if (key && !heart)
         el.insertAdjacentHTML('beforeend', '<span class="verse-saved" aria-label="Favorito">♥</span>');
-    else if (!state.favs.has(key) && heart)
+    else if (!key && heart)
         heart.remove(); });
     refreshVerseSelection();
+    if (!allSaved) pulseSavedIcon($('verse-fav'));
     statusVerse(allSaved ? 'Versículos quitados de favoritos.' : 'Versículos guardados en Favoritos.');
 });
 document.querySelectorAll('[data-highlight]').forEach(button => button.addEventListener('click', () => {
     const color = button.dataset.highlight;
     if (!HIGHLIGHT_COLORS.has(color) || !state.selection)
         return;
-    selectedVerseNumbers().forEach(n => { state.highlights[verseId(state.selection.id, state.chapter, n)] = color; const el = $('verse-' + n); if (el) {
+    selectedVerseNumbers().forEach(n => { state.highlights[verseId(state.selection.id, state.chapter, n)] = color; const el = $('verse-' + n)?.closest('.verse') || $('verse-' + n); if (el) {
         el.classList.remove(...[...HIGHLIGHT_COLORS].map(c => 'highlight-' + c));
         el.classList.add('highlight-' + color);
     } });
@@ -912,7 +1412,7 @@ document.querySelectorAll('[data-highlight]').forEach(button => button.addEventL
 $('highlight-remove').addEventListener('click', () => {
     if (!state.selection)
         return;
-    selectedVerseNumbers().forEach(n => { delete state.highlights[verseId(state.selection.id, state.chapter, n)]; const el = $('verse-' + n); if (el)
+    selectedVerseNumbers().forEach(n => { delete state.highlights[verseId(state.selection.id, state.chapter, n)]; const el = $('verse-' + n)?.closest('.verse') || $('verse-' + n); if (el)
         el.classList.remove(...[...HIGHLIGHT_COLORS].map(c => 'highlight-' + c)); });
     saveVersePrefs();
     hideVerseColors();
@@ -950,7 +1450,7 @@ $('verse-whatsapp').addEventListener('click', async () => {
         statusVerse('No se pudo preparar el texto para compartir.');
     }
 });
-$('reader').addEventListener('close', () => { hymnRequest++; state.hymnData = null; clearVerseSelection(); setFocusMode(false); renderReadingHistory(); });
+$('reader').addEventListener('close', () => { saveLastReadingPosition(); hymnRequest++; state.hymnData = null; clearVerseSelection(); setFocusMode(false); renderReadingHistory(); });
 // v0.6 - Lector avanzado: última lectura, historial, modo sin distracciones y gestos.
 /*
  * ==========================================================
@@ -987,9 +1487,14 @@ function renderReadingHistory() {
     }).join('');
 }
 $('reading-continue').addEventListener('click', () => {
+    const saved = readLastReadingPosition();
+    if (saved?.type === 'biblia') {
+        // Recuperar también la posición exacta del capítulo, no solo su número.
+        reopenLastSessionReading();
+        return;
+    }
     const last = state.history[0];
-    if (last)
-        openReader('biblia', last.bookId, last.chapter);
+    if (last) openReader('biblia', last.bookId, last.chapter);
 });
 $('history-items').addEventListener('click', e => {
     const b = e.target.closest('[data-history-book]');
@@ -1095,4 +1600,300 @@ $('reader').addEventListener('keydown', e => {
         setFocusMode(false);
     }
 });
+
+/* ===============================================================
+   11. MICROINTERACCIONES — v0.7.11
+   Animaciones puntuales con transform/opacity, sin animar listas largas.
+   Si el sistema solicita movimiento reducido, no ejecutamos efectos.
+   =============================================================== */
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+let readerMotionDirection = 0;
+
+function canAnimate() {
+    return !reducedMotion.matches && typeof Element.prototype.animate === 'function';
+}
+
+// Entrada direccional del contenido: siguiente desde la derecha,
+// anterior desde la izquierda. El primer capítulo no se anima.
+function animateReaderContent() {
+    const direction = readerMotionDirection;
+    readerMotionDirection = 0;
+    if (!direction || !canAnimate()) return;
+    const body = $('reader-body');
+    if (body._bhAnimation) body._bhAnimation.cancel();
+    body._bhAnimation = body.animate([
+        { opacity: .52, transform: `translate3d(${direction > 0 ? 12 : -12}px, 0, 0)` },
+        { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+    ], { duration: 185, easing: 'cubic-bezier(.2,.75,.25,1)' });
+}
+
+// Confirmación sutil al guardar. Eliminar favorito no produce rebote.
+function pulseSavedIcon(button) {
+    if (!button || !canAnimate()) return;
+    button.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.13)', offset: .42 },
+        { transform: 'scale(1)' }
+    ], { duration: 210, easing: 'ease-out' });
+}
+
+// Una sola transición por respuesta de búsqueda: nunca 613 animaciones.
+function animateSearchResults() {
+    const container = $('content');
+    if (!container || !canAnimate()) return;
+    if (container._bhAnimation) container._bhAnimation.cancel();
+    container._bhAnimation = container.animate([
+        { opacity: .65, transform: 'translate3d(0, 5px, 0)' },
+        { opacity: 1, transform: 'translate3d(0, 0, 0)' }
+    ], { duration: 135, easing: 'ease-out' });
+}
+
+
+/* ================================================================
+ * 13. REANUDAR LA ÚLTIMA LECTURA — v0.7.16
+ * ================================================================
+ * - El primer acceso mantiene la pantalla principal tradicional.
+ * - Las siguientes aperturas restauran la Biblia o el Himnario.
+ * - Se guarda el capítulo, versículo visible, estrofa y posición de scroll.
+ * - No se modifican favoritos ni datos JSON.
+ */
+const LAST_READING_KEY = 'bh-last-reading-position';
+let readerContentReady = false;
+let pendingReadingRestore = null;
+let lastReadingSaveAt = 0;
+
+function readLastReadingPosition() {
+    const entry = store(LAST_READING_KEY, null);
+    if (!entry || !['biblia', 'himnos'].includes(entry.type) || typeof entry.id !== 'string') return null;
+    if (entry.type === 'biblia' && (!Number.isInteger(entry.chapter) || entry.chapter < 1)) return null;
+    if (entry.type === 'himnos' && !/^\d+$/.test(entry.id)) return null;
+    return entry;
+}
+
+function getVisibleReadingAnchor() {
+    const area = $('reader-body');
+    const top = area.getBoundingClientRect().top + 8;
+    const selector = state.selection?.type === 'biblia'
+        ? '.verse[data-verse-number]'
+        : '.hymn-stanza[data-hymn-stanza]';
+    const elements = [...area.querySelectorAll(selector)];
+    const visible = elements.find(element => element.getBoundingClientRect().bottom > top);
+    if (!visible) return null;
+    const rect = visible.getBoundingClientRect();
+    return {
+        verse: state.selection.type === 'biblia' ? Number(visible.dataset.verseNumber) : null,
+        stanzaIndex: state.selection.type === 'himnos' ? Number(visible.dataset.hymnStanza) : null,
+        offset: Math.round(rect.top - area.getBoundingClientRect().top)
+    };
+}
+
+function saveLastReadingPosition() {
+    const selected = state.selection;
+    if (!selected || !readerContentReady || !$('reader').open) return;
+    const area = $('reader-body');
+    const anchor = getVisibleReadingAnchor();
+    const record = {
+        type: selected.type,
+        id: String(selected.id),
+        chapter: selected.type === 'biblia' ? state.chapter : null,
+        version: selected.type === 'biblia' ? state.version : null,
+        verse: anchor?.verse ?? null,
+        stanzaIndex: anchor?.stanzaIndex ?? null,
+        offset: anchor?.offset ?? 0,
+        scrollTop: Math.round(area.scrollTop),
+        updatedAt: Date.now()
+    };
+    try {
+        localStorage.setItem(LAST_READING_KEY, JSON.stringify(record));
+    } catch (error) {
+        console.warn('No se pudo guardar la última lectura', error);
+    }
+}
+
+function restoreOrSaveReadingPosition(type, id, chapter = null) {
+    const target = pendingReadingRestore;
+    const matches = target && target.type === type && target.id === String(id)
+        && (type !== 'biblia' || target.chapter === chapter);
+    if (!matches) {
+        pendingReadingRestore = null;
+        const area = $('reader-body');
+        area.scrollTop = 0;
+        requestAnimationFrame(() => saveLastReadingPosition());
+        return;
+    }
+
+    // Evitar que el scroll dispare un guardado antes de restaurar la posición.
+    readerContentReady = false;
+    pendingReadingRestore = null;
+    requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+            if (!$('reader').open || state.selection?.id !== String(id) ||
+                state.selection.type !== type || (type === 'biblia' && state.chapter !== chapter)) return;
+            const area = $('reader-body');
+            const elements = type === 'biblia'
+                ? [...area.querySelectorAll('.verse[data-verse-number]')]
+                : [...area.querySelectorAll('.hymn-stanza[data-hymn-stanza]')];
+            const match = type === 'biblia'
+                ? elements.find(el => Number(el.dataset.verseNumber) === target.verse ||
+                    (el.dataset.verseNumbers || '').split(',').map(Number).includes(target.verse))
+                : elements.find(el => Number(el.dataset.hymnStanza) === target.stanzaIndex);
+            if (match && Number.isFinite(target.offset)) {
+                // Anclaje por versículo/estrofa: funciona aunque varíe la altura de pantalla.
+                area.scrollTop += match.getBoundingClientRect().top
+                    - area.getBoundingClientRect().top - target.offset;
+            } else {
+                // Respaldo de ubicación para versiones antiguas o cambios en el JSON.
+                area.scrollTop = Math.max(0, Number(target.scrollTop) || 0);
+            }
+            readerContentReady = true;
+            saveLastReadingPosition();
+        });
+    });
+}
+
+async function reopenLastSessionReading() {
+    let last = readLastReadingPosition();
+    // Compatibilidad con usuarios que ya tenían historial, antes de la v0.7.16.
+    if (!last && state.history.length) {
+        const recent = state.history[0];
+        last = { type: 'biblia', id: recent.bookId, chapter: recent.chapter,
+            version: state.version, scrollTop: 0, verse: 1, offset: 0 };
+    }
+    // Primera visita: abrir Génesis 1 para entrar directamente en el lector.
+    if (!last) {
+        last = { type: 'biblia', id: 'genesis', chapter: 1,
+            version: state.version, verse: 1, offset: 0, scrollTop: 0 };
+    }
+    const item = last.type === 'biblia'
+        ? state.books.find(book => book.id === last.id && last.chapter <= book.totalCapitulos)
+        : state.hymns.find(hymn => String(hymn.id) === last.id);
+    if (!item) return;
+    if (last.type === 'biblia' && ['rvr1960', 'tla'].includes(last.version)) {
+        state.version = last.version;
+        localStorage.setItem('bh-bible-version', JSON.stringify(last.version));
+    }
+    pendingReadingRestore = last;
+    try {
+        await openReader(last.type, last.id, last.chapter || 1);
+    } catch (error) {
+        pendingReadingRestore = null;
+        console.warn('No se pudo recuperar la última lectura', error);
+    }
+}
+
+$('reader-body').addEventListener('scroll', () => {
+    if (!readerContentReady || !state.selection || !$('reader').open) return;
+    const now = Date.now();
+    if (now - lastReadingSaveAt < 180) return;
+    lastReadingSaveAt = now;
+    saveLastReadingPosition();
+}, { passive: true });
+
+window.addEventListener('pagehide', saveLastReadingPosition);
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveLastReadingPosition();
+});
+
+
+
+/* ==========================================================
+ * 13. PORTADA BÍBLICA: VERSÍCULO DEL DÍA (v0.7.17)
+ * Lee el texto de los JSON locales, sin introducir citas inventadas.
+ * Un pasaje por día según la fecha local del teléfono.
+ * ========================================================== */
+const DAILY_PASSAGES = [
+    ['genesis', 1, 1], ['salmos', 23, 1], ['juan', 3, 16],
+    ['proverbios', 3, 5], ['filipenses', 4, 13], ['salmos', 119, 105],
+    ['isaias', 41, 10], ['mateo', 6, 33], ['romanos', 8, 28],
+    ['josue', 1, 9], ['salmos', 27, 1], ['efesios', 2, 8],
+    ['salmos', 46, 1], ['jeremias', 29, 11], ['mateo', 5, 14],
+    ['salmos', 121, 1], ['apocalipsis', 21, 4], ['salmos', 91, 1],
+    ['1_corintios', 13, 4], ['juan', 14, 6], ['salmos', 34, 8],
+    ['hebreos', 11, 1], ['mateo', 11, 28], ['salmos', 37, 4]
+];
+
+let dailyVerseRequest = 0;
+let todayVerseTarget = null;
+
+function getDailyPassage() {
+    const now = new Date();
+    const day = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000);
+    return DAILY_PASSAGES[day % DAILY_PASSAGES.length];
+}
+
+function cleanDailyVerseText(text) {
+    return String(text || '')
+        .replace(/_/g, '')
+        .replace(/\/n/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+async function showDailyVerse() {
+    if (!state.books.length) return;
+    const requestId = ++dailyVerseRequest;
+    const [bookId, chapter, verse] = getDailyPassage();
+    const book = state.books.find(item => item.id === bookId);
+    if (!book) return;
+    const textNode = $('daily-verse-text');
+    const refNode = $('daily-verse-reference');
+    const button = $('daily-verse-open');
+    const version = state.version;
+    button.disabled = true;
+    textNode.textContent = 'Preparando la lectura de hoy…';
+    refNode.textContent = `${book.nombre} ${chapter}:${verse}`;
+    $('daily-verse-version').textContent = version === 'tla' ? 'TLA' : 'RVR1960';
+    todayVerseTarget = {bookId, chapter, verse};
+    try {
+        const chapters = await getBookJson(bookId);
+        if (requestId !== dailyVerseRequest || version !== state.version) return;
+        const text = cleanDailyVerseText(chapters[chapter - 1]?.[verse - 1]);
+        if (!text) throw new Error('El versículo no está disponible');
+        // Mostrar el versículo completo, sin cortar arbitrariamente el texto.
+        textNode.textContent = '“' + text + '”';
+        button.disabled = false;
+    } catch (error) {
+        console.warn('No se pudo mostrar el versículo del día', error);
+        textNode.textContent = 'No se pudo cargar el versículo del día. Comprueba los archivos de la Biblia.';
+    }
+}
+
+$('daily-verse-open').addEventListener('click', () => {
+    if (!todayVerseTarget) return;
+    const {bookId, chapter, verse} = todayVerseTarget;
+    openReader('biblia', bookId, chapter, verse);
+});
+
+
 init();
+
+
+/* ===============================================================
+   10. ENCABEZADO ADAPTABLE AL DESPLAZAMIENTO — v0.7.10
+   El usuario ve el nombre completo al iniciar la vista.
+   La cabecera se compacta al recorrer listas o resultados.
+   Se usa scroll de la página, no del diálogo de lectura.
+   =============================================================== */
+(function setupCompactTopbar() {
+    const topbar = document.getElementById('app-topbar');
+    if (!topbar) return;
+
+    const threshold = 64; // Píxeles desplazados antes de compactar.
+    let pending = false;
+
+    function updateTopbar() {
+        topbar.classList.toggle('is-compact', window.scrollY > threshold);
+        pending = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (pending) return;
+        pending = true;
+        window.requestAnimationFrame(updateTopbar);
+    }, { passive: true });
+
+    // Mantiene la cabecera sincronizada al volver a la página
+    // o después de restaurar la posición del navegador.
+    window.addEventListener('pageshow', updateTopbar);
+    updateTopbar();
+})();

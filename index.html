@@ -10,16 +10,16 @@
     <link rel="icon" type="image/svg+xml" href="icons/icono-biblia-himnario.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="styles.css?v=0.7.9">
+    <link rel="stylesheet" href="styles.css?v=0.7.18">
   </head>
   <body>
     <div class="app-shell">
 
-      <!-- ===== ENCABEZADO PRINCIPAL Y CONTROL DE TEMA ===== -->
-      <header class="topbar">
+      <!-- ===== ENCABEZADO PRINCIPAL: SE COMPACTA AL DESPLAZARSE (v0.7.18) ===== -->
+      <header class="topbar" id="app-topbar">
         <img class="brand-icon" src="icons/icono-biblia-himnario.svg" alt="" width="43" height="43" decoding="async">
         <div>
-          <strong>Biblia e Himnario <span class="version-tag">v0.7.9</span></strong>
+          <strong>Biblia e Himnario <span class="version-tag">v0.7.18</span></strong>
           <small>Lectura, alabanza y estudio</small>
         </div>
         <button id="theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
@@ -34,7 +34,7 @@
         </section>
 
         <!-- ===== BUSCADOR DE BIBLIA E HIMNOS ===== -->
-        <label class="search">
+        <label class="search" id="main-search-box">
           <span aria-hidden="true">⌕</span>
           <input id="search" type="search" placeholder="Ej. Juan 3:16, Salmos 23, amor de Dios" autocomplete="off">
           <kbd>⌕</kbd>
@@ -95,6 +95,19 @@
           <span id="count" class="counter"></span>
         </div>
 
+        <!-- ===== BIBLIA: VERSÍCULO DEL DÍA (v0.7.18) ===== -->
+        <section id="daily-verse" class="daily-verse" hidden aria-label="Versículo del día">
+          <div class="daily-verse-heading">
+            <span class="daily-verse-eyebrow">VERSÍCULO DEL DÍA</span>
+            <span id="daily-verse-version" class="daily-verse-version"></span>
+          </div>
+          <blockquote id="daily-verse-text" class="daily-verse-text">Preparando la lectura de hoy…</blockquote>
+          <div class="daily-verse-footer">
+            <strong id="daily-verse-reference"></strong>
+            <button id="daily-verse-open" type="button" class="daily-verse-action" disabled>Leer en la Biblia →</button>
+          </div>
+        </section>
+
         <!-- ===== ESTADO DE BÚSQUEDA ===== -->
         <div id="search-status" class="search-status" role="status" aria-live="polite" hidden></div>
 
@@ -121,10 +134,36 @@
           <h2 id="reader-title"></h2>
         </div>
         <!-- Abrir opciones de lectura (pantallas compactas) -->
+
         <button id="reader-settings-toggle" class="icon-button reader-settings-toggle" type="button" aria-label="Opciones de lectura" aria-controls="reading-settings" aria-expanded="false" title="Opciones de lectura">Aa</button>
         <button id="reader-theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
         <button id="bookmark" class="icon-button" aria-label="Guardar favorito">♡</button>
       </div>
+
+
+      <!-- ========================================================
+           BIBLIA v0.7.18 | NAVEGACIÓN MINIMALISTA
+           Traducción, referencia y capítulos; no afecta al Himnario.
+           ======================================================== -->
+      <nav id="bible-minimal-nav" class="bible-minimal-nav" aria-label="Navegación de la Biblia" hidden>
+        <div class="bible-translation-row">
+        <!-- La traducción bíblica se ubica en la barra de navegación minimalista. -->
+        <label id="reader-version-wrap" class="reader-version-wrap" aria-label="Versión de la Biblia" hidden>
+          <select id="reader-version" aria-label="Elegir traducción bíblica">
+            <option value="rvr1960">Reina-Valera 1960</option>
+            <option value="tla">Traducción en Lenguaje Actual</option>
+          </select>
+        </label>
+        </div>
+        <div class="bible-reference-row">
+          <button id="bible-prev" class="bible-nav-arrow" type="button" aria-label="Capítulo anterior" title="Capítulo anterior">‹</button>
+          <button id="bible-reference" class="bible-reference-button" type="button" aria-label="Elegir libro, capítulo y versículo" aria-haspopup="dialog">
+            <span id="bible-reference-label">Seleccionar pasaje</span><span class="bible-reference-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <button id="bible-next" class="bible-nav-arrow" type="button" aria-label="Capítulo siguiente" title="Capítulo siguiente">›</button>
+          <button id="bible-pick-search" class="bible-search-trigger" type="button" aria-label="Buscar referencia bíblica" title="Buscar referencia bíblica">⌕</button>
+        </div>
+      </nav>
 
       <!-- ===== MODO SIN DISTRACCIONES ===== -->
       <div id="focus-bar" class="focus-bar" hidden>
@@ -237,39 +276,74 @@
     </dialog>
 
     <!-- ============================================================
-         SELECTOR BÍBLICO v0.7.9 — LIBRO > CAPÍTULO > VERSÍCULO
-         Se abre al tocar un libro del catálogo (no interrumpe búsquedas directas).
+         12. SELECTOR BÍBLICO MINIMALISTA — v0.7.18
+         Etapas: libros > capítulos > versículos.
+         Pestañas: Versículo, Contenido, Reciente, Favoritos.
          ============================================================ -->
-    <dialog id="bible-picker" class="bible-picker" aria-labelledby="picker-title">
-      <div class="picker-head">
-        <div class="picker-heading">
-          <small>SELECCIONAR PASAJE</small>
-          <h2 id="picker-title">Libro de la Biblia</h2>
-        </div>
+    <dialog id="bible-picker" class="bible-picker bible-picker-minimal" aria-labelledby="picker-title">
+      <div class="picker-head picker-minimal-head">
         <button id="picker-close" class="picker-close" type="button" aria-label="Cerrar selector">✕</button>
+        <div class="picker-tabs" role="tablist" aria-label="Secciones de navegación bíblica">
+          <button type="button" data-picker-tab="versiculo" class="active" role="tab" aria-selected="true">Versículo</button>
+          <button type="button" data-picker-tab="contenido" role="tab" aria-selected="false">Contenido</button>
+          <button type="button" data-picker-tab="reciente" role="tab" aria-selected="false">Reciente</button>
+          <button type="button" data-picker-tab="favoritos" role="tab" aria-selected="false">Favoritos</button>
+        </div>
       </div>
 
-      <div class="picker-content">
-        <!-- Paso 1: capítulos disponibles -->
-        <section class="picker-section" aria-labelledby="picker-chapter-heading">
-          <h3 id="picker-chapter-heading">1. Elige un capítulo</h3>
-          <div id="picker-chapters" class="picker-number-grid picker-chapters" role="group" aria-label="Capítulos del libro"></div>
-        </section>
+      <div class="picker-search-row">
+        <label class="picker-search-wrap" for="picker-search-input">
+          <span aria-hidden="true">⌕</span>
+          <input id="picker-search-input" type="search" placeholder="Referencia, palabra o frase" autocomplete="off" aria-label="Buscar referencia, palabra o frase en la Biblia">
+        </label>
+        <button id="picker-search-go" type="button">Ir</button>
+      </div>
 
-        <!-- Paso 2: número real de versículos del capítulo elegido -->
-        <section id="picker-verses-section" class="picker-section" aria-labelledby="picker-verse-heading" hidden>
-          <h3 id="picker-verse-heading">2. Elige un versículo</h3>
-          <p class="picker-note">O lee el capítulo completo usando el botón inferior.</p>
-          <div id="picker-verses" class="picker-number-grid picker-verses" role="group" aria-label="Versículos del capítulo"></div>
+      <div class="picker-content" id="picker-scroll-area">
+        <div id="picker-verse-tab" class="picker-tab-panel" role="tabpanel">
+          <div class="picker-step-header">
+            <button id="picker-step-back" class="picker-step-back" type="button" aria-label="Volver al paso anterior" hidden>‹</button>
+            <h2 id="picker-title">Selecciona un libro</h2>
+          </div>
+          <p id="picker-step-description" class="picker-step-description">Selecciona el libro de la Biblia.</p>
+          <section id="picker-books-section" class="picker-section" aria-label="Libros de la Biblia">
+            <h3>Antiguo Testamento</h3>
+            <div id="picker-books-old" class="picker-number-grid picker-book-grid" role="group" aria-label="Libros del Antiguo Testamento"></div>
+            <h3>Nuevo Testamento</h3>
+            <div id="picker-books-new" class="picker-number-grid picker-book-grid" role="group" aria-label="Libros del Nuevo Testamento"></div>
+          </section>
+          <section id="picker-chapters-section" class="picker-section" hidden aria-label="Capítulos del libro">
+            <div id="picker-chapters" class="picker-number-grid picker-chapters" role="group" aria-label="Capítulos"></div>
+          </section>
+          <section id="picker-verses-section" class="picker-section" hidden aria-label="Versículos del capítulo">
+            <div id="picker-verses" class="picker-number-grid picker-verses" role="group" aria-label="Versículos"></div>
+          </section>
+        </div>
+        <div id="picker-content-tab" class="picker-tab-panel" role="tabpanel" hidden>
+          <h2>Contenido bíblico</h2>
+          <p class="picker-step-description">Explora los libros por testamento.</p>
+          <div id="picker-content-items" class="picker-list"></div>
+        </div>
+        <div id="picker-recent-tab" class="picker-tab-panel" role="tabpanel" hidden>
+          <h2>Lecturas recientes</h2>
+          <div id="picker-recent-items" class="picker-list"></div>
+        </div>
+        <div id="picker-favorites-tab" class="picker-tab-panel" role="tabpanel" hidden>
+          <h2>Referencias favoritas</h2>
+          <div id="picker-favorite-items" class="picker-list"></div>
+        </div>
+        <!-- ===== 15. RESULTADOS DE BÚSQUEDA AVANZADA ===== -->
+        <section id="picker-text-results" class="picker-text-results" hidden aria-label="Resultados de búsqueda bíblica">
+          <p id="picker-text-results-status" class="picker-text-results-status" role="status" aria-live="polite"></p>
+          <div id="picker-text-results-list" class="picker-text-results-list"></div>
         </section>
         <p id="picker-status" class="picker-status" role="status" aria-live="polite"></p>
       </div>
-
-      <div class="picker-bottom">
+      <div class="picker-bottom" id="picker-bottom">
         <button id="picker-read-chapter" class="picker-primary" type="button" disabled>Leer capítulo completo</button>
       </div>
     </dialog>
 
-    <script src="script.js?v=0.7.9" defer></script>
+    <script src="script.js?v=0.7.18" defer></script>
   </body>
 </html>

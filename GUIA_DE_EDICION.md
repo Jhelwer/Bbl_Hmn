@@ -66,3 +66,45 @@ Esta versión reorganiza **solo el formato y los comentarios** de `index.html`, 
 - JS: buscar `02.C. SELECTOR BÍBLICO` en `script.js`.
 - CSS: buscar `09. SELECTOR DE CAPÍTULOS` en `styles.css`.
 - No renombrar IDs `bible-picker`, `picker-chapters`, `picker-verses` sin adaptar JS.
+
+
+## Encabezado adaptable v0.7.10
+- HTML: `id="app-topbar"`
+- CSS: `10. ENCABEZADO ADAPTABLE`
+- JS: `setupCompactTopbar`
+
+
+## 11. Microinteracciones v0.7.11
+
+Busca `11. MICROINTERACCIONES` en `script.js` y `SECCIÓN 11` en `styles.css`.
+
+
+## v0.7.13 — navegación bíblica
+
+- `index.html`: sección `BIBLIA v0.7.13 | NAVEGACIÓN MINIMALISTA` y diálogo `SELECTOR BÍBLICO MINIMALISTA`.
+- `script.js`: bloque `12. NAVEGACIÓN BÍBLICA MINIMALISTA`, funciones `pickerSetStage`, `pickerSetTab`, `updateMinimalBibleNav`.
+- `styles.css`: bloque `12. NAVEGACIÓN MINIMALISTA`.
+- No se modifican los JSON.
+
+
+## v0.7.15 — cuadrícula bíblica
+
+- `script.js`: funciones `renderBibleGrid()`, `bibleGridTone()` y `setContentMode()`.
+- `styles.css`: bloques `.bible-books-grid` y `.book-grid-item` para la pestaña Biblia.
+- `index.html`: actualización visual de la versión a `v0.7.15`.
+
+
+## v0.7.16 — reanudación automática
+
+En `script.js`, buscar `13. REANUDAR LA ÚLTIMA LECTURA`. Ahí están `saveLastReadingPosition`, `restoreOrSaveReadingPosition` y `reopenLastSessionReading`. La clave local es `bh-last-reading-position`.
+
+## 13. Portada bíblica (v0.7.17)
+
+- `index.html`: sección `daily-verse` (versículo del día).
+- `script.js`: `DAILY_PASSAGES`, `showDailyVerse()` y `openPickerFromMainSearch()`.
+- `styles.css`: bloque 13, clases `.daily-verse*`.
+
+## v0.7.18 - Búsqueda en modal y colores
+- `script.js`: bloque **15. BÚSQUEDA AVANZADA DENTRO DEL SELECTOR BÍBLICO**, función `bibleGridTone()`.
+- `styles.css`: bloque **15. BUSCADOR AVANZADO Y PALETA**.
+- `index.html`: sección `picker-text-results`.

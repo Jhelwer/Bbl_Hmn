@@ -67,3 +67,39 @@ Al tocar un libro en la lista de Biblia, se muestra un modal para elegir capítu
 Cada capítulo muestra su número real de versículos, consultado en el JSON ya publicado.
 También se puede pulsar «Leer capítulo completo». Las referencias directas del buscador y favoritos individuales siguen abriéndose directamente.
 La carpeta `data/` no se modificó.
+
+
+## v0.7.10
+Encabezado principal fijo y adaptable al desplazamiento. Consulta `NOTAS_V0710.md`.
+
+
+## Actualización v0.7.11
+
+Se incorporaron microinteracciones ligeras. Consulta `NOTAS_V0711.md` para puntos de edición y pruebas.
+
+
+## Versión v0.7.15
+Se integra TLA mediante `data/biblia/tla/` sin modificar los 66 libros RVR1960 ni los 613 himnos. Lee `NOTAS_V0712.md`.
+
+
+## Novedad v0.7.13
+
+Navegación minimalista en Biblia: selector de traducciones, barra de referencia, cuadrículas Libro → Capítulo → Versículo, pestañas Reciente y Favoritos. Consulta `NOTAS_V0713.md`.
+
+
+## Novedad v0.7.15
+
+- La pestaña **Biblia** ahora muestra los **66 libros en cuadrícula**, usando colores suaves por categoría para asemejarse al selector minimalista.
+- Al tocar un libro de la cuadrícula se abre el selector **Libro → Capítulo → Versículo**, sin volver a la lista antigua.
+- La búsqueda bíblica, favoritos e historial conservan su formato de lista para no perder contexto.
+
+
+## Novedad v0.7.16 — continuar lectura automáticamente
+
+Al abrir de nuevo la aplicación, se restaura la **última lectura** de Biblia o Himnario, incluido el versículo/estrofa visible. En la primera visita se abre Génesis 1. Desde el lector se puede volver para explorar la cuadrícula de libros y las demás secciones. El progreso se almacena en `localStorage` bajo la clave `bh-last-reading-position`.
+
+## v0.7.17 — Portada de Biblia
+
+- Se reemplaza la cuadrícula de la pestaña Biblia por un versículo del día (texto cargado de los JSON locales).
+- Al tocar el buscador en Biblia se abre el selector de pasajes. El Himnario y Favoritos mantienen sus búsquedas.
+- La última lectura se recupera con «Continuar leyendo»; ya no se abre el lector automáticamente al iniciar.

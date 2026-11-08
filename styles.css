@@ -257,6 +257,68 @@ main {
   padding: 40px 16px;
 }
 
+
+.content.bible-grid-view {
+  display: block;
+}
+
+.bible-books-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2px;
+}
+
+.book-grid-item {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 78px;
+  padding: 10px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  color: #111827;
+  text-align: center;
+  background: var(--soft);
+}
+
+.book-grid-item:focus-visible {
+  outline: 2px solid #0b6594;
+  outline-offset: -3px;
+}
+
+.book-grid-abbr {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.book-grid-item.tone-gold {
+  background: #efefd9;
+}
+
+.book-grid-item.tone-blue {
+  background: #e7eff2;
+}
+
+.book-grid-item.tone-sand {
+  background: #edded4;
+}
+
+.book-grid-item.tone-green {
+  background: #dfe8da;
+}
+
+.book-grid-item.tone-rose {
+  background: #efdde0;
+}
+
+@media (min-width: 768px) {
+  .bible-books-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+
 .bottom-nav {
   position: fixed;
   left: 50%;
@@ -2075,4 +2137,414 @@ body.dark .reading-continue {
   #bible-picker .picker-number-grid { gap: 6px; }
   #bible-picker .picker-content { padding-inline: 13px; }
   #bible-picker .picker-number-grid button { font-size: 14px; }
+}
+
+
+/* ===============================================================
+   10. ENCABEZADO ADAPTABLE AL DESPLAZAMIENTO — v0.7.10
+   - Inicio: título completo, subtítulo e icono normal.
+   - Al bajar: se oculta el subtítulo y se compactan los controles.
+   - No modifica #reader, #bible-picker ni sus controles.
+   - Evita estilos inline para facilitar modificaciones futuras.
+   =============================================================== */
+
+#app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  padding-bottom: 12px;
+  border-bottom: 1px solid transparent;
+  transition: padding .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+#app-topbar > div {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+#app-topbar strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#app-topbar small {
+  overflow: hidden;
+  max-height: 28px;
+  opacity: 1;
+  transition: opacity .17s ease, max-height .17s ease;
+}
+
+#app-topbar .brand-icon {
+  transition: width .2s ease, height .2s ease, flex-basis .2s ease;
+}
+
+#app-topbar.is-compact {
+  padding-top: calc(7px + env(safe-area-inset-top, 0px));
+  padding-bottom: 7px;
+  border-color: var(--line);
+  box-shadow: 0 3px 12px rgba(5, 34, 58, .06);
+}
+
+#app-topbar.is-compact .brand-icon {
+  width: 31px;
+  height: 31px;
+  flex-basis: 31px;
+  border-radius: 8px;
+}
+
+#app-topbar.is-compact strong { font-size: 15px; }
+#app-topbar.is-compact small { max-height: 0; opacity: 0; }
+#app-topbar.is-compact .icon-button { width: 36px; height: 36px; }
+
+@media (max-width: 480px) {
+  #app-topbar { gap: 9px; padding-left: 14px; padding-right: 14px; }
+  #app-topbar strong { font-size: 16px; }
+  #app-topbar .version-tag { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #app-topbar, #app-topbar .brand-icon, #app-topbar small {
+    transition: none;
+  }
+}
+
+
+/* ===============================================================
+   SECCIÓN 11 — MICROINTERACCIONES (v0.7.11)
+   Pensadas para Android gama media: sin filtros, blur ni animaciones
+   de cientos de nodos. El movimiento es opcional y breve.
+   =============================================================== */
+
+/* 11.1 Transición del encabezado adaptable: 200 ms. */
+#app-topbar {
+  transition: padding .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+#app-topbar .icon-button,
+#app-topbar strong {
+  transition: width .2s ease, height .2s ease, font-size .2s ease;
+}
+
+/* 11.2 El panel Aa entra con opacidad y 6 px de desplazamiento.
+   Solo se anima cuando está abierto y realmente visible en móvil. */
+@media (max-width: 600px) and (prefers-reduced-motion: no-preference) {
+  #reader.settings-open:not(.focus-mode) .reader-tools,
+  #reader.settings-open:not(.focus-mode) .red-letters-setting:not([hidden]) {
+    animation: bh-settings-enter 160ms ease-out both;
+  }
+}
+@keyframes bh-settings-enter {
+  from { opacity: .55; transform: translate3d(0, -6px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* 11.3 Resaltado: el cambio de color conserva el contraste actual. */
+#reader .reader-body .verse[data-verse-number] {
+  transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+
+/* 11.4 Preferencia del sistema: sin movimiento ni desplazamiento suave. */
+@media (prefers-reduced-motion: reduce) {
+  #app-topbar,
+  #app-topbar .brand-icon,
+  #app-topbar .icon-button,
+  #app-topbar strong,
+  #app-topbar small,
+  #reader .reader-body .verse[data-verse-number] {
+    transition: none !important;
+    animation: none !important;
+  }
+  #reader .reader-tools,
+  #reader .red-letters-setting { animation: none !important; }
+  html { scroll-behavior: auto !important; }
+}
+
+/* ==========================================================
+ * 11. TRADUCCIONES BÍBLICAS (v0.7.12)
+ * Selector accesible y bloques TLA con títulos editoriales.
+ * ========================================================== */
+.reader-version-wrap { flex: 0 0 auto; display: inline-flex; align-items: center; }
+.reader-version-wrap[hidden] { display: none !important; }
+.reader-version-wrap select {
+    appearance: none;
+    font: 700 11px/1.2 inherit;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary, #073d69);
+    background: var(--surface, #f4f7fb);
+    border: 1px solid rgba(82, 111, 139, .26);
+    padding: 10px 7px;
+    border-radius: 10px;
+    max-width: 86px;
+    min-height: 40px;
+    cursor: pointer;
+}
+body.dark .reader-version-wrap select {
+    color: #e3f0ff;
+    background: #25374a;
+    border-color: #455a70;
+}
+#reader .reader-head > div:not(.reader-version-wrap) { min-width: 0; }
+#reader .reader-head h2 { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tla-heading { font-size: .93em; font-weight: 750; margin: 18px 0 8px; color: var(--primary, #073d69); }
+.tla-subheading { font-size: .82em; font-weight: 600; opacity: .75; margin: 12px 0 6px; }
+.tla-verse { position: relative; }
+.tla-verse-anchor { position: relative; top: -42px; }
+@media (max-width: 390px) {
+    .reader-version-wrap select { max-width: 66px; padding-inline: 4px; font-size: 10px; }
+}
+
+/* ================================================================
+   12. NAVEGACIÓN MINIMALISTA — v0.7.13
+   Adaptación propia inspirada en patrones de lectura simples.
+   Optimizada para pantallas de 360-412px; respeta modo oscuro.
+   ================================================================ */
+#reader .bible-minimal-nav[hidden],
+#bible-picker .picker-tab-panel[hidden],
+#bible-picker .picker-section[hidden],
+#bible-picker .picker-bottom[hidden],
+#bible-picker .picker-step-back[hidden] { display: none !important; }
+
+#reader .bible-minimal-nav {
+  flex: 0 0 auto;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 5px 12px 8px;
+}
+#reader .bible-translation-row { display: flex; justify-content: center; min-height: 34px; align-items: center; }
+#reader .bible-translation-row .reader-version-wrap select {
+  max-width: min(80vw, 315px);
+  min-height: 34px;
+  padding: 5px 28px 5px 14px;
+  appearance: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 25px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+}
+#reader .bible-reference-row { display:flex; align-items:center; gap:7px; margin-top:5px; }
+#reader .bible-nav-arrow,
+#reader .bible-search-trigger { flex: 0 0 40px; width:40px; height:42px; border:0; background:transparent; color:var(--muted); font-size:28px; border-radius:12px; cursor:pointer; }
+#reader .bible-nav-arrow:disabled {opacity:.25; cursor:default;}
+#reader .bible-reference-button { flex:1; min-width:0; min-height:43px; padding:6px 13px; display:flex; align-items:center; justify-content:space-between; gap:8px; border:0; border-radius:30px; background:var(--soft); color:var(--ink); font-family:inherit; font-size:15px; font-weight:600; line-height:1.2; cursor:pointer; }
+#reader #bible-reference-label { white-space:nowrap; text-overflow:ellipsis; overflow:hidden; }
+#reader .bible-reference-chevron { color:var(--primary); font-size:20px; }
+/* Controles antiguos de capítulos conservados para compatibilidad JS; ahora navegación principal es la barra minimalista. */
+#reader:has(#bible-minimal-nav:not([hidden])) #chapter-toolbar { display:none !important; }
+#reader:has(#bible-minimal-nav:not([hidden])) .reader-head { padding: 7px 12px; gap:7px; }
+#reader:has(#bible-minimal-nav:not([hidden])) .reader-head > div { min-width:0; }
+#reader:has(#bible-minimal-nav:not([hidden])) .reader-head small {font-size:10px;}
+#reader:has(#bible-minimal-nav:not([hidden])) .reader-head h2 {font-size:14px;}
+#reader:has(#bible-minimal-nav:not([hidden])) .reader-head .icon-button {width:39px; height:40px; min-width:39px;}
+
+/* Selector de referencias: pantalla limpia, con pestañas y cuadrículas compactas. */
+#bible-picker.bible-picker-minimal {
+  width:min(100%, 640px);
+  max-width:640px;
+  height: min(94dvh, 860px);
+  max-height:94dvh;
+  border-radius:22px;
+  background:var(--surface);
+}
+#bible-picker .picker-minimal-head { padding:12px 10px 8px; gap:8px; border-bottom:0; }
+#bible-picker .picker-minimal-head .picker-close { width:41px; min-width:41px; height:43px; border-radius:50%; background:transparent; }
+#bible-picker .picker-tabs { display:flex; flex:1; min-width:0; border-radius:25px; padding:3px; border:1px solid var(--line); overflow-x:auto; scrollbar-width:none; }
+#bible-picker .picker-tabs button {flex:1; min-width:0; padding:12px 4px; background:transparent; border:0; border-radius:22px; color:var(--muted); font-family:inherit; font-size:12px; font-weight:500; line-height:1.2; white-space:nowrap; cursor:pointer; }
+#bible-picker .picker-tabs button.active { color:var(--ink); background:var(--soft); font-weight:700; }
+#bible-picker .picker-search-row { padding:12px 15px; display:flex; align-items:center; gap:9px; }
+#bible-picker .picker-search-wrap {flex:1; min-width:0; display:flex; align-items:center; gap:9px; padding:0 11px; border-radius:12px; background:var(--soft); }
+#bible-picker .picker-search-wrap span {font-size:20px; color:var(--muted);}
+#bible-picker .picker-search-wrap input {background:transparent; color:var(--ink); width:100%; min-height:43px; border:0; outline:0; font-family:inherit; font-size:14px; font-weight:500; line-height:1.2; }
+#bible-picker #picker-search-go {min-height:43px; border:0; border-radius:11px; background:#0b6594; color:white; font-weight:700; padding:0 16px; }
+#bible-picker .picker-content { padding:3px 15px 15px; }
+#bible-picker .picker-step-header {display:flex; align-items:center; gap:9px; margin:0 0 7px;}
+#bible-picker .picker-step-header h2, #bible-picker .picker-tab-panel > h2 {font-size:18px; margin:0; font-weight:700; flex:1; text-align:center;}
+#bible-picker .picker-step-back {width:41px; height:41px; flex:0 0 41px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--ink); font-size:28px; }
+#bible-picker .picker-step-header:has(.picker-step-back:not([hidden]))::after {content:''; width:41px;}
+#bible-picker .picker-step-description {text-align:center; font-size:12px; color:var(--muted); margin:2px 0 16px;}
+#bible-picker .picker-section + .picker-section {margin-top:0;}
+#bible-picker .picker-section h3 {font-size:12px; color:var(--muted); letter-spacing:.05em; margin:13px 0 6px;}
+#bible-picker .picker-book-grid, #bible-picker .picker-chapters, #bible-picker .picker-verses {grid-template-columns:repeat(5,minmax(0,1fr)); gap:2px;}
+#bible-picker .picker-book-grid button, #bible-picker .picker-chapters button, #bible-picker .picker-verses button {min-height:51px; padding:6px 2px; border-radius:2px; font-size:14px; font-weight:500; border:1px solid var(--surface); background:var(--soft);}
+#bible-picker .picker-book-grid button:nth-child(4n + 1) {background:color-mix(in srgb, var(--soft) 83%, #e9d3ac);}
+#bible-picker .picker-book-grid button:nth-child(4n + 2) {background:color-mix(in srgb, var(--soft) 82%, #d5e9e4);}
+#bible-picker .picker-book-grid button:nth-child(4n + 3) {background:color-mix(in srgb, var(--soft) 88%, #d2d5eb);}
+#bible-picker .picker-number-grid button:focus-visible {outline:2px solid #0b6594; outline-offset:-3px;}
+#bible-picker .picker-list {display:flex; flex-direction:column; gap:2px; padding-top:12px;}
+#bible-picker .picker-list h3 {font-size:12px; color:var(--muted); margin:15px 0 5px;}
+#bible-picker .picker-list button {min-height:46px; background:var(--soft); color:var(--ink); border:0; border-radius:8px; display:flex; align-items:center; justify-content:space-between; gap:10px; text-align:left; padding:10px 14px; font:500 14px/1.25 inherit;}
+#bible-picker .picker-list button small {color:var(--muted); white-space:nowrap;}
+#bible-picker .picker-empty {text-align:center; color:var(--muted); font-size:14px; padding:25px 5px;}
+#bible-picker .picker-bottom {padding:8px 15px calc(8px + env(safe-area-inset-bottom, 0px));}
+#bible-picker .picker-primary {min-height:43px;}
+
+@media (max-width: 430px) {
+  .bible-books-grid {
+    gap: 2px;
+  }
+
+  .book-grid-item {
+    min-height: 66px;
+    padding: 8px 2px;
+  }
+
+  .book-grid-abbr {
+    font-size: 17px;
+  }
+}
+
+@media (max-width:389px) {
+  #bible-picker .picker-minimal-head {padding-inline:5px; gap:4px;}
+  #bible-picker .picker-tabs button {font-size:11px; padding-inline:2px;}
+  #bible-picker .picker-search-row {padding-inline:10px;}
+  #bible-picker .picker-content {padding-inline:10px;}
+  #reader .bible-reference-row {gap:4px;}
+  #reader .bible-nav-arrow, #reader .bible-search-trigger {flex-basis:35px; width:35px;}
+}
+@media (prefers-reduced-motion:reduce) {
+  #bible-picker *, #reader .bible-minimal-nav * {animation:none!important; transition:none!important;}
+}
+
+#reader.focus-mode .bible-minimal-nav { display:none !important; }
+
+/* ==============================================================
+   13. PORTADA BÍBLICA — VERSÍCULO DEL DÍA (v0.7.17)
+   =============================================================== */
+.daily-verse {
+  padding: clamp(18px, 4vw, 26px);
+  margin-top: 19px;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+.daily-verse[hidden] { display: none !important; }
+.daily-verse-heading, .daily-verse-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.daily-verse-eyebrow {
+  color: var(--blue2);
+  font-size: 11px;
+  letter-spacing: .12em;
+  font-weight: 800;
+}
+.daily-verse-version {
+  background: var(--soft);
+  color: var(--muted);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 650;
+}
+.daily-verse-text {
+  margin: 18px 0;
+  font: 500 clamp(18px, 4.4vw, 22px)/1.65 Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  overflow-wrap: break-word;
+}
+.daily-verse-footer { border-top: 1px solid var(--line); padding-top: 15px; }
+.daily-verse-footer strong { color: var(--blue2); font-size: 14px; }
+.daily-verse-action {
+  min-height: 44px;
+  border: 0;
+  border-radius: 11px;
+  padding: 10px 14px;
+  color: white;
+  background: var(--blue2);
+  font-size: 13px;
+  font-weight: 700;
+}
+.daily-verse-action:disabled { opacity: .5; cursor: not-allowed; }
+#main-search-box:has(input[readonly]) { cursor: pointer; }
+#main-search-box input[readonly] { cursor: pointer; caret-color: transparent; }
+@media (max-width: 390px) {
+  .daily-verse { margin-top: 15px; padding: 17px; }
+  .daily-verse-footer { align-items: stretch; }
+  .daily-verse-action { flex: 1; }
+}
+
+
+/* ==============================================================
+ * 15. BUSCADOR AVANZADO Y PALETA DEL SELECTOR - v0.7.18
+ * Colores agrupados por secciones según la imagen de referencia.
+ * ============================================================= */
+#bible-picker .picker-book-grid button.tone-gold,
+.bible-books-grid .book-grid-item.tone-gold { background:#f3f2dc; }
+#bible-picker .picker-book-grid button.tone-blue,
+.bible-books-grid .book-grid-item.tone-blue { background:#e4eff2; }
+#bible-picker .picker-book-grid button.tone-sand,
+.bible-books-grid .book-grid-item.tone-sand { background:#f1ded3; }
+#bible-picker .picker-book-grid button.tone-green,
+.bible-books-grid .book-grid-item.tone-green { background:#e4efdf; }
+#bible-picker .picker-book-grid button.tone-rose,
+.bible-books-grid .book-grid-item.tone-rose { background:#f4dcde; }
+
+#bible-picker .picker-book-grid button {
+  color:#172332;
+  border:1px solid var(--surface);
+  border-radius:1px;
+  min-height:52px;
+  font-weight:500;
+}
+#bible-picker .picker-book-grid button:nth-child(n) {
+  /* Reemplaza el antiguo coloreado alternado de nth-child. */
+  background:unset;
+}
+#bible-picker .picker-book-grid button.tone-gold { background:#f3f2dc; }
+#bible-picker .picker-book-grid button.tone-blue { background:#e4eff2; }
+#bible-picker .picker-book-grid button.tone-sand { background:#f1ded3; }
+#bible-picker .picker-book-grid button.tone-green { background:#e4efdf; }
+#bible-picker .picker-book-grid button.tone-rose { background:#f4dcde; }
+
+#bible-picker .picker-text-results {
+  width:100%;
+  min-height:140px;
+  padding:5px 0 14px;
+}
+#bible-picker .picker-text-results-status {
+  margin:4px 0 12px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.5;
+}
+#bible-picker .picker-text-results-list {
+  display:grid;
+  gap:7px;
+}
+#bible-picker .picker-search-result {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 20px;
+  align-items:center;
+  gap:6px 10px;
+  min-height:65px;
+  padding:11px 13px;
+  border:1px solid var(--line);
+  border-radius:11px;
+  background:var(--surface);
+  color:var(--ink);
+  font-family:inherit;
+  text-align:left;
+  cursor:pointer;
+}
+#bible-picker .picker-search-result strong { grid-column:1; font-size:14px; color:var(--blue2); }
+#bible-picker .picker-search-result span:not(.picker-result-chevron) {
+  grid-column:1;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
+}
+#bible-picker .picker-result-chevron { grid-column:2; grid-row:1 / 3; font-size:23px; color:var(--muted); }
+#bible-picker .picker-search-result:focus-visible { outline:2px solid #0b6594; outline-offset:2px; }
+body.dark #bible-picker .picker-book-grid button[class*="tone-"] {color:#172332;}
+@media (max-width:389px) {
+  #bible-picker .picker-book-grid button {min-height:48px; font-size:13px;}
 }
