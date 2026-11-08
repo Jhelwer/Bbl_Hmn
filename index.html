@@ -10,7 +10,7 @@
     <link rel="icon" type="image/svg+xml" href="icons/icono-biblia-himnario.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="styles.css?v=0.7.5">
+    <link rel="stylesheet" href="styles.css?v=0.7.8">
   </head>
   <body>
     <div class="app-shell">
@@ -19,7 +19,7 @@
       <header class="topbar">
         <img class="brand-icon" src="icons/icono-biblia-himnario.svg" alt="" width="43" height="43" decoding="async">
         <div>
-          <strong>Biblia e Himnario <span class="version-tag">v0.7.5</span></strong>
+          <strong>Biblia e Himnario <span class="version-tag">v0.7.8</span></strong>
           <small>Lectura, alabanza y estudio</small>
         </div>
         <button id="theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
@@ -28,9 +28,9 @@
 
         <!-- ===== BIENVENIDA ===== -->
         <section class="welcome">
-          <p class="eyebrow">MI ESPACIO DE DEVOCIÓN</p>
+          <p class="eyebrow" id="welcome-eyebrow">MI ESPACIO DE DEVOCIÓN</p>
           <h1 id="main-title">¿Qué deseas leer hoy?</h1>
-          <p>Encuentra la Palabra y tus himnos en un solo lugar.</p>
+          <p id="welcome-description">Encuentra la Palabra y tus himnos en un solo lugar.</p>
         </section>
 
         <!-- ===== BUSCADOR DE BIBLIA E HIMNOS ===== -->
@@ -48,6 +48,16 @@
           <button data-tab="favoritos" role="tab" aria-selected="false">♡ Favoritos</button>
         </div>
 
+        <!-- ===== HIMNARIO: LISTA COMPLETA BAJO DEMANDA ===== -->
+        <section id="hymn-discovery" class="hymn-discovery" hidden aria-label="Explorar el Himnario">
+          <button id="hymn-list-toggle" class="hymn-list-toggle" type="button" aria-expanded="false" aria-controls="content">
+            <span aria-hidden="true">♫</span>
+            <span id="hymn-list-label">Listar himnos</span>
+            <span class="hymn-list-icon" aria-hidden="true">›</span>
+          </button>
+          <p id="hymn-discovery-tip">Busca por número, título o una frase de la letra. También puedes explorar los 613 himnos.</p>
+        </section>
+
         <!-- ===== ÚLTIMA LECTURA E HISTORIAL ===== -->
         <section id="reading-progress" class="reading-progress" hidden aria-label="Continuar lectura">
           <div class="reading-summary">
@@ -60,6 +70,23 @@
             <div id="history-items" class="history-items"></div>
             <button id="history-clear" class="history-clear" type="button">Borrar historial</button>
           </details>
+        </section>
+
+        <!-- ===== FAVORITOS / CATEGORÍAS HIMNOS Y VERSÍCULOS ===== -->
+        <section id="favorites-categories" class="favorites-categories" hidden aria-label="Clasificar favoritos">
+          <div class="favorites-category-tabs" role="group" aria-label="Tipo de favorito">
+            <button id="favorites-hymns" class="favorites-category active" type="button" data-favorite-category="himnos" aria-pressed="true">
+              <span aria-hidden="true">♫</span>
+              <span>Himnos</span>
+              <span id="favorites-hymns-count" class="favorites-category-count">0</span>
+            </button>
+            <button id="favorites-verses" class="favorites-category" type="button" data-favorite-category="versiculos" aria-pressed="false">
+              <span aria-hidden="true">▤</span>
+              <span>Versículos</span>
+              <span id="favorites-verses-count" class="favorites-category-count">0</span>
+            </button>
+          </div>
+          <p id="favorites-category-hint" class="favorites-category-hint">Tus himnos guardados, en un solo lugar.</p>
         </section>
 
         <!-- ===== TÍTULO Y CONTADOR DE RESULTADOS ===== -->
@@ -93,7 +120,8 @@
           <small id="reader-type"></small>
           <h2 id="reader-title"></h2>
         </div>
-        <button id="reader-focus" class="icon-button" type="button" aria-label="Activar modo sin distracciones" title="Modo sin distracciones" aria-pressed="false">⛶</button>
+        <!-- Abrir opciones de lectura (pantallas compactas) -->
+        <button id="reader-settings-toggle" class="icon-button reader-settings-toggle" type="button" aria-label="Opciones de lectura" aria-controls="reading-settings" aria-expanded="false" title="Opciones de lectura">Aa</button>
         <button id="reader-theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
         <button id="bookmark" class="icon-button" aria-label="Guardar favorito">♡</button>
       </div>
@@ -105,10 +133,12 @@
       </div>
 
       <!-- ===== CONTROL DE TAMAÑO DE LETRA ===== -->
-      <div class="reader-tools">
+      <div id="reading-settings" class="reader-tools" aria-label="Opciones de lectura">
+        <span class="reader-settings-caption">Tamaño de letra</span>
         <button id="smaller" aria-label="Reducir letra">A−</button>
         <span id="size-label">18 px</span>
         <button id="larger" aria-label="Ampliar letra">A+</button>
+        <button id="reader-focus" class="reader-focus-option" type="button" aria-label="Activar modo sin distracciones" title="Modo sin distracciones" aria-pressed="false">⛶ Lectura</button>
       </div>
 
       <!-- ===== PREFERENCIA: PALABRAS DE JESÚS EN ROJO ===== -->
@@ -119,22 +149,22 @@
 
       <!-- ===== NAVEGACIÓN ENTRE CAPÍTULOS DE LA BIBLIA ===== -->
       <div id="chapter-toolbar" class="chapter-toolbar" hidden>
-        <button id="prevChapter" type="button">← Anterior</button>
+        <button id="prevChapter" type="button" aria-label="Capítulo anterior" title="Capítulo anterior">← Anterior</button>
         <label for="chapterSelect">
           Capítulo
           <select id="chapterSelect"></select>
         </label>
-        <button id="nextChapter" type="button">Siguiente →</button>
+        <button id="nextChapter" type="button" aria-label="Capítulo siguiente" title="Capítulo siguiente">Siguiente →</button>
       </div>
 
       <!-- ===== NAVEGACIÓN ENTRE HIMNOS ===== -->
       <div id="hymn-toolbar" class="hymn-toolbar" hidden aria-label="Navegación del himnario">
-        <button id="prevHymn" type="button" aria-label="Himno anterior">← Anterior</button>
+        <button id="prevHymn" type="button" aria-label="Himno anterior" title="Himno anterior">← Anterior</button>
         <label for="hymnSelect">
           Himno
           <select id="hymnSelect" aria-label="Elegir número de himno"></select>
         </label>
-        <button id="nextHymn" type="button" aria-label="Himno siguiente">Siguiente →</button>
+        <button id="nextHymn" type="button" aria-label="Himno siguiente" title="Himno siguiente">Siguiente →</button>
       </div>
 
       <!-- ===== ÁREA DONDE SE CARGAN LOS VERSÍCULOS O LAS ESTROFAS ===== -->
@@ -205,6 +235,6 @@
         <p id="verse-action-status" class="verse-action-status" role="status" aria-live="polite"></p>
       </section>
     </dialog>
-    <script src="script.js?v=0.7.5" defer></script>
+    <script src="script.js?v=0.7.8" defer></script>
   </body>
 </html>

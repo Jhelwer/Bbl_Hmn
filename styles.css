@@ -1472,3 +1472,477 @@ body.dark .reading-continue {
 
 }
 
+
+
+/* =============================================================
+   v0.7.6 - LECTOR RESPONSIVE (ANDROID 360-412 CSS PX / IPHONE)
+   Sección 01: ajustes compartidos. Sin alterar JSON ni lógica.
+   Las reglas de esta versión prevalecen sobre v0.7.4.
+   ============================================================= */
+.reader-settings-toggle,
+.reader-settings-caption {
+  display: none;
+}
+
+.reader-focus-option {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--soft);
+  color: var(--ink);
+  min-height: 40px;
+  padding: 7px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.reader-head > div {
+  min-width: 0;
+}
+
+.reader-head h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =============================================================
+   Sección 02: lector móvil, cabecera y panel Aa desplegable
+   ============================================================= */
+@media (max-width: 600px) {
+  #reader .reader-head {
+    gap: 6px;
+    padding: 8px 10px;
+    min-height: 60px;
+  }
+
+  #reader .reader-head .icon-button {
+    flex: 0 0 42px;
+    width: 42px;
+    height: 44px;
+    min-width: 42px;
+    padding: 0;
+    border-radius: 10px;
+  }
+
+  #reader .reader-head > div {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  #reader .reader-head small {
+    font-size: 9px;
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #reader .reader-head h2 {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+  #reader .reader-settings-toggle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  #reader .reader-settings-toggle[aria-expanded="true"] {
+    background: var(--soft);
+    color: var(--blue2);
+  }
+
+  /* Cerrado por defecto: no ocupa una franja permanente. */
+  #reader .reader-tools,
+  #reader .red-letters-setting {
+    display: none !important;
+  }
+
+  #reader.settings-open:not(.focus-mode) .reader-tools {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--surface);
+  }
+
+  #reader.settings-open:not(.focus-mode) .red-letters-setting:not([hidden]) {
+    display: flex !important;
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  #reader .reader-settings-caption {
+    display: inline;
+    margin-right: auto;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 650;
+  }
+
+  #reader .reader-tools button,
+  #reader .reader-focus-option {
+    min-width: 42px;
+    min-height: 42px;
+    padding: 7px 10px;
+  }
+
+  #reader .reader-focus-option {
+    flex: 0 0 100%;
+  }
+
+  /* Barra de navegación idéntica para Biblia e Himnario. */
+  #reader .chapter-toolbar,
+  #reader .hymn-toolbar {
+    display: grid;
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px;
+    min-height: 56px;
+    background: var(--surface);
+  }
+
+  #reader .chapter-toolbar[hidden],
+  #reader .hymn-toolbar[hidden] {
+    display: none !important;
+  }
+
+  #reader .chapter-toolbar > button,
+  #reader .hymn-toolbar > button {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    font-size: 0; /* El texto queda en aria-label. */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  #reader .chapter-toolbar > button::before,
+  #reader .hymn-toolbar > button::before {
+    content: "‹";
+    font-size: 30px;
+    line-height: 1;
+  }
+
+  #reader #nextChapter::before,
+  #reader #nextHymn::before {
+    content: "›";
+  }
+
+  #reader .chapter-toolbar label,
+  #reader .hymn-toolbar label {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 12px;
+  }
+
+  #reader .chapter-toolbar select,
+  #reader .hymn-toolbar select {
+    min-width: 0;
+    width: min(100%, 190px);
+    max-width: 190px;
+    height: 44px;
+    min-height: 44px;
+    font-size: 14px;
+    padding: 5px 8px;
+  }
+
+  /* Espacio vertical: priorizar el texto, no los contenedores. */
+  #reader .reader-body {
+    min-height: 0;
+    padding: 12px 16px 70px;
+    line-height: 1.6;
+    overscroll-behavior: contain;
+  }
+
+  #reader .reader-body > h3 {
+    margin-top: 3px;
+    margin-bottom: 10px;
+  }
+
+  #reader .verse-help {
+    margin-bottom: 10px !important;
+  }
+
+  #reader .reader-body .verse[data-verse-number] {
+    margin-bottom: 10px;
+    line-height: 1.62;
+  }
+
+  /* Himnario: estrofas sin tarjetas y coros con fondo discreto. */
+  #reader .hymn-reader {
+    padding: 0 0 12px;
+  }
+
+  #reader .hymn-reader-heading {
+    padding: 4px 0 8px;
+    margin-bottom: 10px;
+  }
+
+  #reader .hymn-reader-heading h3 {
+    font-size: 1.12em;
+    margin: 3px 0 5px;
+    line-height: 1.3;
+  }
+
+  #reader .hymn-stanza {
+    padding: 4px 3px 5px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+  }
+
+  #reader .hymn-stanza-label {
+    margin-bottom: 6px;
+    letter-spacing: .5px;
+  }
+
+  #reader .hymn-stanza p {
+    margin: 0 0 2px;
+    line-height: 1.5;
+  }
+
+  #reader .hymn-chorus {
+    padding: 9px 8px;
+    border-color: var(--line);
+  }
+
+  /* Acciones: áreas táctiles grandes con menor altura de barra. */
+  #reader .hymn-actions {
+    padding: 3px 8px calc(3px + env(safe-area-inset-bottom));
+  }
+
+  #reader .hymn-actions-grid {
+    gap: 3px;
+  }
+
+  #reader .hymn-action {
+    min-height: 48px;
+    gap: 1px;
+    font-size: 11px;
+  }
+
+  #reader .hymn-action span {
+    font-size: 19px;
+  }
+
+  #reader .verse-actions {
+    padding: 7px 10px calc(7px + env(safe-area-inset-bottom));
+  }
+
+  #reader .verse-action-tile {
+    min-height: 48px;
+    padding: 5px 2px;
+  }
+
+  #reader .verse-action-tile .action-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  #reader .swipe-hint {
+    display: none !important;
+  }
+
+  /* Modo lectura: se conserva el botón de salida. */
+  #reader.focus-mode .reader-tools,
+  #reader.focus-mode .red-letters-setting,
+  #reader.focus-mode .hymn-toolbar {
+    display: none !important;
+  }
+}
+
+/* =============================================================
+   Sección 03: Android compactos / pantallas estrechas
+   ============================================================= */
+@media (max-width: 389px) {
+  #reader .reader-head {
+    padding: 7px 6px;
+    gap: 4px;
+  }
+
+  #reader .reader-head .icon-button {
+    width: 40px;
+    flex-basis: 40px;
+    min-width: 40px;
+  }
+
+  #reader .reader-head h2 {
+    font-size: 14px;
+  }
+
+  #reader .chapter-toolbar,
+  #reader .hymn-toolbar {
+    padding-inline: 7px;
+    gap: 5px;
+  }
+
+  #reader .reader-body {
+    padding-inline: 13px;
+  }
+}
+
+/* =============================================================
+   Sección 04: iPhone, Android amplios, tablets y escritorio
+   ============================================================= */
+@media (min-width: 601px) {
+  #reader .reader-tools {
+    flex-wrap: wrap;
+  }
+
+  #reader .reader-focus-option {
+    margin-left: 4px;
+  }
+}
+
+/* v0.7.6 - Prevalecer sobre las reglas específicas del Himnario v0.7.4.
+   El texto de los botones sigue en HTML para accesibilidad, pero visualmente
+   se usan flechas grandes con una superficie táctil de 44 px. */
+@media (max-width: 600px) {
+  #reader .hymn-toolbar > button,
+  #reader .chapter-toolbar > button {
+    font-size: 0 !important;
+    padding: 0 !important;
+    min-width: 44px !important;
+    width: 44px !important;
+    max-width: 44px;
+    height: 44px !important;
+    min-height: 44px !important;
+    flex: 0 0 44px;
+    overflow: hidden;
+  }
+  #reader .hymn-toolbar > button::before,
+  #reader .chapter-toolbar > button::before {
+    font-size: 30px !important;
+  }
+}
+
+/* =============================================================
+   v0.7.7 / INTERFAZ PRINCIPAL DEL HIMNARIO
+   Mostrar solo el buscador y el acceso voluntario al listado.
+   No modifica el lector de himnos ni las pantallas de Biblia.
+   ============================================================= */
+
+/* Forzar que el atributo hidden actúe también en contenedores grid/flex. */
+#hymn-discovery[hidden],
+#reading-progress[hidden],
+.content-header[hidden],
+#content[hidden] {
+  display: none !important;
+}
+
+.hymn-discovery {
+  margin: 18px 0 8px;
+}
+
+.hymn-list-toggle {
+  width: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 11px 15px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--blue2);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hymn-list-toggle .hymn-list-icon {
+  margin-left: auto;
+  font-size: 22px;
+  line-height: 1;
+  transform: rotate(90deg);
+}
+
+.hymn-list-toggle[aria-expanded="true"] .hymn-list-icon {
+  transform: rotate(-90deg);
+}
+
+#hymn-discovery-tip {
+  margin: 10px 4px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+@media (max-width: 412px) {
+  .hymn-discovery { margin-top: 14px; }
+  .hymn-list-toggle { min-height: 46px; font-size: 14px; }
+}
+
+
+/* =============================================================
+   v0.7.8 / FAVORITOS ORGANIZADOS EN DOS CATEGORÍAS
+   Las categorías solo aparecen en la pestaña Guardados.
+   No cambia el estilo del lector de Biblia ni del Himnario.
+   ============================================================= */
+#favorites-categories[hidden] { display: none !important; }
+.favorites-categories { margin: 16px 0 12px; }
+.favorites-category-tabs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 5px;
+  background: var(--surface2, #eaf3f8);
+  border-radius: 14px;
+}
+.favorites-category {
+  min-width: 0;
+  min-height: 46px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.favorites-category.active {
+  background: var(--surface);
+  color: var(--blue2);
+  box-shadow: 0 2px 8px rgba(0, 36, 68, .08);
+}
+.favorites-category-count {
+  font-size: 11px;
+  line-height: 1;
+  padding: 4px 6px;
+  border-radius: 20px;
+  background: rgba(80, 127, 160, .12);
+}
+.favorites-category-hint {
+  margin: 10px 5px 2px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.favorite-subheading {
+  font-size: 13px;
+  margin: 15px 2px 8px;
+  color: var(--muted);
+  font-weight: 700;
+}
+@media (max-width: 390px) {
+  .favorites-category-tabs { gap: 5px; }
+  .favorites-category { font-size: 13px; gap: 5px; }
+}

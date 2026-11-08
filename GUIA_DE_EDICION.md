@@ -43,3 +43,19 @@ Esta versión reorganiza **solo el formato y los comentarios** de `index.html`, 
 - Comprobar el diseño móvil compacto en Safari y Android.
 
 **Nota:** el archivo de manifiesto existente no sustituye por sí solo la implementación de uso completamente sin conexión.
+
+
+## Portada diferenciada del Himnario (v0.7.7)
+- `index.html`: sección `hymn-discovery` y botón `hymn-list-toggle`.
+- `script.js`: `updateHomeView()`, `state.hymnListOpen` y evento del botón.
+- `styles.css`: bloque `v0.7.7 / INTERFAZ PRINCIPAL DEL HIMNARIO`.
+
+
+## v0.7.8 — Favoritos por categorías
+
+- **Himnos**: muestra únicamente los himnos guardados.
+- **Versículos**: muestra los versículos guardados. Para mantener compatibilidad con versiones anteriores, también incluye los libros bíblicos guardados, en una subsección interna.
+- Los datos siguen usando `localStorage` con la clave `bh-favs`: **no se reinician ni se migran**.
+- En `index.html` busca `FAVORITOS / CATEGORÍAS HIMNOS Y VERSÍCULOS`.
+- En `script.js` busca `02.B. FAVORITOS / CATEGORÍAS` para editar los filtros, contadores o textos.
+- En `styles.css` busca `v0.7.8 / FAVORITOS ORGANIZADOS EN DOS CATEGORÍAS`.

@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.5. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.8. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -11,7 +11,7 @@ const store = (k, fallback) => { try {
 catch {
     return fallback;
 } };
-const state = { tab: 'biblia', query: '', books: [], hymns: [], version: 'rvr1960', selection: null, chapter: 1, font: store('bh-font', 18), favs: new Set(store('bh-favs', [])), loading: false, searchTask: 0, searchTimer: null, redLetters: store('bh-red-letters', true), selectedVerses: new Set(), highlights: store('bh-verse-highlights', {}), history: store('bh-reading-history', []), focus: false, hymnData: null, hymnSearchIndex: null };
+const state = { tab: 'biblia', query: '', books: [], hymns: [], version: 'rvr1960', selection: null, chapter: 1, font: store('bh-font', 18), favs: new Set(store('bh-favs', [])), loading: false, searchTask: 0, searchTimer: null, redLetters: store('bh-red-letters', true), selectedVerses: new Set(), highlights: store('bh-verse-highlights', {}), history: store('bh-reading-history', []), focus: false, hymnData: null, hymnSearchIndex: null, hymnListOpen: false, favoriteCategory: 'himnos' };
 const normalized = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 const safe = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const favoriteKey = (type, id) => `${type}:${id}`;
@@ -58,29 +58,146 @@ catch (e) {
     $('content').innerHTML = '<div class="empty">No se pudieron cargar los archivos JSON. Inicia un servidor local desde la carpeta del proyecto.</div>';
 } }
 function items() { const b = state.books.map(i => ({ ...i, type: 'biblia' })), h = state.hymns.map(i => ({ ...i, type: 'himnos' })); return state.tab === 'biblia' ? b : state.tab === 'himnos' ? h : [...b, ...h].filter(i => state.favs.has(favoriteKey(i.type, i.id))); }
-function render() {
-    if (!state.query.trim())
-        showSearchStatus('');
-    if (state.tab === 'biblia' && state.query.trim())
-        return searchBible();
-    if (state.tab === 'himnos' && state.query.trim())
-        return searchHymns();
-    const filtered = items().filter(x => normalized([x.nombre, x.titulo, x.numero, x.testamento, x.id].join(' ')).includes(normalized(state.query)));
-    $('section-title').textContent = state.tab === 'biblia' ? 'Libros de la Biblia' : state.tab === 'himnos' ? 'Himnario Adventista' : 'Mis favoritos';
-    $('count').textContent = `${filtered.length} ${filtered.length === 1 ? 'resultado' : 'resultados'}`;
-    const normalItems = filtered.map(x => `<button class="item" data-type="${x.type}" data-id="${safe(x.id)}"><span class="symbol">${x.type === 'biblia' ? String(x.orden).padStart(2, '0') : x.numero}</span><span class="details"><strong>${safe(x.nombre || x.titulo)}</strong><small>${x.type === 'biblia' ? `${safe(x.testamento)} · ${x.totalCapitulos} capítulos` : `Himno ${x.numero} · ${x.letraDisponible ? 'Letra disponible' : 'Letra por incorporar'}`}</small></span><span class="chevron">›</span></button>`);
-    const verseItems = state.tab === 'favoritos' ? [...state.favs].filter(k => k.startsWith('verse:')).map(k => { const parts = k.split(':'); const book = state.books.find(b => b.id === parts[1]); if (!book)
-        return ''; const ch = Number(parts[2]), v = Number(parts[3]); const label = `${book.nombre} ${ch}:${v}`; return normalized(label).includes(normalized(state.query)) ? `<button class="item" data-type="biblia" data-id="${safe(book.id)}" data-chapter="${ch}" data-verse="${v}"><span class="symbol">${v}</span><span class="details"><strong>${safe(label)}</strong><small>Versículo guardado · toca para abrir</small></span><span class="chevron">›</span></button>` : ''; }).filter(Boolean) : [];
-    const allItems = [...normalItems, ...verseItems];
-    $('count').textContent = `${allItems.length} ${allItems.length === 1 ? 'resultado' : 'resultados'}`;
-    $('content').innerHTML = allItems.length ? allItems.join('') : '<div class="empty">No se encontraron resultados. Prueba otro término.</div>';
+/* ==========================================================
+ * 02.A. INTERFAZ POR PESTAÑA (v0.7.7)
+ * Biblia: mantiene bienvenida e historial de lectura.
+ * Himnario: buscador propio y listado solamente bajo demanda.
+ * Favoritos: encabezado propio sin historial de la Biblia.
+ * ========================================================== */
+function updateHomeView() {
+    const tab = state.tab;
+    const labels = {
+        biblia: ['MI ESPACIO DE DEVOCIÓN', '¿Qué deseas leer hoy?', 'Encuentra la Palabra y tus himnos en un solo lugar.'],
+        himnos: ['HIMNARIO ADVENTISTA', 'Encuentra tu himno', 'Busca por número, título o palabras de su letra.'],
+        favoritos: ['TUS GUARDADOS', 'Mis favoritos', 'Encuentra tus himnos y versículos favoritos por separado.']
+    };
+    const [eyebrow, title, description] = labels[tab];
+    $('welcome-eyebrow').textContent = eyebrow;
+    $('main-title').textContent = title;
+    $('welcome-description').textContent = description;
+
+    // v0.7.8: las dos categorías solo aparecen dentro de Favoritos.
+    $('favorites-categories').hidden = tab !== 'favoritos';
+    if (tab === 'favoritos') updateFavoriteCategories();
+
+    // El historial bíblico no se muestra en el Himnario ni en Favoritos.
+    $('reading-progress').hidden = tab !== 'biblia' || state.history.length === 0;
+
+    // Sin texto de búsqueda, solo se lista el catálogo si el usuario lo pide.
+    const searchActive = Boolean(state.query.trim());
+    $('hymn-discovery').hidden = tab !== 'himnos' || searchActive;
+    $('hymn-list-toggle').setAttribute('aria-expanded', String(state.hymnListOpen));
+    $('hymn-list-label').textContent = state.hymnListOpen ? 'Ocultar himnos' : 'Listar himnos';
+    $('hymn-discovery-tip').hidden = state.hymnListOpen;
+    const hideListing = tab === 'himnos' && !searchActive && !state.hymnListOpen;
+    document.querySelector('.content-header').hidden = hideListing;
+    $('content').hidden = hideListing;
 }
-function setTab(t) { state.searchTask++; clearTimeout(state.searchTimer); $('search-status').hidden = true; state.tab = t; state.query = ''; $('search').value = ''; $('search').placeholder = t === 'himnos' ? 'Buscar número, título o palabras de un himno' : t === 'biblia' ? 'Ej. Juan 3:16, Salmos 23, amor de Dios' : 'Buscar en mis guardados'; document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === t; b.classList.toggle('active', on); if (b.getAttribute('role') === 'tab')
+
+$('hymn-list-toggle').addEventListener('click', () => {
+    if (state.tab !== 'himnos') return;
+    state.hymnListOpen = !state.hymnListOpen;
+    render();
+});
+
+/* ==========================================================
+ * 02.B. FAVORITOS / CATEGORÍAS (v0.7.8)
+ * No modifica las claves locales bh-favs ni borra guardados.
+ * Categoría Himnos: himnos marcados.
+ * Categoría Versículos: versículos y libros bíblicos guardados.
+ * ========================================================== */
+function updateFavoriteCategories() {
+    const hymns = [...state.favs].filter(k => k.startsWith('himnos:')).length;
+    const verses = [...state.favs].filter(k => k.startsWith('verse:')).length;
+    const books = [...state.favs].filter(k => k.startsWith('biblia:')).length;
+    $('favorites-hymns-count').textContent = String(hymns);
+    $('favorites-verses-count').textContent = String(verses + books);
+    document.querySelectorAll('[data-favorite-category]').forEach(btn => {
+        const active = btn.dataset.favoriteCategory === state.favoriteCategory;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', String(active));
+    });
+    $('favorites-category-hint').textContent = state.favoriteCategory === 'himnos'
+        ? 'Tus himnos guardados, en un solo lugar.'
+        : 'Tus versículos favoritos y libros bíblicos guardados.';
+}
+
+document.querySelectorAll('[data-favorite-category]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        if (state.tab !== 'favoritos') return;
+        state.favoriteCategory = btn.dataset.favoriteCategory;
+        render();
+    });
+});
+
+function renderFavorites() {
+    updateFavoriteCategories();
+    const query = normalized(state.query);
+    const showHymns = state.favoriteCategory === 'himnos';
+    $('section-title').textContent = showHymns ? 'Himnos favoritos' : 'Versículos favoritos';
+
+    const hymns = showHymns ? state.hymns
+        .filter(h => state.favs.has(favoriteKey('himnos', h.id)))
+        .filter(h => normalized(`${h.numero} ${h.titulo}`).includes(query))
+        .map(h => `<button class="item" data-type="himnos" data-id="${safe(h.id)}"><span class="symbol">${h.numero}</span><span class="details"><strong>${safe(h.titulo)}</strong><small>Himno ${h.numero} · Guardado</small></span><span class="chevron">›</span></button>`)
+        : [];
+
+    const verses = !showHymns ? [...state.favs]
+        .filter(k => k.startsWith('verse:'))
+        .map(k => {
+            const parts = k.split(':');
+            const book = state.books.find(b => b.id === parts[1]);
+            if (!book) return null;
+            const chapter = Number(parts[2]);
+            const verse = Number(parts[3]);
+            if (!Number.isInteger(chapter) || !Number.isInteger(verse)) return null;
+            return {book, chapter, verse, label: `${book.nombre} ${chapter}:${verse}`};
+        })
+        .filter(Boolean)
+        .sort((a,b) => (a.book.orden - b.book.orden) || (a.chapter - b.chapter) || (a.verse - b.verse))
+        .filter(v => normalized(v.label).includes(query))
+        .map(v => `<button class="item" data-type="biblia" data-id="${safe(v.book.id)}" data-chapter="${v.chapter}" data-verse="${v.verse}"><span class="symbol">${v.verse}</span><span class="details"><strong>${safe(v.label)}</strong><small>Versículo guardado · toca para leer</small></span><span class="chevron">›</span></button>`)
+        : [];
+
+    // Favoritos antiguos de libros se conservan sin crear una tercera categoría.
+    const books = !showHymns ? state.books
+        .filter(b => state.favs.has(favoriteKey('biblia', b.id)))
+        .filter(b => normalized(b.nombre).includes(query))
+        .map(b => `<button class="item" data-type="biblia" data-id="${safe(b.id)}"><span class="symbol">${String(b.orden).padStart(2,'0')}</span><span class="details"><strong>${safe(b.nombre)}</strong><small>Libro bíblico guardado</small></span><span class="chevron">›</span></button>`)
+        : [];
+
+    const total = hymns.length + verses.length + books.length;
+    $('count').textContent = `${total} ${total === 1 ? 'resultado' : 'resultados'}`;
+    const verseHeading = verses.length ? '<h3 class="favorite-subheading">Versículos guardados</h3>' : '';
+    const bookHeading = books.length ? '<h3 class="favorite-subheading">Libros bíblicos guardados</h3>' : '';
+    const markup = showHymns ? hymns.join('') : verseHeading + verses.join('') + bookHeading + books.join('');
+    $('content').innerHTML = total ? markup : `<div class="empty">${query ? 'No hay coincidencias en esta categoría.' : showHymns ? 'Todavía no has guardado himnos. Abre un himno y toca Guardar.' : 'Todavía no has guardado versículos. Selecciona un versículo y toca Guardar.'}</div>`;
+}
+
+function render() {
+    updateHomeView();
+    if (!state.query.trim()) showSearchStatus('');
+    if (state.tab === 'favoritos') return renderFavorites();
+    // No generar los 613 botones hasta que se pulse «Listar himnos».
+    if (state.tab === 'himnos' && !state.query.trim() && !state.hymnListOpen) {
+        $('section-title').textContent = 'Himnario Adventista';
+        $('count').textContent = '';
+        $('content').innerHTML = '';
+        return;
+    }
+    if (state.tab === 'biblia' && state.query.trim()) return searchBible();
+    if (state.tab === 'himnos' && state.query.trim()) return searchHymns();
+    const filtered = items().filter(x => normalized([x.nombre, x.titulo, x.numero, x.testamento, x.id].join(' ')).includes(normalized(state.query)));
+    $('section-title').textContent = state.tab === 'biblia' ? 'Libros de la Biblia' : 'Himnario Adventista';
+    $('count').textContent = `${filtered.length} ${filtered.length === 1 ? 'resultado' : 'resultados'}`;
+    $('content').innerHTML = filtered.length ? filtered.map(x => `<button class="item" data-type="${x.type}" data-id="${safe(x.id)}"><span class="symbol">${x.type === 'biblia' ? String(x.orden).padStart(2,'0') : x.numero}</span><span class="details"><strong>${safe(x.nombre || x.titulo)}</strong><small>${x.type === 'biblia' ? `${safe(x.testamento)} · ${x.totalCapitulos} capítulos` : `Himno ${x.numero} · ${x.letraDisponible ? 'Letra disponible' : 'Letra por incorporar'}`}</small></span><span class="chevron">›</span></button>`).join('') : '<div class="empty">No se encontraron resultados. Prueba otro término.</div>';
+}
+function setTab(t) { state.hymnListOpen = false; state.searchTask++; clearTimeout(state.searchTimer); $('search-status').hidden = true; state.tab = t; state.query = ''; $('search').value = ''; $('search').placeholder = t === 'himnos' ? 'Buscar número, título o palabras de un himno' : t === 'biblia' ? 'Ej. Juan 3:16, Salmos 23, amor de Dios' : 'Buscar en mis guardados'; document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === t; b.classList.toggle('active', on); if (b.getAttribute('role') === 'tab')
     b.setAttribute('aria-selected', String(on)); }); render(); }
 function setBookmark() { if (!state.selection)
     return; const k = favoriteKey(state.selection.type, state.selection.id); $('bookmark').textContent = state.favs.has(k) ? '♥' : '♡'; $('bookmark').setAttribute('aria-label', state.favs.has(k) ? 'Quitar de favoritos' : 'Agregar a favoritos'); }
 async function openReader(type, id, chapter = 1, verseStart = null, verseEnd = null, stanzaIndex = null) { const item = (type === 'biblia' ? state.books : state.hymns).find(i => i.id === id); if (!item)
-    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? 'REINA-VALERA 1960 · ' + item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; setBookmark(); updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; $('redLetters').closest('.red-letters-setting').hidden = type !== 'biblia'; $('swipe-hint').hidden = false; if (!$('reader').open)
+    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? 'REINA-VALERA 1960 · ' + item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; setBookmark(); updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; $('redLetters').closest('.red-letters-setting').hidden = type !== 'biblia'; $('swipe-hint').hidden = false; if (!$('reader').open)
     $('reader').showModal(); setFocusMode(false); if (type === 'biblia') {
     $('chapterSelect').innerHTML = Array.from({ length: item.totalCapitulos }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
     await loadChapter();
@@ -286,7 +403,7 @@ function shiftChapter(d) { clearVerseSelection(); const book = state.books.find(
     state.selection.verseEnd = null;
 } loadChapter(); $('reader-body').scrollTop = 0; }
 document.querySelectorAll('[data-tab]').forEach(b => b.addEventListener('click', () => setTab(b.dataset.tab)));
-$('search').addEventListener('input', e => { state.query = e.target.value; clearTimeout(state.searchTimer); state.searchTask++; if (state.query.trim() && (state.tab === 'biblia' || state.tab === 'himnos'))
+$('search').addEventListener('input', e => { state.query = e.target.value; if (state.tab === 'himnos' && state.query.trim()) $('content').innerHTML = ''; updateHomeView(); clearTimeout(state.searchTimer); state.searchTask++; if (state.query.trim() && (state.tab === 'biblia' || state.tab === 'himnos'))
     state.searchTimer = setTimeout(() => state.tab === 'biblia' ? searchBible() : searchHymns(), 240);
 else
     render(); });
@@ -381,6 +498,7 @@ function bibleResult(book, chapter, verse, raw, term, end = null) {
     return `<button class="item search-result" data-type="biblia" data-id="${safe(book.id)}" data-chapter="${chapter}" ${verse ? `data-verse="${verse}"` : ''} ${end ? `data-verse-end="${end}"` : ''}><span class="symbol">${verse || chapter}</span><span class="details"><strong>${safe(title)}</strong><small>${safe(snippet.slice(0, 240))}</small></span><span class="chevron">›</span></button>`;
 }
 async function searchBible() {
+    updateHomeView();
     const query = state.query.trim(), token = ++state.searchTask;
     $('section-title').textContent = 'Buscar en la Biblia';
     $('content').innerHTML = '';
@@ -506,6 +624,7 @@ function hymnSearchHit(hymn, segment, queryWords, matchTitle) {
     return `<button class="item hymn-search-result" data-type="himnos" data-id="${safe(hymn.id)}"${stanzaAttr}><span class="symbol">${hymn.numero}</span><span class="details"><strong>${safe(hymn.titulo)}</strong><small>${safe(detail)}</small></span><span class="chevron">›</span></button>`;
 }
 async function searchHymns() {
+    updateHomeView();
     const query = state.query.trim(), token = ++state.searchTask;
     $('section-title').textContent = 'Buscar en el Himnario';
     $('count').textContent = '';
@@ -743,7 +862,7 @@ function recordReading(bookId, chapter) {
 function renderReadingHistory() {
     const entries = state.history.filter(h => state.books.some(b => b.id === h.bookId) && Number.isInteger(h.chapter));
     const section = $('reading-progress');
-    section.hidden = !entries.length;
+    section.hidden = state.tab !== 'biblia' || !entries.length;
     if (!entries.length)
         return;
     const last = entries[0];
@@ -784,6 +903,7 @@ function updateFocusTitle() {
     $('focus-title').textContent = state.selection.type === 'biblia' ? `${book?.nombre || ''} ${state.chapter}` : (hymn?.titulo || 'Himnario');
 }
 function setFocusMode(on) {
+    if (on) closeReadingSettings();
     state.focus = Boolean(on);
     $('reader').classList.toggle('focus-mode', state.focus);
     $('reader-focus').setAttribute('aria-pressed', String(state.focus));
@@ -794,6 +914,26 @@ function setFocusMode(on) {
         updateFocusTitle();
     }
 }
+
+/* ==========================================================
+   08. INTERFAZ RESPONSIVE v0.7.6 - PANEL Aa
+   Oculta controles secundarios en móvil sin desactivar funciones.
+   ========================================================== */
+function closeReadingSettings() {
+    const dialog = $('reader');
+    const toggle = $('reader-settings-toggle');
+    dialog.classList.remove('settings-open');
+    toggle.setAttribute('aria-expanded', 'false');
+}
+
+$('reader-settings-toggle').addEventListener('click', () => {
+    const dialog = $('reader');
+    const open = dialog.classList.toggle('settings-open');
+    $('reader-settings-toggle').setAttribute('aria-expanded', String(open));
+});
+
+// Al pasar de móvil a escritorio se muestra siempre la barra tradicional.
+// Al regresar a móvil se respeta el estado cerrado de cada lector.
 $('reader-focus').addEventListener('click', () => setFocusMode(!state.focus));
 $('focus-exit').addEventListener('click', () => setFocusMode(false));
 // El deslizamiento solo se activa con un gesto claramente horizontal.
