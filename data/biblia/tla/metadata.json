@@ -1,0 +1,14 @@
+{
+  "version": "TLA",
+  "title": "Traducción en Lenguaje Actual",
+  "publisher": {
+    "name": "United Bible Societies"
+  },
+  "copyright": {
+    "html": "<p>Traducción en lenguaje actual ® © Sociedades Bíblicas Unidas, 2002, 2004.</p>",
+    "text": "Traducción en lenguaje actual ® © Sociedades Bíblicas Unidas, 2002, 2004."
+  },
+  "source": "https://github.com/mrk214/bible-data-es-spa",
+  "original_version_id": 176,
+  "note": "Conversión estructural por libros. Los bloques con varios versículos conservan los números agrupados."
+}
