@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.19. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.21. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -416,7 +416,7 @@ function render() {
     $('count').textContent = `${filtered.length} ${filtered.length === 1 ? 'resultado' : 'resultados'}`;
     $('content').innerHTML = filtered.length ? filtered.map(x => `<button class="item" data-type="${x.type}" data-id="${safe(x.id)}"><span class="symbol">${x.numero}</span><span class="details"><strong>${safe(x.titulo)}</strong><small>Himno ${x.numero} · ${x.letraDisponible ? 'Letra disponible' : 'Letra por incorporar'}</small></span><span class="chevron">›</span></button>`).join('') : '<div class="empty">No se encontraron resultados. Prueba otro término.</div>';
 }
-function setTab(t) { state.hymnListOpen = false; state.searchTask++; clearTimeout(state.searchTimer); $('search-status').hidden = true; state.tab = t; state.query = ''; $('search').value = ''; $('search').placeholder = t === 'himnos' ? 'Buscar número, título o palabras de un himno' : t === 'biblia' ? 'Buscar libro, capítulo o versículo' : 'Buscar en mis guardados'; document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === t; b.classList.toggle('active', on); if (b.getAttribute('role') === 'tab')
+function setTab(t) { state.hymnListOpen = false; state.searchTask++; clearTimeout(state.searchTimer); $('search-status').hidden = true; state.tab = t; state.query = ''; $('search').value = ''; $('search').placeholder = t === 'himnos' ? 'Buscar número, título o palabras de un himno' : t === 'biblia' ? 'Buscar libro, capítulo o versículo' : 'Buscar en mis guardados'; document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === t; b.classList.toggle('active', on); if (b.closest('.bottom-nav')) { if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); } if (b.getAttribute('role') === 'tab')
     b.setAttribute('aria-selected', String(on)); }); render(); }
 function setBookmark() { if (!state.selection)
     return; const k = favoriteKey(state.selection.type, state.selection.id); $('bookmark').textContent = state.favs.has(k) ? '♥' : '♡'; $('bookmark').setAttribute('aria-label', state.favs.has(k) ? 'Quitar de favoritos' : 'Agregar a favoritos'); }
@@ -1878,7 +1878,7 @@ init();
     const topbar = document.getElementById('app-topbar');
     if (!topbar) return;
 
-    // v0.7.19: histéresis. Evita el bucle de compactar/expandir
+    // v0.7.20: histéresis. Evita el bucle de compactar/expandir
     // causado por el cambio de altura del header sticky en Safari.
     // El rango de 20 a 112 px conserva el estado anterior.
     const compactAt = 112;

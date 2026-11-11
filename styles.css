@@ -2548,3 +2548,91 @@ body.dark #bible-picker .picker-book-grid button[class*="tone-"] {color:#172332;
 @media (max-width:389px) {
   #bible-picker .picker-book-grid button {min-height:48px; font-size:13px;}
 }
+
+/* ==========================================================
+ * 13. NAVEGACIÓN INFERIOR ÚNICA — v0.7.21
+ * Se eliminan las pestañas superiores. La barra fija inferior
+ * adopta el estilo segmentado: icono + texto en una misma línea.
+ * ========================================================== */
+.bottom-nav {
+  /* La antigua regla .bottom-nav declaraba un grid de tres columnas.
+     Ahora hay UN contenedor hijo; por eso hay que eliminar ese grid
+     del padre y dejar que el hijo distribuya los tres botones. */
+  display: block;
+  box-sizing: border-box;
+  width: min(100%, 760px);
+  padding: 7px 12px calc(7px + env(safe-area-inset-bottom, 0px));
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  z-index: 20;
+}
+
+.bottom-nav-segments {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  padding: 5px;
+  border-radius: 16px;
+  background: var(--soft);
+}
+
+.bottom-nav .bottom-nav-segments button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  min-height: 48px;
+  padding: 9px 3px;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.bottom-nav .bottom-nav-segments button.active {
+  background: var(--surface);
+  color: var(--blue2);
+  box-shadow: 0 1px 6px #00000010;
+}
+
+.bottom-nav .bottom-nav-icon {
+  flex: 0 0 auto;
+  font-size: 17px;
+  line-height: 1;
+}
+
+.bottom-nav .bottom-nav-label {
+  min-width: 0;
+  font-size: inherit;
+}
+
+.bottom-nav .bottom-nav-segments button:focus-visible {
+  outline: 2px solid var(--blue2);
+  outline-offset: -2px;
+}
+
+@media (max-width: 370px) {
+  .bottom-nav { padding-inline: 7px; }
+  .bottom-nav-segments { gap: 3px; padding: 4px; }
+  .bottom-nav .bottom-nav-segments button {
+    gap: 3px;
+    padding-inline: 2px;
+    font-size: 12px;
+  }
+  .bottom-nav .bottom-nav-icon { font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bottom-nav .bottom-nav-segments button {
+    transition: color 150ms ease, background-color 150ms ease;
+  }
+}

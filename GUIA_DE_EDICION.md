@@ -108,3 +108,9 @@ En `script.js`, buscar `13. REANUDAR LA ÚLTIMA LECTURA`. Ahí están `saveLastR
 - `script.js`: bloque **15. BÚSQUEDA AVANZADA DENTRO DEL SELECTOR BÍBLICO**, función `bibleGridTone()`.
 - `styles.css`: bloque **15. BUSCADOR AVANZADO Y PALETA**.
 - `index.html`: sección `picker-text-results`.
+
+## v0.7.20 — Barra inferior única
+
+- `index.html`: busca `NAVEGACIÓN PRINCIPAL ÚNICA`.
+- `styles.css`: busca `13. NAVEGACIÓN INFERIOR ÚNICA`.
+- `script.js`: `setTab(t)` actualiza los botones inferiores.

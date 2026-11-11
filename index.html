@@ -10,16 +10,16 @@
     <link rel="icon" type="image/svg+xml" href="icons/icono-biblia-himnario.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="styles.css?v=0.7.19">
+    <link rel="stylesheet" href="styles.css?v=0.7.21">
   </head>
   <body>
     <div class="app-shell">
 
-      <!-- ===== ENCABEZADO PRINCIPAL: SE COMPACTA AL DESPLAZARSE (v0.7.19) ===== -->
+      <!-- ===== ENCABEZADO PRINCIPAL: SE COMPACTA AL DESPLAZARSE (v0.7.21) ===== -->
       <header class="topbar" id="app-topbar">
         <img class="brand-icon" src="icons/icono-biblia-himnario.svg" alt="" width="43" height="43" decoding="async">
         <div>
-          <strong>Biblia e Himnario <span class="version-tag">v0.7.19</span></strong>
+          <strong>Biblia e Himnario <span class="version-tag">v0.7.21</span></strong>
           <small>Lectura, alabanza y estudio</small>
         </div>
         <button id="theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
@@ -41,12 +41,8 @@
         </label>
         <p id="search-hint" class="search-hint" hidden>En Himnario puedes buscar por título, número o palabras dentro de las estrofas y los coros.</p>
 
-        <!-- ===== PESTAÑAS PRINCIPALES ===== -->
-        <div class="tabs" role="tablist" aria-label="Contenido">
-          <button data-tab="biblia" class="active" role="tab" aria-selected="true">📖 Biblia</button>
-          <button data-tab="himnos" role="tab" aria-selected="false">♫ Himnario</button>
-          <button data-tab="favoritos" role="tab" aria-selected="false">♡ Favoritos</button>
-        </div>
+        <!-- ===== NAVEGACIÓN PRINCIPAL: ÚNICA BARRA INFERIOR ===== -->
+        <!-- Las pestañas superiores se retiraron para evitar controles duplicados. -->
 
         <!-- ===== HIMNARIO: LISTA COMPLETA BAJO DEMANDA ===== -->
         <section id="hymn-discovery" class="hymn-discovery" hidden aria-label="Explorar el Himnario">
@@ -95,7 +91,7 @@
           <span id="count" class="counter"></span>
         </div>
 
-        <!-- ===== BIBLIA: VERSÍCULO DEL DÍA (v0.7.19) ===== -->
+        <!-- ===== BIBLIA: VERSÍCULO DEL DÍA (v0.7.21) ===== -->
         <section id="daily-verse" class="daily-verse" hidden aria-label="Versículo del día">
           <div class="daily-verse-heading">
             <span class="daily-verse-eyebrow">VERSÍCULO DEL DÍA</span>
@@ -115,11 +111,23 @@
         <div id="content" class="content" aria-live="polite"></div>
       </main>
 
-      <!-- ===== NAVEGACIÓN INFERIOR PARA MÓVILES ===== -->
+      <!-- ===== NAVEGACIÓN PRINCIPAL ÚNICA — v0.7.21 ===== -->
+      <!-- Mismo diseño segmentado que antes estaba arriba, ahora solo abajo. -->
       <nav class="bottom-nav" aria-label="Navegación principal">
-        <button data-tab="biblia" class="active"><span>▤</span>Biblia</button>
-        <button data-tab="himnos"><span>♫</span>Himnos</button>
-        <button data-tab="favoritos"><span>♡</span>Guardados</button>
+        <div class="bottom-nav-segments">
+          <button data-tab="biblia" class="active" type="button" aria-current="page">
+            <span class="bottom-nav-icon" aria-hidden="true">📖</span>
+            <span class="bottom-nav-label">Biblia</span>
+          </button>
+          <button data-tab="himnos" type="button">
+            <span class="bottom-nav-icon" aria-hidden="true">♫</span>
+            <span class="bottom-nav-label">Himnario</span>
+          </button>
+          <button data-tab="favoritos" type="button">
+            <span class="bottom-nav-icon" aria-hidden="true">♡</span>
+            <span class="bottom-nav-label">Favoritos</span>
+          </button>
+        </div>
       </nav>
     </div>
 
@@ -142,7 +150,7 @@
 
 
       <!-- ========================================================
-           BIBLIA v0.7.19 | NAVEGACIÓN MINIMALISTA
+           BIBLIA v0.7.21 | NAVEGACIÓN MINIMALISTA
            Traducción, referencia y capítulos; no afecta al Himnario.
            ======================================================== -->
       <nav id="bible-minimal-nav" class="bible-minimal-nav" aria-label="Navegación de la Biblia" hidden>
@@ -276,7 +284,7 @@
     </dialog>
 
     <!-- ============================================================
-         12. SELECTOR BÍBLICO MINIMALISTA — v0.7.19
+         12. SELECTOR BÍBLICO MINIMALISTA — v0.7.21
          Etapas: libros > capítulos > versículos.
          Pestañas: Versículo, Contenido, Reciente, Favoritos.
          ============================================================ -->
@@ -344,6 +352,6 @@
       </div>
     </dialog>
 
-    <script src="script.js?v=0.7.19" defer></script>
+    <script src="script.js?v=0.7.21" defer></script>
   </body>
 </html>
