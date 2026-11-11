@@ -103,3 +103,7 @@ Al abrir de nuevo la aplicación, se restaura la **última lectura** de Biblia o
 - Se reemplaza la cuadrícula de la pestaña Biblia por un versículo del día (texto cargado de los JSON locales).
 - Al tocar el buscador en Biblia se abre el selector de pasajes. El Himnario y Favoritos mantienen sus búsquedas.
 - La última lectura se recupera con «Continuar leyendo»; ya no se abre el lector automáticamente al iniciar.
+
+
+## Corrección v0.7.19
+El encabezado sticky usa dos umbrales de desplazamiento para evitar vibración en iPhone Safari. Ver `NOTAS_V0719.md`.

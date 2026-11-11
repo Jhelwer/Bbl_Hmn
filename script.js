@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.18. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.19. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -1878,11 +1878,23 @@ init();
     const topbar = document.getElementById('app-topbar');
     if (!topbar) return;
 
-    const threshold = 64; // Píxeles desplazados antes de compactar.
+    // v0.7.19: histéresis. Evita el bucle de compactar/expandir
+    // causado por el cambio de altura del header sticky en Safari.
+    // El rango de 20 a 112 px conserva el estado anterior.
+    const compactAt = 112;
+    const expandAt = 20;
+    let compact = topbar.classList.contains('is-compact');
     let pending = false;
 
     function updateTopbar() {
-        topbar.classList.toggle('is-compact', window.scrollY > threshold);
+        const y = Math.max(0, window.scrollY || 0);
+        if (!compact && y >= compactAt) {
+            compact = true;
+            topbar.classList.add('is-compact');
+        } else if (compact && y <= expandAt) {
+            compact = false;
+            topbar.classList.remove('is-compact');
+        }
         pending = false;
     }
 
@@ -1892,8 +1904,8 @@ init();
         window.requestAnimationFrame(updateTopbar);
     }, { passive: true });
 
-    // Mantiene la cabecera sincronizada al volver a la página
-    // o después de restaurar la posición del navegador.
+    // Recalcular al restaurar la página, sin cambiar continuamente
+    // de estado mientras la animación modifica el flujo del documento.
     window.addEventListener('pageshow', updateTopbar);
     updateTopbar();
 })();
