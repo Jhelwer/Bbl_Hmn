@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.21. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.24. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -11,7 +11,7 @@ const store = (k, fallback) => { try {
 catch {
     return fallback;
 } };
-const state = { tab: 'biblia', query: '', books: [], hymns: [], version: store('bh-bible-version', 'rvr1960') === 'tla' ? 'tla' : 'rvr1960', selection: null, chapter: 1, font: store('bh-font', 18), favs: new Set(store('bh-favs', [])), loading: false, searchTask: 0, searchTimer: null, redLetters: store('bh-red-letters', true), selectedVerses: new Set(), highlights: store('bh-verse-highlights', {}), history: store('bh-reading-history', []), focus: false, hymnData: null, hymnSearchIndex: null, hymnListOpen: false, favoriteCategory: 'himnos' };
+const state = { tab: 'biblia', query: '', books: [], hymns: [], version: ['rvr1960','tla','lbla','ntv','nvi','rva2015'].includes(store('bh-bible-version','rvr1960')) ? store('bh-bible-version','rvr1960') : 'rvr1960', selection: null, chapter: 1, font: store('bh-font', 18), favs: new Set(store('bh-favs', [])), loading: false, searchTask: 0, searchTimer: null, redLetters: store('bh-red-letters', true), selectedVerses: new Set(), highlights: store('bh-verse-highlights', {}), history: store('bh-reading-history', []), focus: false, hymnData: null, hymnSearchIndex: null, hymnListOpen: false, favoriteCategory: 'himnos' };
 const normalized = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 const safe = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const favoriteKey = (type, id) => `${type}:${id}`;
@@ -142,8 +142,14 @@ function renderBibleGrid(filtered) {
  * ========================================================== */
 const BIBLE_VERSIONS = {
     rvr1960: 'Reina-Valera 1960',
-    tla: 'Traducción en Lenguaje Actual'
+    tla: 'Traducción en Lenguaje Actual',
+    lbla: 'La Biblia de las Américas',
+    ntv: 'Nueva Traducción Viviente',
+    nvi: 'Nueva Versión Internacional',
+    rva2015: 'Reina Valera Actualizada 2015'
 };
+const BIBLE_VERSION_SHORT = {rvr1960:'RVR1960',tla:'TLA',lbla:'LBLA',ntv:'NTV',nvi:'NVI',rva2015:'RVA2015'};
+const isStructuredBibleVersion = version => version !== 'rvr1960';
 
 function buildTlaChapters(payload) {
     if (!payload || !Array.isArray(payload.chapters))
@@ -172,7 +178,7 @@ async function getBookJson(bookId) {
     const cacheKey = `${version}:${bookId}`;
     if (bibleCache.has(cacheKey)) return bibleCache.get(cacheKey);
     const data = await json(`data/biblia/${version}/${bookId}.json`);
-    const chapters = version === 'tla' ? buildTlaChapters(data) : data;
+    const chapters = isStructuredBibleVersion(version) ? buildTlaChapters(data) : data;
     if (!Array.isArray(chapters)) throw new Error('Formato bíblico no válido');
     bibleCache.set(cacheKey, chapters);
     if (bibleCache.size > 8) bibleCache.delete(bibleCache.keys().next().value);
@@ -181,11 +187,12 @@ async function getBookJson(bookId) {
 
 function updateBibleVersionUI() {
     $('reader-version').value = state.version;
+    $('reader-version-short').textContent = BIBLE_VERSION_SHORT[state.version] || 'RVR1960';
     $('reader-version-wrap').hidden = state.selection?.type !== 'biblia';
     updateMinimalBibleNav();
     if (state.selection?.type === 'biblia') {
         const book = state.books.find(b => b.id === state.selection.id);
-        $('reader-type').textContent = `${BIBLE_VERSIONS[state.version]} · ${book?.testamento || ''}`;
+        $('reader-type').textContent = book?.testamento || '';
     }
     // Las marcas _...__ para palabras de Jesús pertenecen a los JSON RVR1960.
     $('redLetters').closest('.red-letters-setting').hidden = state.selection?.type !== 'biblia' || state.version !== 'rvr1960';
@@ -421,7 +428,7 @@ function setTab(t) { state.hymnListOpen = false; state.searchTask++; clearTimeou
 function setBookmark() { if (!state.selection)
     return; const k = favoriteKey(state.selection.type, state.selection.id); $('bookmark').textContent = state.favs.has(k) ? '♥' : '♡'; $('bookmark').setAttribute('aria-label', state.favs.has(k) ? 'Quitar de favoritos' : 'Agregar a favoritos'); }
 async function openReader(type, id, chapter = 1, verseStart = null, verseEnd = null, stanzaIndex = null) { readerMotionDirection = 0; const item = (type === 'biblia' ? state.books : state.hymns).find(i => i.id === id); if (!item)
-    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? BIBLE_VERSIONS[state.version] + ' · ' + item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; setBookmark(); updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
+    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; setBookmark(); updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
     $('reader').showModal(); setFocusMode(false); if (type === 'biblia') {
     $('chapterSelect').innerHTML = Array.from({ length: item.totalCapitulos }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
     await loadChapter();
@@ -448,7 +455,7 @@ async function loadChapter() {
         const verses = chapters[chapter - 1];
         if (!Array.isArray(verses))
             throw new Error('Capítulo no encontrado');
-        $('reader-body').innerHTML = `<h3>${safe(book.nombre)} ${chapter}</h3><p class="verse-help">Toca uno o varios versículos para seleccionarlos.</p>` + (state.version === 'tla' ? tlaVerseMarkup(verses, book, chapter, selected) : verses.map((v, i) => { const no = i + 1, key = verseId(selected.id, chapter, no), color = state.highlights[key]; const target = selected.verseStart !== null && no >= selected.verseStart && no <= (selected.verseEnd || selected.verseStart); return `<p class="verse${target ? ' verse-target' : ''}${color ? ' highlight-' + safe(color) : ''}" id="verse-${no}" data-verse-number="${no}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar versículo ${no}"><sup>${no}</sup>${formatVerse(v)}${state.favs.has('verse:' + key) ? '<span class="verse-saved" aria-label="Favorito">♥</span>' : ''}</p>`; }).join(''));
+        $('reader-body').innerHTML = `<h3>${safe(book.nombre)} ${chapter}</h3><p class="verse-help">Toca uno o varios versículos para seleccionarlos.</p>` + (isStructuredBibleVersion(state.version) ? tlaVerseMarkup(verses, book, chapter, selected) : verses.map((v, i) => { const no = i + 1, key = verseId(selected.id, chapter, no), color = state.highlights[key]; const target = selected.verseStart !== null && no >= selected.verseStart && no <= (selected.verseEnd || selected.verseStart); return `<p class="verse${target ? ' verse-target' : ''}${color ? ' highlight-' + safe(color) : ''}" id="verse-${no}" data-verse-number="${no}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar versículo ${no}"><sup>${no}</sup>${formatVerse(v)}${state.favs.has('verse:' + key) ? '<span class="verse-saved" aria-label="Favorito">♥</span>' : ''}</p>`; }).join(''));
         animateReaderContent();
         readerContentReady = true;
         restoreOrSaveReadingPosition('biblia', selected.id, chapter);
@@ -1333,7 +1340,7 @@ async function selectedVerseText() {
         return '';
     const book = state.books.find(b => b.id === state.selection.id), chapters = await getBookJson(book.id), verses = chapters[state.chapter - 1];
     const ns = selectedVerseNumbers();
-    const grouped = state.version === 'tla' && verses.blocks;
+    const grouped = isStructuredBibleVersion(state.version) && verses.blocks;
     const content = grouped
         ? verses.blocks.filter(b => b.type === 'verse' && b.numbers.some(n => ns.includes(n)))
             .map(b => `${b.numbers.join('–')}. ${b.text.trim()}`).join('\n')
@@ -1842,7 +1849,7 @@ async function showDailyVerse() {
     button.disabled = true;
     textNode.textContent = 'Preparando la lectura de hoy…';
     refNode.textContent = `${book.nombre} ${chapter}:${verse}`;
-    $('daily-verse-version').textContent = version === 'tla' ? 'TLA' : 'RVR1960';
+    $('daily-verse-version').textContent = BIBLE_VERSION_SHORT[version] || 'RVR1960';
     todayVerseTarget = {bookId, chapter, verse};
     try {
         const chapters = await getBookJson(bookId);

@@ -2654,3 +2654,78 @@ body.dark #bible-picker .picker-book-grid button[class*="tone-"] {color:#172332;
     font-size: 16px;
   }
 }
+
+/* =============================================================
+   19. V0.7.23 | TRADUCCION EN EL ENCABEZADO DEL LECTOR
+   Elimina la fila extra, conserva el <select> nativo y evita
+   el autozoom de Safari al usar 16px en el control editable.
+   ============================================================= */
+#reader .reader-head .reader-subtitle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  max-width: 100%;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+#reader .reader-head .reader-testament {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#reader .reader-head .reader-version-wrap {
+  display: inline-flex;
+  position: relative;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 3px;
+  min-height: 26px;
+  padding: 3px 7px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--soft);
+  color: var(--primary, #073d69);
+  font-weight: 750;
+  cursor: pointer;
+}
+#reader .reader-head .reader-version-wrap[hidden] { display: none !important; }
+#reader .reader-head .reader-version-short { font-size: 11px; line-height: 1.25; }
+#reader .reader-head .reader-version-chevron { font-size: 13px; line-height: 1; }
+#reader .reader-head .reader-version-wrap select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 16px;
+  appearance: auto;
+}
+#reader .reader-head .reader-version-wrap:focus-within {
+  outline: 2px solid var(--primary, #073d69);
+  outline-offset: 2px;
+}
+body.dark #reader .reader-head .reader-version-wrap {
+  color: #e3f0ff;
+  border-color: #455a70;
+  background: #25374a;
+}
+/* La fila de referencia queda inmediatamente debajo del encabezado. */
+#reader .bible-reference-row { margin-top: 0; }
+@media (max-width: 390px) {
+  #reader .reader-head .reader-subtitle { gap: 3px; }
+  #reader .reader-head .reader-version-wrap { padding-inline: 5px; }
+  #reader .reader-head .reader-version-short { font-size: 10px; }
+}
+
+/* v0.7.24: los códigos LBLA, NTV, NVI y RVA2015 permanecen legibles en el selector compacto. */
+#reader .reader-head .reader-version-short { white-space: nowrap; }
+#reader .reader-head .reader-version-wrap { max-width: 89px; }
