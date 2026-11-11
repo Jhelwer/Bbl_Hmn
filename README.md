@@ -1,111 +1,104 @@
-Biblia e Himnario v0.7.29 — Barra contextual de estrofas y favorito del himno en encabezado.
+# Biblia e Himnario — v0.7.31
 
-# Biblia e Himnario v0.7.5 — Código organizado
+Aplicación web para lectura bíblica y consulta del Himnario Adventista, con una interfaz móvil minimalista, temas claro y oscuro, favoritos y herramientas de búsqueda. Publicable como sitio estático en GitHub Pages o en otro hosting compatible.
 
-Versión basada en **v0.7.4 (Himnario compacto)**. Esta entrega organiza `index.html`, `script.js` y `styles.css` para que sean editables y fáciles de mantener, **sin agregar ni quitar funciones**.
+**Versión documentada:** `v0.7.31` (11 de noviembre de 2026).
 
-Consulta **`GUIA_DE_EDICION.md`** para encontrar cada módulo.
+> **Estado:** esta versión no incluye todavía la reproducción de MP3 cantados ni instrumentales. Esa función está prevista para una futura entrega.
 
-## Ejecutar
+## Funciones actuales
 
-Desde esta carpeta, ejecutar:
+### Biblia
+
+- Seis traducciones previstas por el selector: **RVR1960, TLA, LBLA, NTV, NVI y RVA2015**, si sus respectivos JSON están instalados.
+- Navegación por **libro → capítulo → versículo**; acceso por referencia y búsqueda de palabras o frases.
+- Selector compacto de traducción integrado en el encabezado del lector.
+- Palabras de Jesús resaltadas en rojo donde los datos de la traducción lo permiten.
+- Selección de versículos para **copiar, resaltar, guardar o compartir**.
+- Favoritos de versículos; los consecutivos del mismo capítulo se agrupan visualmente, pero siguen almacenándose de forma individual.
+- Última lectura con posición por versículo y acción **Continuar leyendo**.
+- Historial de lectura, preferencias tipográficas y tema oscuro.
+
+### Himnario
+
+- Catálogo y letras de **613 himnos** organizadas por estrofas y coros.
+- Búsqueda por número, título o palabras de la letra.
+- Favoritos de **himnos completos** mediante el corazón del encabezado del lector.
+- Barra contextual oculta mientras lees: al seleccionar estrofa o coro aparece **Copiar** (fragmento seleccionado) y **Compartir** (letra completa del himno).
+- Ajuste del tamaño de letra y tema oscuro.
+
+### Favoritos
+
+- Pestañas separadas de **Himnos** y **Versículos**, con búsqueda y contadores.
+- Los favoritos históricos de libros bíblicos siguen visibles en una subsección de **Versículos** para preservar datos anteriores.
+- Los cambios de guardado se reflejan en la lista y en los contadores.
+
+## Archivos principales
+
+| Ruta | Propósito |
+| --- | --- |
+| `index.html` | Estructura y controles de la interfaz |
+| `styles.css` | Estilos responsive, temas y estados de los controles |
+| `script.js` | Lógica de navegación, lectores, búsqueda, favoritos y progreso |
+| `data/biblia/libros.json` | Catálogo de libros bíblicos |
+| `data/biblia/<traduccion>/` | JSON por libro para cada traducción disponible |
+| `data/himnos/catalogo.json` | Catálogo de himnos |
+| `data/himnos/letras/` | Letras JSON por himno |
+| `icons/` | Iconos de la aplicación |
+| `NOTAS_V07XX.md` | Detalles técnicos de los cambios por versión |
+| `GUIA_DE_EDICION.md` | Referencias para localizar y mantener módulos |
+
+## Ejecutar localmente
+
+La aplicación carga archivos JSON mediante `fetch`, por lo que debes servirla por HTTP en lugar de abrir `index.html` directamente con `file://`.
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Abrir `http://localhost:8000`. No abrir como archivo `file://` porque el navegador puede bloquear los JSON.
+Abre `http://localhost:8000` en el navegador.
 
-## Incluye
+## Publicar actualizaciones en GitHub Pages
 
-- 66 JSON de libros bíblicos
-- 613 JSON de himnos con estrofas y coros
-- Buscadores, lectores, palabras de Jesús en rojo, favoritos, selección de versículos, resaltados e historial
-- Diseño móvil compacto y SVG seleccionado
+1. Para una **actualización ligera**, reemplaza los archivos de código e interfaz incluidos en el ZIP sin eliminar el directorio `data/` ya publicado.
+2. Para una **instalación nueva**, utiliza el paquete completo con los JSON correspondientes.
+3. Respeta la estructura de carpetas y las referencias relativas de los recursos.
+4. Comprueba la versión mostrada en la cabecera y realiza una recarga si el navegador conserva archivos anteriores en caché.
+5. Después de publicar, prueba navegación, cambio de traducción, guardado de favoritos, compartir himnos y modo oscuro en Safari y Chrome móvil.
 
-## Control de cambios
+## Historial de cambios reciente
 
-- `index.html`: formato e identificación de bloques; versión y parámetros de caché actualizados a `v0.7.5`.
-- `script.js`: formato legible con comentarios de módulo; mismo árbol sintáctico de la versión anterior.
-- `styles.css`: todas las declaraciones, selectores y el orden original intactos; formato multilinea.
-- Los JSON y recursos no se han modificado.
+| Versión | Cambio principal |
+| --- | --- |
+| **v0.7.19** | Se evita la vibración del encabezado adaptable mediante umbrales de contracción y expansión separados. |
+| **v0.7.20** | Se elimina la navegación superior duplicada; queda una sola barra inferior segmentada. |
+| **v0.7.21** | Se corrige el ancho de los tres controles de la barra de navegación inferior. |
+| **v0.7.22** | Se evita el zoom automático de Safari al enfocar campos editables en dispositivos móviles. |
+| **v0.7.23** | El selector RVR1960/TLA se integra en el subtítulo del encabezado del lector bíblico. |
+| **v0.7.24** | Se adapta soporte para LBLA, NTV, NVI y RVA2015, con JSON separados por traducción. |
+| **v0.7.25** | Se elimina el corazón para guardar libros completos del encabezado bíblico y se separa el guardado de himnos. |
+| **v0.7.26** | Se sincronizan la barra de guardado y la lista/contadores de Favoritos, incluidas otras pestañas del sitio. |
+| **v0.7.27** | «Continuar leyendo» recuerda y restaura la posición por versículo dentro del capítulo. |
+| **v0.7.28** | Se agrupan visualmente los versículos favoritos consecutivos en un pasaje, sin alterar su almacenamiento individual. |
+| **v0.7.29** | El Himnario adopta una barra contextual por estrofa/coro y un corazón superior para el himno completo. |
+| **v0.7.30** | Compartir envía la letra completa del himno; copiar conserva la estrofa o coro seleccionado. |
+| **v0.7.31** | Se corrige el contraste del selector Himnos/Versículos de Favoritos en modo oscuro. |
 
-La nueva versión está lista para pruebas en GitHub Pages. Las comprobaciones locales incluyeron la sintaxis JS, equivalencia del árbol sintáctico, equivalencia de reglas CSS, estructura HTML e integridad de datos. No se ha realizado una prueba visual completa en Safari.
+El detalle técnico de cada entrega está en `NOTAS_V0719.md` a `NOTAS_V0731.md`. Las versiones anteriores también tienen notas y documentación de edición en este repositorio.
 
+## Almacenamiento local
 
-## v0.7.6 — Lector responsive
+La aplicación utiliza el almacenamiento local del navegador para preferencias y datos personales, como favoritos, resaltados e historial. **Borrar los datos del sitio puede eliminar esta información**. Actualizar únicamente HTML, CSS o JS no debería borrar los datos locales.
 
-- Cabecera móvil de una fila con botón **Aa** para mostrar u ocultar los ajustes de lectura.
-- El panel Aa incluye tamaño de letra y acceso al modo sin distracciones. En Biblia incluye además palabras de Jesús en rojo.
-- Flechas compactas con selector central para capítulos e himnos; etiquetas accesibles intactas.
-- Estrofas, coros y acciones inferiores compactados para pantallas de 360 a 412 px CSS.
-- La fuente del contenido sigue siendo ajustable; no cambia favoritos, búsquedas, textos ni datos JSON.
-- Actualizadas las referencias de caché `?v=0.7.6`.
+## Licencias y publicación de traducciones
 
-Para probar con GitHub Pages, subir **todo el contenido de esta carpeta**. Abrir en Android/Safari y comprobar versión `v0.7.6` y panel Aa.
+Los archivos proporcionados de **LBLA, NTV, NVI y RVA2015** incluyen avisos de derechos de sus titulares. La presencia de esos JSON en un archivo compartido no demuestra permiso para redistribuirlos públicamente. **Antes de publicarlos en GitHub Pages o un hosting, confirma las licencias o autorizaciones pertinentes**. Lo mismo debe verificarse para las grabaciones de himnos que se incorporen en el futuro.
 
+## Mantenimiento de la documentación
 
-## v0.7.7 — Portada específica para Himnario
-- Título de Himnario: «Encuentra tu himno».
-- Oculta la última lectura de la Biblia al cambiar a Himnario o Favoritos (se conserva en Biblia).
-- No carga el listado completo de los 613 himnos hasta pulsar «Listar himnos».
-- El botón permite mostrar y ocultar el catálogo.
-- Búsqueda por número, título y palabras sigue operativa sin necesidad de abrir el listado.
-- Todos los JSON y el lector mantienen su estructura.
+A partir de esta corrección documental, cada nueva entrega debería actualizar **ambos**:
 
+1. `README.md`: versión actual, resumen funcional e historial general.
+2. `NOTAS_V07XX.md`: cambios técnicos, archivos editados y pruebas específicas.
 
-## v0.7.8 — Favoritos por categorías
-
-- **Himnos**: muestra únicamente los himnos guardados.
-- **Versículos**: muestra los versículos guardados. Para mantener compatibilidad con versiones anteriores, también incluye los libros bíblicos guardados, en una subsección interna.
-- Los datos siguen usando `localStorage` con la clave `bh-favs`: **no se reinician ni se migran**.
-- En `index.html` busca `FAVORITOS / CATEGORÍAS HIMNOS Y VERSÍCULOS`.
-- En `script.js` busca `02.B. FAVORITOS / CATEGORÍAS` para editar los filtros, contadores o textos.
-- En `styles.css` busca `v0.7.8 / FAVORITOS ORGANIZADOS EN DOS CATEGORÍAS`.
-
-
-## Novedad v0.7.9 — Selector bíblico
-Al tocar un libro en la lista de Biblia, se muestra un modal para elegir capítulo y versículo.
-Cada capítulo muestra su número real de versículos, consultado en el JSON ya publicado.
-También se puede pulsar «Leer capítulo completo». Las referencias directas del buscador y favoritos individuales siguen abriéndose directamente.
-La carpeta `data/` no se modificó.
-
-
-## v0.7.10
-Encabezado principal fijo y adaptable al desplazamiento. Consulta `NOTAS_V0710.md`.
-
-
-## Actualización v0.7.11
-
-Se incorporaron microinteracciones ligeras. Consulta `NOTAS_V0711.md` para puntos de edición y pruebas.
-
-
-## Versión v0.7.15
-Se integra TLA mediante `data/biblia/tla/` sin modificar los 66 libros RVR1960 ni los 613 himnos. Lee `NOTAS_V0712.md`.
-
-
-## Novedad v0.7.13
-
-Navegación minimalista en Biblia: selector de traducciones, barra de referencia, cuadrículas Libro → Capítulo → Versículo, pestañas Reciente y Favoritos. Consulta `NOTAS_V0713.md`.
-
-
-## Novedad v0.7.15
-
-- La pestaña **Biblia** ahora muestra los **66 libros en cuadrícula**, usando colores suaves por categoría para asemejarse al selector minimalista.
-- Al tocar un libro de la cuadrícula se abre el selector **Libro → Capítulo → Versículo**, sin volver a la lista antigua.
-- La búsqueda bíblica, favoritos e historial conservan su formato de lista para no perder contexto.
-
-
-## Novedad v0.7.16 — continuar lectura automáticamente
-
-Al abrir de nuevo la aplicación, se restaura la **última lectura** de Biblia o Himnario, incluido el versículo/estrofa visible. En la primera visita se abre Génesis 1. Desde el lector se puede volver para explorar la cuadrícula de libros y las demás secciones. El progreso se almacena en `localStorage` bajo la clave `bh-last-reading-position`.
-
-## v0.7.17 — Portada de Biblia
-
-- Se reemplaza la cuadrícula de la pestaña Biblia por un versículo del día (texto cargado de los JSON locales).
-- Al tocar el buscador en Biblia se abre el selector de pasajes. El Himnario y Favoritos mantienen sus búsquedas.
-- La última lectura se recupera con «Continuar leyendo»; ya no se abre el lector automáticamente al iniciar.
-
-
-## Corrección v0.7.19
-El encabezado sticky usa dos umbrales de desplazamiento para evitar vibración en iPhone Safari. Ver `NOTAS_V0719.md`.
+Esto evita que la documentación principal quede desfasada aunque existan notas individuales.
