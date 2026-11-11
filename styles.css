@@ -2636,3 +2636,21 @@ body.dark #bible-picker .picker-book-grid button[class*="tone-"] {color:#172332;
     transition: color 150ms ease, background-color 150ms ease;
   }
 }
+
+/* ==============================================================
+   18. SAFARI / IOS: EVITAR EL ZOOM AUTOMATICO EN BUSCADORES (v0.7.22)
+   Safari suele ampliar la pagina al enfocar un campo editable con
+   font-size menor a 16px. Mantener 16px en movil evita ese efecto
+   sin desactivar el zoom manual de accesibilidad.
+   ============================================================== */
+@media (max-width: 767px) {
+  .search input,
+  #bible-picker .picker-search-wrap input,
+  input[type="search"],
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  textarea {
+    font-size: 16px;
+  }
+}
