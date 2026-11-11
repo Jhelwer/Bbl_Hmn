@@ -1970,7 +1970,7 @@ body.dark .reading-continue {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 8px;
   padding: 5px;
-  background: var(--surface2, #eaf3f8);
+  background: var(--soft); /* v0.7.31: variable adaptable a claro/oscuro */
   border-radius: 14px;
 }
 .favorites-category {
@@ -2015,6 +2015,35 @@ body.dark .reading-continue {
 @media (max-width: 390px) {
   .favorites-category-tabs { gap: 5px; }
   .favorites-category { font-size: 13px; gap: 5px; }
+}
+
+/* =============================================================
+   v0.7.31 — FAVORITOS: CONTRASTE COHERENTE EN MODO OSCURO
+   El selector Himnos / Versículos nunca debe usar una superficie
+   clara fija cuando el tema oscuro está activo.
+   Se ajustan ambos estados sin cambiar la lógica de favoritos.
+   ============================================================= */
+body.dark .favorites-category-tabs {
+  background: #1c344b;
+}
+body.dark .favorites-category {
+  color: #b6c7d8;
+}
+body.dark .favorites-category.active {
+  background: #152337;
+  color: #77c9ff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, .18);
+}
+body.dark .favorites-category-count {
+  background: rgba(119, 201, 255, .12);
+  color: inherit;
+}
+.favorites-category:focus-visible {
+  outline: 2px solid var(--blue2);
+  outline-offset: -2px;
+}
+body.dark .favorites-category:focus-visible {
+  outline-color: #77c9ff;
 }
 
 /* ============================================================

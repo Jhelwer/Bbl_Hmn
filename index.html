@@ -10,16 +10,16 @@
     <link rel="icon" type="image/svg+xml" href="icons/icono-biblia-himnario.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="styles.css?v=0.7.30">
+    <link rel="stylesheet" href="styles.css?v=0.7.31">
   </head>
   <body>
     <div class="app-shell">
 
-      <!-- ===== ENCABEZADO PRINCIPAL: SE COMPACTA AL DESPLAZARSE (v0.7.30) ===== -->
+      <!-- ===== ENCABEZADO PRINCIPAL: SE COMPACTA AL DESPLAZARSE (v0.7.31) ===== -->
       <header class="topbar" id="app-topbar">
         <img class="brand-icon" src="icons/icono-biblia-himnario.svg" alt="" width="43" height="43" decoding="async">
         <div>
-          <strong>Biblia e Himnario <span class="version-tag">v0.7.30</span></strong>
+          <strong>Biblia e Himnario <span class="version-tag">v0.7.31</span></strong>
           <small>Lectura, alabanza y estudio</small>
         </div>
         <button id="theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
@@ -91,7 +91,7 @@
           <span id="count" class="counter"></span>
         </div>
 
-        <!-- ===== BIBLIA: VERSÍCULO DEL DÍA (v0.7.30) ===== -->
+        <!-- ===== BIBLIA: VERSÍCULO DEL DÍA (v0.7.31) ===== -->
         <section id="daily-verse" class="daily-verse" hidden aria-label="Versículo del día">
           <div class="daily-verse-heading">
             <span class="daily-verse-eyebrow">VERSÍCULO DEL DÍA</span>
@@ -111,7 +111,7 @@
         <div id="content" class="content" aria-live="polite"></div>
       </main>
 
-      <!-- ===== NAVEGACIÓN PRINCIPAL ÚNICA — v0.7.30 ===== -->
+      <!-- ===== NAVEGACIÓN PRINCIPAL ÚNICA — v0.7.31 ===== -->
       <!-- Mismo diseño segmentado que antes estaba arriba, ahora solo abajo. -->
       <nav class="bottom-nav" aria-label="Navegación principal">
         <div class="bottom-nav-segments">
@@ -138,7 +138,7 @@
       <div class="reader-head">
         <button id="back" class="icon-button" aria-label="Cerrar lectura">←</button>
         <div>
-          <!-- v0.7.30: versión dentro del subtítulo, sin ocupar otra fila.
+          <!-- v0.7.31: versión dentro del subtítulo, sin ocupar otra fila.
                El select nativo preserva el teclado y la accesibilidad en iOS/Android. -->
           <small class="reader-subtitle">
             <span id="reader-type" class="reader-testament"></span>
@@ -161,13 +161,13 @@
 
         <button id="reader-settings-toggle" class="icon-button reader-settings-toggle" type="button" aria-label="Opciones de lectura" aria-controls="reading-settings" aria-expanded="false" title="Opciones de lectura">Aa</button>
         <button id="reader-theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
-        <!-- v0.7.30: favorito exclusivo de HIMNOS; nunca guarda libros bíblicos. -->
+        <!-- v0.7.31: favorito exclusivo de HIMNOS; nunca guarda libros bíblicos. -->
         <button id="hymn-header-favorite" class="icon-button hymn-header-favorite" type="button" hidden aria-label="Guardar himno en favoritos" aria-pressed="false" title="Guardar himno completo">♡</button>
       </div>
 
 
       <!-- ========================================================
-           BIBLIA v0.7.30 | NAVEGACIÓN MINIMALISTA
+           BIBLIA v0.7.31 | NAVEGACIÓN MINIMALISTA
            Traducción, referencia y capítulos; no afecta al Himnario.
            ======================================================== -->
       <nav id="bible-minimal-nav" class="bible-minimal-nav" aria-label="Navegación de la Biblia" hidden>
@@ -295,7 +295,7 @@
     </dialog>
 
     <!-- ============================================================
-         12. SELECTOR BÍBLICO MINIMALISTA — v0.7.30
+         12. SELECTOR BÍBLICO MINIMALISTA — v0.7.31
          Etapas: libros > capítulos > versículos.
          Pestañas: Versículo, Contenido, Reciente, Favoritos.
          ============================================================ -->
@@ -363,6 +363,6 @@
       </div>
     </dialog>
 
-    <script src="script.js?v=0.7.30" defer></script>
+    <script src="script.js?v=0.7.31" defer></script>
   </body>
 </html>
