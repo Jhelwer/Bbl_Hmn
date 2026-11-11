@@ -231,6 +231,14 @@ main {
   font-weight: 800;
 }
 
+/* v0.7.28: rangos de versiculos en tarjetas de favoritos. */
+.item .symbol.verse-range-symbol {
+  width: 58px;
+  font-size: 12px;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+}
+
 .item .details {
   flex: 1;
   min-width: 0;

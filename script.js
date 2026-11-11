@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.27. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.28. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -381,6 +381,25 @@ document.querySelectorAll('[data-favorite-category]').forEach(btn => {
     });
 });
 
+/**
+ * v0.7.28 - Agrupar solo para mostrar, sin alterar los favoritos persistidos.
+ * Cada verse:libro:capitulo:numero sigue siendo independiente; quitar uno
+ * separa automaticamente el pasaje cuando se vuelva a renderizar.
+ */
+function groupSavedVerseRuns(verses) {
+    const groups = [];
+    for (const item of verses) {
+        const previous = groups[groups.length - 1];
+        if (previous && previous.book.id === item.book.id &&
+            previous.chapter === item.chapter && item.verse === previous.end + 1) {
+            previous.end = item.verse;
+        } else {
+            groups.push({ book: item.book, chapter: item.chapter, start: item.verse, end: item.verse });
+        }
+    }
+    return groups;
+}
+
 function renderFavorites() {
     setContentMode('list');
     updateFavoriteCategories();
@@ -407,9 +426,25 @@ function renderFavorites() {
         })
         .filter(Boolean)
         .sort((a,b) => (a.book.orden - b.book.orden) || (a.chapter - b.chapter) || (a.verse - b.verse))
-        .filter(v => normalized(v.label).includes(query))
-        .map(v => `<button class="item" data-type="biblia" data-id="${safe(v.book.id)}" data-chapter="${v.chapter}" data-verse="${v.verse}"><span class="symbol">${v.verse}</span><span class="details"><strong>${safe(v.label)}</strong><small>Versículo guardado · toca para leer</small></span><span class="chevron">›</span></button>`)
+        // Agrupar consecutivos del mismo libro y capitulo, sin mezclar capitulos.
+        // El almacenamiento local conserva las claves individuales (no migracion).
         : [];
+    const verseGroups = !showHymns ? groupSavedVerseRuns(verses)
+        .filter(group => {
+            if (!query) return true;
+            const range = group.end > group.start ? `${group.start}-${group.end}` : String(group.start);
+            // Buscar tanto por el rango visible como por cada referencia interna.
+            return normalized(`${group.book.nombre} ${group.chapter}:${range}`).includes(query) ||
+                Array.from({length: group.end - group.start + 1}, (_, i) =>
+                    normalized(`${group.book.nombre} ${group.chapter}:${group.start + i}`)).some(label => label.includes(query));
+        })
+        .map(group => {
+            const isRange = group.end > group.start;
+            const range = isRange ? `${group.start}–${group.end}` : String(group.start);
+            const label = `${group.book.nombre} ${group.chapter}:${range}`;
+            const count = group.end - group.start + 1;
+            return `<button class="item" data-type="biblia" data-id="${safe(group.book.id)}" data-chapter="${group.chapter}" data-verse="${group.start}" ${isRange ? `data-verse-end="${group.end}"` : ''}><span class="symbol${isRange ? ' verse-range-symbol' : ''}">${group.start}${isRange ? '–' + group.end : ''}</span><span class="details"><strong>${safe(label)}</strong><small>${isRange ? `${count} versículos guardados` : 'Versículo guardado'} · toca para leer</small></span><span class="chevron">›</span></button>`;
+        }) : [];
 
     // Favoritos antiguos de libros se conservan sin crear una tercera categoría.
     const books = !showHymns ? state.books
@@ -418,11 +453,11 @@ function renderFavorites() {
         .map(b => `<button class="item" data-type="biblia" data-id="${safe(b.id)}"><span class="symbol">${String(b.orden).padStart(2,'0')}</span><span class="details"><strong>${safe(b.nombre)}</strong><small>Libro bíblico guardado</small></span><span class="chevron">›</span></button>`)
         : [];
 
-    const total = hymns.length + verses.length + books.length;
+    const total = hymns.length + verseGroups.length + books.length;
     $('count').textContent = `${total} ${total === 1 ? 'resultado' : 'resultados'}`;
-    const verseHeading = verses.length ? '<h3 class="favorite-subheading">Versículos guardados</h3>' : '';
+    const verseHeading = verseGroups.length ? '<h3 class="favorite-subheading">Versículos guardados</h3>' : '';
     const bookHeading = books.length ? '<h3 class="favorite-subheading">Libros bíblicos guardados</h3>' : '';
-    const markup = showHymns ? hymns.join('') : verseHeading + verses.join('') + bookHeading + books.join('');
+    const markup = showHymns ? hymns.join('') : verseHeading + verseGroups.join('') + bookHeading + books.join('');
     $('content').innerHTML = total ? markup : `<div class="empty">${query ? 'No hay coincidencias en esta categoría.' : showHymns ? 'Todavía no has guardado himnos. Abre un himno y toca Guardar.' : 'Todavía no has guardado versículos. Selecciona un versículo y toca Guardar.'}</div>`;
 }
 
