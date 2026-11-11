@@ -1,3 +1,5 @@
+Biblia e Himnario v0.7.29 — Barra contextual de estrofas y favorito del himno en encabezado.
+
 # Biblia e Himnario v0.7.5 — Código organizado
 
 Versión basada en **v0.7.4 (Himnario compacto)**. Esta entrega organiza `index.html`, `script.js` y `styles.css` para que sean editables y fáciles de mantener, **sin agregar ni quitar funciones**.

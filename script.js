@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.28. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.29. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -22,6 +22,7 @@ window.addEventListener('storage', (event) => {
     if (event.key !== 'bh-favs') return;
     state.favs = new Set(store('bh-favs', []));
     updateFavoriteCategories();
+    updateHymnHeaderFavorite();
     if (state.tab === 'favoritos') renderFavorites();
     if (state.selection?.type === 'biblia' && $('reader').open) {
         document.querySelectorAll('#reader-body .verse[data-verse-number]').forEach(el => {
@@ -382,7 +383,7 @@ document.querySelectorAll('[data-favorite-category]').forEach(btn => {
 });
 
 /**
- * v0.7.28 - Agrupar solo para mostrar, sin alterar los favoritos persistidos.
+ * v0.7.29 - Agrupar solo para mostrar, sin alterar los favoritos persistidos.
  * Cada verse:libro:capitulo:numero sigue siendo independiente; quitar uno
  * separa automaticamente el pasaje cuando se vuelva a renderizar.
  */
@@ -489,8 +490,72 @@ function render() {
 }
 function setTab(t) { state.hymnListOpen = false; state.searchTask++; clearTimeout(state.searchTimer); $('search-status').hidden = true; state.tab = t; state.query = ''; $('search').value = ''; $('search').placeholder = t === 'himnos' ? 'Buscar número, título o palabras de un himno' : t === 'biblia' ? 'Buscar libro, capítulo o versículo' : 'Buscar en mis guardados'; document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === t; b.classList.toggle('active', on); if (b.closest('.bottom-nav')) { if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); } if (b.getAttribute('role') === 'tab')
     b.setAttribute('aria-selected', String(on)); }); render(); }
+// v0.7.29: barra contextual de estrofas. El favorito es siempre del himno COMPLETO.
+let selectedHymnStanza = null;
+function clearHymnSelection() {
+    selectedHymnStanza = null;
+    $('hymn-actions').hidden = true;
+    $('hymn-status').textContent = '';
+    $('reader-body').querySelectorAll('.hymn-stanza.is-selected').forEach(el => {
+        el.classList.remove('is-selected');
+        el.setAttribute('aria-pressed', 'false');
+    });
+}
+function chooseHymnStanza(index) {
+    if (state.selection?.type !== 'himnos' || !state.hymnData || state.focus) return;
+    const element = $('reader-body').querySelector(`[data-hymn-stanza="${index}"]`);
+    if (!element) return;
+    if (selectedHymnStanza === index) { clearHymnSelection(); return; }
+    clearHymnSelection();
+    selectedHymnStanza = index;
+    element.classList.add('is-selected');
+    element.setAttribute('aria-pressed', 'true');
+    const part = hymnParts(state.hymnData)[index];
+    $('hymn-selected-label').textContent = part.coro ? 'Coro seleccionado' : `Estrofa ${part.numero} seleccionada`;
+    $('hymn-actions').hidden = false;
+}
+function selectedHymnText() {
+    const item = state.hymns.find(h => h.id === state.selection?.id);
+    if (!item || !state.hymnData || selectedHymnStanza === null) return '';
+    const part = hymnParts(state.hymnData)[selectedHymnStanza];
+    if (!part) return '';
+    return `${part.coro ? 'Coro' : 'Estrofa ' + part.numero}\n${part.lines.join('\n')}\n\n${item.numero}. ${item.titulo} — Himnario Adventista`;
+}
+function updateHymnHeaderFavorite() {
+    const btn = $('hymn-header-favorite');
+    const shown = state.selection?.type === 'himnos';
+    btn.hidden = !shown;
+    if (!shown) return;
+    const saved = state.favs.has(favoriteKey('himnos', state.selection.id));
+    btn.textContent = saved ? '♥' : '♡';
+    btn.classList.toggle('is-saved', saved);
+    btn.setAttribute('aria-pressed', String(saved));
+    btn.setAttribute('aria-label', saved ? 'Quitar himno de favoritos' : 'Guardar himno en favoritos');
+    btn.title = saved ? 'Quitar himno de favoritos' : 'Guardar himno completo';
+}
+function toggleHymnFavorite() {
+    if (state.selection?.type !== 'himnos') return;
+    const key = favoriteKey('himnos', state.selection.id);
+    const willSave = !state.favs.has(key);
+    if (willSave) state.favs.add(key); else state.favs.delete(key);
+    persistFavorites();
+    updateHymnHeaderFavorite();
+    if (willSave) pulseSavedIcon($('hymn-header-favorite'));
+    render();
+}
+$('hymn-header-favorite').addEventListener('click', toggleHymnFavorite);
+$('hymn-clear').addEventListener('click', clearHymnSelection);
+$('reader-body').addEventListener('click', e => {
+    const el = e.target.closest('.hymn-stanza[data-hymn-stanza]');
+    if (el) chooseHymnStanza(Number(el.dataset.hymnStanza));
+});
+$('reader-body').addEventListener('keydown', e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('.hymn-stanza[data-hymn-stanza]')) {
+        e.preventDefault(); chooseHymnStanza(Number(e.target.dataset.hymnStanza));
+    }
+});
 async function openReader(type, id, chapter = 1, verseStart = null, verseEnd = null, stanzaIndex = null) { readerMotionDirection = 0; const item = (type === 'biblia' ? state.books : state.hymns).find(i => i.id === id); if (!item)
-    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
+    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); clearHymnSelection(); $('reader-type').textContent = type === 'biblia' ? item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = true; updateHymnHeaderFavorite(); updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
     $('reader').showModal(); setFocusMode(false); if (type === 'biblia') {
     $('chapterSelect').innerHTML = Array.from({ length: item.totalCapitulos }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
     await loadChapter();
@@ -557,7 +622,7 @@ function updateHymnButtons() {
     $('prevHymn').disabled = n <= 1;
     $('nextHymn').disabled = n >= max;
     $('hymnSelect').value = String(n);
-    $('hymn-favorite').innerHTML = state.favs.has(favoriteKey('himnos', state.selection.id)) ? '<span aria-hidden="true">♥</span>Guardado' : '<span aria-hidden="true">♡</span>Guardar';
+    updateHymnHeaderFavorite();
 }
 function hymnParts(data) {
     if (!data || !Array.isArray(data.estrofas))
@@ -577,6 +642,7 @@ async function loadHymn(item) {
     readerContentReady = false;
     const token = ++hymnRequest;
     state.hymnData = null;
+    clearHymnSelection();
     $('reader-type').textContent = 'HIMNARIO ADVENTISTA · N.º ' + item.numero;
     $('reader-title').textContent = item.titulo;
     $('reader-body').scrollTop = 0;
@@ -596,7 +662,7 @@ async function loadHymn(item) {
         if (!parts.length || !parts.some(p => p.lines.some(line => line.trim())))
             throw new Error('El archivo no contiene estrofas con texto');
         state.hymnData = data;
-        $('reader-body').innerHTML = `<div class="hymn-reader"><div class="hymn-reader-heading"><span class="hymn-number">HIMNO ${item.numero}</span><h3>${safe(item.titulo)}</h3></div>${parts.map((p, i) => `<section data-hymn-stanza="${i}" class="hymn-stanza${p.coro ? ' hymn-chorus' : ''}${state.selection.stanzaIndex === i ? ' hymn-search-target' : ''}"><span class="hymn-stanza-label">${p.coro ? 'CORO' : 'ESTROFA ' + safe(p.numero)}</span>${p.lines.map(line => `<p>${safe(line)}</p>`).join('')}</section>`).join('')}</div>`;
+        $('reader-body').innerHTML = `<div class="hymn-reader"><div class="hymn-reader-heading"><span class="hymn-number">HIMNO ${item.numero}</span><h3>${safe(item.titulo)}</h3></div>${parts.map((p, i) => `<section data-hymn-stanza="${i}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar ${p.coro ? 'coro' : 'estrofa ' + p.numero}" class="hymn-stanza${p.coro ? ' hymn-chorus' : ''}${state.selection.stanzaIndex === i ? ' hymn-search-target' : ''}"><span class="hymn-stanza-label">${p.coro ? 'CORO' : 'ESTROFA ' + safe(p.numero)}</span>${p.lines.map(line => `<p>${safe(line)}</p>`).join('')}</section>`).join('')}</div>`;
         animateReaderContent();
         $('hymn-copy').disabled = false;
         $('hymn-share').disabled = false;
@@ -624,6 +690,7 @@ function shiftHymn(direction) {
     if (!item)
         return;
     hymnRequest++;
+    clearHymnSelection();
     readerMotionDirection = direction;
     state.selection = { type: 'himnos', id: item.id, verseStart: null, verseEnd: null };
     $('reader-body').scrollTop = 0;
@@ -636,6 +703,7 @@ $('hymnSelect').addEventListener('change', e => {
     if (!item)
         return;
     hymnRequest++;
+    clearHymnSelection();
     readerMotionDirection = Math.sign(Number(item.numero) - Number(state.selection?.id || item.numero));
     state.selection = { type: 'himnos', id: item.id, verseStart: null, verseEnd: null };
     loadHymn(item);
@@ -665,7 +733,7 @@ async function copyTextWithFallback(value) {
         throw new Error('No se pudo copiar');
 }
 $('hymn-copy').addEventListener('click', async () => {
-    const value = currentHymnText();
+    const value = selectedHymnText();
     if (!value)
         return;
     try {
@@ -676,11 +744,14 @@ $('hymn-copy').addEventListener('click', async () => {
         $('hymn-status').textContent = 'No se pudo copiar. Revisa los permisos del navegador.';
     }
 });
+// v0.7.30: Compartir envía SIEMPRE el himno completo, aunque haya una estrofa seleccionada.
+// Copiar conserva su comportamiento contextual (solo la estrofa o coro seleccionado).
 $('hymn-share').addEventListener('click', async () => {
     const value = currentHymnText();
     if (!value)
         return;
     const item = state.hymns.find(h => h.id === state.selection?.id);
+    if (!item) return;
     try {
         if (navigator.share) {
             await navigator.share({ title: item.titulo, text: value });
@@ -691,26 +762,12 @@ $('hymn-share').addEventListener('click', async () => {
             if (!tab)
                 location.href = url;
         }
-        $('hymn-status').textContent = 'Texto preparado para compartir.';
+        $('hymn-status').textContent = 'Himno completo preparado para compartir.';
     }
     catch (err) {
         if (err.name !== 'AbortError')
             $('hymn-status').textContent = 'No se pudo compartir el himno.';
     }
-});
-// v0.7.26: el favorito del Himnario es independiente de la cabecera bíblica.
-// No crea entradas biblia:<id>; únicamente cambia himnos:<id>.
-$('hymn-favorite').addEventListener('click', () => {
-    if (state.selection?.type !== 'himnos') return;
-    const key = favoriteKey('himnos', state.selection.id);
-    const willSave = !state.favs.has(key);
-    if (willSave) state.favs.add(key);
-    else state.favs.delete(key);
-    persistFavorites();
-    updateHymnButtons();
-    if (willSave) pulseSavedIcon($('hymn-favorite'));
-    $('hymn-status').textContent = willSave ? 'Himno guardado en Favoritos.' : 'Himno quitado de Favoritos.';
-    render();
 });
 function shiftChapter(d) { clearVerseSelection(); const book = state.books.find(b => b.id === state.selection?.id); if (!book)
     return; const n = state.chapter + d; if (n < 1 || n > book.totalCapitulos)
@@ -1527,6 +1584,7 @@ $('reader').addEventListener('close', () => {
     // Los cambios de posición se guardan durante la lectura y antes de cerrar desde Atrás.
     hymnRequest++;
     state.hymnData = null;
+    clearHymnSelection();
     clearVerseSelection();
     setFocusMode(false);
     renderReadingHistory();

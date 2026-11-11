@@ -2737,3 +2737,22 @@ body.dark #reader .reader-head .reader-version-wrap {
 /* v0.7.26: los códigos LBLA, NTV, NVI y RVA2015 permanecen legibles en el selector compacto. */
 #reader .reader-head .reader-version-short { white-space: nowrap; }
 #reader .reader-head .reader-version-wrap { max-width: 89px; }
+
+/* ===========================================================
+   v0.7.29 - Himnario: seleccion de estrofa y favorito en cabecera.
+   La barra de acciones nunca ocupa espacio mientras solo se lee.
+   =========================================================== */
+#reader .hymn-actions[hidden],
+#reader .hymn-header-favorite[hidden] { display: none !important; }
+#reader .hymn-header-favorite { flex-shrink: 0; font-size: 27px; color: var(--blue2); }
+#reader .hymn-header-favorite.is-saved { color: #b93d5e; }
+#reader .hymn-stanza[data-hymn-stanza] { cursor: pointer; transition: background .16s ease, outline-color .16s ease; }
+#reader .hymn-stanza[data-hymn-stanza]:focus-visible { outline: 2px solid var(--blue2); outline-offset: 2px; }
+#reader .hymn-stanza.is-selected { outline: 2px solid var(--blue2); outline-offset: -2px; background: var(--soft); }
+#reader .hymn-actions-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 2px 3px; font-size: 13px; }
+#reader .hymn-actions-top button { background: transparent; border: 0; color: var(--muted); font: inherit; min-height: 35px; padding: 5px 10px; cursor: pointer; }
+#reader .hymn-actions-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+#reader.focus-mode .hymn-header-favorite { display: none !important; }
+@media (max-width: 385px) {
+  #reader .hymn-header-favorite { font-size: 24px; }
+}
