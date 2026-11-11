@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.29. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.34. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -14,6 +14,9 @@ catch {
 const state = { tab: 'biblia', query: '', books: [], hymns: [], version: ['rvr1960','tla','lbla','ntv','nvi','rva2015'].includes(store('bh-bible-version','rvr1960')) ? store('bh-bible-version','rvr1960') : 'rvr1960', selection: null, chapter: 1, font: store('bh-font', 18), favs: new Set(store('bh-favs', [])), loading: false, searchTask: 0, searchTimer: null, redLetters: store('bh-red-letters', true), selectedVerses: new Set(), highlights: store('bh-verse-highlights', {}), history: store('bh-reading-history', []), focus: false, hymnData: null, hymnSearchIndex: null, hymnListOpen: false, favoriteCategory: 'himnos' };
 const normalized = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 const safe = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// v0.7.34: marca editorial de inicio de párrafo (¶).
+// Se elimina únicamente al presentar/exportar texto; se conservan los JSON y los saltos de línea.
+const cleanBibleEditorialMarks = value => String(value ?? '').replace(/\u00B6[ \t]*/g, '');
 const favoriteKey = (type, id) => `${type}:${id}`;
 // v0.7.26: una unica fuente de verdad para Guardar/Quitar guardado.
 // Evita que la lista de Favoritos conserve tarjetas desactualizadas.
@@ -278,7 +281,7 @@ function tlaVerseMarkup(verses, book, chapter, selected) {
         if (block.type !== 'verse') {
             const cls = ['section1', 'heading1'].includes(block.type)
                 ? 'tla-heading' : 'tla-subheading';
-            return `<h4 class="${cls}">${safe(block.text)}</h4>`;
+            return `<h4 class="${cls}">${safe(cleanBibleEditorialMarks(block.text))}</h4>`;
         }
         const nums = block.numbers;
         const first = nums[0];
@@ -290,7 +293,7 @@ function tlaVerseMarkup(verses, book, chapter, selected) {
         // El ancla HTML se declara solo una vez y el texto se mantiene completo.
         const anchors = nums.filter(n => !referenced.has(n))
             .map(n => { referenced.add(n); return `<span class="tla-verse-anchor" id="verse-${n}"></span>`; }).join('');
-        return `<p class="verse tla-verse${selectedRange ? ' verse-target' : ''}${color ? ' highlight-' + safe(color) : ''}" data-verse-number="${first}" data-verse-numbers="${nums.join(',')}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar versículo${nums.length > 1 ? 's' : ''} ${range}">${anchors}<sup>${range}</sup>${safe(block.text).replace(/\n/g, '<br>')}${saved ? '<span class="verse-saved" aria-label="Favorito">♥</span>' : ''}</p>`;
+        return `<p class="verse tla-verse${selectedRange ? ' verse-target' : ''}${color ? ' highlight-' + safe(color) : ''}" data-verse-number="${first}" data-verse-numbers="${nums.join(',')}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar versículo${nums.length > 1 ? 's' : ''} ${range}">${anchors}<sup>${range}</sup>${safe(cleanBibleEditorialMarks(block.text)).replace(/\n/g, '<br>')}${saved ? '<span class="verse-saved" aria-label="Favorito">♥</span>' : ''}</p>`;
     }).join('');
 }
 
@@ -301,7 +304,7 @@ function verseGroupNumbers(element) {
 function formatVerse(value) {
     // Los JSON marcan algunas palabras de Jesus con _inicio y __cierre.
     // Primero escapamos HTML y luego interpretamos las marcas, sin alterar el JSON.
-    const escaped = safe(value);
+    const escaped = safe(cleanBibleEditorialMarks(value));
     let formatted = escaped.replace(/_([\s\S]*?)__?/g, (_, speech) => `<span class=\"words-jesus\">${speech}</span>`);
     // Si hay marcas huerfanas no se muestran como signos tipograficos.
     formatted = formatted.replace(/_/g, '');
@@ -872,7 +875,7 @@ function showPickerTextResults(visible) {
 }
 
 function cleanSearchableVerse(value) {
-    return String(value ?? '').replace(/_+/g, '').replace(/\/n/g, ' ').replace(/\s+/g, ' ').trim();
+    return cleanBibleEditorialMarks(value).replace(/_+/g, '').replace(/\/n/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
 function pickerResultMarkup(book, chapter, verse, raw) {
@@ -1254,7 +1257,7 @@ function parseReference(query) {
 }
 function showSearchStatus(message) { $('search-status').hidden = !message; $('search-status').textContent = message || ''; }
 function bibleResult(book, chapter, verse, raw, term, end = null) {
-    const passage = String(raw ?? '').replace(/_+/g, '').replace(/\s*\/n\s*/g, ' ').trim();
+    const passage = cleanBibleEditorialMarks(raw).replace(/_+/g, '').replace(/\s*\/n\s*/g, ' ').trim();
     const title = `${book.nombre} ${chapter}${verse ? ':' + verse : ''}${end && end !== verse ? '-' + end : ''}`;
     let snippet = passage;
     if (term) {
@@ -1334,7 +1337,7 @@ async function searchBible() {
                     return;
                 const additions = [];
                 chapters.forEach((verses, ci) => verses.forEach((v, vi) => {
-                    const searchable = normalized(String(v || '').replace(/_+/g, '').replace(/\/n/g, ' '));
+                    const searchable = normalized(cleanBibleEditorialMarks(v).replace(/_+/g, '').replace(/\/n/g, ' '));
                     if (searchable && words.every(w => searchable.includes(w))) {
                         matches++;
                         if (displayed + additions.length < MAX_RESULTS)
@@ -1496,7 +1499,7 @@ function toggleVerse(n) {
     nums.forEach(value => allSelected ? state.selectedVerses.delete(value) : state.selectedVerses.add(value));
     refreshVerseSelection();
 }
-function versePlainText(htmlString) { const temp = document.createElement('div'); temp.innerHTML = htmlString; return temp.textContent.replace(/\s+/g, ' ').trim(); }
+function versePlainText(htmlString) { const temp = document.createElement('div'); temp.innerHTML = htmlString; return cleanBibleEditorialMarks(temp.textContent).replace(/\s+/g, ' ').trim(); }
 async function selectedVerseText() {
     if (!state.selection || state.selection.type !== 'biblia' || !state.selectedVerses.size)
         return '';
@@ -1505,8 +1508,8 @@ async function selectedVerseText() {
     const grouped = isStructuredBibleVersion(state.version) && verses.blocks;
     const content = grouped
         ? verses.blocks.filter(b => b.type === 'verse' && b.numbers.some(n => ns.includes(n)))
-            .map(b => `${b.numbers.join('–')}. ${b.text.trim()}`).join('\n')
-        : ns.map(n => `${n}. ${String(verses[n - 1] || '').replace(/_+/g, '').replace(/\/n/g, '\n').trim()}`).join('\n');
+            .map(b => `${b.numbers.join('–')}. ${cleanBibleEditorialMarks(b.text).trim()}`).join('\n')
+        : ns.map(n => `${n}. ${cleanBibleEditorialMarks(verses[n - 1]).replace(/_+/g, '').replace(/\/n/g, '\n').trim()}`).join('\n');
     const citation = `${book.nombre} ${state.chapter}:${ns.join(', ')} (${BIBLE_VERSIONS[state.version]})`;
     return `${content}\n\n${citation}`;
 }
@@ -2036,7 +2039,7 @@ function getDailyPassage() {
 }
 
 function cleanDailyVerseText(text) {
-    return String(text || '')
+    return cleanBibleEditorialMarks(text)
         .replace(/_/g, '')
         .replace(/\/n/g, ' ')
         .replace(/\s+/g, ' ')

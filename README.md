@@ -1,10 +1,17 @@
-# Biblia e Himnario — v0.7.33
+# Biblia e Himnario — v0.7.34
 
 Aplicación web para lectura bíblica y consulta del Himnario Adventista, con una interfaz móvil minimalista, temas claro y oscuro, favoritos y herramientas de búsqueda. Publicable como sitio estático en GitHub Pages o en otro hosting compatible.
 
-**Versión documentada:** `v0.7.33` (11 de noviembre de 2026).
+**Versión documentada:** `v0.7.34` (11 de noviembre de 2026).
 
 > **Estado:** esta versión no incluye todavía la reproducción de MP3 cantados ni instrumentales. Esa función está prevista para una futura entrega.
+
+## Novedad v0.7.34
+
+- Se oculta el signo editorial de párrafo `¶` en todas las traducciones durante la lectura.
+- La limpieza se aplica también a Copiar, Compartir, búsquedas y versículo del día.
+- Se preservan los saltos de línea, el contenido y la carpeta `data` sin modificaciones.
+- Los JSON originales se conservan intactos para futuras necesidades editoriales.
 
 ## Novedad v0.7.33
 
@@ -99,9 +106,10 @@ Abre `http://localhost:8000` en el navegador.
 | **v0.7.30** | Compartir envía la letra completa del himno; copiar conserva la estrofa o coro seleccionado. |
 | **v0.7.31** | Se corrige el contraste del selector Himnos/Versículos de Favoritos en modo oscuro. |
 | **v0.7.32** | Se conserva el versículo visible al cambiar la traducción bíblica y se recupera su posición de lectura. |
+| **v0.7.34** | Se oculta `¶` durante visualización, búsquedas, copia y compartición, conservando JSON y saltos de línea. |
 | **v0.7.33** | La referencia seleccionada prevalece sobre el primer versículo visible al comparar traducciones. |
 
-El detalle técnico de cada entrega está en `NOTAS_V0719.md` a `NOTAS_V0733.md`. Las versiones anteriores también tienen notas y documentación de edición en este repositorio.
+El detalle técnico de cada entrega está en `NOTAS_V0719.md` a `NOTAS_V0734.md`. Las versiones anteriores también tienen notas y documentación de edición en este repositorio.
 
 ## Almacenamiento local
 
