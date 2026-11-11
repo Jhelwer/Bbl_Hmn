@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.35 EXPERIMENTAL. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.36 — panel Aa en una sola columna. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES

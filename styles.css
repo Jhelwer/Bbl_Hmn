@@ -2795,6 +2795,8 @@ body.dark #reader .reader-head .reader-version-wrap {
 #reader.settings-open:not(.focus-mode) .reader-tools.reading-preferences {
   display: flex !important;
   flex-direction: column;
+  /* v0.7.36: evita que el panel se distribuya en dos columnas al limitar su altura. */
+  flex-wrap: nowrap !important;
   align-items: stretch;
   justify-content: flex-start;
   flex: 0 1 auto;
@@ -2802,6 +2804,7 @@ body.dark #reader .reader-head .reader-version-wrap {
   max-height: min(56dvh, 450px);
   overflow-y: auto;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   gap: 12px;
   padding: 14px max(14px, env(safe-area-inset-left)) 16px;
   background: var(--surface);
@@ -2849,4 +2852,20 @@ body.dark #reader .reader-head .reader-version-wrap {
 }
 @media (prefers-reduced-motion: reduce) {
   #reader .reader-tools.reading-preferences { animation:none !important; }
+}
+
+/* v0.7.36 — Cada ajuste ocupa una fila completa, sin columnas automáticas.
+   El panel puede desplazarse por dentro en pantallas bajas sin comprimir controles. */
+#reader.settings-open:not(.focus-mode) .reader-tools.reading-preferences > * {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+}
+#reader .reading-preferences .reading-choice-row {
+  width: 100%;
+  min-width: 0;
+}
+#reader .reading-preferences .reading-preferences-footer {
+  flex-wrap: wrap;
 }
