@@ -1,10 +1,24 @@
-# Biblia e Himnario — v0.7.34
+# Biblia e Himnario — v0.7.35 EXPERIMENTAL
 
 Aplicación web para lectura bíblica y consulta del Himnario Adventista, con una interfaz móvil minimalista, temas claro y oscuro, favoritos y herramientas de búsqueda. Publicable como sitio estático en GitHub Pages o en otro hosting compatible.
 
-**Versión documentada:** `v0.7.34` (11 de noviembre de 2026).
+**Versión documentada:** `v0.7.35 experimental` (11 de noviembre de 2026).
+
+> **Retorno seguro:** v0.7.34 permanece como respaldo. Para volver, restaura `index.html`, `script.js`, `styles.css` y archivos no-data del ZIP original; no hace falta borrar el historial, favoritos ni los JSON. Las nuevas preferencias están en una clave local independiente (`bh-reading-preferences-v1`) que la versión anterior ignora.
+
 
 > **Estado:** esta versión no incluye todavía la reproducción de MP3 cantados ni instrumentales. Esa función está prevista para una futura entrega.
+
+## Novedad v0.7.35 (experimental)
+
+- Panel **Aa** ampliado y plegable para Biblia e Himnario: tamaño de letra independiente por lector (16–30 px), fuente moderna o clásica, interlineado, márgenes y lectura sepia.
+- El botón **Aa** abre el panel solo cuando lo necesitas; **Listo** o ✕ lo cierran.
+- Preferencias persistentes en `localStorage` con clave independiente `bh-reading-preferences-v1`; se mantiene `bh-font` como compatibilidad con v0.7.34.
+- **Restablecer** recupera los valores predeterminados del nuevo panel.
+- El modo sepia se aplica solamente al área de lectura; los botones de tema claro/oscuro continúan operando.
+- Los ajustes de tipografía buscan mantener el pasaje visible estable durante el cambio.
+- No se modificaron los archivos JSON de Biblia, Himnario ni catálogos; tampoco las claves de favoritos, resaltados o historial.
+- No fue posible ejecutar pruebas visuales automatizadas en navegador por bloqueo del entorno: probar Safari/iPhone y Android antes de usarla como nueva base estable.
 
 ## Novedad v0.7.34
 

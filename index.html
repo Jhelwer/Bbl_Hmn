@@ -10,7 +10,7 @@
     <link rel="icon" type="image/svg+xml" href="icons/icono-biblia-himnario.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="styles.css?v=0.7.34">
+    <link rel="stylesheet" href="styles.css?v=0.7.35">
   </head>
   <body>
     <div class="app-shell">
@@ -19,7 +19,7 @@
       <header class="topbar" id="app-topbar">
         <img class="brand-icon" src="icons/icono-biblia-himnario.svg" alt="" width="43" height="43" decoding="async">
         <div>
-          <strong>Biblia e Himnario <span class="version-tag">v0.7.34</span></strong>
+          <strong>Biblia e Himnario <span class="version-tag">v0.7.35</span></strong>
           <small>Lectura, alabanza y estudio</small>
         </div>
         <button id="theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
@@ -187,14 +187,57 @@
         <button id="focus-exit" type="button">Salir del modo lectura ✕</button>
       </div>
 
-      <!-- ===== CONTROL DE TAMAÑO DE LETRA ===== -->
-      <div id="reading-settings" class="reader-tools" aria-label="Opciones de lectura">
-        <span class="reader-settings-caption">Tamaño de letra</span>
-        <button id="smaller" aria-label="Reducir letra">A−</button>
-        <span id="size-label">18 px</span>
-        <button id="larger" aria-label="Ampliar letra">A+</button>
-        <button id="reader-focus" class="reader-focus-option" type="button" aria-label="Activar modo sin distracciones" title="Modo sin distracciones" aria-pressed="false">⛶ Lectura</button>
-      </div>
+      <!-- v0.7.35 EXPERIMENTAL: ajustes avanzados, ocultos hasta pulsar Aa. -->
+      <section id="reading-settings" class="reader-tools reading-preferences" aria-label="Ajustes de lectura" aria-hidden="true">
+        <div class="reading-preferences-head">
+          <strong>Ajustes de lectura</strong>
+          <button id="reading-settings-close" type="button" aria-label="Cerrar ajustes">✕</button>
+        </div>
+        <div class="reading-preferences-row reading-size-row">
+          <label for="reading-size">Tamaño de letra <span id="size-label">18 px</span></label>
+          <div class="reading-size-controls">
+            <button id="smaller" type="button" aria-label="Reducir letra">A−</button>
+            <input id="reading-size" type="range" min="16" max="30" step="1" value="18" aria-label="Tamaño de letra" />
+            <button id="larger" type="button" aria-label="Ampliar letra">A+</button>
+          </div>
+        </div>
+        <fieldset class="reading-preferences-group">
+          <legend>Tipografía</legend>
+          <div class="reading-choice-row">
+            <label><input type="radio" name="reading-font" value="sans" checked><span>Moderna</span></label>
+            <label><input type="radio" name="reading-font" value="serif"><span>Clásica</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="reading-preferences-group">
+          <legend>Espaciado entre líneas</legend>
+          <div class="reading-choice-row">
+            <label><input type="radio" name="reading-spacing" value="compact"><span>Compacto</span></label>
+            <label><input type="radio" name="reading-spacing" value="normal" checked><span>Normal</span></label>
+            <label><input type="radio" name="reading-spacing" value="wide"><span>Amplio</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="reading-preferences-group">
+          <legend>Márgenes de lectura</legend>
+          <div class="reading-choice-row">
+            <label><input type="radio" name="reading-margin" value="narrow"><span>Estrechos</span></label>
+            <label><input type="radio" name="reading-margin" value="normal" checked><span>Normales</span></label>
+            <label><input type="radio" name="reading-margin" value="wide"><span>Amplios</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="reading-preferences-group">
+          <legend>Aspecto</legend>
+          <div class="reading-choice-row reading-theme-choice">
+            <label><input type="radio" name="reading-theme" value="light" checked><span>Claro</span></label>
+            <label><input type="radio" name="reading-theme" value="sepia"><span>Sepia</span></label>
+            <label><input type="radio" name="reading-theme" value="dark"><span>Oscuro</span></label>
+          </div>
+        </fieldset>
+        <div class="reading-preferences-footer">
+          <button id="reading-reset" type="button">Restablecer</button>
+          <button id="reader-focus" class="reader-focus-option" type="button" aria-label="Activar modo sin distracciones" title="Modo sin distracciones" aria-pressed="false">⛶ Lectura</button>
+          <button id="reading-settings-done" class="reading-settings-done" type="button">Listo</button>
+        </div>
+      </section>
 
       <!-- ===== PREFERENCIA: PALABRAS DE JESÚS EN ROJO ===== -->
       <label class="red-letters-setting">
@@ -363,6 +406,6 @@
       </div>
     </dialog>
 
-    <script src="script.js?v=0.7.34" defer></script>
+    <script src="script.js?v=0.7.35" defer></script>
   </body>
 </html>

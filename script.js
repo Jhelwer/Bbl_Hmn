@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.34. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.35 EXPERIMENTAL. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -588,7 +588,7 @@ $('reader-body').addEventListener('keydown', e => {
     }
 });
 async function openReader(type, id, chapter = 1, verseStart = null, verseEnd = null, stanzaIndex = null) { readerMotionDirection = 0; const item = (type === 'biblia' ? state.books : state.hymns).find(i => i.id === id); if (!item)
-    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); clearHymnSelection(); $('reader-type').textContent = type === 'biblia' ? item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = true; updateHymnHeaderFavorite(); updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
+    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); clearHymnSelection(); $('reader-type').textContent = type === 'biblia' ? item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); applyReadingPreferences(); updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = true; updateHymnHeaderFavorite(); updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
     $('reader').showModal(); setFocusMode(false); if (type === 'biblia') {
     $('chapterSelect').innerHTML = Array.from({ length: item.totalCapitulos }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
     await loadChapter();
@@ -1189,9 +1189,109 @@ $('chapterSelect').addEventListener('change', e => { const previousChapter = sta
 } readerMotionDirection = Math.sign(state.chapter - previousChapter); loadChapter(); $('reader-body').scrollTop = 0; });
 $('prevChapter').addEventListener('click', () => shiftChapter(-1));
 $('nextChapter').addEventListener('click', () => shiftChapter(1));
-function size(n) { state.font = Math.min(32, Math.max(14, state.font + n)); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; localStorage.setItem('bh-font', JSON.stringify(state.font)); }
-$('smaller').addEventListener('click', () => size(-2));
-$('larger').addEventListener('click', () => size(2));
+/* v0.7.35 — Preferencias independientes de la Biblia y el Himnario.
+   La clave antigua bh-font se conserva como valor inicial de migración.
+   No se cambian JSON, selección, referencias ni claves de favoritos. */
+const READING_PREFS_KEY = 'bh-reading-preferences-v1';
+const readingDefaults = { bibleSize: 18, hymnSize: 18, fontFamily: 'sans', spacing: 'normal', margin: 'normal', theme: 'light' };
+function loadReadingPreferences() {
+    const saved = store(READING_PREFS_KEY, {});
+    const oldFont = Number(state.font) || 18;
+    const n = (v, fallback) => Number.isFinite(Number(v)) ? Math.max(16, Math.min(30, Number(v))) : fallback;
+    return {
+        bibleSize: n(saved.bibleSize, n(oldFont, 18)),
+        hymnSize: n(saved.hymnSize, n(oldFont, 18)),
+        fontFamily: ['sans', 'serif'].includes(saved.fontFamily) ? saved.fontFamily : 'sans',
+        spacing: ['compact','normal','wide'].includes(saved.spacing) ? saved.spacing : 'normal',
+        margin: ['narrow','normal','wide'].includes(saved.margin) ? saved.margin : 'normal',
+        theme: ['light','sepia','dark'].includes(saved.theme) ? saved.theme : (document.body.classList.contains('dark') ? 'dark' : 'light')
+    };
+}
+let readingPrefs = loadReadingPreferences();
+function selectedReadingSize() {
+    return readingPrefs[state.selection?.type === 'himnos' ? 'hymnSize' : 'bibleSize'];
+}
+function saveReadingPreferences() {
+    try { localStorage.setItem(READING_PREFS_KEY, JSON.stringify(readingPrefs)); }
+    catch (error) { console.warn('No se pudieron guardar los ajustes de lectura', error); }
+}
+function applyReadingPreferences() {
+    const reader = $('reader'), body = $('reader-body');
+    const currentSize = selectedReadingSize();
+    body.style.fontSize = currentSize + 'px';
+    reader.style.setProperty('--reading-leading', ({compact:1.5,normal:1.8,wide:2.1})[readingPrefs.spacing]);
+    reader.style.setProperty('--reading-inline-padding', ({narrow:'12px',normal:'21px',wide:'32px'})[readingPrefs.margin]);
+    reader.classList.toggle('reading-serif', readingPrefs.fontFamily === 'serif');
+    reader.classList.toggle('reading-sepia', readingPrefs.theme === 'sepia');
+    $('size-label').textContent = currentSize + ' px';
+    $('reading-size').value = String(currentSize);
+    for (const [name,value] of [['reading-font',readingPrefs.fontFamily],['reading-spacing',readingPrefs.spacing],['reading-margin',readingPrefs.margin],['reading-theme',readingPrefs.theme]]) {
+        const radio = document.querySelector(`input[name="${name}"][value="${value}"]`);
+        if (radio) radio.checked = true;
+    }
+}
+// Conserva el ancla visual al ajustar tamaños / interlineado o márgenes.
+function changeReadingSetting(change) {
+    const pane = $('reader-body');
+    const nodes = state.selection?.type === 'biblia'
+        ? pane.querySelectorAll('.verse[data-verse-number]')
+        : pane.querySelectorAll('.hymn-stanza[data-hymn-stanza]');
+    const paneRect = pane.getBoundingClientRect();
+    const anchor = [...nodes].find(node => node.getBoundingClientRect().bottom > paneRect.top + 8) || null;
+    const before = anchor?.getBoundingClientRect().top;
+    change();
+    applyReadingPreferences();
+    saveReadingPreferences();
+    if (anchor && before !== undefined) {
+        pane.scrollTop += anchor.getBoundingClientRect().top - before;
+    }
+}
+function size(n) {
+    changeReadingSetting(() => {
+        const key = state.selection?.type === 'himnos' ? 'hymnSize' : 'bibleSize';
+        readingPrefs[key] = Math.max(16, Math.min(30, readingPrefs[key] + n));
+        state.font = readingPrefs[key];
+        // La clave heredada permanece por compatibilidad al regresar a 0.7.34.
+        localStorage.setItem('bh-font', JSON.stringify(state.font));
+    });
+}
+$('smaller').addEventListener('click', () => size(-1));
+$('larger').addEventListener('click', () => size(1));
+$('reading-size').addEventListener('input', event => {
+    const targetSize = Number(event.target.value);
+    changeReadingSetting(() => {
+        const key = state.selection?.type === 'himnos' ? 'hymnSize' : 'bibleSize';
+        readingPrefs[key] = targetSize;
+        state.font = targetSize;
+        localStorage.setItem('bh-font', JSON.stringify(targetSize));
+    });
+});
+for (const [name,key] of [['reading-font','fontFamily'],['reading-spacing','spacing'],['reading-margin','margin']]) {
+    document.querySelectorAll(`input[name="${name}"]`).forEach(input => input.addEventListener('change', () => {
+        if (input.checked) changeReadingSetting(() => { readingPrefs[key] = input.value; });
+    }));
+}
+document.querySelectorAll('input[name="reading-theme"]').forEach(input => input.addEventListener('change', () => {
+    if (!input.checked) return;
+    changeReadingSetting(() => {
+        readingPrefs.theme = input.value;
+        if (input.value !== 'sepia') {
+            document.body.classList.toggle('dark', input.value === 'dark');
+            localStorage.setItem('bh-dark', input.value === 'dark' ? '1' : '0');
+            actualizarTema();
+        }
+    });
+}));
+$('reading-reset').addEventListener('click', () => {
+    changeReadingSetting(() => {
+        readingPrefs = {...readingDefaults, theme:document.body.classList.contains('dark') ? 'dark' : 'light'};
+        state.font = 18;
+        localStorage.setItem('bh-font', JSON.stringify(18));
+    });
+});
+$('reading-settings-done').addEventListener('click', closeReadingSettings);
+$('reading-settings-close').addEventListener('click', closeReadingSettings);
+
 /*
  * ==========================================================
  * 07. PREFERENCIAS Y FAVORITOS
@@ -1224,11 +1324,18 @@ function cambiarTema() {
     document.body.classList.toggle('dark');
     localStorage.setItem('bh-dark', document.body.classList.contains('dark') ? '1' : '0');
     actualizarTema();
+    // v0.7.35: el botón luna/sol continúa funcionando y sincroniza Aa.
+    readingPrefs.theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+    applyReadingPreferences();
+    saveReadingPreferences();
 }
 document.querySelectorAll('.theme-control').forEach(b => b.addEventListener('click', cambiarTema));
 if (localStorage.getItem('bh-dark') === '1')
     document.body.classList.add('dark');
 actualizarTema();
+// Sincronizar primera apertura con el tema histórico si aún no había preferencias.
+if (!localStorage.getItem(READING_PREFS_KEY)) readingPrefs.theme = document.body.classList.contains('dark') ? 'dark' : 'light';
+applyReadingPreferences();
 // v0.4: referencias por libro/abreviatura y búsqueda progresiva en 66 JSON.
 /*
  * ==========================================================
@@ -1727,12 +1834,15 @@ function closeReadingSettings() {
     const toggle = $('reader-settings-toggle');
     dialog.classList.remove('settings-open');
     toggle.setAttribute('aria-expanded', 'false');
+    $('reading-settings').setAttribute('aria-hidden', 'true');
 }
 
 $('reader-settings-toggle').addEventListener('click', () => {
     const dialog = $('reader');
     const open = dialog.classList.toggle('settings-open');
     $('reader-settings-toggle').setAttribute('aria-expanded', String(open));
+    $('reading-settings').setAttribute('aria-hidden', String(!open));
+    if (open) applyReadingPreferences();
 });
 
 // Al pasar de móvil a escritorio se muestra siempre la barra tradicional.
