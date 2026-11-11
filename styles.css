@@ -2726,6 +2726,6 @@ body.dark #reader .reader-head .reader-version-wrap {
   #reader .reader-head .reader-version-short { font-size: 10px; }
 }
 
-/* v0.7.24: los códigos LBLA, NTV, NVI y RVA2015 permanecen legibles en el selector compacto. */
+/* v0.7.26: los códigos LBLA, NTV, NVI y RVA2015 permanecen legibles en el selector compacto. */
 #reader .reader-head .reader-version-short { white-space: nowrap; }
 #reader .reader-head .reader-version-wrap { max-width: 89px; }

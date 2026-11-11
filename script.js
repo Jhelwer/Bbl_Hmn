@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.24. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.27. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -15,6 +15,35 @@ const state = { tab: 'biblia', query: '', books: [], hymns: [], version: ['rvr19
 const normalized = s => String(s ?? '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
 const safe = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const favoriteKey = (type, id) => `${type}:${id}`;
+// v0.7.26: una unica fuente de verdad para Guardar/Quitar guardado.
+// Evita que la lista de Favoritos conserve tarjetas desactualizadas.
+// Mantener sincronizadas otras pestañas abiertas del mismo sitio.
+window.addEventListener('storage', (event) => {
+    if (event.key !== 'bh-favs') return;
+    state.favs = new Set(store('bh-favs', []));
+    updateFavoriteCategories();
+    if (state.tab === 'favoritos') renderFavorites();
+    if (state.selection?.type === 'biblia' && $('reader').open) {
+        document.querySelectorAll('#reader-body .verse[data-verse-number]').forEach(el => {
+            const saved = verseGroupNumbers(el).some(n => state.favs.has('verse:' + verseId(state.selection.id, state.chapter, n)));
+            const heart = el.querySelector('.verse-saved');
+            if (saved && !heart) el.insertAdjacentHTML('beforeend', '<span class="verse-saved" aria-label="Favorito">♥</span>');
+            if (!saved && heart) heart.remove();
+        });
+        if (state.selectedVerses.size) refreshVerseSelection();
+    }
+});
+
+function persistFavorites() {
+    try {
+        localStorage.setItem('bh-favs', JSON.stringify([...state.favs]));
+    } catch (error) {
+        console.warn('No se pudieron persistir los favoritos:', error);
+    }
+    updateFavoriteCategories();
+    if (state.tab === 'favoritos') renderFavorites();
+}
+
 const bibleCache = new Map();
 
 
@@ -425,10 +454,8 @@ function render() {
 }
 function setTab(t) { state.hymnListOpen = false; state.searchTask++; clearTimeout(state.searchTimer); $('search-status').hidden = true; state.tab = t; state.query = ''; $('search').value = ''; $('search').placeholder = t === 'himnos' ? 'Buscar número, título o palabras de un himno' : t === 'biblia' ? 'Buscar libro, capítulo o versículo' : 'Buscar en mis guardados'; document.querySelectorAll('[data-tab]').forEach(b => { const on = b.dataset.tab === t; b.classList.toggle('active', on); if (b.closest('.bottom-nav')) { if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current'); } if (b.getAttribute('role') === 'tab')
     b.setAttribute('aria-selected', String(on)); }); render(); }
-function setBookmark() { if (!state.selection)
-    return; const k = favoriteKey(state.selection.type, state.selection.id); $('bookmark').textContent = state.favs.has(k) ? '♥' : '♡'; $('bookmark').setAttribute('aria-label', state.favs.has(k) ? 'Quitar de favoritos' : 'Agregar a favoritos'); }
 async function openReader(type, id, chapter = 1, verseStart = null, verseEnd = null, stanzaIndex = null) { readerMotionDirection = 0; const item = (type === 'biblia' ? state.books : state.hymns).find(i => i.id === id); if (!item)
-    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; setBookmark(); updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
+    return; state.selection = { type, id, verseStart, verseEnd, stanzaIndex: type === 'himnos' ? stanzaIndex : null }; state.chapter = chapter; clearVerseSelection(); $('reader-type').textContent = type === 'biblia' ? item.testamento : 'HIMNARIO · N.º ' + item.numero; $('reader-title').textContent = item.nombre || item.titulo; closeReadingSettings(); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; updateRedLettersUI(); $('chapter-toolbar').hidden = type !== 'biblia'; $('bible-minimal-nav').hidden = type !== 'biblia'; $('hymn-toolbar').hidden = type !== 'himnos'; $('hymn-actions').hidden = type !== 'himnos'; updateBibleVersionUI(); $('swipe-hint').hidden = false; if (!$('reader').open)
     $('reader').showModal(); setFocusMode(false); if (type === 'biblia') {
     $('chapterSelect').innerHTML = Array.from({ length: item.totalCapitulos }, (_, i) => `<option value="${i + 1}">${i + 1}</option>`).join('');
     await loadChapter();
@@ -565,7 +592,6 @@ function shiftHymn(direction) {
     readerMotionDirection = direction;
     state.selection = { type: 'himnos', id: item.id, verseStart: null, verseEnd: null };
     $('reader-body').scrollTop = 0;
-    setBookmark();
     loadHymn(item);
 }
 $('prevHymn').addEventListener('click', () => shiftHymn(-1));
@@ -577,7 +603,6 @@ $('hymnSelect').addEventListener('change', e => {
     hymnRequest++;
     readerMotionDirection = Math.sign(Number(item.numero) - Number(state.selection?.id || item.numero));
     state.selection = { type: 'himnos', id: item.id, verseStart: null, verseEnd: null };
-    setBookmark();
     loadHymn(item);
 });
 function currentHymnText() {
@@ -638,7 +663,20 @@ $('hymn-share').addEventListener('click', async () => {
             $('hymn-status').textContent = 'No se pudo compartir el himno.';
     }
 });
-$('hymn-favorite').addEventListener('click', () => { $('bookmark').click(); updateHymnButtons(); $('hymn-status').textContent = state.favs.has(favoriteKey('himnos', state.selection.id)) ? 'Himno guardado en Favoritos.' : 'Himno quitado de Favoritos.'; });
+// v0.7.26: el favorito del Himnario es independiente de la cabecera bíblica.
+// No crea entradas biblia:<id>; únicamente cambia himnos:<id>.
+$('hymn-favorite').addEventListener('click', () => {
+    if (state.selection?.type !== 'himnos') return;
+    const key = favoriteKey('himnos', state.selection.id);
+    const willSave = !state.favs.has(key);
+    if (willSave) state.favs.add(key);
+    else state.favs.delete(key);
+    persistFavorites();
+    updateHymnButtons();
+    if (willSave) pulseSavedIcon($('hymn-favorite'));
+    $('hymn-status').textContent = willSave ? 'Himno guardado en Favoritos.' : 'Himno quitado de Favoritos.';
+    render();
+});
 function shiftChapter(d) { clearVerseSelection(); const book = state.books.find(b => b.id === state.selection?.id); if (!book)
     return; const n = state.chapter + d; if (n < 1 || n > book.totalCapitulos)
     return; state.chapter = n; if (state.selection) {
@@ -1014,16 +1052,13 @@ $('content').addEventListener('click', e => {
         button.dataset.stanza !== undefined ? Number(button.dataset.stanza) : null
     );
 });
-$('back').addEventListener('click', () => { clearVerseSelection(); $('reader').close(); });
+$('back').addEventListener('click', () => { saveLastReadingPosition(); clearVerseSelection(); $('reader').close(); });
 $('chapterSelect').addEventListener('change', e => { const previousChapter = state.chapter; clearVerseSelection(); state.chapter = Number(e.target.value); if (state.selection) {
     state.selection.verseStart = null;
     state.selection.verseEnd = null;
 } readerMotionDirection = Math.sign(state.chapter - previousChapter); loadChapter(); $('reader-body').scrollTop = 0; });
 $('prevChapter').addEventListener('click', () => shiftChapter(-1));
 $('nextChapter').addEventListener('click', () => shiftChapter(1));
-$('bookmark').addEventListener('click', () => { if (!state.selection)
-    return; const k = favoriteKey(state.selection.type, state.selection.id); state.favs.has(k) ? state.favs.delete(k) : state.favs.add(k); localStorage.setItem('bh-favs', JSON.stringify([...state.favs])); setBookmark(); if (state.favs.has(k)) pulseSavedIcon($('bookmark')); if (state.selection.type === 'himnos')
-    updateHymnButtons(); render(); });
 function size(n) { state.font = Math.min(32, Math.max(14, state.font + n)); $('reader-body').style.fontSize = state.font + 'px'; $('size-label').textContent = state.font + ' px'; localStorage.setItem('bh-font', JSON.stringify(state.font)); }
 $('smaller').addEventListener('click', () => size(-2));
 $('larger').addEventListener('click', () => size(2));
@@ -1390,12 +1425,7 @@ $('verse-fav').addEventListener('click', () => {
         return;
     const keys = selectedVerseNumbers().map(n => 'verse:' + verseId(state.selection.id, state.chapter, n)), allSaved = keys.every(k => state.favs.has(k));
     keys.forEach(k => allSaved ? state.favs.delete(k) : state.favs.add(k));
-    try {
-        localStorage.setItem('bh-favs', JSON.stringify([...state.favs]));
-    }
-    catch (e) {
-        console.warn(e);
-    }
+    persistFavorites();
     document.querySelectorAll('#reader-body .verse[data-verse-number]').forEach(el => { const key = verseGroupNumbers(el).some(n => state.favs.has('verse:' + verseId(state.selection.id, state.chapter, n))); let heart = el.querySelector('.verse-saved'); if (key && !heart)
         el.insertAdjacentHTML('beforeend', '<span class="verse-saved" aria-label="Favorito">♥</span>');
     else if (!key && heart)
@@ -1457,7 +1487,17 @@ $('verse-whatsapp').addEventListener('click', async () => {
         statusVerse('No se pudo preparar el texto para compartir.');
     }
 });
-$('reader').addEventListener('close', () => { saveLastReadingPosition(); hymnRequest++; state.hymnData = null; clearVerseSelection(); setFocusMode(false); renderReadingHistory(); });
+$('reader').addEventListener('close', () => {
+    // El evento close ocurre cuando el diálogo ya no está abierto.
+    // Los cambios de posición se guardan durante la lectura y antes de cerrar desde Atrás.
+    hymnRequest++;
+    state.hymnData = null;
+    clearVerseSelection();
+    setFocusMode(false);
+    renderReadingHistory();
+    // Al volver desde el lector a Guardados, reconstruir la lista desde state.favs.
+    if (state.tab === 'favoritos') renderFavorites();
+});
 // v0.6 - Lector avanzado: última lectura, historial, modo sin distracciones y gestos.
 /*
  * ==========================================================
@@ -1486,7 +1526,12 @@ function renderReadingHistory() {
         return;
     const last = entries[0];
     const book = state.books.find(b => b.id === last.bookId);
-    $('reading-last-label').textContent = `${book.nombre} ${last.chapter}`;
+    // Mostrar el versículo que realmente estaba visible, no solo el capítulo.
+    // Mantener compatibilidad con historiales anteriores que no tenían versículo.
+    const saved = readLastBibleReadingPosition();
+    const positionMatches = saved?.id === last.bookId && saved.chapter === last.chapter;
+    const lastVerse = positionMatches && Number.isInteger(saved.verse) && saved.verse > 0 ? saved.verse : null;
+    $('reading-last-label').textContent = `${book.nombre} ${last.chapter}${lastVerse ? ':' + lastVerse : ''}`;
     $('history-count').textContent = `(${entries.length})`;
     $('history-items').innerHTML = entries.map(({ bookId, chapter }) => {
         const b = state.books.find(x => x.id === bookId);
@@ -1494,14 +1539,17 @@ function renderReadingHistory() {
     }).join('');
 }
 $('reading-continue').addEventListener('click', () => {
-    const saved = readLastReadingPosition();
-    if (saved?.type === 'biblia') {
-        // Recuperar también la posición exacta del capítulo, no solo su número.
-        reopenLastSessionReading();
-        return;
+    const latestHistory = state.history[0];
+    const saved = readLastBibleReadingPosition();
+    // Si el historial más reciente difiere, abrir ese capítulo: no devolver al lector
+    // a un libro anterior. Si coincide, restaurar exactamente el versículo y scroll.
+    if (saved && latestHistory && saved.id === latestHistory.bookId && saved.chapter === latestHistory.chapter) {
+        reopenLastSessionReading(saved);
+    } else if (latestHistory) {
+        openReader('biblia', latestHistory.bookId, latestHistory.chapter);
+    } else if (saved) {
+        reopenLastSessionReading(saved);
     }
-    const last = state.history[0];
-    if (last) openReader('biblia', last.bookId, last.chapter);
 });
 $('history-items').addEventListener('click', e => {
     const b = e.target.closest('[data-history-book]');
@@ -1665,6 +1713,7 @@ function animateSearchResults() {
  * - No se modifican favoritos ni datos JSON.
  */
 const LAST_READING_KEY = 'bh-last-reading-position';
+const LAST_BIBLE_READING_KEY = 'bh-last-bible-reading-position'; // No lo sobrescribe el Himnario.
 let readerContentReady = false;
 let pendingReadingRestore = null;
 let lastReadingSaveAt = 0;
@@ -1675,6 +1724,26 @@ function readLastReadingPosition() {
     if (entry.type === 'biblia' && (!Number.isInteger(entry.chapter) || entry.chapter < 1)) return null;
     if (entry.type === 'himnos' && !/^\d+$/.test(entry.id)) return null;
     return entry;
+}
+
+// Migrar sin perder la posición guardada por versiones previas.
+function readLastBibleReadingPosition() {
+    const entry = store(LAST_BIBLE_READING_KEY, null);
+    if (entry?.type === 'biblia' && typeof entry.id === 'string'
+        && Number.isInteger(entry.chapter) && entry.chapter > 0) return entry;
+    const legacy = readLastReadingPosition();
+    return legacy?.type === 'biblia' ? legacy : null;
+}
+
+function updateLastReadingLabel() {
+    if (state.tab !== 'biblia' || !state.history.length || !state.books.length) return;
+    const last = state.history[0];
+    const book = state.books.find(b => b.id === last.bookId);
+    if (!book) return;
+    const position = readLastBibleReadingPosition();
+    const verse = position?.id === last.bookId && position.chapter === last.chapter
+        && Number.isInteger(position.verse) && position.verse > 0 ? position.verse : null;
+    $('reading-last-label').textContent = `${book.nombre} ${last.chapter}${verse ? ':' + verse : ''}`;
 }
 
 function getVisibleReadingAnchor() {
@@ -1712,6 +1781,10 @@ function saveLastReadingPosition() {
     };
     try {
         localStorage.setItem(LAST_READING_KEY, JSON.stringify(record));
+        if (record.type === 'biblia') {
+            localStorage.setItem(LAST_BIBLE_READING_KEY, JSON.stringify(record));
+            updateLastReadingLabel();
+        }
     } catch (error) {
         console.warn('No se pudo guardar la última lectura', error);
     }
@@ -1758,8 +1831,8 @@ function restoreOrSaveReadingPosition(type, id, chapter = null) {
     });
 }
 
-async function reopenLastSessionReading() {
-    let last = readLastReadingPosition();
+async function reopenLastSessionReading(position = null) {
+    let last = position || readLastBibleReadingPosition() || readLastReadingPosition();
     // Compatibilidad con usuarios que ya tenían historial, antes de la v0.7.16.
     if (!last && state.history.length) {
         const recent = state.history[0];
@@ -1775,7 +1848,7 @@ async function reopenLastSessionReading() {
         ? state.books.find(book => book.id === last.id && last.chapter <= book.totalCapitulos)
         : state.hymns.find(hymn => String(hymn.id) === last.id);
     if (!item) return;
-    if (last.type === 'biblia' && ['rvr1960', 'tla'].includes(last.version)) {
+    if (last.type === 'biblia' && Object.hasOwn(BIBLE_VERSIONS, last.version)) {
         state.version = last.version;
         localStorage.setItem('bh-bible-version', JSON.stringify(last.version));
     }
@@ -1787,6 +1860,9 @@ async function reopenLastSessionReading() {
         console.warn('No se pudo recuperar la última lectura', error);
     }
 }
+
+// Escape en escritorio: guardar antes del cierre del diálogo nativo.
+$('reader').addEventListener('cancel', () => saveLastReadingPosition());
 
 $('reader-body').addEventListener('scroll', () => {
     if (!readerContentReady || !state.selection || !$('reader').open) return;
