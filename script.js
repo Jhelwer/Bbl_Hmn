@@ -231,6 +231,36 @@ function updateBibleVersionUI() {
 $('reader-version').addEventListener('change', async e => {
     const nextVersion = e.target.value;
     if (!Object.hasOwn(BIBLE_VERSIONS, nextVersion) || nextVersion === state.version) return;
+
+    // v0.7.32: preservar libro, capítulo y el versículo visible al comparar versiones.
+    // Guardar ANTES de cambiar state.version o reemplazar el contenido del lector.
+    if (state.selection?.type === 'biblia' && $('reader').open) {
+        saveLastReadingPosition();
+        const visible = getVisibleReadingAnchor();
+        const previous = readLastBibleReadingPosition();
+        const current = state.selection;
+        const previousMatches = previous?.id === String(current.id) && previous.chapter === state.chapter;
+        // v0.7.33: la referencia indicada en el selector es la intención de lectura.
+        // No reemplazar Jeremías 38:11 por el versículo 8 solo porque se ve arriba.
+        const referencedVerse = Number(current.verseStart);
+        const hasReference = Number.isInteger(referencedVerse) && referencedVerse > 0;
+        const verse = hasReference ? referencedVerse
+            : (visible?.verse || (previousMatches ? previous.verse : null) || 1);
+        const area = $('reader-body');
+        pendingReadingRestore = {
+            type: 'biblia', id: String(current.id), chapter: state.chapter,
+            version: nextVersion, versionSwitch: true, verse,
+            // Si hay una referencia explícita, ubicar ese versículo cerca del
+            // inicio de lectura; la compensación del primer visible no le pertenece.
+            offset: hasReference ? 12 : (visible?.offset ?? (previousMatches ? previous.offset : 0) ?? 0),
+            scrollTop: area.scrollTop
+        };
+        // El selector superior también refleja el punto de lectura, sin seleccionar
+        // el versículo para copiar/guardar ni modificar favoritos.
+        current.verseStart = verse;
+        current.verseEnd = null;
+    }
+
     state.version = nextVersion;
     localStorage.setItem('bh-bible-version', JSON.stringify(nextVersion));
     state.searchTask++;
@@ -585,11 +615,16 @@ async function loadChapter() {
         $('reader-body').innerHTML = `<h3>${safe(book.nombre)} ${chapter}</h3><p class="verse-help">Toca uno o varios versículos para seleccionarlos.</p>` + (isStructuredBibleVersion(state.version) ? tlaVerseMarkup(verses, book, chapter, selected) : verses.map((v, i) => { const no = i + 1, key = verseId(selected.id, chapter, no), color = state.highlights[key]; const target = selected.verseStart !== null && no >= selected.verseStart && no <= (selected.verseEnd || selected.verseStart); return `<p class="verse${target ? ' verse-target' : ''}${color ? ' highlight-' + safe(color) : ''}" id="verse-${no}" data-verse-number="${no}" role="button" tabindex="0" aria-pressed="false" aria-label="Seleccionar versículo ${no}"><sup>${no}</sup>${formatVerse(v)}${state.favs.has('verse:' + key) ? '<span class="verse-saved" aria-label="Favorito">♥</span>' : ''}</p>`; }).join(''));
         animateReaderContent();
         readerContentReady = true;
+        // La restauración consume pendingReadingRestore. Recordar si existía
+        // para no ejecutar después scrollIntoView(), que anulaba la posición restaurada.
+        const restoringPosition = Boolean(pendingReadingRestore?.type === 'biblia'
+            && pendingReadingRestore.id === String(selected.id)
+            && pendingReadingRestore.chapter === chapter);
         restoreOrSaveReadingPosition('biblia', selected.id, chapter);
         recordReading(selected.id, chapter);
         updateFocusTitle();
         updateMinimalBibleNav();
-        if (selected.verseStart && !pendingReadingRestore) {
+        if (selected.verseStart && !restoringPosition) {
             const target = $('verse-' + selected.verseStart);
             if (target)
                 requestAnimationFrame(() => target.scrollIntoView({ block: 'center' }));
@@ -1901,7 +1936,8 @@ function restoreOrSaveReadingPosition(type, id, chapter = null) {
     requestAnimationFrame(() => {
         requestAnimationFrame(() => {
             if (!$('reader').open || state.selection?.id !== String(id) ||
-                state.selection.type !== type || (type === 'biblia' && state.chapter !== chapter)) return;
+                state.selection.type !== type || (type === 'biblia' && state.chapter !== chapter) ||
+                (target.versionSwitch && state.version !== target.version)) return;
             const area = $('reader-body');
             const elements = type === 'biblia'
                 ? [...area.querySelectorAll('.verse[data-verse-number]')]
@@ -1915,8 +1951,10 @@ function restoreOrSaveReadingPosition(type, id, chapter = null) {
                 area.scrollTop += match.getBoundingClientRect().top
                     - area.getBoundingClientRect().top - target.offset;
             } else {
-                // Respaldo de ubicación para versiones antiguas o cambios en el JSON.
-                area.scrollTop = Math.max(0, Number(target.scrollTop) || 0);
+                // En el cambio de versión, no reutilizar píxeles de un texto
+                // diferente si falta el versículo exacto.
+                area.scrollTop = target.versionSwitch ? 0
+                    : Math.max(0, Number(target.scrollTop) || 0);
             }
             readerContentReady = true;
             saveLastReadingPosition();

@@ -1,10 +1,25 @@
-# Biblia e Himnario — v0.7.31
+# Biblia e Himnario — v0.7.33
 
 Aplicación web para lectura bíblica y consulta del Himnario Adventista, con una interfaz móvil minimalista, temas claro y oscuro, favoritos y herramientas de búsqueda. Publicable como sitio estático en GitHub Pages o en otro hosting compatible.
 
-**Versión documentada:** `v0.7.31` (11 de noviembre de 2026).
+**Versión documentada:** `v0.7.33` (11 de noviembre de 2026).
 
 > **Estado:** esta versión no incluye todavía la reproducción de MP3 cantados ni instrumentales. Esa función está prevista para una futura entrega.
+
+## Novedad v0.7.33
+
+- Al alternar traducciones, la **referencia explícita** del selector (ej. Jeremías 38:11) tiene prioridad sobre el primer versículo visible en pantalla (ej. 38:8).
+- El versículo indicado se posiciona cerca del comienzo del área de lectura tras cargar el JSON de la traducción nueva.
+- Cuando el selector solo indica el capítulo, se conserva el comportamiento de anclaje al versículo visible.
+- Se previenen restauraciones tardías de una traducción anterior durante cambios rápidos.
+- Sin cambios en JSON, guardados, historial, Himnario o controles.
+
+## Novedad v0.7.32
+
+- Al cambiar la traducción dentro de un capítulo, se conserva el **libro, capítulo y versículo visible** (por ejemplo, Génesis 23:9).
+- Se recupera la posición visual una vez cargado el JSON de la traducción elegida, incluso si agrupa versículos en un bloque.
+- El selector de referencia bíblica refleja el versículo donde se retomó la lectura.
+- Sin cambios en datos JSON, himnos ni favoritos. El cambio anterior de v0.7.31 en colores de Favoritos se mantiene.
 
 ## Funciones actuales
 
@@ -83,8 +98,10 @@ Abre `http://localhost:8000` en el navegador.
 | **v0.7.29** | El Himnario adopta una barra contextual por estrofa/coro y un corazón superior para el himno completo. |
 | **v0.7.30** | Compartir envía la letra completa del himno; copiar conserva la estrofa o coro seleccionado. |
 | **v0.7.31** | Se corrige el contraste del selector Himnos/Versículos de Favoritos en modo oscuro. |
+| **v0.7.32** | Se conserva el versículo visible al cambiar la traducción bíblica y se recupera su posición de lectura. |
+| **v0.7.33** | La referencia seleccionada prevalece sobre el primer versículo visible al comparar traducciones. |
 
-El detalle técnico de cada entrega está en `NOTAS_V0719.md` a `NOTAS_V0731.md`. Las versiones anteriores también tienen notas y documentación de edición en este repositorio.
+El detalle técnico de cada entrega está en `NOTAS_V0719.md` a `NOTAS_V0733.md`. Las versiones anteriores también tienen notas y documentación de edición en este repositorio.
 
 ## Almacenamiento local
 
@@ -102,3 +119,4 @@ A partir de esta corrección documental, cada nueva entrega debería actualizar 
 2. `NOTAS_V07XX.md`: cambios técnicos, archivos editados y pruebas específicas.
 
 Esto evita que la documentación principal quede desfasada aunque existan notas individuales.
+
