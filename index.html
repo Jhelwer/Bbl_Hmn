@@ -10,7 +10,7 @@
     <link rel="icon" type="image/svg+xml" href="icons/icono-biblia-himnario.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="icons/icon-180.png">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="stylesheet" href="styles.css?v=0.7.36">
+    <link rel="stylesheet" href="styles.css?v=0.7.39">
   </head>
   <body>
     <div class="app-shell">
@@ -19,7 +19,7 @@
       <header class="topbar" id="app-topbar">
         <img class="brand-icon" src="icons/icono-biblia-himnario.svg" alt="" width="43" height="43" decoding="async">
         <div>
-          <strong>Biblia e Himnario <span class="version-tag">v0.7.36</span></strong>
+          <strong>Biblia e Himnario <span class="version-tag">v0.7.39</span></strong>
           <small>Lectura, alabanza y estudio</small>
         </div>
         <button id="theme" class="icon-button theme-control" type="button" aria-label="Activar modo oscuro" title="Cambiar tema">☾</button>
@@ -181,6 +181,9 @@
         </div>
       </nav>
 
+      <!-- v0.7.37: acceso accesible para recuperar los controles ocultos automáticamente. -->
+      <button id="immersive-reveal" type="button" hidden aria-label="Mostrar controles de lectura" title="Mostrar controles de lectura">⌄</button>
+
       <!-- ===== MODO SIN DISTRACCIONES ===== -->
       <div id="focus-bar" class="focus-bar" hidden>
         <span id="focus-title"></span>
@@ -234,6 +237,7 @@
         </fieldset>
         <div class="reading-preferences-footer">
           <button id="reading-reset" type="button">Restablecer</button>
+          <button id="reader-immersive-toggle" type="button" aria-pressed="false" aria-label="Activar lectura inmersiva automática">⇵ Inmersiva: desactivada</button>
           <button id="reader-focus" class="reader-focus-option" type="button" aria-label="Activar modo sin distracciones" title="Modo sin distracciones" aria-pressed="false">⛶ Lectura</button>
           <button id="reading-settings-done" class="reading-settings-done" type="button">Listo</button>
         </div>
@@ -311,6 +315,15 @@
             </svg>
             <span class="action-label">Guardar</span>
           </button>
+          <!-- v0.7.38: comparar el mismo pasaje en las traducciones disponibles. -->
+          <button id="verse-compare" type="button" class="verse-action-tile" aria-label="Comparar traducciones del pasaje" aria-haspopup="dialog" aria-controls="bible-compare" title="Comparar traducciones">
+            <svg class="action-icon" viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2.8" y="4" width="8" height="16" rx="1.7"></rect>
+              <rect x="13.2" y="4" width="8" height="16" rx="1.7"></rect>
+              <path d="M5.5 8h2.5M5.5 12h2.5M15.8 8h2.5M15.8 12h2.5"></path>
+            </svg>
+            <span class="action-label">Comparar</span>
+          </button>
           <button id="verse-whatsapp" aria-label="Compartir versículos" title="Compartir versículos" type="button" class="verse-action-tile">
             <svg class="action-icon" viewBox="0 0 24 24" width="27" height="27" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="18" cy="5" r="3"></circle>
@@ -334,6 +347,28 @@
           <button id="highlight-remove" type="button" class="highlight-remove">Quitar color</button>
         </div>
         <p id="verse-action-status" class="verse-action-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <!-- v0.7.38: panel superpuesto: no sustituye ni desplaza el lector de fondo. -->
+      <section id="bible-compare" class="bible-compare-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="bible-compare-title" aria-describedby="bible-compare-intro">
+        <div id="bible-compare-backdrop" class="bible-compare-backdrop" aria-hidden="true"></div>
+        <div class="bible-compare-sheet" tabindex="-1">
+          <header class="bible-compare-head">
+            <div class="bible-compare-heading">
+              <span class="bible-compare-eyebrow">ESTUDIO BÍBLICO</span>
+              <h3 id="bible-compare-title">Comparar traducciones</h3>
+              <p id="bible-compare-intro">Mismo pasaje en diferentes traducciones</p>
+            </div>
+            <button id="bible-compare-close" class="bible-compare-close" type="button" aria-label="Cerrar comparador">✕</button>
+          </header>
+          <div class="bible-compare-scroll">
+            <fieldset class="bible-compare-filters">
+              <legend>Traducciones que deseas comparar</legend>
+              <div id="bible-compare-versions" class="bible-compare-version-options"></div>
+            </fieldset>
+            <div id="bible-compare-results" class="bible-compare-results" aria-live="polite" aria-busy="false"></div>
+          </div>
+        </div>
       </section>
     </dialog>
 
@@ -406,6 +441,6 @@
       </div>
     </dialog>
 
-    <script src="script.js?v=0.7.36" defer></script>
+    <script src="script.js?v=0.7.39" defer></script>
   </body>
 </html>

@@ -2869,3 +2869,166 @@ body.dark #reader .reader-head .reader-version-wrap {
 #reader .reading-preferences .reading-preferences-footer {
   flex-wrap: wrap;
 }
+
+
+/* ============================================================
+   v0.7.37 - LECTURA INMERSIVA SIN REFLUJOS
+   Barras superpuestas en vez de display:none / height:0 por scroll.
+   Evita la oscilacion del encabezado observada en Safari iOS.
+   ============================================================ */
+#reader.immersive-mode:not(.focus-mode) {
+  --immersive-head-height: 65px;
+  --immersive-top-height: 126px;
+}
+#reader.immersive-mode:not(.focus-mode) .reader-head,
+#reader.immersive-mode:not(.focus-mode) .bible-minimal-nav:not([hidden]),
+#reader.immersive-mode:not(.focus-mode) .hymn-toolbar:not([hidden]) {
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  width: 100%;
+  box-sizing: border-box;
+  background: var(--surface);
+  transition: transform .24s ease;
+  will-change: transform;
+}
+#reader.immersive-mode:not(.focus-mode) .reader-head { top: 0; }
+#reader.immersive-mode:not(.focus-mode) .bible-minimal-nav:not([hidden]),
+#reader.immersive-mode:not(.focus-mode) .hymn-toolbar:not([hidden]) {
+  top: var(--immersive-head-height);
+  z-index: 14;
+}
+#reader.immersive-mode:not(.focus-mode) .reader-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding-top: calc(var(--immersive-top-height) + 18px) !important;
+  overscroll-behavior-y: contain;
+}
+#reader.immersive-mode.immersive-hidden:not(.focus-mode) .reader-head,
+#reader.immersive-mode.immersive-hidden:not(.focus-mode) .bible-minimal-nav:not([hidden]),
+#reader.immersive-mode.immersive-hidden:not(.focus-mode) .hymn-toolbar:not([hidden]) {
+  transform: translate3d(0, calc(-1 * var(--immersive-top-height) - 12px), 0);
+  pointer-events: none;
+}
+#reader #immersive-reveal[hidden] { display:none !important; }
+#reader.immersive-mode.immersive-hidden:not(.focus-mode) #immersive-reveal {
+  position:absolute;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  top: max(8px, env(safe-area-inset-top));
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  padding:0;
+  border:1px solid var(--line);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--blue2);
+  box-shadow: 0 2px 9px #00000016;
+  font-size:23px;
+  z-index:16;
+  opacity:.78;
+  cursor:pointer;
+}
+#reader .reading-preferences-footer #reader-immersive-toggle {
+  flex: 1 1 150px;
+  min-height: 42px;
+}
+#reader .reading-preferences-footer #reader-immersive-toggle[aria-pressed="true"] {
+  border-color:var(--blue2);
+  color:var(--blue2);
+}
+@media (prefers-reduced-motion: reduce) {
+  #reader.immersive-mode .reader-head,
+  #reader.immersive-mode .bible-minimal-nav,
+  #reader.immersive-mode .hymn-toolbar { transition:none !important; }
+}
+
+
+/* ============================================================
+   v0.7.38 — Comparador contextual de versiones bíblicas.
+   Hoja desplazable dentro del lector; no modifica scroll del texto.
+   ============================================================ */
+#reader .verse-action-buttons { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+#reader .verse-action-buttons .verse-action-tile { min-width:0; }
+#reader .verse-action-buttons .verse-action-tile .action-label { font-size:11px; }
+#reader .bible-compare-overlay[hidden] { display:none !important; }
+#reader .bible-compare-overlay {
+  position:absolute; inset:0; z-index:70; display:flex; align-items:flex-end;
+  justify-content:center; overflow:hidden; color:var(--ink);
+}
+#reader .bible-compare-backdrop {
+  position:absolute; inset:0; background:rgba(8,22,36,.58);
+}
+#reader .bible-compare-sheet {
+  position:relative; z-index:1; width:100%; max-width:760px;
+  max-height: min(90dvh, 850px); min-height: min(42dvh, 260px);
+  box-sizing:border-box; display:flex; flex-direction:column;
+  background:var(--surface); border-radius:20px 20px 0 0;
+  box-shadow:0 -12px 44px #0004; overflow:hidden;
+}
+#reader .bible-compare-head {
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:12px; padding:20px 18px 12px; border-bottom:1px solid var(--line);
+}
+#reader .bible-compare-heading { min-width:0; }
+#reader .bible-compare-eyebrow { color:var(--blue2); font-size:11px; letter-spacing:.14em; font-weight:750; }
+#reader .bible-compare-heading h3 { margin:4px 0; font-size:20px; line-height:1.25; }
+#reader .bible-compare-heading p { margin:0; color:var(--muted); font-size:12px; }
+#reader .bible-compare-close {
+  border:1px solid var(--line); background:var(--soft); color:var(--ink);
+  flex-shrink:0; min-width:44px; min-height:44px; border-radius:12px;
+  font-size:21px; cursor:pointer;
+}
+#reader .bible-compare-scroll { overflow-y:auto; min-height:0; overscroll-behavior:contain; padding:15px 16px calc(26px + env(safe-area-inset-bottom)); }
+#reader .bible-compare-filters { border:0; padding:0; margin:0 0 16px; min-width:0; }
+#reader .bible-compare-filters legend { font-size:12px; color:var(--muted); font-weight:700; margin-bottom:10px; }
+#reader .bible-compare-version-options { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px; }
+#reader .bible-compare-version {
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  padding:11px 5px; border:1px solid var(--line); border-radius:10px;
+  background:var(--soft); color:var(--ink); font-size:12px; font-weight:650;
+  cursor:pointer; min-width:0;
+}
+#reader .bible-compare-version input { accent-color:var(--blue2); width:16px; height:16px; margin:0; }
+#reader .bible-compare-results { display:flex; flex-direction:column; gap:12px; }
+#reader .bible-compare-card { border:1px solid var(--line); border-radius:15px; padding:16px; background:var(--surface); }
+#reader .bible-compare-card.is-current { border-color:var(--blue2); box-shadow:inset 3px 0 var(--blue2); }
+#reader .bible-compare-card-head { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px; }
+#reader .bible-compare-card-head strong { font-size:14px; line-height:1.35; }
+#reader .bible-compare-card-head span { color:var(--blue2); font-size:11px; font-weight:800; white-space:nowrap; }
+#reader .bible-compare-card-text { margin:0; font-size:16px; line-height:1.7; white-space:pre-line; overflow-wrap:anywhere; }
+#reader .bible-compare-card-text.is-unavailable, #reader .bible-compare-message { color:var(--muted); font-size:14px; }
+#reader .bible-compare-close:focus-visible, #reader .bible-compare-version:focus-within { outline:2px solid var(--blue2); outline-offset:2px; }
+@media (max-width:380px) {
+  #reader .verse-action-buttons .verse-action-tile { gap:4px; padding:6px 0; }
+  #reader .verse-action-buttons .verse-action-tile .action-icon { width:24px; height:24px; }
+  #reader .verse-action-buttons .verse-action-tile .action-label { font-size:10px; }
+  #reader .bible-compare-head { padding:14px 14px 10px; }
+  #reader .bible-compare-scroll { padding:13px 12px calc(22px + env(safe-area-inset-bottom)); }
+}
+@media (prefers-reduced-motion:reduce) {
+  #reader .bible-compare-sheet { scroll-behavior:auto; }
+}
+
+
+/* ============================================================
+   v0.7.39 — Comparador: aprovechar el alto de pantallas móviles.
+   La hoja crece sin cambiar el flujo ni el scroll del lector.
+   El contenido permanece desplazable dentro de la hoja.
+   ============================================================ */
+@media (max-width: 820px) {
+  #reader .bible-compare-sheet {
+    height: calc(100% - 10px);
+    max-height: calc(100% - 10px);
+    min-height: 0;
+  }
+}
+@media (min-width: 821px) {
+  #reader .bible-compare-sheet {
+    height: min(94dvh, 1000px);
+    max-height: calc(100% - 20px);
+  }
+}

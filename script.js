@@ -1,4 +1,4 @@
-/* Biblia e Himnario v0.7.36 — panel Aa en una sola columna. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
+/* Biblia e Himnario v0.7.39 — comparador contextual de traducciones. JSON bíblicos suministrados por el usuario; verificar permisos antes de distribución pública. */
 /*
  * ==========================================================
  * 01. CONFIGURACIÓN, ESTADO Y UTILIDADES
@@ -206,8 +206,9 @@ function buildTlaChapters(payload) {
     });
 }
 
-async function getBookJson(bookId) {
-    const version = state.version;
+// v0.7.38: consultar otra traducción SIN alterar state.version ni la posición.
+async function getBookJsonForVersion(version, bookId) {
+    if (!Object.hasOwn(BIBLE_VERSIONS, version)) throw new Error('Traducción no disponible');
     const cacheKey = `${version}:${bookId}`;
     if (bibleCache.has(cacheKey)) return bibleCache.get(cacheKey);
     const data = await json(`data/biblia/${version}/${bookId}.json`);
@@ -217,6 +218,7 @@ async function getBookJson(bookId) {
     if (bibleCache.size > 8) bibleCache.delete(bibleCache.keys().next().value);
     return chapters;
 }
+async function getBookJson(bookId) { return getBookJsonForVersion(state.version, bookId); }
 
 function updateBibleVersionUI() {
     $('reader-version').value = state.version;
@@ -596,7 +598,9 @@ async function openReader(type, id, chapter = 1, verseStart = null, verseEnd = n
 else {
     initHymnSelector();
     await loadHymn(item);
-} }
+}
+if (immersiveEnabled) requestAnimationFrame(() => setImmersiveMode(true, { persist: false }));
+}
 async function loadChapter() {
     readerContentReady = false;
     const selected = state.selection;
@@ -1572,7 +1576,7 @@ const saveVersePrefs = () => { try {
 catch (e) {
     console.warn('No se pudo guardar resaltados', e);
 } };
-function clearVerseSelection() { hideVerseColors(); state.selectedVerses.clear(); if ($('verse-actions')) {
+function clearVerseSelection() { closeBibleCompare(); hideVerseColors(); state.selectedVerses.clear(); if ($('verse-actions')) {
     $('verse-actions').hidden = true;
     $('verse-action-status').textContent = '';
 } document.querySelectorAll('#reader-body .verse.is-selected').forEach(el => { el.classList.remove('is-selected'); el.setAttribute('aria-pressed', 'false'); }); }
@@ -1629,6 +1633,133 @@ $('reader-body').addEventListener('keydown', e => { if (state.focus)
     e.preventDefault();
     toggleVerse(Number(e.target.dataset.verseNumber));
 } });
+/* ==========================================================
+ * v0.7.38 — COMPARADOR DE TRADUCCIONES
+ * - No modifica la traducción activa ni la selección ni el scroll.
+ * - Recupera datos de los JSON existentes por versión y libro.
+ * - Los bloques multicversículo de TLA/NVI/NTV/etc. se muestran una vez.
+ * ========================================================== */
+const COMPARE_VERSION_ORDER = ['rvr1960', 'tla', 'lbla', 'ntv', 'nvi', 'rva2015'];
+let bibleCompareRequest = 0;
+let bibleCompareContext = null;
+let bibleComparePreviousFocus = null;
+let bibleCompareEnabled = new Set(COMPARE_VERSION_ORDER);
+
+function closeBibleCompare() {
+    const overlay = $('bible-compare');
+    if (!overlay || overlay.hidden) return;
+    bibleCompareRequest++;
+    overlay.hidden = true;
+    overlay.querySelector('#bible-compare-results').setAttribute('aria-busy', 'false');
+    bibleCompareContext = null;
+    if (bibleComparePreviousFocus?.isConnected && $('reader').open) {
+        bibleComparePreviousFocus.focus({ preventScroll: true });
+    }
+    bibleComparePreviousFocus = null;
+}
+function compareContextIsCurrent(context) {
+    return !$('bible-compare').hidden && state.selection?.type === 'biblia'
+        && state.selection.id === context.bookId && state.chapter === context.chapter;
+}
+function comparisonText(version, chapterData, chosen) {
+    if (!Array.isArray(chapterData)) return '';
+    const selected = new Set(chosen);
+    if (isStructuredBibleVersion(version) && Array.isArray(chapterData.blocks)) {
+        const seen = new Set();
+        return chapterData.blocks.filter(b => b.type === 'verse' &&
+            (b.numbers || []).some(n => selected.has(Number(n))))
+            .map(b => {
+                const nums = [...new Set((b.numbers || []).map(Number).filter(Number.isInteger))];
+                const key = nums.join(',') + ':' + b.text;
+                if (seen.has(key)) return '';
+                seen.add(key);
+                const label = nums.length > 1 ? `${nums[0]}–${nums[nums.length - 1]}` : nums[0];
+                return `${label}. ${cleanBibleEditorialMarks(b.text).trim()}`;
+            }).filter(Boolean).join('\n\n');
+    }
+    return chosen.filter(n => chapterData[n - 1] != null)
+        .map(n => `${n}. ${cleanBibleEditorialMarks(chapterData[n - 1]).replace(/_+/g, '').replace(/\/n/g, '\n').trim()}`)
+        .join('\n\n');
+}
+async function loadBibleComparison() {
+    if (!bibleCompareContext || $('bible-compare').hidden) return;
+    const context = bibleCompareContext;
+    const token = ++bibleCompareRequest;
+    const results = $('bible-compare-results');
+    results.setAttribute('aria-busy', 'true');
+    results.innerHTML = '<p class="bible-compare-message">Cargando traducciones…</p>';
+    const versions = COMPARE_VERSION_ORDER.filter(v => bibleCompareEnabled.has(v))
+        .sort((a, b) => (a === context.currentVersion ? -1 : b === context.currentVersion ? 1 : 0));
+    if (!versions.length) {
+        results.innerHTML = '<p class="bible-compare-message">Selecciona al menos una traducción para comparar.</p>';
+        results.setAttribute('aria-busy', 'false');
+        return;
+    }
+    const outcomes = await Promise.all(versions.map(async version => {
+        try {
+            const chapters = await getBookJsonForVersion(version, context.bookId);
+            return { version, text: comparisonText(version, chapters[context.chapter - 1], context.verses) };
+        } catch (error) {
+            console.warn('Comparador: no se pudo cargar', version, error);
+            return { version, error: true };
+        }
+    }));
+    if (token !== bibleCompareRequest || !compareContextIsCurrent(context)) return;
+    results.innerHTML = outcomes.map(({ version, text, error }) => {
+        const name = BIBLE_VERSIONS[version];
+        const body = error ? 'No se pudo cargar esta traducción. Comprueba sus archivos JSON.'
+            : (text || 'Este pasaje no está disponible en esta traducción.');
+        return `<article class="bible-compare-card${version === context.currentVersion ? ' is-current' : ''}">
+            <div class="bible-compare-card-head"><strong>${safe(name)}</strong><span>${safe(BIBLE_VERSION_SHORT[version])}</span></div>
+            <p class="bible-compare-card-text${error || !text ? ' is-unavailable' : ''}">${safe(body)}</p>
+          </article>`;
+    }).join('');
+    results.setAttribute('aria-busy', 'false');
+}
+function openBibleCompare() {
+    if (state.selection?.type !== 'biblia' || !state.selectedVerses.size) return;
+    const book = state.books.find(b => b.id === state.selection.id);
+    if (!book) return;
+    const verses = selectedVerseNumbers();
+    bibleCompareContext = {
+        bookId: state.selection.id, chapter: state.chapter, verses,
+        currentVersion: state.version
+    };
+    const range = verses.length === 1 ? String(verses[0]) :
+        (verses.every((n, i) => !i || n === verses[i - 1] + 1)
+            ? `${verses[0]}–${verses[verses.length - 1]}` : verses.join(', '));
+    $('bible-compare-title').textContent = `${book.nombre} ${state.chapter}:${range}`;
+    $('bible-compare-versions').innerHTML = COMPARE_VERSION_ORDER.map(version =>
+        `<label class="bible-compare-version"><input type="checkbox" value="${version}" ${bibleCompareEnabled.has(version) ? 'checked' : ''}><span>${safe(BIBLE_VERSION_SHORT[version])}</span></label>`
+    ).join('');
+    bibleComparePreviousFocus = document.activeElement;
+    $('bible-compare').hidden = false;
+    $('bible-compare-close').focus({ preventScroll: true });
+    loadBibleComparison();
+}
+$('verse-compare').addEventListener('click', openBibleCompare);
+$('bible-compare-close').addEventListener('click', closeBibleCompare);
+$('bible-compare-backdrop').addEventListener('click', closeBibleCompare);
+$('bible-compare-versions').addEventListener('change', event => {
+    if (!event.target.matches('input[type="checkbox"]')) return;
+    const version = event.target.value;
+    if (event.target.checked) bibleCompareEnabled.add(version);
+    else bibleCompareEnabled.delete(version);
+    loadBibleComparison();
+});
+$('bible-compare').addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+        event.preventDefault(); event.stopPropagation(); closeBibleCompare(); return;
+    }
+    // En un panel modal, el teclado permanece dentro de sus controles.
+    if (event.key === 'Tab') {
+        const focusables = [...$('bible-compare').querySelectorAll('button:not([disabled]),input:not([disabled])')];
+        const first = focusables[0], last = focusables[focusables.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+});
+
 $('verse-clear').addEventListener('click', clearVerseSelection);
 $('verse-copy').addEventListener('click', async () => {
     try {
@@ -1725,6 +1856,7 @@ $('verse-whatsapp').addEventListener('click', async () => {
     }
 });
 $('reader').addEventListener('close', () => {
+    closeBibleCompare();
     // El evento close ocurre cuando el diálogo ya no está abierto.
     // Los cambios de posición se guardan durante la lectura y antes de cerrar desde Atrás.
     hymnRequest++;
@@ -1732,6 +1864,7 @@ $('reader').addEventListener('close', () => {
     clearHymnSelection();
     clearVerseSelection();
     setFocusMode(false);
+    setImmersiveMode(false, { persist: false });
     renderReadingHistory();
     // Al volver desde el lector a Guardados, reconstruir la lista desde state.favs.
     if (state.tab === 'favoritos') renderFavorites();
@@ -1813,7 +1946,7 @@ function updateFocusTitle() {
     $('focus-title').textContent = state.selection.type === 'biblia' ? `${book?.nombre || ''} ${state.chapter}` : (hymn?.titulo || 'Himnario');
 }
 function setFocusMode(on) {
-    if (on) closeReadingSettings();
+    if (on) { setImmersiveMode(false); closeReadingSettings(); }
     state.focus = Boolean(on);
     $('reader').classList.toggle('focus-mode', state.focus);
     $('reader-focus').setAttribute('aria-pressed', String(state.focus));
@@ -1824,6 +1957,108 @@ function setFocusMode(on) {
         updateFocusTitle();
     }
 }
+
+/* ==========================================================
+ * v0.7.37 - LECTURA INMERSIVA AUTOMATICA (OPT-IN)
+ * Las barras flotan sobre el lector y se desplazan con transform;
+ * no modifican el alto del scroll durante el gesto, evitando vibración.
+ * El modo manual sin distracciones se conserva de forma independiente.
+ * ========================================================== */
+let immersiveEnabled = Boolean(store('bh-immersive-enabled', false));
+let immersiveLastY = 0;
+let immersiveTravel = 0;
+let immersiveDirection = 0;
+let immersiveLastToggle = 0;
+let immersiveSuppressUntil = 0;
+
+function updateImmersiveMeasurements() {
+    const reader = $('reader');
+    if (!reader.open) return;
+    const head = reader.querySelector('.reader-head');
+    const bar = state.selection?.type === 'biblia' ? $('bible-minimal-nav') : $('hymn-toolbar');
+    const headHeight = head?.offsetHeight || 0;
+    const navHeight = bar && !bar.hidden ? bar.offsetHeight : 0;
+    reader.style.setProperty('--immersive-head-height', `${headHeight}px`);
+    reader.style.setProperty('--immersive-top-height', `${headHeight + navHeight}px`);
+}
+
+function showImmersiveControls(show) {
+    const reader = $('reader');
+    if (!reader.classList.contains('immersive-mode')) return;
+    reader.classList.toggle('immersive-hidden', !show);
+    $('immersive-reveal').hidden = show;
+    $('immersive-reveal').setAttribute('aria-hidden', String(show));
+    immersiveLastToggle = performance.now();
+}
+
+function setImmersiveMode(on, { persist = true } = {}) {
+    const reader = $('reader');
+    const enabled = Boolean(on);
+    if (persist) {
+        immersiveEnabled = enabled;
+        try { localStorage.setItem('bh-immersive-enabled', JSON.stringify(enabled)); }
+        catch (err) { console.warn('No se pudo guardar la preferencia inmersiva', err); }
+    }
+    const wasActive = reader.classList.contains('immersive-mode');
+    if (enabled && state.focus) setFocusMode(false);
+    if (enabled) closeReadingSettings();
+    const pane = $('reader-body');
+    const previousPosition = pane.scrollTop;
+    const reserved = parseFloat(reader.style.getPropertyValue('--immersive-top-height')) || 0;
+    reader.classList.toggle('immersive-mode', enabled);
+    reader.classList.remove('immersive-hidden');
+    $('immersive-reveal').hidden = true;
+    $('immersive-reveal').setAttribute('aria-hidden', 'true');
+    $('reader-immersive-toggle').setAttribute('aria-pressed', String(enabled));
+    $('reader-immersive-toggle').textContent = enabled ? '⇵ Inmersiva: activada' : '⇵ Inmersiva: desactivada';
+    if (!reader.open) return;
+    updateImmersiveMeasurements();
+    // Compensar el acolchado agregado/quitado solo al cambiar de modo.
+    const currentHeight = parseFloat(reader.style.getPropertyValue('--immersive-top-height')) || 0;
+    if (!wasActive && enabled && previousPosition > 0) pane.scrollTop = previousPosition + currentHeight;
+    if (wasActive && !enabled && previousPosition > currentHeight) pane.scrollTop = previousPosition - (reserved || currentHeight);
+    immersiveLastY = pane.scrollTop;
+    immersiveTravel = 0;
+    immersiveDirection = 0;
+    immersiveSuppressUntil = performance.now() + 420;
+}
+
+$('reader-immersive-toggle').addEventListener('click', () => setImmersiveMode(!immersiveEnabled));
+$('immersive-reveal').addEventListener('click', () => {
+    showImmersiveControls(true);
+    immersiveSuppressUntil = performance.now() + 800;
+});
+$('reader-body').addEventListener('scroll', () => {
+    const reader = $('reader');
+    if (!reader.open || !reader.classList.contains('immersive-mode') || reader.classList.contains('focus-mode')) return;
+    const pane = $('reader-body');
+    const y = Math.max(0, pane.scrollTop);
+    const delta = y - immersiveLastY;
+    immersiveLastY = y;
+    const now = performance.now();
+    if (reader.classList.contains('settings-open') || now < immersiveSuppressUntil || now - immersiveLastToggle < 260) return;
+    // Ignorar pequeñas oscilaciones y rebote elástico de Safari.
+    if (Math.abs(delta) < 1.8) return;
+    const direction = Math.sign(delta);
+    if (direction !== immersiveDirection) { immersiveTravel = 0; immersiveDirection = direction; }
+    immersiveTravel += Math.abs(delta);
+    if (y <= 26) { showImmersiveControls(true); immersiveTravel = 0; return; }
+    if (direction > 0 && y > 115 && immersiveTravel >= 24 && !reader.classList.contains('immersive-hidden')) {
+        showImmersiveControls(false); immersiveTravel = 0;
+    } else if (direction < 0 && immersiveTravel >= 18 && reader.classList.contains('immersive-hidden')) {
+        showImmersiveControls(true); immersiveTravel = 0;
+    }
+}, { passive: true });
+
+// Acceso con teclado y ajustes de tamaño: el overlay se reubica sin saltos.
+window.addEventListener('resize', () => {
+    if ($('reader').open && $('reader').classList.contains('immersive-mode')) updateImmersiveMeasurements();
+}, { passive: true });
+$('reader-body').addEventListener('keydown', e => {
+    if (e.key === 'Escape' && $('reader').classList.contains('immersive-hidden')) {
+        showImmersiveControls(true);
+    }
+});
 
 /* ==========================================================
    08. INTERFAZ RESPONSIVE v0.7.6 - PANEL Aa

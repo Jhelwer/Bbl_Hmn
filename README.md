@@ -1,13 +1,21 @@
-# Biblia e Himnario — v0.7.36
+# Biblia e Himnario — v0.7.39
 
 Aplicación web para lectura bíblica y consulta del Himnario Adventista, con una interfaz móvil minimalista, temas claro y oscuro, favoritos y herramientas de búsqueda. Publicable como sitio estático en GitHub Pages o en otro hosting compatible.
 
-**Versión documentada:** `v0.7.36` (11 de noviembre de 2026).
+**Versión documentada:** `v0.7.39` (14 de noviembre de 2026).
 
 > **Retorno seguro:** v0.7.34 permanece como respaldo. Para volver, restaura `index.html`, `script.js`, `styles.css` y archivos no-data del ZIP original; no hace falta borrar el historial, favoritos ni los JSON. Las nuevas preferencias están en una clave local independiente (`bh-reading-preferences-v1`) que la versión anterior ignora.
 
 
 > **Estado:** esta versión no incluye todavía la reproducción de MP3 cantados ni instrumentales. Esa función está prevista para una futura entrega.
+
+## Novedad v0.7.39 — Comparador con altura adaptativa
+
+- Se corrige el espacio superior desaprovechado al abrir el comparador en Safari y otros navegadores móviles.
+- En pantallas de hasta 820 px el panel ocupa casi todo el alto del lector, dejando un margen superior de 10 px; en escritorio crece con límite adaptativo.
+- Los controles de selección y resultados siguen dentro del panel con desplazamiento vertical; no se cambia la referencia, las versiones seleccionadas ni el estado del lector de fondo.
+- Cambios solo de presentación (CSS) y actualización de versión de caché. Los JSON y la lógica del comparador se mantienen sin cambios.
+- **Prueba pendiente en dispositivos reales:** Safari iPhone y Android, con textos largos, modo oscuro y lector inmersivo.
 
 ## Novedad v0.7.36 — Ajustes Aa en una sola columna
 
@@ -150,3 +158,15 @@ A partir de esta corrección documental, cada nueva entrega debería actualizar 
 
 Esto evita que la documentación principal quede desfasada aunque existan notas individuales.
 
+
+
+## v0.7.37 — Lectura inmersiva automática
+
+Desde el botón `Aa`, la opción **Inmersiva** oculta el encabezado y la navegación al desplazarse hacia abajo y los muestra al subir. Utiliza transiciones por transformación, evitando que el cambio de altura cree vibraciones. También cuenta con un botón discreto para revelar los controles. La opción es reversible, se recuerda localmente y es independiente del modo manual «Lectura». No se modificaron los archivos de `data`. Consultar `NOTAS_V0737.md`.
+
+
+## v0.7.38 — Comparador de traducciones bíblicas
+
+Al seleccionar uno o varios versículos en el lector de la Biblia, la barra contextual incorpora **Comparar**. La hoja inferior consulta el mismo pasaje en RVR1960, TLA, LBLA, NTV, NVI y RVA2015 y permite mostrar u ocultar versiones mediante casillas. No cambia el libro, capítulo, traducción activa, selección, guardados, resaltados ni posición de lectura. Las traducciones estructuradas muestran una sola vez los bloques de versículos agrupados, con su numeración. Los archivos JSON originales siguen intactos. Ver `NOTAS_V0738.md`.
+
+**Importante:** las traducciones sujetas a derechos de autor requieren autorización antes de redistribuirse públicamente.
