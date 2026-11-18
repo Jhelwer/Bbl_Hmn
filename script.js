@@ -599,6 +599,7 @@ else {
     initHymnSelector();
     await loadHymn(item);
 }
+requestAnimationFrame(updateImmersiveMeasurements);
 if (immersiveEnabled) requestAnimationFrame(() => setImmersiveMode(true, { persist: false }));
 }
 async function loadChapter() {
@@ -1978,8 +1979,14 @@ function updateImmersiveMeasurements() {
     const bar = state.selection?.type === 'biblia' ? $('bible-minimal-nav') : $('hymn-toolbar');
     const headHeight = head?.offsetHeight || 0;
     const navHeight = bar && !bar.hidden ? bar.offsetHeight : 0;
+    const topHeight = headHeight + navHeight;
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+    const safeGap = 12;
+    const availableHeight = Math.max(220, viewportHeight - topHeight - safeGap);
     reader.style.setProperty('--immersive-head-height', `${headHeight}px`);
-    reader.style.setProperty('--immersive-top-height', `${headHeight + navHeight}px`);
+    reader.style.setProperty('--immersive-top-height', `${topHeight}px`);
+    reader.style.setProperty('--reading-settings-top-height', `${topHeight}px`);
+    reader.style.setProperty('--reading-settings-max-height', `${availableHeight}px`);
 }
 
 function showImmersiveControls(show) {
@@ -2001,7 +2008,8 @@ function setImmersiveMode(on, { persist = true } = {}) {
     }
     const wasActive = reader.classList.contains('immersive-mode');
     if (enabled && state.focus) setFocusMode(false);
-    if (enabled) closeReadingSettings();
+    // Mantener abierto el panel Aa cuando se activa la lectura inmersiva.
+    // Su posicionamiento superpuesto evita que se comprima dentro del flex del lector.
     const pane = $('reader-body');
     const previousPosition = pane.scrollTop;
     const reserved = parseFloat(reader.style.getPropertyValue('--immersive-top-height')) || 0;
@@ -2052,7 +2060,7 @@ $('reader-body').addEventListener('scroll', () => {
 
 // Acceso con teclado y ajustes de tamaño: el overlay se reubica sin saltos.
 window.addEventListener('resize', () => {
-    if ($('reader').open && $('reader').classList.contains('immersive-mode')) updateImmersiveMeasurements();
+    if ($('reader').open) updateImmersiveMeasurements();
 }, { passive: true });
 $('reader-body').addEventListener('keydown', e => {
     if (e.key === 'Escape' && $('reader').classList.contains('immersive-hidden')) {
@@ -2077,7 +2085,15 @@ $('reader-settings-toggle').addEventListener('click', () => {
     const open = dialog.classList.toggle('settings-open');
     $('reader-settings-toggle').setAttribute('aria-expanded', String(open));
     $('reading-settings').setAttribute('aria-hidden', String(!open));
-    if (open) applyReadingPreferences();
+    if (open) {
+        applyReadingPreferences();
+        updateImmersiveMeasurements();
+        $('reading-settings').scrollTop = 0;
+        // Los controles deben quedar accesibles incluso si la inmersiva los oculto al bajar.
+        if (dialog.classList.contains('immersive-mode')) {
+            showImmersiveControls(true);
+        }
+    }
 });
 
 // Al pasar de móvil a escritorio se muestra siempre la barra tradicional.

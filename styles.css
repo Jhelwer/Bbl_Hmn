@@ -3032,3 +3032,38 @@ body.dark #reader .reader-head .reader-version-wrap {
     max-height: calc(100% - 20px);
   }
 }
+
+
+/* ============================================================
+   v0.7.39.2 — Panel Aa completo con inmersiva activa o desactivada.
+   En móviles, los ajustes flotan como hoja superpuesta debajo del
+   encabezado y la barra de referencia. Así no compiten por altura
+   con el texto, no se recortan y conservan scroll interno estable.
+   ============================================================ */
+@media (max-width: 820px) {
+  #reader.settings-open:not(.focus-mode) .reader-tools.reading-preferences {
+    position: absolute;
+    top: var(--reading-settings-top-height, 126px);
+    left: 0;
+    right: 0;
+    z-index: 25;
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+    max-height: min(74dvh, var(--reading-settings-max-height, calc(100dvh - 126px - 12px)));
+    min-height: 0;
+    flex: none;
+    flex-direction: column;
+    flex-wrap: nowrap !important;
+    align-items: stretch;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    box-shadow: 0 14px 28px #00000023;
+  }
+  /* Evitar que los elementos interiores sean comprimidos. */
+  #reader.settings-open:not(.focus-mode) .reader-tools.reading-preferences > * {
+    flex-shrink: 0;
+  }
+}

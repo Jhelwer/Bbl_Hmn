@@ -1,13 +1,29 @@
-# Biblia e Himnario — v0.7.39
+# Biblia e Himnario — v0.7.39.2
 
 Aplicación web para lectura bíblica y consulta del Himnario Adventista, con una interfaz móvil minimalista, temas claro y oscuro, favoritos y herramientas de búsqueda. Publicable como sitio estático en GitHub Pages o en otro hosting compatible.
 
-**Versión documentada:** `v0.7.39` (14 de noviembre de 2026).
+**Versión documentada:** `v0.7.39.2` (17 de noviembre de 2026).
 
 > **Retorno seguro:** v0.7.34 permanece como respaldo. Para volver, restaura `index.html`, `script.js`, `styles.css` y archivos no-data del ZIP original; no hace falta borrar el historial, favoritos ni los JSON. Las nuevas preferencias están en una clave local independiente (`bh-reading-preferences-v1`) que la versión anterior ignora.
 
 
 > **Estado:** esta versión no incluye todavía la reproducción de MP3 cantados ni instrumentales. Esa función está prevista para una futura entrega.
+
+## Corrección v0.7.39.2 — Panel Aa completo con inmersiva activa o desactivada
+
+- El panel **Aa** ahora se muestra como una hoja superpuesta tanto con **Inmersiva activada** como **desactivada** en móviles.
+- Se calcula dinámicamente el espacio disponible bajo el encabezado y la barra de referencia, para que el panel aproveche mejor el alto visible.
+- El panel conserva **scroll interno** y se abre desde arriba, evitando que se recorte el título o los primeros controles al alternar Inmersiva.
+- Se mantienen intactas las funciones de Biblia, Himnario, comparador, favoritos y lectura.
+- **Base v0.7.39:** no se reintroducen las colecciones de favoritos de la v0.7.40 ni se modifica la carpeta `data`.
+
+## Corrección v0.7.39.1 — Panel Aa en modo inmersivo
+
+- Al activar **Inmersiva** desde `Aa`, los ajustes permanecen abiertos y utilizables.
+- En modo inmersivo, el panel de ajustes usa una capa superpuesta bajo la barra superior; no se comprime contra el área de lectura.
+- Se conserva la única columna con desplazamiento interno, los controles del encabezado y el comportamiento al desplazarse.
+- **Base v0.7.39:** no se incorporan las colecciones de favoritos de la v0.7.40 ni se modifica la carpeta `data`.
+- Para volver a la v0.7.39, reemplazar los archivos de aplicación con el ZIP ligero anterior, sin borrar datos del navegador.
 
 ## Novedad v0.7.39 — Comparador con altura adaptativa
 
